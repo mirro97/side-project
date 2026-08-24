@@ -45,11 +45,21 @@
 
 - **`GET /rankings/{countryCode}/players`**
   - 용도: 국가별/글로벌 플레이어 트로피 랭킹
-  - 파라미터: `countryCode`는 ISO 2자리 국가코드(`kr`, `us` 등) 또는 `global`, 쿼리 `limit` (1~200)
+  - 파라미터: `countryCode`는 ISO 2자리 국가코드(`kr`, `us` 등) 또는 `global`, 쿼리 `limit`, `after`, `before`
+  - 응답 필드: `items[].tag`, `name`, `nameColor`, `icon.id`, `trophies`, `rank`, `club.name` / `paging.cursors`
+  - **커서 페이지네이션 실측 검증**
+    - `limit=30` → 30개 + `paging.cursors.after` (예: `eyJwb3MiOjMwfQ` = base64 `{"pos":30}`)
+    - 받은 `after` 값을 그대로 다음 요청에 넘기면 `rank` 31부터 이어진다. 2페이지부터 `before`도 함께 온다
+    - 커서를 직접 만들어 쓰면(`after=30`) `400 badRequest`. 불투명 토큰으로 취급해야 한다
+    - **총 200위가 상한.** `limit=200`이면 `paging.cursors`가 빈 객체로 오고 그게 종료 신호다
+    - `limit=201` 이상은 에러 없이 조용히 200으로 클램프된다
+  - `nameColor`는 `0xffcb5aff` 형태의 ARGB 문자열. CSS에 쓰려면 알파 2바이트를 떼고 `#RRGGBB`로 변환
 
 - **`GET /rankings/{countryCode}/clubs`**
   - 용도: 국가별/글로벌 클럽 랭킹
-  - 파라미터: 위와 동일
+  - 파라미터와 페이지네이션 동작은 플레이어 랭킹과 동일
+  - 응답 필드: `items[].tag`, `name`, `badgeId`, `trophies`, `rank`, `memberCount`
+  - 플레이어 랭킹과 구조가 거의 같아 목록 컴포넌트를 재사용할 수 있다
 
 - **`GET /rankings/{countryCode}/brawlers/{brawlerId}`**
   - 용도: 특정 브롤러 기준 상위 플레이어 랭킹
