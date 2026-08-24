@@ -168,13 +168,27 @@
   스타파워            https://cdn.brawlify.com/star-powers/borderless/{id}.png
   가젯                https://cdn.brawlify.com/gadgets/borderless/{id}.png
   맵                  https://cdn.brawlify.com/maps/regular/{id}.png
-  게임모드 아이콘      https://cdn.brawlify.com/game-modes/regular/{id}.png
+  게임모드 아이콘      https://cdn.brawlify.com/game-modes/regular/{48000000 + modeId}.png
+  기어                https://cdn.brawlify.com/gears/regular/{id}.png
   게임모드 헤더        https://cdn-misc.brawlify.com/gamemode/header/{name}.png
   프로필 아이콘        https://cdn.brawlify.com/profile-icons/regular/{id}.png
   클럽 뱃지           https://cdn.brawlify.com/club-badges/regular/{id}.png
 ```
 
 `{id}`는 공식 API의 브롤러 ID와 동일하므로 두 API를 ID 기준으로 조인할 수 있다.
+
+**게임모드만 ID 체계가 다르다.** 공식 `/events/rotation`이 주는 `event.modeId`는 0~48의 작은 수인데 Brawlify는 `48000000` 오프셋을 쓴다. 실측으로 12개 모드 전부 검증한 변환식은 다음과 같다.
+
+```
+  BrawlAPI 게임모드 ID = 48000000 + event.modeId
+  예: brawlBall(5) → 48000005, hotZone(17) → 48000017, brawlArena(48) → 48000048
+```
+
+`modeId`를 그대로 이미지 경로에 넣으면 404가 난다.
+
+**기어는 `borderless` 경로가 없다.** 스타파워·가젯과 달리 `regular`만 존재하며 `borderless`는 404다.
+
+**공식 API의 `event.mode` 문자열은 표시용 이름이 아니다.** `deathmatch`의 실제 게임 내 이름은 "Wipeout", `airHockey`는 "Brawl Hockey"다. 표시 이름은 반드시 `TID_GAME_MODE_{modeId}` 현지화를 거쳐야 한다.
 
 ### 2-4. 게임 원본 데이터 — 수치 스탯과 다국어 (실측 검증)
 

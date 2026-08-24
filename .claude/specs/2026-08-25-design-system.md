@@ -315,4 +315,16 @@ Figma에 그려야 할 상태 목록이다. 여기 없는 상태는 만들지 �
   사거리     6 ~ 30      (skills.CastingRange — AutoAttackRange 아님)
 ```
 
+### 5-5. CDN 이미지 경로 함정
+
+목업을 만들다 실제로 깨진 경로 세 가지다. 컴포넌트에 하드코딩하기 전에 확인할 것.
+
+```
+  게임모드   48000000 + modeId 를 써야 한다. modeId 그대로 넣으면 404
+  기어       /gears/regular/{id}.png — borderless 경로는 존재하지 않는다
+  모드 이름   event.mode 문자열은 표시용이 아니다 (deathmatch = "Wipeout")
+```
+
+---
+
 사거리는 `characters.AutoAttackRange`를 쓰면 안 된다. 106종 중 100종이 같은 값이라 막대가 전부 똑같이 그려진다. 상위 문서 4-4를 참조할 것.

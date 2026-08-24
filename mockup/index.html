@@ -154,6 +154,58 @@ body{background:#0A0B0F;font-family:var(--font);color:var(--text-primary);-webki
   text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
 .ai-b{font-size:12px;line-height:1.6;color:var(--text-secondary)}
 
+
+/* ---- 추천 ---- */
+.prog-bar{height:3px;background:var(--bg-surface);border-radius:99px;margin-bottom:18px;overflow:hidden}
+.prog-bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.q-no{font-size:11px;font-weight:700;color:var(--accent-hover);letter-spacing:.06em;margin-bottom:6px}
+.q-t{font-size:19px;font-weight:800;line-height:1.4;letter-spacing:-.02em;margin-bottom:18px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);
+  padding:13px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:10px}
+.opt.on{background:var(--accent-subtle);border-color:var(--accent)}
+.opt .k{width:20px;height:20px;border-radius:50%;border:2px solid var(--border-strong);flex:0 0 auto}
+.opt.on .k{border-color:var(--accent);background:var(--accent);box-shadow:inset 0 0 0 3px var(--bg-surface)}
+.opt small{display:block;font-size:11px;font-weight:400;color:var(--text-tertiary);margin-top:2px}
+.vec{display:flex;flex-direction:column;gap:7px;padding:13px 14px}
+.vec-row{display:flex;align-items:center;gap:9px}
+.vec-l{font-size:11px;color:var(--text-tertiary);width:52px;flex:0 0 auto}
+.vec-t{flex:1;height:5px;background:var(--bg-elevated);border-radius:99px;overflow:hidden}
+.vec-f{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-hover));border-radius:99px}
+.vec-v{font-size:11px;font-weight:700;width:30px;text-align:right;flex:0 0 auto}
+.grp-h{font-size:13px;font-weight:700;margin:18px 0 4px;display:flex;align-items:center;gap:7px}
+.grp-h .pill{font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;background:var(--accent-subtle);color:var(--accent-hover)}
+.grp-s{font-size:11px;color:var(--text-tertiary);margin-bottom:9px}
+.rec{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);
+  padding:11px;margin-bottom:8px}
+.rec-top{display:flex;gap:10px;align-items:center;margin-bottom:9px}
+.rec-img{width:48px;height:48px;border-radius:var(--r-sm);background:var(--bg-elevated);overflow:hidden;flex:0 0 auto}
+.rec-img img{width:100%;height:100%;object-fit:cover}
+.rec-i{flex:1;min-width:0}
+.rec-n{font-size:14px;font-weight:700}
+.rec-m{font-size:11px;color:var(--text-tertiary);margin-top:1px}
+.match{text-align:right;flex:0 0 auto}
+.match b{display:block;font-size:16px;font-weight:800;color:var(--accent-hover)}
+.match i{display:block;font-size:9px;color:var(--text-tertiary);font-style:normal}
+.rec-why{font-size:12px;line-height:1.6;color:var(--text-secondary)}
+.rec-why em{font-style:normal;color:var(--text-primary);font-weight:600}
+.ask{margin-top:9px;width:100%;background:transparent;border:1px solid var(--border-strong);
+  border-radius:var(--r-sm);padding:8px;font-size:11px;font-weight:600;color:var(--accent-hover);
+  display:flex;align-items:center;justify-content:center;gap:5px}
+/* ---- 이벤트 탭 ---- */
+.ev-card{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);
+  overflow:hidden;margin-bottom:9px;display:flex}
+.ev-map-img{width:74px;background:var(--bg-elevated);flex:0 0 auto;object-fit:cover}
+.ev-body{flex:1;padding:10px 12px;min-width:0}
+.ev-h{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.ev-h img{width:18px;height:18px}
+.ev-h b{font-size:13px;font-weight:700}
+.ev-n{font-size:11px;color:var(--text-secondary)}
+.ev-f{display:flex;align-items:center;justify-content:space-between;margin-top:7px}
+.ev-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;
+  background:var(--bg-elevated);color:var(--text-secondary)}
+.ev-badge.soon{background:rgba(255,176,32,.16);color:var(--warning)}
+
 /* ---- 랭킹 전용 ---- */
 .seg{display:flex;background:var(--bg-surface);border-radius:var(--r-md);padding:3px;margin-bottom:12px}
 .seg div{flex:1;text-align:center;font-size:12px;font-weight:600;padding:6px;border-radius:7px;color:var(--text-tertiary)}
@@ -300,7 +352,13 @@ function detail(){
     ${bar('사거리',b.range,6,30)}
     <div class="ab-list">${ab(b.sp,'스타파워','star-powers')}${ab(b.gd,'가젯','gadgets')}</div>
     <div class="ai-box"><div class="ai-h">✦ AI 사용법</div>
-      <div class="ai-b">최대 사거리에서 조준선을 유지하며 싸우세요. 사거리 30으로 전 브롤러 중 가장 길어, 상대가 접근하기 전에 한 발을 넣는 것이 핵심입니다.</div></div>`;
+      <div class="ai-b">최대 사거리에서 조준선을 유지하며 싸우세요. 사거리 30으로 전 브롤러 중 가장 길어, 상대가 접근하기 전에 한 발을 넣는 것이 핵심입니다.</div></div>
+    <div class="ai-box" style="margin-top:8px"><div class="ai-h">✦ AI 추천 기어</div>
+      <div class="ab-list" style="margin-top:0">${b.gears.slice(0,2).map(g=>`
+        <div class="ab" style="background:var(--bg-elevated)">
+          <img src="https://cdn.brawlify.com/gears/regular/${g.id}.png" alt="">
+          <div><div class="ab-k">기어</div><div class="ab-t">${g.name}</div></div></div>`).join('')}</div>
+      <div class="ai-b" style="margin-top:8px">사거리가 길어 시야 밖 교전이 잦습니다. VISION으로 부시를 먼저 보고, DAMAGE로 한 발의 가치를 올리는 조합이 잘 맞습니다.</div></div>`;
   return shell('brawl',`
     <div class="tools"><div class="search">브롤러 검색</div><div class="fbtn">정렬</div></div>
     <div class="grid">${D.brawlers.slice(0,12).map(x=>`<div class="bc"><div class="thumb">
@@ -325,6 +383,99 @@ function ranking(inList){
     <div class="endcap">상위 200위까지 제공됩니다</div>`);
 }
 
+
+/* ===== 추천 스코어링 (실제 알고리즘) ===== */
+const RNG=[6,30], HP=[2000,6800], SPD=[540,820];
+const nz=(v,[lo,hi])=>Math.max(0,Math.min(1,(v-lo)/(hi-lo)));
+const SCORED = D.brawlers.filter(b=>b.range&&b.hp&&b.spd).map(b=>{
+  const r=nz(b.range,RNG), h=nz(b.hp,HP), s=nz(b.spd,SPD);
+  return {...b, vec:[r,h,s,(1-h)*(1-r)]};
+});
+/* 유클리드 거리 기반 유사도.
+   코사인은 방향만 보고 크기를 무시하는데, 4축이 전부 0~1이라 모든 벡터가 1사분면에 몰려
+   상위 결과가 96/96/96처럼 붙어버린다. 실측 스프레드가 2~3.5배 넓은 유클리드를 쓴다. */
+const sim = (a,b) => 1 - Math.hypot(...a.map((x,i)=>x-b[i])) / 2;
+/* 가장 잘 맞는 축 — 표시용. 숫자 하나보다 이쪽이 정보가 많다 */
+function matchAxes(a,b){
+  return AXES.map(([l,i])=>[l, Math.abs(a[i]-b[i])])
+    .sort((x,y)=>x[1]-y[1]).slice(0,2).map(x=>x[0]);
+}
+/* 설문 응답 — 원거리 / 후방 지원 / 화력 우선 / 리스크 회피 */
+const Q = [0.90, 0.35, 0.30, 0.10];
+const AXES = [['사거리',0],['생존력',1],['기동성',2],['리스크',3]];
+/* 보유 시뮬레이션 — 일부만 보유 */
+const OWNED = new Set(SCORED.filter((_,i)=>i%4===0).map(b=>b.id));
+
+const ranked = SCORED.map(b=>({...b, sc:sim(Q,b.vec)})).sort((a,b)=>b.sc-a.sc);
+const GOOD = ranked.filter(b=>OWNED.has(b.id)).slice(0,2);
+const NEW  = ranked.filter(b=>!OWNED.has(b.id)).slice(0,3);
+
+/* 근거 문구 조합 — [사용자 성향] + [브롤러 성향] + [연결] */
+const USER_PHRASE = '원거리에서 안전하게 화력을 내는 쪽';
+function why(b){
+  const far = b.vec[0] > .6, tough = b.vec[1] > .55;
+  const trait = far
+    ? `사거리 ${b.range}로 길고 ${tough?'체력도 넉넉해':'체력이 낮아'} 뒤에서 지속 딜을 넣는 브롤러`
+    : `사거리 ${b.range}로 짧지만 체력 ${nf(b.hp)}로 버티는 브롤러`;
+  return `당신은 <em>${USER_PHRASE}</em>을 선호합니다. ${b.ko}는 ${trait}입니다. 성향이 그대로 맞아떨어집니다.`;
+}
+function recCard(b, owned){
+  return `<div class="rec">
+    <div class="rec-top">
+      <div class="rec-img"><img src="${b.img}" alt=""></div>
+      <div class="rec-i"><div class="rec-n">${b.ko}</div>
+        <div class="rec-m">${b.roleKo||b.roleEn||'—'} · ${owned?`내 트로피 ${nf(430+b.id%400)}`:'미보유'}</div></div>
+      <div class="match"><b class="num">${Math.round(b.sc*100)}%</b><i>매칭</i></div></div>
+    <div class="tags" style="margin:0 0 8px">${matchAxes(Q,b.vec)
+      .map(a=>`<div class="tg" style="background:var(--accent-subtle);color:var(--accent-hover)">${a} 일치</div>`).join('')}</div>
+    <div class="rec-why">${why(b)}</div>
+    <div class="ask">✦ AI에게 더 물어보기</div></div>`;
+}
+function recommend(){
+  const vec = AXES.map(([l,i])=>`<div class="vec-row"><div class="vec-l">${l}</div>
+    <div class="vec-t"><div class="vec-f" style="width:${Math.round(Q[i]*100)}%"></div></div>
+    <div class="vec-v num">${Math.round(Q[i]*100)}</div></div>`).join('');
+  return shell('rec',`
+    <div class="sec"><div class="sec-head"><div class="sec-title">내 성향</div>
+      <div class="sec-more">다시 하기 ›</div></div>
+      <div class="card"><div class="vec">${vec}</div></div></div>
+    <div class="grp-h">안 써봤는데 맞을 브롤러 <span class="pill">추천</span></div>
+    <div class="grp-s">성향에 맞지만 아직 안 쓰고 있는 브롤러입니다</div>
+    ${NEW.map(b=>recCard(b,false)).join('')}
+    <div class="grp-h">이미 잘 쓰는 브롤러</div>
+    <div class="grp-s">추천 결과가 맞는지 확인해보세요</div>
+    ${GOOD.map(b=>recCard(b,true)).join('')}`);
+}
+function survey(){
+  return shell('rec',`
+    <div class="prog-bar"><i style="width:50%"></i></div>
+    <div class="q-no">질문 2 / 4</div>
+    <div class="q-t">앞에서 싸우는 편인가요,<br>뒤에서 지원하는 편인가요?</div>
+    <div class="opts">
+      <div class="opt"><span class="k"></span><div>가장 앞에서 몸으로 받아낸다<small>탱커 성향</small></div></div>
+      <div class="opt"><span class="k"></span><div>앞뒤를 오가며 상황을 본다<small>중간</small></div></div>
+      <div class="opt on"><span class="k"></span><div>뒤에서 안전하게 지원한다<small>후방 성향</small></div></div>
+    </div>`);
+}
+/* ===== 이벤트 탭 ===== */
+function events(){
+  const list = D.events.filter(e=>parseBS(e.end)>NOW).sort((a,b)=>parseBS(a.end)-parseBS(b.end));
+  const cards = list.slice(0,7).map(e=>{
+    const l=left(e.end), m=D.modes[e.modeId];
+    return `<div class="ev-card">
+      <img class="ev-map-img" src="https://cdn.brawlify.com/game-modes/regular/${48000000+e.modeId}.png" alt="">
+      <div class="ev-body">
+        <div class="ev-h"><img src="${e.icon}" alt=""><b>${m&&m.ko?m.ko:e.mode}</b></div>
+        <div class="ev-n">${e.map}</div>
+        <div class="ev-f"><span class="ev-badge ${l.soon?'soon':''}">${l.t} 남음</span>
+          <span style="font-size:10px;color:var(--text-tertiary)" class="num">슬롯 ${e.modeId}</span></div>
+      </div></div>`;}).join('');
+  return shell('event',`
+    <div class="chips"><div class="chip on">전체 ${list.length}</div><div class="chip">브롤볼</div>
+      <div class="chip">젬 그랩</div><div class="chip">쇼다운</div></div>
+    ${cards}`);
+}
+
 const FRAMES = [
   ['홈 · 대표계정 있음', home()],
   ['브롤러 · 대표계정 있음', grid(true)],
@@ -332,6 +483,9 @@ const FRAMES = [
   ['브롤러 · 상세 패널', detail()],
   ['랭킹 · 내 계정이 목록 안', ranking(true)],
   ['랭킹 · 내 계정이 200위 밖', ranking(false)],
+  ['추천 · 설문 진행 중', survey()],
+  ['추천 · 결과', recommend()],
+  ['이벤트 · 로테이션', events()],
 ];
 document.getElementById('canvas').innerHTML =
   FRAMES.map(([l,h])=>`<div class="frame-wrap"><div class="frame-label">${l}</div>${h}</div>`).join('');
