@@ -1,0 +1,266 @@
+# 브롤스타즈 API 레퍼런스
+
+조사일: 2026-08-24
+목적: 사이드 프로젝트에서 사용 가능한 브롤스타즈 관련 API 전수 조사 및 제약 정리
+검증 상태: 발급한 실제 키로 직접 호출(`api.brawlstars.com`)과 프록시 호출(`bsproxy.royaleapi.dev`) 양쪽 200 OK 확인 완료
+
+---
+
+## 1. 공식 API (Supercell)
+
+- 베이스 URL: `https://api.brawlstars.com/v1`
+- 개발자 포털: https://developer.brawlstars.com
+- 인증: `Authorization: Bearer {JWT_TOKEN}` 헤더
+- 응답 포맷: JSON
+- 태그 표기: `#`으로 시작하는 플레이어/클럽 태그는 URL 인코딩 필수 (`#2VUL0L00R` → `%232VUL0L00R`)
+- 유효 태그 문자: `0289PYLQGRJCUV` (숫자 1, 알파벳 I/O 등은 존재하지 않음)
+
+### 1-1. 엔드포인트 목록
+
+**플레이어**
+
+- **`GET /players/{playerTag}`**
+  - 용도: 플레이어 상세 정보 조회
+  - 주요 응답 필드: `tag`, `name`, `nameColor`, `icon.id`, `trophies`, `highestTrophies`, `expLevel`, `expPoints`, `3vs3Victories`, `soloVictories`, `duoVictories`, `bestRoboRumbleTime`, `bestTimeAsBigBrawler`, `club{tag,name}`, `brawlers[]`
+  - `brawlers[]` 각 항목: `id`, `name`, `power`, `rank`, `trophies`, `highestTrophies`, `gears[]`, `starPowers[]`, `gadgets[]`
+  - 비고: 이 프로젝트의 "본인 계정 조회" + "성향 기반 추천"의 핵심 데이터 소스
+
+- **`GET /players/{playerTag}/battlelog`**
+  - 용도: 최근 전투 기록 조회 (최대 25건)
+  - 주요 응답 필드: `items[].battleTime`, `items[].event{id,mode,map}`, `items[].battle{mode,type,result,duration,trophyChange,starPlayer,teams[]|players[]}`
+  - 비고: 실제 플레이 성향(선호 모드/브롤러/승률)을 뽑아낼 수 있는 유일한 행동 데이터. 단, 25건 한정이라 장기 통계를 원하면 주기적으로 수집·저장해야 함
+
+**클럽**
+
+- **`GET /clubs/{clubTag}`**
+  - 용도: 클럽 상세 정보 조회
+  - 주요 응답 필드: `tag`, `name`, `description`, `type`, `badgeId`, `requiredTrophies`, `trophies`, `members[]`
+
+- **`GET /clubs/{clubTag}/members`**
+  - 용도: 클럽 멤버 목록 (트로피 내림차순)
+  - 쿼리 파라미터: `limit`, `after`, `before` (페이지네이션)
+  - 주요 응답 필드: `items[].tag`, `name`, `nameColor`, `role`, `trophies`, `icon.id`
+
+**랭킹**
+
+- **`GET /rankings/{countryCode}/players`**
+  - 용도: 국가별/글로벌 플레이어 트로피 랭킹
+  - 파라미터: `countryCode`는 ISO 2자리 국가코드(`kr`, `us` 등) 또는 `global`, 쿼리 `limit` (1~200)
+
+- **`GET /rankings/{countryCode}/clubs`**
+  - 용도: 국가별/글로벌 클럽 랭킹
+  - 파라미터: 위와 동일
+
+- **`GET /rankings/{countryCode}/brawlers/{brawlerId}`**
+  - 용도: 특정 브롤러 기준 상위 플레이어 랭킹
+  - 파라미터: `brawlerId`는 `/brawlers`에서 얻는 숫자 ID (예: 셸리 16000000)
+
+**브롤러**
+
+- **`GET /brawlers`**
+  - 용도: 전체 브롤러 목록
+  - 응답 구조: `{ items: [], paging: {} }`, 실측 106종 (2026-08-24 기준)
+  - `items[]` 각 항목: `id`, `name`, `starPowers[]{id,name}`, `hyperCharges[]{id,name}`, `gadgets[]{id,name}`, `gears[]{id,name,level}`
+  - 하이퍼차지는 106종 중 104종이 보유. 기어는 브롤러별 사용 가능 목록이 내려옴 (공용 SPEED/HEALTH/DAMAGE/VISION/SHIELD + 브롤러 전용 기어)
+  - 비고: **이미지·역할(class)·희귀도·설명·수치 스탯은 없음.** 영문 대문자 이름과 ID만 제공 → 브롤러 도감 UI를 만들려면 비공식 API 병행 필수
+
+- **`GET /brawlers/{brawlerId}`**
+  - 용도: 단일 브롤러 조회
+  - 응답: 위 항목과 동일 구조 (단일 객체)
+
+**이벤트**
+
+- **`GET /events/rotation`**
+  - 용도: 현재 로테이션 중인 이벤트 목록
+  - 주요 응답 필드: `[].startTime`, `endTime`, `slotId`, `event{id,mode,modeId,map}`
+  - 실측 15개 슬롯. `mode` 값 예: `gemGrab`, `brawlBall`, `brawlBall5V5`, `knockout`, `bounty`, `hotZone`, `soloShowdown`, `duoShowdown`, `trioShowdown`, `deathmatch`, `airHockey`, `brawlArena`
+  - 시각 포맷이 ISO8601 변형(`20260824T080000.000Z`)이라 `new Date()`로 바로 파싱되지 않음 → 별도 파서 필요
+
+### 1-2. 제거되었거나 더 이상 유효하지 않은 엔드포인트
+
+- `GET /rankings/{countryCode}/powerplay/seasons/{seasonId}` — 게임에서 파워플레이 모드가 삭제되면서 사실상 무의미. 구형 래퍼 문서에만 남아있음
+- `getIcons`, `getGamemodes`, `getSeasons` 등 일부 커뮤니티 래퍼가 노출하는 메서드는 공식 API가 아니라 Brawlify 데이터를 섞어 제공하는 것 → 아래 2번 섹션 참고
+
+### 1-3. ⚠️ 가장 중요한 제약: API 키의 IP 화이트리스트
+
+발급 시 **허용할 IP 주소를 반드시 지정**해야 하며, 그 IP에서 온 요청만 통과한다.
+
+이 제약이 아키텍처를 결정한다:
+  - 브라우저에서 직접 호출 불가 (사용자마다 IP가 다름 + 키가 노출됨)
+  - Vercel/Netlify 등 서버리스 함수도 IP가 유동적이라 그대로는 불가
+  - 즉 **어떤 형태로든 서버 사이드 프록시 계층이 필요**하다
+
+우회 수단:
+  - **RoyaleAPI 프록시** (권장): `https://bsproxy.royaleapi.dev/v1`를 베이스 URL로 쓰고, 공식 포털에서 키 발급 시 IP `45.79.218.79`를 화이트리스트에 등록. 무료이며 서버리스 환경에서 가장 널리 쓰이는 방식
+  - **고정 IP 서버**: VPS/전용 서버에 배포하고 그 IP를 등록
+  - **런타임 키 재발급**: 개발자 포털에 로그인해 현재 IP로 키를 새로 발급받는 스크립트(get-sc-key 류). 계정 자격증명을 서버에 두어야 해서 권장하지 않음
+
+### 1-4. 레이트리밋 / 에러
+
+- 공식 문서상 정확한 수치는 비공개. 커뮤니티 래퍼들은 **분당 약 3,200 요청**을 기준으로 캐시를 구성함. 개인 프로젝트 규모에서는 사실상 걸리지 않음
+- 주요 상태 코드:
+```
+  400  잘못된 요청 (태그 인코딩 누락 등)
+  403  잘못된 키 또는 화이트리스트에 없는 IP  ← 가장 흔한 실수
+  404  존재하지 않는 태그
+  429  레이트리밋 초과
+  503  게임 점검 중 (Supercell 업데이트 시간대)
+```
+- `503`은 게임 업데이트마다 발생하므로 UI에 "점검 중" 상태를 반드시 만들어야 함
+
+---
+
+## 2. 비공식 API — BrawlAPI / Brawlify
+
+공식 API에 없는 **이미지, 맵, 게임모드, 브롤러 메타데이터**를 채워주는 정적 JSON API.
+
+- 베이스 URL: `https://api.brawlapi.com` (구 `api.brawlify.com`은 301 리다이렉트)
+- 인증: **불필요**
+- 레이트리밋: 없음
+- CORS: `Access-Control-Allow-Origin: *` → **브라우저에서 직접 호출 가능**
+- 캐시: `Cache-Control: public, max-age=3600`
+
+### 2-1. 엔드포인트 목록
+
+```
+  GET /v1/brawlers          전체 브롤러 (약 107종), { list: [...] } 래핑
+  GET /v1/brawlers/{id}     단일 브롤러 (래핑 없음)
+  GET /v1/maps              전체 맵 (약 1,239종), stats 미포함
+  GET /v1/maps/{id}         단일 맵 (stats[], teamStats[] 포함)
+  GET /v1/gamemodes         전체 게임모드 (약 68종)
+  GET /v1/gamemodes/{id}    단일 게임모드
+  GET /v1/icons             플레이어/클럽 아이콘 { player: {...}, club: {...} }
+  GET /v1/events            { active: [], upcoming: [] } — 정적 API라 항상 비어있음
+  GET /game                 게임 원본 CSV 인덱스 (168개 파일)
+  GET /game/{path}          CSV → JSON 변환본
+  GET /v2/raw/{path}        메타데이터 래핑된 원본 CSV JSON
+```
+
+주의: `/v1/events`는 비어있으므로 **실시간 이벤트 로테이션은 공식 API의 `/events/rotation`을 써야 한다.**
+
+### 2-2. 브롤러 객체가 제공하는 추가 정보
+
+실측 기준 107종(공식보다 1종 많음). 공식 API에 없고 여기에만 있는 필드들:
+  - `class` — 역할. 실측 값: Artillery, Assassin, Controller, Damage Dealer, Marksman, Support, Tank, **Unknown**
+  - ⚠️ **107종 중 20종의 `class`가 `Unknown`**이다 (Wendy, Nori, Bolt, Starr Nova, Damian, Najia, Sirius, Glowy, Gigi, Pierce, Ziggy, Mina, Trunk, Alli, Kaze, Jae-Yong, Finx, Ollie, Meeple, Buzz Lightyear). 신규 브롤러일수록 비어 있으므로 역할 라벨에 의존하는 로직은 위험하다
+  - `rarity` — 희귀도 (Common ~ Legendary)
+  - `description` — 브롤러 설명 텍스트
+  - `starPowers[]`, `gadgets[]` — 이름 + **설명 + 이미지**
+  - `gears[]` — 추천 기어 정보
+  - `imageUrl`, `imageUrl2`, `imageUrl3` — CDN 이미지 경로
+
+### 2-3. CDN 이미지 경로 패턴
+
+```
+  브롤러(테두리)      https://cdn.brawlify.com/brawlers/borders/{id}.png
+  브롤러(테두리 없음)  https://cdn.brawlify.com/brawlers/borderless/{id}.png
+  브롤러(이모지)      https://cdn.brawlify.com/brawlers/emoji/{id}.png
+  스타파워            https://cdn.brawlify.com/star-powers/borderless/{id}.png
+  가젯                https://cdn.brawlify.com/gadgets/borderless/{id}.png
+  맵                  https://cdn.brawlify.com/maps/regular/{id}.png
+  게임모드 아이콘      https://cdn.brawlify.com/game-modes/regular/{id}.png
+  게임모드 헤더        https://cdn-misc.brawlify.com/gamemode/header/{name}.png
+  프로필 아이콘        https://cdn.brawlify.com/profile-icons/regular/{id}.png
+  클럽 뱃지           https://cdn.brawlify.com/club-badges/regular/{id}.png
+```
+
+`{id}`는 공식 API의 브롤러 ID와 동일하므로 두 API를 ID 기준으로 조인할 수 있다.
+
+### 2-4. 게임 원본 데이터 — 수치 스탯과 다국어 (실측 검증)
+
+`/game/*` 경로는 게임 클라이언트의 원본 CSV를 JSON으로 변환해 제공한다. 여기에 **공식 API에도 BrawlAPI v1에도 없는 두 가지**가 들어 있다.
+
+**수치 스탯 — `GET /game/csv_logic/characters`**
+  - 435행, 그중 공식 브롤러 106종이 전부 매칭된다 (`id` 필드가 공식 API 브롤러 ID와 동일)
+  - 행 키는 내부 코드명이다 (`ShotgunGirl` = Shelly, `Gunslinger` = Colt, `BullDude` = Bull)
+  - 사용 가능한 필드: `Hitpoints`, `Speed`, `AutoAttackRange`, `AutoAttackSpeedMs`, `UltiCharge*` 등 40여 개
+  - 실측 예: 쉘리 = Hitpoints 3900, Speed 770, AutoAttackRange 12
+  - **커버리지 106/106.** `class`가 Unknown인 신규 브롤러도 수치는 들어 있으므로, 역할 라벨 대신 이 수치로 특성 벡터를 만드는 편이 안정적이다
+  - 주의: `AutoAttackDamage`는 0인 경우가 많다. 실제 대미지는 투사체·스킬 행에 있다
+
+**한국어 데이터 — `GET /game/localization/kr`**
+  - 로케일 코드는 `kr`이다 (`ko`는 404)
+  - 15,480개 항목, `{ TID, KR }` 구조
+  - 사용 가능한 로케일 전체: ar, cn, cnt, de, es, es-419, fi, fr, he, id, it, jp, kr, ms, nl, pl, pt, ru, th, tr, vi (+ texts, texts_patch)
+
+조인 규칙:
+```
+  브롤러 이름   characters 행 키 → TID_{SCREAMING_SNAKE} → localization/kr
+                예: ShotgunGirl → TID_SHOTGUN_GIRL → "쉘리"
+  브롤러 설명   TID_{...}_DESC                      → "산탄총을 능숙하게 다루는..."
+  브롤러 역할   TID_{...}_SHORT_DESC                → "대미지 딜러"
+  게임모드      TID_GAME_MODE_{modeId}              → "젬 그랩"
+                (modeId는 공식 /events/rotation의 event.modeId와 동일)
+```
+
+**실측 커버리지 (공식 106종 기준)**
+  - 한글 이름: 102/106 — 누락 `GENE`, `GRAY`, `HANK`, `ANGELO` (내부 코드명이 TID 규칙에서 벗어남)
+  - 한글 설명: 102/106 — 위와 동일
+  - 역할(SHORT_DESC): 83/106 — 위 4종 + 최신 브롤러 19종
+  - 역할 값 종류: 대미지 딜러, 서포터, 어쌔신, 저격수, 컨트롤러, 탱커, 투척수 (BrawlAPI의 영문 7종과 1:1 대응)
+
+**중요**: 이 로케일 파일은 게임 버전 스냅샷이라 **최신 브롤러가 항상 빠져 있다.** 상시 상태이므로 빌드 실패가 아니라 영문 폴백으로 처리해야 한다.
+
+### 2-5. 공식 API와의 목록 불일치
+
+실측 시점 기준 공식 106종 / BrawlAPI 107종. 차이는 `Buzz Lightyear`(id 16000088, 콜라보 브롤러)로 BrawlAPI에만 있다. 어느 쪽이 앞설지 알 수 없으므로 **존재 여부의 기준은 공식 API로 고정**하고 BrawlAPI는 부가 정보만 붙이는 용도로 쓴다.
+
+### 2-6. 리스크
+
+비공식·비보증 서비스이므로 다운되거나 스펙이 바뀔 수 있다. 정적 데이터(브롤러/게임모드)는 빌드 타임에 한 번 받아 레포에 스냅샷으로 저장해두면 런타임 의존을 없앨 수 있다.
+
+---
+
+## 3. 두 API의 역할 분담
+
+```
+  공식 API      실시간·개인화 데이터  플레이어, 배틀로그, 클럽, 랭킹, 이벤트 로테이션
+  BrawlAPI      정적·표현용 데이터    브롤러 메타(역할/희귀도/설명), 맵, 게임모드, 모든 이미지
+```
+
+**정의 리스트형 비교**
+
+**인증**
+  - 공식: Bearer 토큰 + IP 화이트리스트
+  - BrawlAPI: 없음
+
+**호출 위치**
+  - 공식: 서버 사이드 전용 (프록시 필수)
+  - BrawlAPI: 브라우저에서 직접 가능
+
+**데이터 성격**
+  - 공식: 자주 바뀜 → 짧은 캐시(수 분)
+  - BrawlAPI: 게임 업데이트 시에만 바뀜 → 긴 캐시 또는 빌드 타임 스냅샷
+
+**이미지**
+  - 공식: 제공 안 함
+  - BrawlAPI: cdn.brawlify.com 전량 제공
+
+---
+
+## 4. AI 연동 후보 (개발자 과금 없이)
+
+프로젝트 요구사항이 "개발자에게 과금이 발생하지 않을 것"이므로 두 갈래가 있다.
+
+**A. BYOK (Bring Your Own Key) — 사용자가 자기 키를 넣는 방식**
+  - 사용자가 발급받은 API 키를 브라우저 로컬에 저장하고 클라이언트에서 직접 호출
+  - 개발자 비용 0원이 확실히 보장됨
+  - 단점: 일반 사용자에게는 진입 장벽이 높음. 키를 로컬스토리지에 두는 것에 대한 보안 안내 필요
+
+**B. 무료 티어 제공자 — 개발자 키 하나를 무료 한도 내에서 공유**
+  - Google Gemini API: 무료 티어가 가장 넉넉함. Gemini 2.5 Flash / Flash-Lite 기준 일 1,500 요청 수준, 신용카드 불필요. 다만 구글이 무료 한도를 공개 문서에서 내려서 AI Studio 로그인 후 확인해야 함
+  - Groq: 무료, 카드 불필요, 속도가 매우 빠름. 모델별로 분당 30 요청 / 일 1,000 요청 수준
+  - OpenRouter: 무료 모델 기준 분당 20 요청, 일 50 요청(크레딧 $10 이상 구매 시 일 1,000). 모델 다양성이 최대 강점
+  - 공통 리스크: 무료 한도를 넘기면 실패하거나 과금으로 전환될 수 있으므로 **한도 초과 시 기능을 끄는 안전장치**가 필요
+
+권장: 기본은 B(무료 티어)로 누구나 바로 써보게 하고, 한도 초과 시 A(BYOK) 입력을 유도하는 하이브리드.
+
+---
+
+## 5. 참고 링크
+
+- 공식 개발자 포털: https://developer.brawlstars.com
+- BrawlAPI 레퍼런스: https://brawlapi.com
+- RoyaleAPI 프록시 문서: https://docs.royaleapi.com/proxy
+- brawlstats (Python 래퍼, 엔드포인트 확인용): https://github.com/SharpBit/brawlstats
+- brawlstars-api (JS 래퍼 문서): https://github.com/Nick-Gabe/brawlstars-api/blob/main/docs.md
