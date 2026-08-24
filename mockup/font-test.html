@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>Font Test</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+body{background:#0F1117;color:#F2F4F8;font-family:'Wanted Sans Variable',sans-serif;padding:40px;margin:0}
+h2{font-size:13px;color:#A3ABBD;font-weight:600;margin:28px 0 10px;letter-spacing:.05em;text-transform:uppercase}
+.row{display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap}
+.col{background:#171A23;border:1px solid #262B38;border-radius:12px;padding:18px 20px;min-width:330px}
+.col b{display:block;font-size:11px;color:#6B7385;margin-bottom:10px;font-weight:600}
+.ws{font-family:'Wanted Sans Variable',sans-serif}
+.pd{font-family:'Pretendard Variable',Pretendard,sans-serif}
+.tn{font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums}
+.n{font-size:19px;font-weight:600;line-height:1.7}
+.lat{font-size:17px;font-weight:500;line-height:1.6}
+.ko{font-size:16px;font-weight:500;line-height:1.7}
+.w{display:flex;gap:14px;flex-wrap:wrap;font-size:17px}
+.w span{display:block}
+</style></head><body>
+<h2>숫자 정렬 — 랭킹 목록 재현</h2>
+<div class="row">
+  <div class="col"><b>WANTED SANS · 기본</b><div class="n ws">317,958<br>111,111<br>304,803<br>282,467</div></div>
+  <div class="col"><b>WANTED SANS · tnum</b><div class="n ws tn">317,958<br>111,111<br>304,803<br>282,467</div></div>
+  <div class="col"><b>PRETENDARD · tnum</b><div class="n pd tn">317,958<br>111,111<br>304,803<br>282,467</div></div>
+</div>
+<h2>라틴 — 영어가 기본 언어</h2>
+<div class="row">
+  <div class="col"><b>WANTED SANS</b><div class="lat ws">Brawl Companion<br>Recommend · Ranking · Events<br>Already good with · 86% match</div></div>
+  <div class="col"><b>PRETENDARD</b><div class="lat pd">Brawl Companion<br>Recommend · Ranking · Events<br>Already good with · 86% match</div></div>
+</div>
+<h2>한글</h2>
+<div class="row">
+  <div class="col"><b>WANTED SANS</b><div class="ko ws">안 써봤는데 맞을 브롤러<br>사거리 일치 · 생존력 일치<br>대표 계정으로 지정할까요?</div></div>
+  <div class="col"><b>PRETENDARD</b><div class="ko pd">안 써봤는데 맞을 브롤러<br>사거리 일치 · 생존력 일치<br>대표 계정으로 지정할까요?</div></div>
+</div>
+<h2>웨이트</h2>
+<div class="row"><div class="col" style="min-width:700px"><b>WANTED SANS VARIABLE 100–900</b>
+<div class="w ws">
+<span style="font-weight:100">100 브롤러</span><span style="font-weight:300">300 브롤러</span>
+<span style="font-weight:400">400 브롤러</span><span style="font-weight:500">500 브롤러</span>
+<span style="font-weight:600">600 브롤러</span><span style="font-weight:700">700 브롤러</span>
+<span style="font-weight:800">800 브롤러</span><span style="font-weight:900">900 브롤러</span></div></div></div>
+<script>
+document.fonts.ready.then(()=>{
+  const measure=(fam,feat)=>{
+    const el=document.createElement('span');
+    el.style.cssText=`position:absolute;visibility:hidden;font-size:100px;font-family:${fam};font-feature-settings:${feat}`;
+    document.body.appendChild(el);
+    const w=[...'0123456789'].map(d=>{el.textContent=d;return +el.getBoundingClientRect().width.toFixed(2)});
+    el.remove(); return w;
+  };
+  const ws=measure("'Wanted Sans Variable'","normal");
+  const wsT=measure("'Wanted Sans Variable'",'"tnum" 1');
+  const pd=measure("'Pretendard Variable',Pretendard",'"tnum" 1');
+  const uniq=a=>new Set(a).size;
+  window.__R={
+    wantedDefault:{widths:ws,distinct:uniq(ws),spread:+(Math.max(...ws)-Math.min(...ws)).toFixed(2)},
+    wantedTnum:{widths:wsT,distinct:uniq(wsT),spread:+(Math.max(...wsT)-Math.min(...wsT)).toFixed(2)},
+    pretendardTnum:{distinct:uniq(pd),spread:+(Math.max(...pd)-Math.min(...pd)).toFixed(2)},
+    fontsLoaded:[...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family).filter((v,i,a)=>a.indexOf(v)===i)
+  };
+});
+</script></body></html>

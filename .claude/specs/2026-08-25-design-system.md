@@ -104,9 +104,22 @@
 
 ### 2-6. 타이포그래피
 
-**Pretendard 단일 폰트**를 쓴다. 라틴 글리프가 Inter 기반으로 만들어져 영어 품질이 좋고 한글도 같은 패밀리에서 해결된다. 이중 언어 제품에서 폰트를 하나로 유지할 수 있는 몇 안 되는 선택지다.
+**Wanted Sans 단일 폰트**를 쓴다. 한글과 라틴을 한 패밀리에서 해결하고, 라이선스가 SIL OFL 1.1이라 나중에 수익화하더라도 제약이 없다.
 
-Figma에서 쓰려면 데스크톱에 폰트를 설치해야 한다. 웹에서는 npm 패키지로 셀프 호스팅한다.
+```
+  패키지    npm  wanted-sans@1.0.3
+  라이선스  SIL Open Font License 1.1
+  웨이트    Variable 100~900 (실측 전 구간 렌더 확인)
+  CDN       jsdelivr — complete / split(동적 서브셋) 두 가지
+```
+
+**웹에서는 CDN이 아니라 npm 패키지를 `next/font/local`로 셀프 호스팅**한다. 외부 도메인 의존이 사라지고 Next.js가 preload와 `font-display`를 처리해 FOUT을 막는다. 한글 웹폰트는 용량이 크므로 동적 서브셋(split) 쪽을 기준으로 삼는다.
+
+Figma에서 쓰려면 GitHub 릴리스의 OTF/TTF를 데스크톱에 설치해야 한다.
+
+**⚠️ 기본 숫자가 proportional이다. `tnum`을 반드시 켜야 한다.** 실측하니 기본 상태에서 숫자 열 개가 5가지 폭을 갖고 편차가 100px 기준 19.53px였다. `1`이 `0`보다 31% 좁다. 랭킹 200행에서 이대로 두면 숫자가 눈에 띄게 흔들린다. `tnum`을 켜면 편차가 0으로 떨어진다.
+
+리포지터리 최종 업데이트가 2024년 5월이라 활발히 유지보수되는 편은 아니다. 완성된 폰트라 실사용에 문제는 없지만, 신규 글리프 추가를 기대하긴 어렵다.
 
 ```
   display   32 / 700 / -0.02em    화면 타이틀
@@ -118,7 +131,9 @@ Figma에서 쓰려면 데스크톱에 폰트를 설치해야 한다. 웹에서�
   numeric   상속 / 600 / tnum      트로피 · 순위 · 스탯 수치
 ```
 
-**`numeric`에는 `font-feature-settings: "tnum"`을 반드시 건다.** 랭킹 200행에서 숫자 폭이 흔들리면 목록이 지저분해진다. Figma에서도 텍스트 스타일에 Tabular Figures를 켜둔다.
+**`numeric`에는 `font-feature-settings: "tnum"`을 반드시 건다.** 위에서 실측했듯 Wanted Sans의 기본 숫자는 폭이 제각각이라, 이 설정이 없으면 랭킹·트로피 수치가 전부 흔들린다. Figma에서도 텍스트 스타일에 Tabular Figures를 켜둔다.
+
+안전하게 `body`에 전역으로 켜고, 폭이 고정되면 어색한 본문 텍스트에서만 `pnum`으로 되돌리는 방법도 있다. 이 앱은 화면 대부분이 수치라 전역 적용이 실용적이다.
 
 ### 2-7. 간격 · 라운드 · 그림자
 
@@ -147,6 +162,7 @@ Figma에서 쓰려면 데스크톱에 폰트를 설치해야 한다. 웹에서�
 토큰은 Figma Variables 컬렉션으로 옮긴다. 이름을 코드와 동일하게 맞춰야 MCP로 오갈 때 매핑이 자동으로 된다.
 
 ```
+  Font/Wanted Sans       →  --font (Tabular Figures 켤 것)
   Color/bg/base          →  --bg-base
   Color/text/primary     →  --text-primary
   Color/rarity/mythic    →  --rarity-mythic
