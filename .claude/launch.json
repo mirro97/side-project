@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mockup",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "/Users/kangsujeong/Documents/GitHub/side-project/mockup/serve.py"
+      ],
+      "port": 4321
+    }
+  ]
+}

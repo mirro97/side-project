@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brawl Companion — Mockup</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --bg-base:#0F1117; --bg-surface:#171A23; --bg-elevated:#212632;
+  --border-subtle:#262B38; --border-strong:#39404F;
+  --text-primary:#F2F4F8; --text-secondary:#A3ABBD; --text-tertiary:#6B7385; --text-inverse:#0F1117;
+  --accent:#8B5CF6; --accent-hover:#A78BFA; --accent-subtle:rgba(139,92,246,.16);
+  --trophy:#FFC83D; --success:#3DD68C; --danger:#FF5C6C; --neutral:#6B7385; --warning:#FFB020;
+  --rank-1:#FFD24A; --rank-2:#C9D2DE; --rank-3:#E08A4B;
+  --r-sm:6px; --r-md:10px; --r-lg:16px;
+  --sh-panel:0 8px 32px rgba(0,0,0,.45); --sh-card:0 1px 2px rgba(0,0,0,.30);
+  --font:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0A0B0F;font-family:var(--font);color:var(--text-primary);-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+/* ---- 캔버스 ---- */
+.canvas{display:grid;grid-template-columns:repeat(2,390px);gap:56px 64px;padding:48px;justify-content:center;align-items:start}
+.frame-wrap{flex:0 0 auto}
+.frame-label{font-size:12px;color:#7A8296;margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
+.frame{width:390px;background:var(--bg-base);border-radius:20px;overflow:hidden;
+  box-shadow:0 0 0 1px #23283a, 0 24px 64px rgba(0,0,0,.6);position:relative}
+
+/* ---- 앱 셸 ---- */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;
+  background:var(--bg-base);border-bottom:1px solid var(--border-subtle);position:sticky;top:0;z-index:5}
+.logo{display:flex;align-items:center;gap:7px;font-weight:800;font-size:15px;letter-spacing:-.01em}
+.logo i{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,var(--accent),#5B8DEF);display:block}
+.top-right{display:flex;align-items:center;gap:10px}
+.lang{font-size:11px;font-weight:600;color:var(--text-secondary);border:1px solid var(--border-strong);
+  border-radius:var(--r-full,99px);padding:3px 8px}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--bg-elevated);
+  border:2px solid var(--accent);overflow:hidden;display:block}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:16px 16px 76px}
+.tabbar{position:absolute;left:0;right:0;bottom:0;display:flex;background:rgba(15,17,23,.94);
+  backdrop-filter:blur(12px);border-top:1px solid var(--border-subtle);padding:8px 0 12px}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;
+  color:var(--text-tertiary);font-weight:500}
+.tab.on{color:var(--accent)}
+.tab svg{width:20px;height:20px}
+
+/* ---- 섹션 ---- */
+.sec{margin-bottom:22px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.sec-title{font-size:15px;font-weight:700;letter-spacing:-.01em}
+.sec-more{font-size:12px;color:var(--text-secondary);font-weight:500}
+.card{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-lg);
+  box-shadow:var(--sh-card);overflow:hidden}
+
+/* ---- 랭킹 행 ---- */
+.rrow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--border-subtle)}
+.rrow:last-child{border-bottom:none}
+.rrow.me{background:var(--accent-subtle);box-shadow:inset 0 0 0 1px var(--accent);border-radius:var(--r-md)}
+.badge{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-size:11px;font-weight:800;flex:0 0 auto}
+.badge.n{color:var(--text-tertiary);font-weight:600}
+.badge.g1{background:var(--rank-1);color:var(--text-inverse)}
+.badge.g2{background:var(--rank-2);color:var(--text-inverse)}
+.badge.g3{background:var(--rank-3);color:var(--text-inverse)}
+.picon{width:28px;height:28px;border-radius:8px;background:var(--bg-elevated);flex:0 0 auto;object-fit:cover}
+.rmain{flex:1;min-width:0}
+.rname{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rsub{font-size:11px;color:var(--text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tro{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;color:var(--trophy);flex:0 0 auto}
+.tro svg{width:13px;height:13px}
+.me-tag{font-size:9px;font-weight:700;background:var(--accent);color:#fff;padding:2px 5px;border-radius:4px;letter-spacing:.02em}
+
+/* ---- 이벤트 ---- */
+.ev{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--border-subtle)}
+.ev:last-child{border-bottom:none}
+.ev img{width:26px;height:26px;flex:0 0 auto}
+.ev-main{flex:1;min-width:0}
+.ev-mode{font-size:12px;font-weight:600}
+.ev-map{font-size:11px;color:var(--text-tertiary)}
+.ev-left{font-size:11px;font-weight:600;color:var(--text-secondary);flex:0 0 auto}
+.ev-left.soon{color:var(--warning)}
+
+/* ---- 내 계정 ---- */
+.me-card{padding:14px;display:flex;gap:12px;align-items:center}
+.me-brawler{width:64px;height:64px;border-radius:var(--r-md);background:var(--bg-elevated);
+  display:grid;place-items:center;flex:0 0 auto;overflow:hidden;position:relative}
+.me-brawler img{width:100%;height:100%;object-fit:cover}
+.me-brawler span{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);
+  font-size:9px;text-align:center;padding:2px 0;font-weight:700;color:var(--trophy)}
+.me-info{flex:1;min-width:0}
+.me-name{font-size:15px;font-weight:700}
+.me-meta{font-size:11px;color:var(--text-tertiary);margin-top:2px}
+.stats{display:flex;gap:6px;margin-top:9px}
+.stat{flex:1;background:var(--bg-elevated);border-radius:var(--r-sm);padding:6px 8px;text-align:center}
+.stat b{display:block;font-size:13px;font-weight:700}
+.stat i{display:block;font-size:9px;color:var(--text-tertiary);font-style:normal;margin-top:1px}
+
+/* ---- 브롤러 그리드 ---- */
+.tools{display:flex;gap:8px;margin-bottom:12px}
+.search{flex:1;background:var(--bg-surface);border:1px solid var(--border-strong);border-radius:var(--r-md);
+  padding:8px 11px;font-size:12px;color:var(--text-tertiary);display:flex;align-items:center;gap:7px}
+.fbtn{background:var(--bg-surface);border:1px solid var(--border-strong);border-radius:var(--r-md);
+  padding:8px 11px;font-size:12px;color:var(--text-secondary);font-weight:600}
+.chips{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.chip{font-size:11px;font-weight:600;padding:5px 10px;border-radius:99px;
+  background:var(--bg-surface);border:1px solid var(--border-subtle);color:var(--text-secondary)}
+.chip.on{background:var(--accent-subtle);border-color:var(--accent);color:var(--accent-hover)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.bc{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--r-md);
+  overflow:hidden;position:relative}
+.bc .thumb{aspect-ratio:1;background:var(--bg-elevated);position:relative;overflow:hidden}
+.bc .thumb img{width:100%;height:100%;object-fit:cover}
+.bc .rar{position:absolute;top:0;left:0;right:0;height:3px}
+.bc .prog{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;
+  padding:3px 5px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:9px;font-weight:700}
+.bc .prog .pw{color:var(--text-primary)}
+.bc .prog .tr{color:var(--trophy)}
+.bc .nm{font-size:10px;font-weight:600;padding:5px 4px;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bc.locked{opacity:.32}
+.bc.locked .nm{color:var(--text-tertiary)}
+
+/* ---- 상세 바텀시트 ---- */
+.dim{position:absolute;inset:0;background:rgba(0,0,0,.6);z-index:8}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--bg-elevated);z-index:9;
+  border-radius:20px 20px 0 0;box-shadow:var(--sh-panel);padding:10px 16px 24px;max-height:78%;overflow:hidden}
+.handle{width:36px;height:4px;border-radius:99px;background:var(--border-strong);margin:0 auto 14px}
+.dh{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.dh .por{width:84px;height:84px;border-radius:var(--r-md);background:var(--bg-surface);overflow:hidden;flex:0 0 auto}
+.dh .por img{width:100%;height:100%;object-fit:cover}
+.dh-info{flex:1;min-width:0}
+.dh-name{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.tags{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.tg{font-size:10px;font-weight:700;padding:3px 7px;border-radius:5px;display:flex;align-items:center;gap:4px}
+.tg .dot{width:6px;height:6px;border-radius:50%}
+.tg.role{background:var(--bg-surface);color:var(--text-secondary);border:1px solid var(--border-subtle)}
+.desc{font-size:12px;line-height:1.6;color:var(--text-secondary);margin-bottom:14px}
+.sbar{margin-bottom:9px}
+.sbar-top{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px}
+.sbar-top span{color:var(--text-tertiary)}
+.sbar-top b{font-weight:700}
+.track{height:5px;background:var(--bg-surface);border-radius:99px;overflow:hidden}
+.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent-hover))}
+.ab-list{display:flex;flex-direction:column;gap:7px;margin-top:14px}
+.ab{display:flex;align-items:center;gap:9px;background:var(--bg-surface);border-radius:var(--r-sm);padding:7px 9px}
+.ab img{width:26px;height:26px;flex:0 0 auto}
+.ab-t{font-size:11px;font-weight:600}
+.ab-k{font-size:9px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.05em}
+.ai-box{margin-top:14px;background:var(--bg-surface);border:1px solid var(--border-subtle);
+  border-radius:var(--r-md);padding:11px}
+.ai-h{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:var(--accent-hover);
+  text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.ai-b{font-size:12px;line-height:1.6;color:var(--text-secondary)}
+
+/* ---- 랭킹 전용 ---- */
+.seg{display:flex;background:var(--bg-surface);border-radius:var(--r-md);padding:3px;margin-bottom:12px}
+.seg div{flex:1;text-align:center;font-size:12px;font-weight:600;padding:6px;border-radius:7px;color:var(--text-tertiary)}
+.seg div.on{background:var(--bg-elevated);color:var(--text-primary)}
+.notice{background:var(--bg-surface);border:1px solid var(--border-subtle);border-left:3px solid var(--accent);
+  border-radius:var(--r-sm);padding:9px 11px;font-size:11px;color:var(--text-secondary);margin-bottom:10px}
+.notice b{color:var(--text-primary)}
+.endcap{text-align:center;font-size:11px;color:var(--text-tertiary);padding:14px 0 4px}
+</style>
+</head>
+<body>
+<div class="canvas" id="canvas"></div>
+<script src="data.js"></script>
+<script>
+const D = window.DATA;
+const ko = s => s;
+const nf = n => n.toLocaleString('en-US');
+
+/* 변형 ISO 파서 — 20260824T080000.000Z */
+function parseBS(s){
+  const m = s.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})\.(\d{3})Z$/);
+  return new Date(Date.UTC(+m[1],+m[2]-1,+m[3],+m[4],+m[5],+m[6],+m[7]));
+}
+/* 목업 고정 기준 시각 — 데이터를 수집한 시점. 실제 앱에서는 new Date() */
+const NOW = new Date(Date.UTC(2026, 7, 24, 15, 48));
+function left(end){
+  const ms = parseBS(end) - NOW;
+  if (ms <= 0) return {t:'종료', soon:true};
+  const h = Math.floor(ms/3600000), m = Math.floor(ms%3600000/60000);
+  return {t: h>0 ? h+'시간 '+m+'분' : m+'분', soon: h < 2};
+}
+const TROPHY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 4h2a1 1 0 011 1v2a4 4 0 01-3.4 3.95A6 6 0 0113 14.9V18h3a1 1 0 110 2H8a1 1 0 110-2h3v-3.1a6 6 0 01-4.6-3.95A4 4 0 013 7V5a1 1 0 011-1h2V3h12v1zM6 6H5v1a2 2 0 001 1.7V6zm13 0h-1v2.7A2 2 0 0019 7V6z"/></svg>';
+
+const ICONS = {
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V10z"/></svg>',
+  brawl:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>',
+  rank:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>',
+  event:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  rec:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.4 5.5 6 .5-4.5 4 1.3 5.9L12 15.8 6.8 18.9l1.3-5.9-4.5-4 6-.5L12 3z"/></svg>',
+};
+
+const ME = D.rank[0];
+const MY_BRAWLER = D.brawlers.find(b => b.en === 'Shelly');
+
+function shell(active, body, extra=''){
+  return `<div class="frame">
+    <div class="topbar">
+      <div class="logo"><i></i>Brawl Companion</div>
+      <div class="top-right"><div class="lang">KO</div>
+        <a class="avatar"><img src="${ME.icon}" alt=""></a></div>
+    </div>
+    <div class="body">${body}</div>
+    <div class="tabbar">
+      ${[['home','홈'],['brawl','브롤러'],['rank','랭킹'],['event','이벤트'],['rec','추천']]
+        .map(([k,l])=>`<div class="tab ${k===active?'on':''}">${ICONS[k]}<span>${l}</span></div>`).join('')}
+    </div>${extra}</div>`;
+}
+const badge = r => `<div class="badge ${r<=3?'g'+r:'n'} num">${r}</div>`;
+
+/* ===== 홈 ===== */
+function home(){
+  const rank = D.rank.slice(0,5).map((r,i)=>`
+    <div class="rrow ${r.tag===ME.tag?'me':''}">
+      ${badge(r.rank)}<img class="picon" src="${r.icon}" alt="">
+      <div class="rmain"><div class="rname">${r.name} ${r.tag===ME.tag?'<span class="me-tag">내 계정</span>':''}</div>
+        <div class="rsub">${r.club||'클럽 없음'}</div></div>
+      <div class="tro num">${TROPHY}${nf(r.trophies)}</div></div>`).join('');
+  const clubs = D.clubs.map(c=>`
+    <div class="rrow">${badge(c.rank)}<img class="picon" src="${c.badge}" alt="">
+      <div class="rmain"><div class="rname">${c.name}</div><div class="rsub">멤버 ${c.members}/30</div></div>
+      <div class="tro num">${TROPHY}${nf(c.trophies)}</div></div>`).join('');
+  const evs = D.events.slice().filter(e=>parseBS(e.end)>NOW)
+    .sort((a,b)=>parseBS(a.end)-parseBS(b.end)).slice(0,5).map(e=>{
+    const l = left(e.end), m = D.modes[e.modeId];
+    return `<div class="ev"><img src="${e.icon}" alt="">
+      <div class="ev-main"><div class="ev-mode">${m&&m.ko?m.ko:e.mode}</div><div class="ev-map">${e.map}</div></div>
+      <div class="ev-left num ${l.soon?'soon':''}">${l.t}</div></div>`;}).join('');
+  const b = MY_BRAWLER;
+  return shell('home',`
+    <div class="sec"><div class="card me-card">
+      <div class="me-brawler"><img src="${b.img}" alt=""><span class="num">1,247</span></div>
+      <div class="me-info"><div class="me-name">${ME.name}</div>
+        <div class="me-meta num">${ME.tag} · 대표 브롤러 ${b.ko}</div>
+        <div class="stats">
+          <div class="stat"><b class="num" style="color:var(--trophy)">${nf(ME.trophies)}</b><i>트로피</i></div>
+          <div class="stat"><b class="num">${nf(ME.trophies+4210)}</b><i>최고 기록</i></div>
+          <div class="stat"><b class="num">412</b><i>레벨</i></div>
+        </div></div></div></div>
+
+    <div class="sec"><div class="sec-head"><div class="sec-title">유저 순위</div><div class="sec-more">전체 보기 ›</div></div>
+      <div class="card">${rank}</div></div>
+
+    <div class="sec"><div class="sec-head"><div class="sec-title">클랜 순위</div><div class="sec-more">전체 보기 ›</div></div>
+      <div class="card">${clubs}</div></div>
+
+    <div class="sec"><div class="sec-head"><div class="sec-title">진행 중인 이벤트</div><div class="sec-more">전체 보기 ›</div></div>
+      <div class="card">${evs}</div></div>`);
+}
+
+/* ===== 브롤러 그리드 ===== */
+function grid(){
+  const list = D.brawlers.slice(0,24);
+  const cards = list.map((b,i)=>{
+    const owned = i % 7 !== 5;
+    return `<div class="bc ${owned?'':'locked'}">
+      <div class="thumb"><div class="rar" style="background:${b.rarityColor}"></div>
+        <img src="${b.img}" alt="">
+        ${owned?`<div class="prog"><span class="pw num">P${9+(i%3)}</span><span class="tr num">${520+i*17}</span></div>`:''}
+      </div><div class="nm">${b.ko}</div></div>`;}).join('');
+  return shell('brawl',`
+    <div class="tools">
+      <div class="search"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>브롤러 검색 (쉘리 / shelly)</div>
+      <div class="fbtn">정렬</div></div>
+    <div class="chips"><div class="chip on">전체 106</div><div class="chip">탱커</div><div class="chip">어쌔신</div>
+      <div class="chip">저격수</div><div class="chip">서포터</div></div>
+    <div class="grid">${cards}</div>`);
+}
+
+/* ===== 브롤러 상세 ===== */
+function detail(){
+  const b = D.brawlers.find(x=>x.en==='Piper') || D.brawlers[0];
+  const bar = (label,val,min,max,unit='')=>{
+    const p = Math.round((val-min)/(max-min)*100);
+    return `<div class="sbar"><div class="sbar-top"><span>${label}</span><b class="num">${nf(val)}${unit}</b></div>
+      <div class="track"><div class="fill" style="width:${p}%"></div></div></div>`;};
+  const ab = (arr,kind,path)=>arr.map(x=>`<div class="ab">
+      <img src="https://cdn.brawlify.com/${path}/borderless/${x.id}.png" alt="">
+      <div><div class="ab-k">${kind}</div><div class="ab-t">${x.name}</div></div></div>`).join('');
+  const sheet = `<div class="dim"></div><div class="sheet"><div class="handle"></div>
+    <div class="dh"><div class="por"><img src="${b.img}" alt=""></div>
+      <div class="dh-info"><div class="dh-name">${b.ko}</div>
+        <div class="tags">
+          <div class="tg" style="background:${b.rarityColor}22;color:${b.rarityColor}">
+            <span class="dot" style="background:${b.rarityColor}"></span>${b.rarityEn}</div>
+          <div class="tg role">${b.roleKo||b.roleEn||'—'}</div></div>
+        <div class="stats" style="margin-top:8px">
+          <div class="stat"><b class="num" style="color:var(--trophy)">743</b><i>내 트로피</i></div>
+          <div class="stat"><b class="num">P10</b><i>파워</i></div>
+          <div class="stat"><b class="num">23</b><i>랭크</i></div></div></div></div>
+    <div class="desc">${b.descKo||b.descEn}</div>
+    ${bar('체력',b.hp,2000,6800)}
+    ${bar('이동 속도',b.spd,540,820)}
+    ${bar('사거리',b.range,6,30)}
+    <div class="ab-list">${ab(b.sp,'스타파워','star-powers')}${ab(b.gd,'가젯','gadgets')}</div>
+    <div class="ai-box"><div class="ai-h">✦ AI 사용법</div>
+      <div class="ai-b">최대 사거리에서 조준선을 유지하며 싸우세요. 사거리 30으로 전 브롤러 중 가장 길어, 상대가 접근하기 전에 한 발을 넣는 것이 핵심입니다.</div></div>`;
+  return shell('brawl',`
+    <div class="tools"><div class="search">브롤러 검색</div><div class="fbtn">정렬</div></div>
+    <div class="grid">${D.brawlers.slice(0,12).map(x=>`<div class="bc"><div class="thumb">
+      <div class="rar" style="background:${x.rarityColor}"></div><img src="${x.img}" alt=""></div>
+      <div class="nm">${x.ko}</div></div>`).join('')}</div>`, sheet);
+}
+
+/* ===== 랭킹 ===== */
+function ranking(inList){
+  const rows = D.rank.map(r=>`
+    <div class="rrow ${inList&&r.tag===ME.tag?'me':''}">
+      ${badge(r.rank)}<img class="picon" src="${r.icon}" alt="">
+      <div class="rmain"><div class="rname" style="color:${r.color}">${r.name}
+        ${inList&&r.tag===ME.tag?'<span class="me-tag">내 계정</span>':''}</div>
+        <div class="rsub">${r.club||'클럽 없음'}</div></div>
+      <div class="tro num">${TROPHY}${nf(r.trophies)}</div></div>`).join('');
+  return shell('rank',`
+    <div class="seg"><div class="on">플레이어</div><div>클럽</div></div>
+    <div class="tools"><div class="fbtn" style="flex:1">🌐 글로벌</div><div class="fbtn">필터</div></div>
+    ${inList?'':'<div class="notice">내 순위: <b>200위 밖</b> · 상위 200위까지만 제공됩니다</div>'}
+    <div class="card">${rows}</div>
+    <div class="endcap">상위 200위까지 제공됩니다</div>`);
+}
+
+const FRAMES = [
+  ['홈 · 대표계정 있음', home()],
+  ['브롤러 · 그리드', grid()],
+  ['브롤러 · 상세 패널', detail()],
+  ['랭킹 · 내 계정이 목록 안', ranking(true)],
+  ['랭킹 · 내 계정이 200위 밖', ranking(false)],
+];
+document.getElementById('canvas').innerHTML =
+  FRAMES.map(([l,h])=>`<div class="frame-wrap"><div class="frame-label">${l}</div>${h}</div>`).join('');
+</script>
+</body>
+</html>
