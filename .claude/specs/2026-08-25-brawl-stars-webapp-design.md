@@ -1,7 +1,7 @@
 # 브롤스타즈 컴패니언 웹앱 설계 문서
 
 작성일: 2026-08-25
-관련 문서: [브롤스타즈 API 레퍼런스](../docs/brawl-stars-api-reference.md)
+관련 문서: [브롤스타즈 API 레퍼런스](../docs/brawl-stars-api-reference.md) · [디자인 시스템 스펙](2026-08-25-design-system.md)
 검증 상태: 이 문서의 API 관련 수치는 발급한 실제 키로 호출해 확인했다. 근거는 부록 A에 모아뒀다.
 
 ## 목차
@@ -354,10 +354,14 @@
   1. 공식 /brawlers                      → 존재하는 브롤러 ID 목록 (기준)
   2. BrawlAPI /v1/brawlers               → 영문명, 희귀도, 역할(en), 설명(en),
                                             이미지 URL, 스타파워·가젯 이름과 설명
-  3. BrawlAPI /game/csv_logic/characters → 내부 코드명, Hitpoints, Speed, AutoAttackRange
-  4. BrawlAPI /game/localization/kr      → 한글명, 한글 설명, 한글 역할
-  5. 조인 후 정규화 벡터 계산            → 산출물 저장
+  3. BrawlAPI /game/csv_logic/characters → 내부 코드명, Hitpoints, Speed, WeaponSkill
+  4. BrawlAPI /game/csv_logic/skills     → WeaponSkill로 조회 → CastingRange(실사거리),
+                                            Damage, MsBetweenAttacks, NumBulletsInOneAttack
+  5. BrawlAPI /game/localization/kr      → 한글명, 한글 설명, 한글 역할
+  6. 조인 후 정규화 벡터 계산            → 산출물 저장
 ```
+
+**사거리는 `characters.AutoAttackRange`가 아니라 `skills.CastingRange`다.** 전자는 106종 중 100종이 값 12로 동일해서 근접과 원거리를 전혀 구분하지 못한다 (엘 프리모와 파이퍼가 똑같이 12). `characters.WeaponSkill`이 가리키는 `skills` 행의 `CastingRange`가 실제 사거리이고, 6~30 범위에 23개 고유값으로 제대로 갈린다.
 
 **조인 기준은 공식 API의 브롤러 ID**다. BrawlAPI에만 있고 공식에 없는 브롤러(현재 `Buzz Lightyear`)는 제외한다.
 
@@ -366,8 +370,11 @@
 ```
   한글명 없음   수동 오버라이드 테이블 조회 → 없으면 영문명 폴백 + 경고 로그
   역할 없음     역할 배지를 숨김. 추천 스코어링은 수치 스탯만으로 계속 동작
+  사거리 없음   같은 역할 브롤러의 중앙값으로 대체 + 경고 로그
   이미지 없음   플레이스홀더
 ```
+
+사거리 결측은 현재 `BOLT` 1종이다. 최신 브롤러가 `skills` CSV에 아직 반영되지 않은 경우로, 한글 데이터와 마찬가지로 상시 발생한다.
 
 현재 오버라이드가 필요한 브롤러 (실측 기준):
 ```
@@ -430,13 +437,15 @@ AI 사전 생성물은 DB에 두지 않는다. 정적 파일로 커밋하므로 
 역할 라벨이 아니라 **수치 스탯**을 기준으로 삼는다. 역할은 106종 중 83종만 있지만 수치는 106종 전부 있고, 신규 브롤러도 자동으로 채워진다.
 
 ```
-  range       AutoAttackRange 정규화     근접 ←→ 원거리
-  durability  Hitpoints 정규화           물몸 ←→ 탱커
-  mobility    Speed 정규화               느림 ←→ 빠름
-  risk        (1 − durability) × (1 − range)   파생 축
+  range       skills.CastingRange     6 ~ 30      근접 ←→ 원거리
+  durability  characters.Hitpoints    2000 ~ 6800 물몸 ←→ 탱커
+  mobility    characters.Speed        540 ~ 820   느림 ←→ 빠름
+  risk        (1 − durability) × (1 − range)      파생 축
 ```
 
-정규화는 106종 전체의 최소·최대를 기준으로 0~1로 맞춘다.
+정규화는 위 실측 범위를 기준으로 0~1로 맞춘다.
+
+**사거리 필드를 잘못 고르면 축이 통째로 죽는다.** `characters.AutoAttackRange`는 이름과 달리 실제 사거리가 아니고 106종 중 100종이 값 12로 같다. 반드시 `WeaponSkill` → `skills.CastingRange`를 따라가야 한다 (4-4 참조). 검증된 극단값은 엘 프리모 9, 에드가·릴리 6, 파이퍼·비·벨 30이다.
 
 `risk`는 별도 데이터 없이 기존 두 축에서 계산된다. 체력이 낮고 사거리가 짧을수록 한 번의 판단 실수가 죽음으로 이어진다는 뜻이고, 신규 브롤러도 자동으로 채워진다.
 
@@ -646,6 +655,7 @@ AI 사전 생성물은 DB에 두지 않는다. 정적 파일로 커밋하므로 
   랭킹 2페이지              커서 체인 검증용
   이벤트 로테이션 15슬롯    변형 ISO 시각 포함
   characters CSV            수치 스탯 조인용
+  skills CSV                WeaponSkill → CastingRange 조인용
   localization/kr           한글 매칭·누락 케이스용
 ```
 
@@ -655,7 +665,9 @@ AI 사전 생성물은 DB에 두지 않는다. 정적 파일로 커밋하므로 
 - 시각 파서 — `20260824T080000.000Z` 형식과 로컬 타임존 변환
 - `nameColor` ARGB → CSS 변환
 - 배틀로그 파서 — 팀 모드·쇼다운·미지의 모드 세 갈래
-- 빌드 파이프라인 조인 — 이름 누락 4종, 역할 누락 23종, 공식에 없는 브롤러 제외
+- 빌드 파이프라인 조인 — 이름 누락 4종, 역할 누락 23종, 사거리 누락 1종, 공식에 없는 브롤러 제외
+- 사거리 조인 — `WeaponSkill` → `CastingRange` 경로가 맞는지. 엘 프리모 9 / 파이퍼 30을 고정값으로 검증한다
+- 희귀도 색상 검증 — 잘못된 hex(`#fff11ev`)를 감지해 보정하는지
 - 특성 벡터 정규화와 추천 스코어링
 - 근거 문구 조합 — 각 축 구간에 맞는 문장이 선택되는지, 사전 생성물이 없을 때 폴백하는지
 - 대표 브롤러 계산 — 트로피 최고가 선택되는지, 보유 브롤러가 없을 때 폴백하는지
@@ -705,7 +717,16 @@ E2E는 v1 범위 밖으로 둔다.
   - 공식 `/brawlers` 106종. 각 항목에 `starPowers`, `hyperCharges`, `gadgets`, `gears{id,name,level}`
   - BrawlAPI `/v1/brawlers` 107종. 차이는 `Buzz Lightyear`(id 16000088)
   - BrawlAPI `class`가 `Unknown`인 브롤러 20종 — 최신 브롤러일수록 비어 있다
-  - `characters` CSV에 `Hitpoints`·`Speed`·`AutoAttackRange` **106/106** (예: 쉘리 3900 / 770 / 12)
+  - `characters` CSV에 `Hitpoints`·`Speed` **106/106** (쉘리 3900 / 770)
+  - `Hitpoints` 2000~6800, `Speed` 540~820 — 두 축 모두 잘 갈린다
+  - ⚠️ `characters.AutoAttackRange`는 **실제 사거리가 아니다.** 106종 중 100종이 12, 6종이 20. 엘 프리모(근접)와 파이퍼(저격)가 동일값이라 축으로 쓸 수 없다
+  - 실제 사거리는 `characters.WeaponSkill` → `skills.CastingRange`. **105/106** (결측 `BOLT`), 6~30 범위에 고유값 23개
+  - `skills` 행에는 `Damage`, `MsBetweenAttacks`, `NumBulletsInOneAttack`, `Cooldown`(재장전)도 있어 화력·템포 축으로 확장할 여지가 있다
+
+**희귀도**
+  - 7등급. 게임 원본 색상값이 BrawlAPI `rarity.color`로 내려온다
+  - ⚠️ Legendary 색상이 `#fff11ev`로 **잘못된 hex**다. 그대로 쓰면 CSS가 깨지므로 검증 후 `#fff11e`로 보정해야 한다
+  - 분포가 크게 치우쳐 있다: Mythic 41, Epic 30, Legendary 15, Super Rare 10, Rare 8, Ultra Legendary 2, **Common 1**
 
 **한국어**
   - 로케일 코드는 `kr` (`ko`는 404). 15,480개 항목
