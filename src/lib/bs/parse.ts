@@ -21,6 +21,8 @@ interface BattleLogItem {
     starPlayer?: { tag?: string } | null
     teams?: Participant[][]
     players?: Participant[]
+    // API 가 언제든 새 필드를 추가하므로 열어둔다
+    [key: string]: unknown
   }
 }
 
