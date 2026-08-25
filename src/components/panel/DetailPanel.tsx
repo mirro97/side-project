@@ -1,9 +1,12 @@
 'use client'
 import { Drawer, DrawerContent, DrawerTitle } from '@/components/ui/drawer'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 /**
- * 데스크톱 사이드 드로어와 모바일 바텀시트를 한 컴포넌트로 처리한다.
- * 열림 상태는 쿼리 파라미터로 표현하므로 여기서는 open/onClose 만 받는다.
+ * 데스크톱은 오른쪽 사이드 드로어, 모바일은 바텀시트다.
+ *
+ * vaul 은 direction 에 따라 transform 으로 위치를 잡으므로
+ * CSS 로 방향을 덮을 수 없다. direction 자체를 바꿔야 한다.
  */
 export function DetailPanel({
   open,
@@ -16,15 +19,23 @@ export function DetailPanel({
   title: string
   children: React.ReactNode
 }) {
+  const isDesktop = useMediaQuery('(min-width: 768px)')
+
   return (
     <Drawer
       open={open}
       onOpenChange={o => {
         if (!o) onClose()
       }}
-      direction="bottom"
+      direction={isDesktop ? 'right' : 'bottom'}
     >
-      <DrawerContent className="border-border-subtle bg-bg-elevated max-h-[85dvh] md:left-auto md:right-0 md:h-dvh md:max-h-none md:w-[420px]">
+      <DrawerContent
+        className={
+          isDesktop
+            ? 'border-border-subtle bg-bg-elevated h-dvh w-[420px]'
+            : 'border-border-subtle bg-bg-elevated max-h-[85dvh]'
+        }
+      >
         <DrawerTitle className="sr-only">{title}</DrawerTitle>
         <div className="overflow-y-auto px-4 pb-8">{children}</div>
       </DrawerContent>
