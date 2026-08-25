@@ -42,5 +42,24 @@
     "trophies": "Trophies",
     "highest": "Personal best",
     "level": "Level"
+  },
+  "brawlers": {
+    "searchPlaceholder": "Search brawlers",
+    "all": "All",
+    "sortReleased": "Newest",
+    "sortName": "Name",
+    "sortRarity": "Rarity",
+    "noResult": "No brawlers match",
+    "resetFilter": "Reset filters",
+    "myProgress": "My trophies",
+    "power": "Power",
+    "rank": "Rank",
+    "notOwned": "Not owned",
+    "health": "Health",
+    "speed": "Speed",
+    "range": "Range",
+    "starPowers": "Star powers",
+    "gadgets": "Gadgets",
+    "gears": "Gears"
   }
 }
