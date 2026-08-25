@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# macOS/iCloud 충돌 사본 — "RankRow 2.tsx" 같은 파일이 생긴다.
+# 커밋되면 죽은 코드가 남고 중복 테스트 파일이 실제로 실행된다.
+* 2.*
+* 2
+*\ 2.*
