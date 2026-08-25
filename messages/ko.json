@@ -1,0 +1,7 @@
+{
+  "nav": { "home": "홈", "brawlers": "브롤러", "ranking": "랭킹", "events": "이벤트", "recommend": "추천", "profile": "프로필" },
+  "common": { "seeAll": "전체 보기", "retry": "다시 시도", "cancel": "취소", "confirm": "확인", "setAccount": "내 계정 설정" },
+  "role": { "damage": "대미지 딜러", "tank": "탱커", "assassin": "어쌔신", "support": "서포터", "controller": "컨트롤러", "marksman": "저격수", "artillery": "투척수" },
+  "error": { "maintenance": "브롤스타즈 점검 중입니다", "notFound": "해당 태그의 플레이어가 없습니다", "generic": "문제가 발생했습니다" },
+  "footer": { "disclaimer": "This material is unofficial and is not endorsed by Supercell." }
+}
