@@ -35,3 +35,22 @@ describe('formatRemaining', () => {
     expect(formatRemaining(new Date('2026-08-24T14:00:00Z'), now)).toEqual({ h: 0, m: 0, ended: true })
   })
 })
+
+import { stripNameMarkup } from './format'
+
+describe('stripNameMarkup', () => {
+  it('게임 내 색상 태그를 벗긴다', () => {
+    // 브롤스타즈 이름에 <c3>..</c> 형태의 색상 마크업이 들어온다
+    expect(stripNameMarkup('Only<c3>Pro</c>')).toBe('OnlyPro')
+    expect(stripNameMarkup('Zero<c9>Win</c>')).toBe('ZeroWin')
+    expect(stripNameMarkup('🌴|<c3>HM</c>')).toBe('🌴|HM')
+  })
+  it('마크업이 없으면 그대로 둔다', () => {
+    expect(stripNameMarkup('VITAL SHARK')).toBe('VITAL SHARK')
+    expect(stripNameMarkup('『火|Tɪᴇs🥀』')).toBe('『火|Tɪᴇs🥀』')
+  })
+  it('빈 값도 안전하게 처리한다', () => {
+    expect(stripNameMarkup('')).toBe('')
+    expect(stripNameMarkup(undefined)).toBe('')
+  })
+})

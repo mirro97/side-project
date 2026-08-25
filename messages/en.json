@@ -1,7 +1,46 @@
 {
-  "nav": { "home": "Home", "brawlers": "Brawlers", "ranking": "Ranking", "events": "Events", "recommend": "Recommend", "profile": "Profile" },
-  "common": { "seeAll": "See all", "retry": "Retry", "cancel": "Cancel", "confirm": "Confirm", "setAccount": "Set your account" },
-  "role": { "damage": "Damage Dealer", "tank": "Tank", "assassin": "Assassin", "support": "Support", "controller": "Controller", "marksman": "Marksman", "artillery": "Artillery" },
-  "error": { "maintenance": "Brawl Stars is under maintenance", "notFound": "No player with that tag", "generic": "Something went wrong" },
-  "footer": { "disclaimer": "This material is unofficial and is not endorsed by Supercell." }
+  "nav": {
+    "home": "Home",
+    "brawlers": "Brawlers",
+    "ranking": "Ranking",
+    "events": "Events",
+    "recommend": "Recommend",
+    "profile": "Profile"
+  },
+  "common": {
+    "seeAll": "See all",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "setAccount": "Set your account",
+    "myAccount": "You"
+  },
+  "role": {
+    "damage": "Damage Dealer",
+    "tank": "Tank",
+    "assassin": "Assassin",
+    "support": "Support",
+    "controller": "Controller",
+    "marksman": "Marksman",
+    "artillery": "Artillery"
+  },
+  "error": {
+    "maintenance": "Brawl Stars is under maintenance",
+    "notFound": "No player with that tag",
+    "generic": "Something went wrong"
+  },
+  "footer": {
+    "disclaimer": "This material is unofficial and is not endorsed by Supercell."
+  },
+  "home": {
+    "userRanking": "Top players",
+    "clubRanking": "Top clubs",
+    "liveEvents": "Live events",
+    "myAccount": "My account",
+    "setAccountPrompt": "Set your account to see your stats here",
+    "mainBrawler": "Top brawler",
+    "trophies": "Trophies",
+    "highest": "Personal best",
+    "level": "Level"
+  }
 }

@@ -44,6 +44,35 @@ export function modeImageId(modeId: number): number {
   return 48000000 + modeId
 }
 
+/** 외부 응답의 최소 형태. 전체를 타이핑하지 않고 쓰는 필드만 선언한다 */
+interface Ability { id: number; name: string }
+interface OfficialBrawler {
+  id: number
+  name: string
+  starPowers?: Ability[]
+  gadgets?: Ability[]
+  gears?: Ability[]
+}
+interface BapiBrawler {
+  id: number
+  name?: string
+  description?: string
+  class?: { name?: string }
+  rarity?: { id?: number; name?: string; color?: string }
+}
+interface CharacterRow {
+  id?: number
+  Hitpoints?: number
+  Speed?: number
+  WeaponSkill?: string
+}
+interface SkillRow {
+  CastingRange?: number
+}
+interface RotationItem {
+  event: { mode: string; modeId: number }
+}
+
 const PROXY = 'https://bsproxy.royaleapi.dev/v1'
 const BAPI = 'https://api.brawlapi.com'
 
@@ -64,12 +93,12 @@ async function main() {
   if (!token) throw new Error('BRAWL_STARS_TOKEN 이 없습니다')
 
   const [official, bapi, chars, skills, kr, rotation] = await Promise.all([
-    getJson<{ items: any[] }>(`${PROXY}/brawlers`, token),
-    getJson<{ list: any[] }>(`${BAPI}/v1/brawlers`),
-    getJson<Record<string, any>>(`${BAPI}/game/csv_logic/characters`),
-    getJson<Record<string, any>>(`${BAPI}/game/csv_logic/skills`),
+    getJson<{ items: OfficialBrawler[] }>(`${PROXY}/brawlers`, token),
+    getJson<{ list: BapiBrawler[] }>(`${BAPI}/v1/brawlers`),
+    getJson<Record<string, CharacterRow>>(`${BAPI}/game/csv_logic/characters`),
+    getJson<Record<string, SkillRow>>(`${BAPI}/game/csv_logic/skills`),
     getJson<Record<string, { KR: string }>>(`${BAPI}/game/localization/kr`),
-    getJson<any[]>(`${PROXY}/events/rotation`, token),
+    getJson<RotationItem[]>(`${PROXY}/events/rotation`, token),
   ])
 
   // 존재 여부의 기준은 공식 API 다. BrawlAPI 에만 있는 브롤러는 버린다
@@ -77,7 +106,7 @@ async function main() {
   const bapiById = new Map(bapi.list.map(b => [b.id, b]))
   const charById = new Map(
     Object.entries(chars)
-      .filter(([, r]) => officialIds.has(r.id))
+      .filter(([, r]) => r.id !== undefined && officialIds.has(r.id))
       .map(([code, r]) => [r.id as number, { code, row: r }]),
   )
 
@@ -111,14 +140,14 @@ async function main() {
         name: b?.rarity?.name ?? 'Unknown',
         color: fixHex(b?.rarity?.color) ?? '#6B7385',
       },
-      stats: { hp: (c?.row.Hitpoints ?? 0) as number, speed: (c?.row.Speed ?? 0) as number, range },
+      stats: { hp: c?.row.Hitpoints ?? 0, speed: c?.row.Speed ?? 0, range },
       images: {
         portrait: `https://cdn.brawlify.com/brawlers/borderless/${o.id}.png`,
         emoji: `https://cdn.brawlify.com/brawlers/emoji/${o.id}.png`,
       },
-      starPowers: (o.starPowers ?? []).map((x: any) => ({ id: x.id, name: x.name })),
-      gadgets: (o.gadgets ?? []).map((x: any) => ({ id: x.id, name: x.name })),
-      gears: (o.gears ?? []).map((g: any) => ({ id: g.id, name: g.name })),
+      starPowers: (o.starPowers ?? []).map(x => ({ id: x.id, name: x.name })),
+      gadgets: (o.gadgets ?? []).map(x => ({ id: x.id, name: x.name })),
+      gears: (o.gears ?? []).map(g => ({ id: g.id, name: g.name })),
     }
   })
 
@@ -148,10 +177,10 @@ async function main() {
   })
 
   const modes = [...new Map(rotation.map(e => [e.event.modeId, e.event])).values()].map(e => ({
-    modeId: e.modeId as number,
+    modeId: e.modeId,
     imageId: modeImageId(e.modeId),
-    apiKey: e.mode as string,
-    name: { en: e.mode as string, ko: kr[`TID_GAME_MODE_${e.modeId}`]?.KR ?? (e.mode as string) },
+    apiKey: e.mode,
+    name: { en: e.mode, ko: kr[`TID_GAME_MODE_${e.modeId}`]?.KR ?? e.mode },
   }))
 
   const out = { version: new Date().toISOString(), brawlers, modes, ranges }
