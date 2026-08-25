@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-bg-base: #0F1117;
+  --color-bg-surface: #171A23;
+  --color-bg-elevated: #212632;
+  --color-border-subtle: #262B38;
+  --color-border-strong: #39404F;
+
+  --color-text-primary: #F2F4F8;
+  --color-text-secondary: #A3ABBD;
+  --color-text-tertiary: #6B7385;
+  --color-text-inverse: #0F1117;
+
+  /* shadcn 의 --accent 는 은은한 hover 배경이라 의미가 다르다. 브랜드색은 brand 로 분리한다 */
+  --color-brand: #8B5CF6;
+  --color-brand-hover: #A78BFA;
+
+  --color-trophy: #FFC83D;
+  --color-success: #3DD68C;
+  --color-danger: #FF5C6C;
+  --color-neutral: #6B7385;
+  --color-warning: #FFB020;
+
+  --color-rank-1: #FFD24A;
+  --color-rank-2: #C9D2DE;
+  --color-rank-3: #E08A4B;
+
+  /* shadcn 이 @theme inline 에서 --radius-sm/md/lg 를 calc() 로 덮어쓰므로 이름을 분리한다 */
+  --radius-chip: 6px;
+  --radius-card: 10px;
+  --radius-panel: 16px;
+}
+
+:root {
+  /* Wanted Sans Variable — 실제 웨이트 범위는 400~1000 이다 (100~300 은 400 으로 클램프) */
+  --font-wanted: "Wanted Sans Variable";
+  --font-sans: var(--font-wanted);
+  --brand-subtle: rgb(139 92 246 / 0.16);
+
+  /* shadcn alias — 컴포넌트를 수정하지 않고 우리 색을 쓰게 한다.
+     --accent 는 브랜드색이 아니라 hover 배경이라는 점에 주의 */
+  --background: var(--color-bg-base);
+  --foreground: var(--color-text-primary);
+  --card: var(--color-bg-surface);
+  --card-foreground: var(--color-text-primary);
+  --popover: var(--color-bg-elevated);
+  --popover-foreground: var(--color-text-primary);
+  --primary: var(--color-brand);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-bg-elevated);
+  --secondary-foreground: var(--color-text-primary);
+  --muted: var(--color-bg-elevated);
+  --muted-foreground: var(--color-text-secondary);
+  --accent: var(--color-bg-elevated);
+  --accent-foreground: var(--color-text-primary);
+  --destructive: var(--color-danger);
+  --border: var(--color-border-subtle);
+  --input: var(--color-border-strong);
+  --ring: var(--color-brand);
+  --radius: 10px;
+  --chart-1: var(--color-brand);
+  --chart-2: var(--color-trophy);
+  --chart-3: var(--color-success);
+  --chart-4: var(--color-danger);
+  --chart-5: var(--color-text-tertiary);
+  --sidebar: var(--color-bg-surface);
+  --sidebar-foreground: var(--color-text-primary);
+  --sidebar-primary: var(--color-brand);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--color-bg-elevated);
+  --sidebar-accent-foreground: var(--color-text-primary);
+  --sidebar-border: var(--color-border-subtle);
+  --sidebar-ring: var(--color-brand);
+}
+
+body {
+  font-family: var(--font-wanted), system-ui, sans-serif;
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  /* 화면 대부분이 수치라 전역으로 켠다 */
+  font-feature-settings: "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
