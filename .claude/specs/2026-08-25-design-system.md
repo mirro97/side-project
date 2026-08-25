@@ -26,6 +26,13 @@
 
 다만 **토큰은 시맨틱 이름으로 정의**해서 나중에 라이트를 추가할 때 값만 갈아끼우면 되게 한다. `gray-900`이 아니라 `bg-base`로 쓴다는 뜻이다.
 
+**토큰 이름은 shadcn 과 겹치지 않게 짓는다.** 구현 중 실제로 두 건이 충돌했다. shadcn 이 `@theme inline` 을 우리 선언 뒤에 삽입해 같은 이름을 덮어쓴다.
+
+```
+  우리 brand      shadcn accent    브랜드 보라 ↔ 은은한 hover 배경. 의미가 다르다
+  우리 radius-*   shadcn radius-*  고정값 ↔ --radius 기반 calc()
+```
+
 ### 1-2. 브랜드 톤
 
 슈퍼셀 팬 콘텐츠 정책상 로고·공식 폰트 같은 브랜드 에셋은 쓸 수 없다. 색 톤은 자유다.
@@ -59,9 +66,9 @@
 ### 2-3. 색상 — 액센트와 시맨틱
 
 ```
-  accent         #8B5CF6   기본 액센트 (버튼 · 선택 탭 · 링크)
-  accent-hover   #A78BFA
-  accent-subtle  #8B5CF6 16%   선택 행 배경 · 뱃지 바탕
+  brand          #8B5CF6   기본 액센트 (버튼 · 선택 탭 · 링크)
+  brand-hover    #A78BFA
+  brand-subtle   #8B5CF6 16%   선택 행 배경 · 뱃지 바탕
 
   trophy         #FFC83D   트로피 아이콘과 수치 전용
   success        #3DD68C   승리
@@ -139,7 +146,7 @@ Figma에서 쓰려면 GitHub 릴리스의 OTF/TTF를 데스크톱에 설치해�
 
 ```
   space   4 · 8 · 12 · 16 · 24 · 32 · 48        4의 배수만 사용
-  radius  sm 6 · md 10 · lg 16 · full 9999
+  radius  chip 6 · card 10 · panel 16 · full 9999
   shadow  panel   0 8 32 rgba(0,0,0,.45)        상세 패널 · 모달
           card    0 1 2  rgba(0,0,0,.30)        카드 (아주 약하게)
 ```
@@ -163,6 +170,7 @@ Figma에서 쓰려면 GitHub 릴리스의 OTF/TTF를 데스크톱에 설치해�
 
 ```
   Font/Wanted Sans       →  --font (Tabular Figures 켤 것)
+  Color/brand            →  --color-brand   (shadcn 의 accent 와 다르다)
   Color/bg/base          →  --bg-base
   Color/text/primary     →  --text-primary
   Color/rarity/mythic    →  --rarity-mythic
@@ -179,8 +187,8 @@ Figma에서 쓰려면 GitHub 릴리스의 OTF/TTF를 데스크톱에 설치해�
 ### 3-1. 셸과 네비게이션
 
 - **AppShell** — 상단바 · 본문 · (모바일)하단탭바 · 푸터
-- **NavTabs** — 데스크톱 상단 가로 탭. 선택 상태에 accent 밑줄
-- **BottomTabBar** — 모바일 하단 5탭. 아이콘 + 라벨, 선택 시 accent
+- **NavTabs** — 데스크톱 상단 가로 탭. 선택 상태에 brand 밑줄
+- **BottomTabBar** — 모바일 하단 5탭. 아이콘 + 라벨, 선택 시 brand
 - **Avatar** — 대표 계정 프로필 아이콘. 미설정 상태 변형 포함
 - **LanguageSwitcher** — en / ko 토글
 - **FanContentFooter** — 팬 콘텐츠 정책 고지 (필수)
