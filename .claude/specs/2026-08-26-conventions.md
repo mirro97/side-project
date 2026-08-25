@@ -1,0 +1,248 @@
+# 프로젝트 컨벤션
+
+작성일: 2026-08-26
+전제: 전역 [프론트엔드 코딩 컨벤션](~/.claude/skills/frontend-conventions) 을 따른다. 이 문서는 **그 위에 얹는 프로젝트 고유 결정**만 담는다.
+
+관련 문서: [설계](2026-08-25-brawl-stars-webapp-design.md) · [디자인 시스템](2026-08-25-design-system.md)
+
+---
+
+## 1. API 계층
+
+### 1-1. 세 층으로 나눈다
+
+호출 경로가 길어서 층을 섞으면 어디서 실패했는지 알 수 없다.
+
+```
+  lib/bs/client.ts   전송 계층    bsFetch · 태그 검증 · 인코딩
+                                 프록시 URL 과 Bearer 헤더를 여기서만 다룬다
+
+  lib/bs/api.ts      엔드포인트   getRankingsPlayersApi 등 호출 함수
+                                 경로 조립과 쿼리스트링만. 가공하지 않는다
+
+  app/api/*/route.ts 응답 계층    캐시 정책 · 부분 실패 · 도메인 에러 변환
+                                 클라이언트가 받는 형태를 정한다
+```
+
+**`bsFetch` 를 라우트나 컴포넌트에서 직접 부르지 않는다.** 항상 `api.ts` 의 함수를 거친다. 그래야 엔드포인트가 어디서 쓰이는지 한 파일에서 보인다.
+
+### 1-2. 네이밍
+
+전역 컨벤션의 `동사 + 리소스 + Api` 를 따른다. 리소스는 **실제 경로를 그대로** 옮긴다.
+
+```
+  GET /rankings/{country}/players    getRankingsPlayersApi
+  GET /rankings/{country}/clubs      getRankingsClubsApi
+  GET /events/rotation               getEventsRotationApi
+  GET /players/{tag}                 getPlayerApi
+  GET /players/{tag}/battlelog       getPlayerBattlelogApi
+  GET /brawlers                      getBrawlersApi
+```
+
+경로를 그대로 옮기는 이유는 **API 레퍼런스와 대조하기 쉽기 때문**이다. `fetchPlayerRanking` 같은 이름은 어느 엔드포인트인지 다시 찾아봐야 한다.
+
+전부 named export 다. `api.ts` 하나에 모으고 개별 파일로 쪼개지 않는다.
+
+### 1-3. 타입 위치
+
+```
+  types/api.ts    브롤스타즈 API 응답      Player · RankingEntry · EventSlot · Paged<T>
+  types/game.ts   빌드타임 생성 데이터      Brawler · GameMode · GameData
+```
+
+**두 갈래를 섞지 않는다.** 하나는 런타임에 받는 것이고 하나는 번들에 든 것이다. 이름이 비슷해도 다른 타입이다 (`PlayerBrawler` ≠ `Brawler`).
+
+### 1-4. 라우트 핸들러 응답 형태
+
+클라이언트가 분기할 수 있게 성공·실패를 같은 모양으로 내린다.
+
+```ts
+type ApiResult<T> = { ok: true; data: T } | { ok: false; kind: BsErrorKind }
+```
+
+HTTP 상태 코드도 함께 맞추되, **클라이언트는 `ok` 필드로 분기한다.** 상태 코드는 캐시·재시도 같은 인프라 동작을 위한 것이다.
+
+### 1-5. 캐시 경계
+
+**한 응답에 공유 데이터와 개인 데이터를 섞지 않는다.** 섞으면 개인 데이터 때문에 전체가 캐시 불가능해진다.
+
+```
+  공유 (모든 방문자 동일)   랭킹 · 클럽 · 이벤트 · 브롤러
+    → 서버 컴포넌트에서 직접 호출 + revalidate
+    → 클라이언트 왕복이 없다
+
+  개인 (대표 계정별)        플레이어 · 배틀로그
+    → 태그가 로컬스토리지에 있어 서버가 모른다
+    → 클라이언트가 /api/player/[tag] 를 부른다. dynamic = 'force-dynamic'
+```
+
+근거는 실측이다. **프록시 경유 호출의 바닥값이 약 500ms** 라서, 캐시를 잃으면 모든 방문자가 매번 그 비용을 낸다.
+
+### 1-6. 여러 소스를 부를 때
+
+**반드시 `Promise.allSettled` 로 병렬 호출한다.** 순차로 부르면 500ms 씩 쌓인다.
+
+```ts
+const [players, clubs, events] = await Promise.allSettled([...])
+```
+
+`all` 이 아니라 `allSettled` 인 이유는 **한 조각이 실패해도 나머지 섹션을 보여주기 위해서**다. 홈에서 이벤트 API 가 죽었다고 랭킹까지 안 보이면 안 된다.
+
+---
+
+## 2. 컴포넌트
+
+### 2-1. 배치 규칙
+
+```
+  components/shell/     앱 셸. 모든 페이지가 쓴다
+  components/display/   순수 표시. props 만 받고 데이터를 모른다
+  components/state/     빈 상태 · 에러 · 스켈레톤
+  components/panel/     상세 패널 셸
+  components/rank/      랭킹 행. 홈과 랭킹 탭이 공유한다
+  components/{page}/    해당 페이지 전용
+  components/ui/        shadcn 생성물. 직접 수정하지 않는다
+```
+
+**두 페이지 이상이 쓰면 페이지 폴더에 두지 않는다.** 처음부터 공유 위치에 만든다. 나중에 옮기면 import 경로가 전부 바뀐다.
+
+`components/ui/` 는 shadcn 이 관리한다. 색을 바꾸고 싶으면 파일을 고치지 말고 `globals.css` 의 alias 를 조정한다.
+
+### 2-2. 서버 · 클라이언트 경계
+
+`'use client'` 를 붙이는 경우는 넷뿐이다.
+
+```
+  1. 로컬스토리지를 읽는다          useMainAccount 를 쓰는 컴포넌트
+  2. 타이머·인터벌이 있다           CountdownTimer
+  3. 사용자 입력 상태를 들고 있다    검색 · 필터 · 설문
+  4. next-intl 의 useTranslations 를 클라이언트에서 써야 한다
+```
+
+넷째는 함정이 있다. **서버 컴포넌트에서는 `getTranslations` 를, 클라이언트에서는 `useTranslations` 를 쓴다.** 번역이 필요하다는 이유만으로 `'use client'` 를 붙이면 안 된다.
+
+데이터를 가져오는 컴포넌트는 기본적으로 서버 컴포넌트다. 클라이언트에서 fetch 하는 건 **로컬스토리지에 의존하는 개인 데이터뿐**이다.
+
+### 2-3. 이미지
+
+**CDN 이미지에 `next/image` 를 쓰지 않는다.** Vercel Hobby 의 이미지 최적화 한도가 월 5,000 변환인데, 브롤러 106종이면 금방 찬다. `cdn.brawlify.com` 은 이미 최적화된 PNG 를 CDN 으로 서빙하므로 최적화가 필요 없다.
+
+```tsx
+{/* eslint-disable-next-line @next/next/no-img-element */}
+<img src={brawler.images.portrait} alt="" width={64} height={64} />
+```
+
+`width` 와 `height` 는 반드시 넣는다. 레이아웃 시프트를 막는다.
+
+### 2-4. 게임 데이터 접근
+
+**`game-data.generated.json` 을 직접 import 하지 않는다.** 항상 `lib/game-data.ts` 의 함수를 쓴다.
+
+```ts
+getBrawlers()  getBrawler(id)  getMode(modeId)  getRanges()  searchBrawlers(q)
+```
+
+이미지 URL 도 직접 조립하지 않는다. 브롤러는 `brawler.images.portrait`, 게임모드는 **`mode.imageId`** 를 쓴다.
+
+**게임모드 이미지에 `modeId` 를 그대로 넣으면 404 다.** `48000000` 오프셋이 붙은 `imageId` 가 따로 있다.
+
+### 2-5. 다국어
+
+```
+  게임 데이터 이름   brawler.name[locale] · mode.name[locale]
+                    빌드 산출물에 en/ko 가 들어 있다
+
+  UI 문구           useTranslations / getTranslations
+                    messages/*.json
+```
+
+**게임 데이터 이름을 메시지 파일에 넣지 않는다.** 106종이 게임 업데이트마다 바뀐다.
+
+문구를 추가하면 `en.json` 과 `ko.json` 양쪽에 넣는다. 키 일치 테스트가 누락을 잡는다.
+
+---
+
+## 3. 훅
+
+### 3-1. ref 와 state 를 나누는 기준
+
+`useInfiniteList` 를 만들다 실제로 버그를 냈다. **렌더에 쓰이는 값을 ref 에 두면 값이 바뀌어도 UI 가 갱신되지 않는다.**
+
+```
+  state   렌더 결과에 반영돼야 하는 값        items · loading · hasMore
+  ref     비동기 콜백 안에서만 읽는 제어값     busyRef · cursorRef · doneRef
+```
+
+같은 사실을 양쪽에 둬야 할 때가 있다. `doneRef` 는 콜백의 중복 실행을 막고 `hasMore` 는 UI 를 갱신한다. 이건 중복이 아니라 역할이 다른 것이다.
+
+**렌더 중에 ref 를 읽거나 쓰지 않는다.** 최신 값을 ref 에 넣어야 하면 `useEffect` 안에서 한다. ESLint 의 `react-hooks/refs` 가 이걸 잡아준다.
+
+### 3-2. 의존성에 상태를 넣지 않는다
+
+`useCallback` 의존성에 `loading` 같은 상태를 넣으면 콜백이 매번 새로 생겨 무한 루프가 난다. 중복 실행 가드는 ref 로 만든다.
+
+---
+
+## 4. 에러
+
+### 4-1. 상태 코드를 UI 까지 끌고 가지 않는다
+
+```
+  전송 계층   HTTP 상태 코드 → BsError(kind, status)
+  UI         kind 로 분기. 숫자를 모른다
+```
+
+전용 화면을 갖는 건 둘뿐이다.
+
+```
+  Maintenance   게임 점검. 슈퍼셀 업데이트마다 실제로 발생한다
+  NotFound      존재하지 않는 태그
+  나머지        일반 오류 문구 + 재시도 버튼
+```
+
+**`Forbidden` 은 사용자에게 그대로 노출하지 않는다.** 키나 IP 화이트리스트 문제라 운영 이슈다. 서버 로그에만 남기고 사용자에게는 일반 오류로 보여준다.
+
+### 4-2. 모르는 것은 건너뛰되 조용히 넘기지 않는다
+
+게임 업데이트로 새 모드·브롤러가 언제든 추가된다. 파서가 모르는 구조를 만나면 **예외를 던지지 말고 그 항목만 건너뛰고 경고를 남긴다.** 배틀 하나 때문에 목록 전체가 죽으면 안 된다.
+
+빌드 파이프라인도 같다. 한글명이나 역할이 없다고 빌드를 실패시키면 신규 브롤러가 나올 때마다 배포가 막힌다. **폴백 + 경고 로그**가 원칙이다.
+
+---
+
+## 5. 검증
+
+### 5-1. 커밋 전 세 가지
+
+```bash
+npx tsc --noEmit && npx eslint . && npm test
+```
+
+`eslint` 를 빼먹지 않는다. `useInfiniteList` 의 ref 버그를 타입 검사도 테스트도 못 잡았고 ESLint 만 잡았다.
+
+### 5-2. 픽스처는 실제 응답을 쓴다
+
+손으로 만든 가짜 데이터는 실제 구조를 반영하지 못한다. 조사 과정에서 확보한 실제 응답을 그대로 쓴다.
+
+### 5-3. 외부 데이터의 불변식은 테스트로 고정한다
+
+값이 조용히 바뀌면 기능이 망가지는 지점들이다.
+
+```ts
+expect(getRanges().range).toEqual([6, 30])   // [12,20] 이면 사거리 축이 죽은 것
+expect(getMode(5)?.imageId).toBe(48000005)   // 오프셋이 빠지면 이미지가 전부 404
+```
+
+---
+
+## 6. 이 프로젝트에서 반복해서 틀린 것
+
+같은 실수를 다시 하지 않기 위해 남긴다. 전부 실제로 겪은 것들이다.
+
+**추측한 값을 코드에 넣었다.** TID 오버라이드 4종을 규칙에서 유추해 적었는데 전부 틀렸다. 외부 데이터의 키나 ID 는 **반드시 실제 응답에서 확인**한다.
+
+**falsy 와 nullish 를 구분하지 않았다.** `CastingRange` 가 `0` 으로 오는 브롤러가 있는데 `?? null` 로 걸러 0 이 통과했다. 결측 판정에는 `?? ` 대신 명시적 검사를 쓴다.
+
+**이름이 같으면 의미도 같다고 가정했다.** `AutoAttackRange` 는 사거리가 아니었고, shadcn 의 `--accent` 는 브랜드색이 아니었다. 필드 이름만 보고 쓰지 말고 **값의 분포를 확인**한다.
+
+**한 응답에 성격이 다른 데이터를 섞었다.** 공유 데이터와 개인 데이터를 묶으면 캐시가 죽는다. 캐시 수명이 다르면 응답을 나눈다.
