@@ -31,5 +31,16 @@
   },
   "footer": {
     "disclaimer": "This material is unofficial and is not endorsed by Supercell."
+  },
+  "home": {
+    "userRanking": "유저 순위",
+    "clubRanking": "클랜 순위",
+    "liveEvents": "진행 중인 이벤트",
+    "myAccount": "내 계정",
+    "setAccountPrompt": "대표 계정을 설정하면 내 전적이 여기 표시됩니다",
+    "mainBrawler": "대표 브롤러",
+    "trophies": "트로피",
+    "highest": "최고 기록",
+    "level": "레벨"
   }
 }

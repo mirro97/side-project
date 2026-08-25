@@ -2,7 +2,7 @@
 import { useTranslations } from 'next-intl'
 import { RankBadge } from '@/components/display/RankBadge'
 import { TrophyValue } from '@/components/display/TrophyValue'
-import { argbToHex } from '@/lib/format'
+import { argbToHex, stripNameMarkup } from '@/lib/format'
 
 export interface RankRowProps {
   rank: number
@@ -50,7 +50,7 @@ export function RankRow({
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-1.5">
           <span className="truncate text-[13px] font-semibold" style={color ? { color } : undefined}>
-            {name}
+            {stripNameMarkup(name)}
           </span>
           {isMe && (
             <span className="bg-brand shrink-0 rounded-[4px] px-1.5 py-0.5 text-[9px] font-bold text-white">
@@ -58,7 +58,9 @@ export function RankRow({
             </span>
           )}
         </div>
-        {subtitle && <div className="text-text-tertiary truncate text-[11px]">{subtitle}</div>}
+        {subtitle && (
+          <div className="text-text-tertiary truncate text-[11px]">{stripNameMarkup(subtitle)}</div>
+        )}
       </div>
       <TrophyValue value={trophies} />
     </div>

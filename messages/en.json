@@ -31,5 +31,16 @@
   },
   "footer": {
     "disclaimer": "This material is unofficial and is not endorsed by Supercell."
+  },
+  "home": {
+    "userRanking": "Top players",
+    "clubRanking": "Top clubs",
+    "liveEvents": "Live events",
+    "myAccount": "My account",
+    "setAccountPrompt": "Set your account to see your stats here",
+    "mainBrawler": "Top brawler",
+    "trophies": "Trophies",
+    "highest": "Personal best",
+    "level": "Level"
   }
 }
