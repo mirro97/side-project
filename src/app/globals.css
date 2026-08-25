@@ -31,6 +31,8 @@
 }
 
 :root {
+  /* Wanted Sans Variable — 실제 웨이트 범위는 400~1000 이다 (100~300 은 400 으로 클램프) */
+  --font-wanted: "Wanted Sans Variable";
   --accent-subtle: rgb(139 92 246 / 0.16);
 
   /* shadcn alias — 컴포넌트를 수정하지 않고 우리 색을 쓰게 한다 */
