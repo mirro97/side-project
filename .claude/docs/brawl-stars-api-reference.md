@@ -187,7 +187,15 @@
 
 `modeId`를 그대로 이미지 경로에 넣으면 404가 난다.
 
-**기어는 `borderless` 경로가 없다.** 스타파워·가젯과 달리 `regular`만 존재하며 `borderless`는 404다.
+**능력 아이콘은 `regular` 만 쓴다.** 기어는 애초에 `borderless` 가 없고, 스타파워·가젯도 **신규 브롤러의 능력에는 `borderless` 변형이 생성되지 않는다.**
+
+전수 확인 결과 (스타파워·가젯 424개):
+```
+  borderless   36개 404   최신 12종의 능력이 전부 여기 걸린다
+  regular       0개 404
+```
+
+공식 API 가 능력 ID 를 주는 시점과 커뮤니티 CDN 이 이미지를 만드는 시점이 달라서 생기는 간극이다. 게임 업데이트 직후에는 `regular` 조차 없을 수 있으므로 이미지 폴백이 필요하다.
 
 **공식 API의 `event.mode` 문자열은 표시용 이름이 아니다.** `deathmatch`의 실제 게임 내 이름은 "Wipeout", `airHockey`는 "Brawl Hockey"다. 표시 이름은 반드시 `TID_GAME_MODE_{modeId}` 현지화를 거쳐야 한다.
 
