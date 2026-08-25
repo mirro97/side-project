@@ -42,5 +42,24 @@
     "trophies": "트로피",
     "highest": "최고 기록",
     "level": "레벨"
+  },
+  "brawlers": {
+    "searchPlaceholder": "브롤러 검색",
+    "all": "전체",
+    "sortReleased": "최신순",
+    "sortName": "이름순",
+    "sortRarity": "희귀도순",
+    "noResult": "조건에 맞는 브롤러가 없습니다",
+    "resetFilter": "필터 초기화",
+    "myProgress": "내 트로피",
+    "power": "파워",
+    "rank": "랭크",
+    "notOwned": "미보유",
+    "health": "체력",
+    "speed": "이동 속도",
+    "range": "사거리",
+    "starPowers": "스타파워",
+    "gadgets": "가젯",
+    "gears": "기어"
   }
 }

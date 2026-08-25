@@ -123,7 +123,13 @@ const [players, clubs, events] = await Promise.allSettled([...])
 
 데이터를 가져오는 컴포넌트는 기본적으로 서버 컴포넌트다. 클라이언트에서 fetch 하는 건 **로컬스토리지에 의존하는 개인 데이터뿐**이다.
 
-### 2-3. 이미지
+### 2-3. 반응형이 CSS 로 안 되는 경우가 있다
+
+`vaul` 기반 Drawer 는 `direction` 에 따라 transform 으로 위치를 잡는다. **Tailwind 의 `md:right-0` 같은 클래스로 방향을 덮을 수 없다.** 데스크톱 사이드 드로어와 모바일 바텀시트를 함께 지원하려면 `direction` prop 자체를 화면 폭에 따라 바꿔야 한다.
+
+라이브러리가 인라인 스타일이나 transform 으로 배치를 제어하면 CSS 로 싸우지 말고 **API 를 바꾼다.**
+
+### 2-4. 이미지
 
 **CDN 이미지에 `next/image` 를 쓰지 않는다.** Vercel Hobby 의 이미지 최적화 한도가 월 5,000 변환인데, 브롤러 106종이면 금방 찬다. `cdn.brawlify.com` 은 이미 최적화된 PNG 를 CDN 으로 서빙하므로 최적화가 필요 없다.
 
@@ -134,7 +140,7 @@ const [players, clubs, events] = await Promise.allSettled([...])
 
 `width` 와 `height` 는 반드시 넣는다. 레이아웃 시프트를 막는다.
 
-### 2-4. 게임 데이터 접근
+### 2-5. 게임 데이터 접근
 
 **`game-data.generated.json` 을 직접 import 하지 않는다.** 항상 `lib/game-data.ts` 의 함수를 쓴다.
 
@@ -146,7 +152,7 @@ getBrawlers()  getBrawler(id)  getMode(modeId)  getRanges()  searchBrawlers(q)
 
 **게임모드 이미지에 `modeId` 를 그대로 넣으면 404 다.** `48000000` 오프셋이 붙은 `imageId` 가 따로 있다.
 
-### 2-5. 외부 문자열은 그대로 렌더하지 않는다
+### 2-6. 외부 문자열은 그대로 렌더하지 않는다
 
 브롤스타즈 플레이어·클럽 이름에는 게임 내 색상 마크업이 섞여 온다.
 
@@ -158,7 +164,7 @@ getBrawlers()  getBrawler(id)  getMode(modeId)  getRanges()  searchBrawlers(q)
 
 적용 대상은 `player.name`, `club.name`, 랭킹 항목의 `name` 과 `subtitle` 이다.
 
-### 2-6. 다국어
+### 2-7. 다국어
 
 ```
   게임 데이터 이름   brawler.name[locale] · mode.name[locale]
@@ -189,7 +195,17 @@ getBrawlers()  getBrawler(id)  getMode(modeId)  getRanges()  searchBrawlers(q)
 
 **렌더 중에 ref 를 읽거나 쓰지 않는다.** 최신 값을 ref 에 넣어야 하면 `useEffect` 안에서 한다. ESLint 의 `react-hooks/refs` 가 이걸 잡아준다.
 
-### 3-2. 의존성에 상태를 넣지 않는다
+### 3-2. matchMedia 는 useSyncExternalStore 로 구독한다
+
+`useEffect` + `setState` 로 만들면 초기값을 동기 `setState` 로 넣게 돼 캐스케이딩 렌더가 생기고 ESLint 가 막는다. `useSyncExternalStore` 가 이 용도로 만들어졌다.
+
+```ts
+useSyncExternalStore(subscribe, () => mq.matches, () => false)
+```
+
+세 번째 인자가 서버 스냅샷이다. `false` 를 주면 SSR 은 항상 모바일 레이아웃으로 그려진다.
+
+### 3-3. 의존성에 상태를 넣지 않는다
 
 `useCallback` 의존성에 `loading` 같은 상태를 넣으면 콜백이 매번 새로 생겨 무한 루프가 난다. 중복 실행 가드는 ref 로 만든다.
 
@@ -258,5 +274,7 @@ expect(getMode(5)?.imageId).toBe(48000005)   // 오프셋이 빠지면 이미지
 **외부 문자열을 그대로 렌더했다.** 클럽명에 `<c3>` 같은 게임 내 색상 마크업이 섞여 오는데 그대로 출력해 태그가 글자로 보였다. **외부에서 온 표시 문자열은 정제 함수를 거친다.**
 
 **이름이 같으면 의미도 같다고 가정했다.** `AutoAttackRange` 는 사거리가 아니었고, shadcn 의 `--accent` 는 브랜드색이 아니었다. 필드 이름만 보고 쓰지 말고 **값의 분포를 확인**한다.
+
+**클라이언트 훅이 필요한 컴포넌트를 너무 크게 잡았다.** `useSearchParams` 를 그리드와 같은 컴포넌트에 두는 바람에 `BAILOUT_TO_CLIENT_SIDE_RENDERING` 이 걸려 서버 렌더 결과가 빈 화면이 됐다. **정적 렌더링을 깨는 훅은 그것이 실제로 필요한 최소 단위로 격리한다.**
 
 **한 응답에 성격이 다른 데이터를 섞었다.** 공유 데이터와 개인 데이터를 묶으면 캐시가 죽는다. 캐시 수명이 다르면 응답을 나눈다.
