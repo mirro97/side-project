@@ -41,7 +41,11 @@ export interface Paged<T> {
 
 export interface EventSlot {
   startTime: string; endTime: string; slotId: number
-  event: { id: number; mode: string; modeId: number; map: string }
+  event: {
+    id: number; mode: string; modeId: number; map: string
+    /** 실측 15슬롯 중 2개에만 있었다. 값은 'showdown+' 나 'unknown' 같은 문자열이다 */
+    modifiers?: string[]
+  }
 }
 
 /** 배틀로그 파서 산출물 — 팀 모드와 쇼다운을 하나로 정규화한다 */

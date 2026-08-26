@@ -69,5 +69,12 @@
     "notRanked": "Your account is outside the top 200",
     "empty": "No rankings to show",
     "loadMore": "Load more"
+  },
+  "events": {
+    "title": "Events",
+    "allModes": "All",
+    "specialRule": "Special rule",
+    "endsAt": "Ends",
+    "empty": "No events running"
   }
 }
