@@ -45,3 +45,5 @@ next-env.d.ts
 * 2.*
 * 2
 *\ 2.*
+
+/.worktrees/
