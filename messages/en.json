@@ -10,8 +10,6 @@
   "common": {
     "seeAll": "See all",
     "retry": "Retry",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
     "setAccount": "Set your account",
     "myAccount": "You"
   },
@@ -54,7 +52,6 @@
     "myProgress": "My trophies",
     "power": "Power",
     "rank": "Rank",
-    "notOwned": "Not owned",
     "health": "Health",
     "speed": "Speed",
     "range": "Range",
