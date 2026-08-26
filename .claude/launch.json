@@ -2,12 +2,18 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000,
+      "autoPort": true
+    },
+    {
       "name": "mockup",
       "runtimeExecutable": "python3",
-      "runtimeArgs": [
-        "/Users/kangsujeong/Documents/GitHub/side-project/mockup/serve.py"
-      ],
-      "port": 4321
+      "runtimeArgs": ["/Users/kangsujeong/Documents/GitHub/side-project/mockup/serve.py"],
+      "port": 4321,
+      "autoPort": false
     }
   ]
 }
