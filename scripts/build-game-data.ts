@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { TID_OVERRIDES, NAME_KO_FALLBACK } from '../src/data/name-overrides'
+import { createPlaceholderResolver, type GameTables, type Table } from './placeholder-resolver'
 
 export type Range = [number, number]
 
@@ -45,77 +46,150 @@ const COLOR_TAG = /<\/?c[0-9a-fA-F]*>/g
 /** 능력 설명에 박혀 있는 값 치환자 */
 const PLACEHOLDER = /<!([^>]+)>/g
 
-/** 카드 행에서 바로 풀 수 있는 형태만 매칭한다 */
-const SIMPLE_VALUE = /^card\.value(\d?)(?:\.(ticksasseconds|scaletolevel|scalestattolevel))?$/i
-
 export function stripGameMarkup(text: string): string {
   return text.replace(COLOR_TAG, '')
 }
 
 /**
- * <!card.value1.ticksasseconds> 같은 단순 치환자만 푼다.
+ * 게임이 스케일링한 뒤에 채우는 수치 자리. 한국어는 <VALUE1>, 영문은 리터럴 x 다.
  *
- * 실측 시 424개 능력 설명에 70종이 넘는 치환자가 있었는데, 대부분은
- * card.accessory.skill.projectile... 처럼 게임 내부 객체를 따라가야 해서
- * 엔진 없이는 값을 알 수 없다. 그런 것은 null 을 준다.
+ * 카드 행의 Value 를 그대로 넣으면 틀린 값이 나온다. 같은 필드에 원값·틱·밀리초가
+ * 섞여 있고 토큰은 어느 쪽인지 알려주지 않는다.
+ *   브록 "로켓 수가 <VALUE1>% 늘어납니다"  Value=2050   → "2050%"
+ *   쉘리 "<VALUE3>초마다"                 Value3=15000 → 실제로는 15초
+ *
+ * 그래서 숫자를 추측하는 대신 "일정 비율" 같은 표현으로 바꾼다.
+ * 수치는 잃지만 능력이 무엇을 하는지는 그대로 전달된다.
  */
-export function resolveCardValue(expr: string, row: Record<string, unknown>): string | null {
-  const m = SIMPLE_VALUE.exec(expr)
-  if (!m) return null
-  const idx = m[1]
-  const modifier = (m[2] ?? '').toLowerCase()
-  const key = idx === '' || idx === '1' ? 'Value' : `Value${idx}`
-  const raw = row[key]
-  if (typeof raw !== 'number' || raw <= 0) return null
-  if (modifier === 'ticksasseconds') {
-    // 게임은 1초를 20틱으로 센다
-    const sec = Math.round((raw / 20) * 10) / 10
-    return String(sec)
-  }
-  return String(raw)
+const PARTICLE_PAIRS: readonly (readonly [string, string])[] = [
+  ['을', '를'],
+  ['이', '가'],
+  ['은', '는'],
+  ['과', '와'],
+]
+const JOSA_ALT = PARTICLE_PAIRS.flat().join('|')
+
+interface SoftenRule {
+  pattern: RegExp
+  word: string
+  /** 치환어가 받침으로 끝나는가. 뒤따르는 조사를 고르는 기준이다 */
+  batchim: boolean
 }
 
 /**
- * 변환이 이름에 없는 치환자. 카드 행의 Value 를 그대로 넣으면 틀린 값이 나온다.
- * 예: 브록 "로켓 수가 <VALUE1>% 늘어납니다" 에서 Value=2050 → "2050%"
- *     쉘리 "<VALUE3>초마다" 에서 Value3=15000 (실제로는 15초)
- * 카드 Value 는 화면 표시값이 아니라 스케일링 전 원본이다.
+ * 토큰과 그 뒤의 단위를 한 단어로 바꾸고, 조사가 붙어 있으면 받침에 맞춰 함께 고친다.
+ *
+ * 조사 교정을 문장 전체에 걸면 안 된다. "갇혀있는 동안" 의 '는' 은 조사가 아니라
+ * 어미인데 '은' 으로 바뀌어 멀쩡한 문장이 깨진다. 내가 바꾼 자리만 손댄다.
  */
-const OPAQUE_VALUE = /<VALUE\d?>/i
+/**
+ * 끝내 값을 알 수 없는 수치 자리. 두 문법 모두 같은 자리를 뜻한다.
+ *   <VALUE1>              스케일링 후 게임이 채우는 자리
+ *   <!card.…경로>          참조를 따라가야 하는데 CSV 에 없는 자리
+ */
+const UNRESOLVED_TOKEN = '(?:<VALUE\\d?>|<![^>]+>)'
+
+function softenRule(unit: string, word: string, batchim: boolean): SoftenRule {
+  // 공백은 뒤에 단위나 조사가 실제로 붙어 있을 때만 흡수한다.
+  // 무조건 삼키면 "일정 시간동안", "일정량증가" 처럼 뒷 단어와 붙어버린다
+  const body = unit ? `\\s*(?:${unit})` : ''
+  // 조사는 뒤가 끝나야 조사다. 경계를 안 보면 "% 이하로" 의 '이' 를 조사로 먹어
+  // "일정 비율이하로" 가 된다
+  const josa = `(?:\\s*(${JOSA_ALT})(?=[\\s.,!?)\\]]|$))?`
+  return {
+    pattern: new RegExp(`${UNRESOLVED_TOKEN}${body}${josa}`, 'gi'),
+    word,
+    batchim,
+  }
+}
+
+const KO_RULES: SoftenRule[] = [
+  softenRule('%', '일정 비율', true), // 율 — 받침 ㄹ
+  softenRule('초간', '일정 시간 동안', true), // '3초간' — 아래 '초' 규칙보다 먼저 걸러야 한다
+  softenRule('초', '일정 시간', true), // 간 — 받침 ㄴ
+  softenRule('개|마리|번|회', '일정 수', false), // 수 — 받침 없음
+  softenRule('HP', '일정량의 HP', false), // HP — '피', 받침 없음
+  softenRule('', '일정량', true), // 량 — 받침 ㅇ
+]
 
 /**
- * BrawlAPI 영문 설명이 수치를 못 채웠을 때 넣는 리터럴 x.
- * 예: "increased by x%", "recharges in x sec"
+ * 치환어에 붙여 써도 되는 조사·접미사.
+ * 원문에서 토큰 뒤에 바로 붙어 오는 한글은 이 목록이거나 일반 단어 둘 중 하나였다.
+ * 일반 단어면 띄어 써야 한다 — "일정량피해를" 이 아니라 "일정량 피해를".
  */
-const LITERAL_X = /(?<![A-Za-z])x(?![A-Za-z])/
+const ATTACHABLE = /^(?:만큼|마다|씩|의|이|가|을|를|은|는|과|와|에|로|으로|당|째)/
+
+/** 치환어와 뒷 단어가 붙어버리지 않게 띄운다 */
+const GLUED = /(일정 비율|일정 시간|일정 수|일정량)([가-힣]+)/g
+
+export function softenKorean(text: string): string {
+  let out = text
+  for (const { pattern, word, batchim } of KO_RULES) {
+    out = out.replace(pattern, (_m, josa?: string) => {
+      if (!josa) return word
+      const pair = PARTICLE_PAIRS.find(([withB, withoutB]) => josa === withB || josa === withoutB)
+      return pair ? word + (batchim ? pair[0] : pair[1]) : word + josa
+    })
+  }
+  return out.replace(GLUED, (_m, word: string, rest: string) =>
+    ATTACHABLE.test(rest) ? word + rest : `${word} ${rest}`,
+  )
+}
+
+const EN_RULES: readonly (readonly [RegExp, string])[] = [
+  // BrawlAPI 영문에도 한국어와 같은 토큰이 섞여 들어온다
+  [/\b(?:an?|the)\s+(?:<VALUE\d?>|<![^>]+>)\s*%/gi, 'a percentage'],
+  [/(?:<VALUE\d?>|<![^>]+>)\s*sec(?:onds?)?\b/gi, 'a short time'],
+  [/(?:<VALUE\d?>|<![^>]+>)\s*%/gi, 'a percentage'],
+  [/\b(?:an?|the)\s+(?:<VALUE\d?>|<![^>]+>)/gi, 'some'],
+  [/(?:<VALUE\d?>|<![^>]+>)/gi, 'some'],
+  // 앞의 관사까지 함께 흡수한다. 안 그러면 "an a percentage" 가 된다
+  [/\b(?:an?|the)\s+(?<![A-Za-z])x\s*%/g, 'a percentage'],
+  [/\b(?:an?|the)\s+(?<![A-Za-z])x\b/g, 'some'],
+  [/(?<![A-Za-z])x\s*%/g, 'a percentage'],
+  [/(?<![A-Za-z])x\s*sec(?:onds?)?\b/g, 'a short time'],
+  [/(?<![A-Za-z])x(?![A-Za-z])/g, 'some'],
+  [/\bEvery\s+a short time\b/g, 'Periodically'],
+  [/\bevery\s+a short time\b/g, 'periodically'],
+]
+
+export function softenEnglish(text: string): string {
+  let out = text
+  for (const [pattern, word] of EN_RULES) out = out.replace(pattern, word)
+  return out.replace(/\ba\s+([aeiouAEIOU])/g, 'an $1')
+}
 
 /**
  * 능력 설명을 표시 가능한 문장으로 만든다.
  *
- * 신뢰 기준은 "변환이 이름에 명시됐는가"다.
- * <!card.value1.ticksasseconds> 는 틱→초 변환이 이름에 있어 안전하게 풀 수 있지만,
- * <VALUE1> 은 어떤 스케일링을 거치는지 알 수 없어 풀면 틀린 값이 나온다.
+ * 치환자를 세 종류로 나눠 다르게 다룬다.
+ *   1. 변환이 이름에 명시된 것(<!card.value1.ticksasseconds>)은 값을 채운다
+ *   2. 게임 객체를 따라가야 하는 것(<!card.accessory.skill...>)이 남으면 포기한다
+ *   3. 스케일링을 알 수 없는 수치 자리(<VALUE1>, 영문 x)는 자연어로 바꾼다
  *
- * 하나라도 풀지 못하면 null 을 돌려준다. 수치만 지우면
- * "속도를 늦추고 의 피해를 줍니다" 처럼 조사가 붕 떠서 문장이 깨지기 때문에,
- * 반쪽짜리를 보여주느니 표시하지 않는다.
+ * 2번을 포기하는 이유는 그 자리를 지우면 "속도를 늦추고 의 피해를 줍니다" 처럼
+ * 조사가 붕 떠서 문장이 깨지기 때문이다. 3번은 단위가 문장에 함께 있어
+ * 단위째로 바꾸면 문장이 자연스럽게 유지된다.
  */
 export function buildDescription(
   text: string | undefined | null,
   row: Record<string, unknown>,
+  locale: 'en' | 'ko',
+  /** 치환자 경로를 실제 수치로 바꾼다. 못 푸는 자리는 null 을 준다 */
+  resolve: (expr: string, row: Record<string, unknown>) => string | null,
 ): string | null {
   if (!text) return null
-  let unresolved = false
-  const filled = text.replace(PLACEHOLDER, (_, expr: string) => {
-    const v = resolveCardValue(expr, row)
-    if (v === null) unresolved = true
-    return v ?? ''
-  })
-  if (unresolved) return null
-  const plain = stripGameMarkup(filled).replace(/\s+/g, ' ').trim()
-  if (!plain) return null
-  if (OPAQUE_VALUE.test(plain) || LITERAL_X.test(plain)) return null
-  return plain
+  // 풀지 못한 치환자는 지우지 않고 그대로 남긴다.
+  // 지우면 "속도를 늦추고 의 피해를 줍니다" 처럼 조사가 붕 뜨는데,
+  // 남겨두면 아래 자연어 치환이 단위째로 받아 문장을 살린다
+  const filled = text.replace(
+    PLACEHOLDER,
+    (whole, expr: string) => resolve(expr, row) ?? whole,
+  )
+  // 색상 태그가 토큰과 단위 사이에 끼는 경우가 있어 치환보다 먼저 벗긴다
+  const plain = stripGameMarkup(filled)
+  const soft = locale === 'ko' ? softenKorean(plain) : softenEnglish(plain)
+  return soft.replace(/\s+/g, ' ').trim() || null
 }
 
 /** BrawlAPI 게임모드 이미지 ID = 48000000 + 공식 modeId */
@@ -193,7 +267,27 @@ async function main() {
   const token = process.env.BRAWL_STARS_TOKEN
   if (!token) throw new Error('BRAWL_STARS_TOKEN 이 없습니다')
 
-  const [official, bapi, chars, skills, kr, rotation, cards, gearBoosts] = await Promise.all([
+  /** 치환자 경로가 참조하는 CSV. 이게 없으면 능력 설명의 수치를 풀 수 없다 */
+  const csv = (name: string) => getJson<Table>(`${BAPI}/game/csv_logic/${name}`)
+
+  const [
+    official,
+    bapi,
+    chars,
+    skills,
+    kr,
+    rotation,
+    cards,
+    gearBoosts,
+    traits,
+    statusEffects,
+    accessories,
+    projectiles,
+    areaEffects,
+    items,
+    actions,
+    components,
+  ] = await Promise.all([
     getJson<{ items: OfficialBrawler[] }>(`${PROXY}/brawlers`, token),
     getJson<{ list: BapiBrawler[] }>(`${BAPI}/v1/brawlers`),
     getJson<Record<string, CharacterRow>>(`${BAPI}/game/csv_logic/characters`),
@@ -204,7 +298,30 @@ async function main() {
     getJson<Record<string, CardRow>>(`${BAPI}/game/csv_logic/cards`),
     // 기어의 TID 와 수치 효과. BrawlAPI 에 /v1/gears 엔드포인트는 없다
     getJson<Record<string, GearBoostRow>>(`${BAPI}/game/csv_logic/gear_boosts`),
+    // 아래는 전부 능력 설명의 치환자를 따라가는 데만 쓴다
+    csv('traits'),
+    csv('status_effects_logic'),
+    csv('accessories'),
+    csv('projectiles_logic'),
+    csv('area_effects_logic'), // 수치는 area_effects 가 아니라 이쪽에 있다
+    csv('items'),
+    csv('character_actions'),
+    csv('character_components_logic'),
   ])
+
+  const resolveDeep = createPlaceholderResolver({
+    cards: cards as Table,
+    characters: chars as Table,
+    skills: skills as Table,
+    traits,
+    statusEffects,
+    accessories,
+    projectiles,
+    areaEffects,
+    items,
+    actions,
+    components,
+  } satisfies GameTables)
 
   // 존재 여부의 기준은 공식 API 다. BrawlAPI 에만 있는 브롤러는 버린다
   const officialIds = new Set(official.items.map(b => b.id))
@@ -244,8 +361,8 @@ async function main() {
     if (!row) warn.push(`카드 정보 없음: ${label} ${a.name}`)
     const nameEn = bapiAbility?.name ?? a.name
     const nameKo = loc(tid) ?? nameEn
-    const en = buildDescription(bapiAbility?.description, row ?? {})
-    const ko = buildDescription(loc(tid, '_DESC'), row ?? {})
+    const en = buildDescription(bapiAbility?.description, row ?? {}, 'en', resolveDeep)
+    const ko = buildDescription(loc(tid, '_DESC'), row ?? {}, 'ko', resolveDeep)
     return {
       id: a.id,
       name: { en: nameEn, ko: nameKo },

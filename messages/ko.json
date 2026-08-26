@@ -10,8 +10,6 @@
   "common": {
     "seeAll": "전체 보기",
     "retry": "다시 시도",
-    "cancel": "취소",
-    "confirm": "확인",
     "setAccount": "내 계정 설정",
     "myAccount": "내 계정"
   },
@@ -54,7 +52,6 @@
     "myProgress": "내 트로피",
     "power": "파워",
     "rank": "랭크",
-    "notOwned": "미보유",
     "health": "체력",
     "speed": "이동 속도",
     "range": "사거리",

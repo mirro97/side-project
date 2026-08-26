@@ -1,4 +1,5 @@
 'use client'
+import { useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useQuery } from '@tanstack/react-query'
 import { getBrawler } from '@/lib/game-data'
@@ -40,6 +41,40 @@ export function BrawlerDetailSlot({ locale }: { locale: Locale }) {
   })
   const mine =
     brawler && data?.ok ? data.data?.brawlers.find(b => b.id === brawler.id) : undefined
+
+  // 상세를 열 때 어떤 데이터가 실렸는지 콘솔에서 바로 본다. 개발 중에만 찍는다
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production' || !brawler) return
+    console.groupCollapsed(
+      `[brawler] ${brawler.name.ko} / ${brawler.name.en} (#${brawler.id})`,
+    )
+    console.log('기본', {
+      역할: brawler.role,
+      희귀도: brawler.rarity.name,
+      HP: brawler.stats.hp,
+      이동속도: brawler.stats.speed,
+      사거리: brawler.stats.range,
+    })
+    console.table(
+      [
+        ...brawler.starPowers.map(a => ({ 종류: '스타파워', ...a })),
+        ...brawler.gadgets.map(a => ({ 종류: '가젯', ...a })),
+      ].map(a => ({
+        종류: a.종류,
+        이름: a.name.ko,
+        설명: a.description?.ko ?? '— 없음',
+        description: a.description?.en ?? '— none',
+      })),
+    )
+    console.table(
+      brawler.gears.map(g => ({
+        이름: g.name.ko,
+        수치: g.modifier ? `${g.modifier.value} (${g.modifier.type})` : '— 없음',
+      })),
+    )
+    console.log('내 진행도', mine ?? '— 대표 계정 없음 / 미보유')
+    console.groupEnd()
+  }, [brawler, mine])
 
   return (
     <DetailPanel

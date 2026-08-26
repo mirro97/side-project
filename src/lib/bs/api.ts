@@ -19,7 +19,3 @@ export function getEventsRotationApi() {
 export function getPlayerApi(tag: string) {
   return bsFetch<Player>(`/players/${encodeTag(tag)}`)
 }
-
-export function getPlayerBattlelogApi(tag: string) {
-  return bsFetch<{ items: unknown[] }>(`/players/${encodeTag(tag)}/battlelog`)
-}
