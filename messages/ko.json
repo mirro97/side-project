@@ -58,5 +58,16 @@
     "starPowers": "스타파워",
     "gadgets": "가젯",
     "gears": "기어"
+  },
+  "ranking": {
+    "title": "랭킹",
+    "tabPlayers": "플레이어",
+    "tabClubs": "클럽",
+    "country": "국가",
+    "global": "글로벌",
+    "limitNotice": "상위 200위까지 제공됩니다",
+    "notRanked": "내 계정은 200위 밖입니다",
+    "empty": "표시할 순위가 없습니다",
+    "loadMore": "더 보기"
   }
 }
