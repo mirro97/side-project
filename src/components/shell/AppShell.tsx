@@ -9,7 +9,11 @@ export function AppShell({ locale, children }: { locale: string; children: React
     <div className="mx-auto flex min-h-dvh max-w-6xl flex-col">
       <header className="border-border-subtle bg-bg-base sticky top-0 z-20 flex items-center justify-between border-b px-4 py-3">
         <div className="flex items-center gap-6">
-          <span className="text-[15px] font-extrabold tracking-tight">Brawl Companion</span>
+          <span className="flex items-center gap-1.5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icons/logo-main.svg" alt="" aria-hidden className="h-5 w-5" />
+            <span className="text-[15px] font-extrabold tracking-tight">Brawl Companion</span>
+          </span>
           <NavTabs locale={locale} className="hidden md:flex" />
         </div>
         <div className="flex items-center gap-3">

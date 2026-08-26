@@ -19,10 +19,12 @@ export function BottomTabBar({ locale, className = '' }: { locale: string; class
             key={tab.key}
             href={href}
             aria-current={active ? 'page' : undefined}
-            className={`flex-1 text-center text-[10px] font-medium ${
+            className={`flex flex-1 flex-col items-center gap-1 text-center text-[10px] font-medium ${
               active ? 'text-brand' : 'text-text-tertiary'
             }`}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/icons/nav-${tab.key}.svg`} alt="" aria-hidden className="h-5 w-5" />
             {t(tab.key)}
           </Link>
         )

@@ -8,6 +8,13 @@ import { getBrawlers } from '@/lib/game-data'
 import { countByRole, filterBrawlers, sortBrawlers, type SortKey } from '@/lib/brawlers'
 import { useMainAccount } from '@/hooks/useMainAccount'
 import { useInfiniteList } from '@/hooks/useInfiniteList'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { EmptyState } from '@/components/state/EmptyState'
 import { BrawlerCard } from './BrawlerCard'
 import { BrawlerDetailSlot } from './BrawlerDetailSlot'
@@ -26,7 +33,12 @@ const ROLES: RoleKey[] = [
   'marksman',
   'artillery',
 ]
-const SORTS: SortKey[] = ['released', 'name', 'rarity']
+/** 정렬 키와 문구 키를 한 곳에 묶는다. 렌더에서 삼항으로 고르면 키를 놓치기 쉽다 */
+const SORTS: { key: SortKey; label: string }[] = [
+  { key: 'released', label: 'sortReleased' },
+  { key: 'name', label: 'sortName' },
+  { key: 'rarity', label: 'sortRarity' },
+]
 
 interface PlayerResult {
   ok: boolean
@@ -120,17 +132,25 @@ export function BrawlerBrowser({ locale }: { locale: Locale }) {
           placeholder={t('searchPlaceholder')}
           className="border-border-strong bg-bg-surface rounded-card min-w-0 flex-1 px-3 py-2 text-[13px] outline-none"
         />
-        <select
-          value={sort}
-          onChange={e => applyFilter(() => setSort(e.target.value as SortKey))}
-          className="border-border-strong bg-bg-surface rounded-card text-text-secondary px-2 py-2 text-[12px] font-semibold outline-none"
-        >
-          {SORTS.map(s => (
-            <option key={s} value={s}>
-              {t(s === 'released' ? 'sortReleased' : s === 'name' ? 'sortName' : 'sortRarity')}
-            </option>
-          ))}
-        </select>
+        {/*
+          네이티브 select 는 팝업 위치를 브라우저와 OS 가 정해서 트리거와 어긋나고
+          다크 테마 스타일도 먹지 않는다. shadcn Select 는 트리거에 앵커링된다.
+        */}
+        <Select value={sort} onValueChange={v => applyFilter(() => setSort(v as SortKey))}>
+          <SelectTrigger
+            aria-label={t('sortReleased')}
+            className="border-border-strong bg-bg-surface rounded-card text-text-secondary w-auto shrink-0 text-[12px] font-semibold"
+          >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {SORTS.map(o => (
+              <SelectItem key={o.key} value={o.key} className="text-[12px]">
+                {t(o.label)}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       <FilterChips

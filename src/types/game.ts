@@ -5,7 +5,20 @@ export type RoleKey =
   | 'damage' | 'tank' | 'assassin' | 'support'
   | 'controller' | 'marksman' | 'artillery'
 
-export interface Ability { id: number; name: string }
+export interface Ability {
+  id: number
+  name: LocalizedText
+  /**
+   * 게임 원본 설명에는 <!card.accessory.skill...> 같은 플레이스홀더가 섞여 있고
+   * 대부분은 게임 엔진 없이는 값을 알 수 없다. 치환하지 못한 설명은 null 이다.
+   */
+  description: LocalizedText | null
+}
+
+/** 기어는 수치 효과를 따로 들고 있다 (예: 속도 +15%) */
+export interface Gear extends Ability {
+  modifier: { value: number; type: string } | null
+}
 
 export interface Brawler {
   id: number
@@ -20,7 +33,7 @@ export interface Brawler {
   images: { portrait: string; emoji: string }
   starPowers: Ability[]
   gadgets: Ability[]
-  gears: Ability[]
+  gears: Gear[]
 }
 
 export interface GameMode {

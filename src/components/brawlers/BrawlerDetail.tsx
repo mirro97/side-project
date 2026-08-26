@@ -7,7 +7,7 @@ import { getRanges } from '@/lib/game-data'
 import { formatTrophies } from '@/lib/format'
 import { AbilityItem, type AbilityKind } from './AbilityItem'
 import type { BrawlerProgress } from './BrawlerCard'
-import type { Ability, Brawler, Locale } from '@/types/game'
+import type { Ability, Brawler, Gear, Locale } from '@/types/game'
 
 function Stat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
@@ -18,7 +18,17 @@ function Stat({ label, value, accent }: { label: string; value: string; accent?:
   )
 }
 
-function Section({ title, items, kind }: { title: string; items: Ability[]; kind: AbilityKind }) {
+function Section({
+  title,
+  items,
+  kind,
+  locale,
+}: {
+  title: string
+  items: (Ability | Gear)[]
+  kind: AbilityKind
+  locale: Locale
+}) {
   if (items.length === 0) return null
   return (
     <div className="mt-3.5">
@@ -27,7 +37,7 @@ function Section({ title, items, kind }: { title: string; items: Ability[]; kind
       </div>
       <div className="flex flex-col gap-1.5">
         {items.map(a => (
-          <AbilityItem key={a.id} kind={kind} ability={a} />
+          <AbilityItem key={a.id} kind={kind} ability={a} locale={locale} />
         ))}
       </div>
     </div>
@@ -88,9 +98,14 @@ export function BrawlerDetail({
         <StatBar label={t('range')} value={brawler.stats.range} range={ranges.range} />
       )}
 
-      <Section title={t('starPowers')} items={brawler.starPowers} kind="star-powers" />
-      <Section title={t('gadgets')} items={brawler.gadgets} kind="gadgets" />
-      <Section title={t('gears')} items={brawler.gears} kind="gears" />
+      <Section
+        title={t('starPowers')}
+        items={brawler.starPowers}
+        kind="star-powers"
+        locale={locale}
+      />
+      <Section title={t('gadgets')} items={brawler.gadgets} kind="gadgets" locale={locale} />
+      <Section title={t('gears')} items={brawler.gears} kind="gears" locale={locale} />
     </div>
   )
 }

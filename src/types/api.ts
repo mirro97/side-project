@@ -1,9 +1,16 @@
-import type { Ability } from './game'
+/**
+ * 공식 API 가 주는 능력은 { id, name } 뿐이다.
+ * 빌드 산출물의 Ability(현지화 이름 + 설명)와 모양이 달라 별도로 둔다.
+ */
+export interface ApiAbility {
+  id: number
+  name: string
+}
 
 export interface PlayerBrawler {
   id: number; name: string; power: number; rank: number
   trophies: number; highestTrophies: number
-  gears: Ability[]; starPowers: Ability[]; gadgets: Ability[]
+  gears: ApiAbility[]; starPowers: ApiAbility[]; gadgets: ApiAbility[]
 }
 
 export interface Player {
