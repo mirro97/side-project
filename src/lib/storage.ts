@@ -1,3 +1,5 @@
+import type { ByokConfig } from './ai/types'
+
 const KEY = 'bc.settings'
 
 export interface Settings {
@@ -5,7 +7,11 @@ export interface Settings {
   mainAccountTag: string | null
   favoriteTags: string[]
   survey: { range: number; durability: number; mobility: number; risk: number } | null
-  byokKey: string | null
+  /**
+   * 사용자 자기 AI 키. 브라우저 밖으로 나가지 않는다 — 우리 서버로도 보내지 않는다.
+   * 같은 오리진의 스크립트는 읽을 수 있으므로 입력 화면에 그 사실을 함께 알린다.
+   */
+  byok: ByokConfig | null
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -13,7 +19,7 @@ export const DEFAULT_SETTINGS: Settings = {
   mainAccountTag: null,
   favoriteTags: [],
   survey: null,
-  byokKey: null,
+  byok: null,
 }
 
 export function loadSettings(): Settings {
