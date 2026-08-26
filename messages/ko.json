@@ -69,5 +69,12 @@
     "notRanked": "내 계정은 200위 밖입니다",
     "empty": "표시할 순위가 없습니다",
     "loadMore": "더 보기"
+  },
+  "events": {
+    "title": "이벤트",
+    "allModes": "전체",
+    "specialRule": "특수 룰",
+    "endsAt": "종료",
+    "empty": "진행 중인 이벤트가 없습니다"
   }
 }

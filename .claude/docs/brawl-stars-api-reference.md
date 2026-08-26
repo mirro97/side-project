@@ -357,6 +357,39 @@
 
 기어 종류는 19개지만 브롤러마다 사용 가능 목록이 달라, 106종에 걸친 슬롯 총합은 671개다.
 
+### 2-8. 이벤트 로테이션 — 실측
+
+```
+  슬롯 수          15개
+  상태             진행중 15 / 예정 0 / 종료 0      ← 지금 도는 것만 온다
+  모드 매칭         12/12 생성 데이터와 매칭
+  시각 형식         20260826T080000.000Z (UTC. 전용 파서 필요)
+  맵 이미지         cdn.brawlify.com/maps/regular/{event.id}.png   ※ slotId 아니다
+  모드 아이콘        cdn.brawlify.com/game-modes/regular/{48000000 + modeId}.png
+  modifiers        15슬롯 중 2개에만. 값 예: ["unknown"], ["unknown", "showdown+"]
+```
+
+**모디파이어 이름은 자동으로 붙일 수 없다.** 공식 API 가 쓰는 문자열과 `csv_logic/event_modifiers` 의 내부 이름이 갈라진다. 대소문자·기호를 지우고 맞춰봐도 18개 중 9개만 맞았다.
+
+```
+  angryRobo       →  CSV BigRobo             이름이 다르다
+  meteorShower    →  CSV Meteors
+  graveyardShift  →  CSV LifeLeech
+  superCharge     →  CSV FastSuperCharge
+  fastBrawlers    →  CSV FastPlayers
+  showdown+       →  CSV 에 없음 (로케일에는 TID_EVENT_MODIFIER_15 로 존재)
+  unknown         →  API 가 모르는 신규 모디파이어. 이름이 아니다
+```
+
+추측해서 매핑하면 틀린 이름을 보여주게 되므로, **로케일 값과 대조해 확인한 것만** 표에 넣고 나머지는 "특수 룰" 로 표시한다.
+
+**영문 원본은 `localization/texts` 다.** `localization/en` 은 없다. `texts` 가 15,480행짜리 영문 베이스이고 `EN` 컬럼을 가진다.
+
+```
+  TID_EVENT_MODIFIER_15   texts: "SHOWDOWN+"   kr: "쇼다운+"
+  TID_GAME_MODE_5         texts: "BRAWL BALL"  kr: "브롤 볼"
+```
+
 ### 2-6. 공식 API와의 목록 불일치
 
 실측 시점 기준 공식 106종 / BrawlAPI 107종. 차이는 `Buzz Lightyear`(id 16000088, 콜라보 브롤러)로 BrawlAPI에만 있다. 어느 쪽이 앞설지 알 수 없으므로 **존재 여부의 기준은 공식 API로 고정**하고 BrawlAPI는 부가 정보만 붙이는 용도로 쓴다.
