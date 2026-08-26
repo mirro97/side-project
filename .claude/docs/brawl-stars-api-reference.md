@@ -236,6 +236,28 @@
 
 **중요**: 이 로케일 파일은 게임 버전 스냅샷이라 **최신 브롤러가 항상 빠져 있다.** 상시 상태이므로 빌드 실패가 아니라 영문 폴백으로 처리해야 한다.
 
+### 2-4-1. 화면 필드별 출처 정리
+
+한 화면에 세 소스가 섞여 있어 헷갈리기 쉽다. 공식 API 는 이름과 id 만 주고,
+**설명은 어디에도 한국어로 오지 않는다** — 전부 TID 로 로케일을 조회해 만든다.
+
+```
+  화면 필드          영문                        한국어
+  ────────────────────────────────────────────────────────────────────────
+  브롤러 이름        공식 API name (대문자)       characters 코드 → TID → 로케일
+                     BrawlAPI name 로 교정
+  브롤러 소개문       BrawlAPI description        TID_{코드}_DESC → 로케일
+  브롤러 역할        BrawlAPI class.name         TID_{코드}_SHORT_DESC
+  스탯(HP/속도/사거리) characters + skills CSV     (수치라 공통)
+  능력 이름          BrawlAPI 능력 name           cards.TID → 로케일
+  능력 설명          BrawlAPI 능력 description    cards.TID + '_DESC' → 로케일
+                     ↑ 양쪽 다 치환자가 박혀 있다. 2-5 참조
+  기어 이름          공식 API name               gear_boosts.TID → 로케일
+  기어 설명          없음                        없음 (_DESC TID 자체가 없다)
+```
+
+한국어가 없으면 영문으로 폴백한다. 신규 브롤러는 로케일 반영이 늦어 한동안 영문이 보인다.
+
 ### 2-5. 능력 상세 정보 — 어디까지 얻을 수 있나
 
 스타파워·가젯·기어의 **이름은 완전히, 설명은 일부만** 얻을 수 있다. 실측(웬디 기준으로 시작해 424개 전수 확인)한 결과다.
@@ -249,13 +271,42 @@
   localization/kr              위 TID 로 한글명·한글설명 조회
 ```
 
-**⚠️ 설명에 미치환 치환자가 섞여 있다.** 두 가지 문법이 있고 신뢰도가 다르다.
+**소스는 위 다섯 개로 끝나지 않는다.** 설명의 치환자가 다른 CSV 를 참조하기 때문에
+아래 파일도 필요하다. 전체 목록은 `GET /game` 이 준다 (csv_logic 119개).
 
 ```
-  <!card.value1.ticksasseconds>   변환이 이름에 명시됨 → 안전하게 풀 수 있다
-  <!card.accessory.skill.…>       게임 객체를 따라가야 함 → 엔진 없이는 불가 (81개)
-  <VALUE1>                        변환 미명시 → 풀면 틀린 값이 나온다 (306회)
+  csv_logic/traits                 카드 -> 트레잇
+  csv_logic/status_effects_logic   트레잇·투사체 -> 상태이상 (수치의 종착지)
+  csv_logic/accessories            카드 -> 가젯 본체
+  csv_logic/projectiles_logic      스킬 -> 투사체
+  csv_logic/area_effects_logic     스킬 -> 범위 효과   ※ area_effects 아님. 수치는 _logic 쪽에 있다
+  csv_logic/character_components_logic  캐릭터 -> 컴포넌트 (Values 가 배열)
+  csv_logic/character_actions      투사체 -> 액션 -> 상태이상
+  csv_logic/items                  가젯 -> 설치물
 ```
+
+**⚠️ 설명에 미치환 치환자가 섞여 있다.** 두 가지 문법이 있고 처리가 다르다.
+
+```
+  <!card.value1.ticksasseconds>   카드 안에서 끝난다 → 바로 푼다
+  <!card.trait.statusEffect.…>    다른 CSV 로 이어진다 → 참조를 따라가 푼다
+  <VALUE1>                        경로 정보가 없다 → 풀 수 없다
+```
+
+**참조를 따라가는 예 (콜트 스피드 부츠)**
+```
+  cards["Gunslinger_unique"].Traits          = "ColtSpeedSp"
+  traits["ColtSpeedSp"].StatusEffect         = "GunslingerStarPowerMovementSpeed"
+  status_effects_logic[…].SpeedBoostPercent  = 13
+  → "콜트의 이동 속도가 13% 증가합니다."
+```
+
+경로를 다루며 확인한 것들이다.
+- 세그먼트 이름과 컬럼명이 다르다: `maxHealth`→`Hitpoints`, `duration`→`DurationTicks`,
+  `maxAmmo`→`MaxCharge`, `customValue1`→`CustomValue`, `areaEffect`→`AreaEffectObject`
+- 다중 값 컬럼은 **JSON 배열**로 온다 (`Values: [40, 10, 35, 60]`). 문자열 분리로는 못 읽는다
+- `scaleToLevel` 은 레벨 1 기준값이다. 우리 `stats.hp` 와 같은 기준이라 값을 바꾸지 않는다
+- 검증: `card.character.maxHealth` 를 106종 전부 풀어 확정된 `stats.hp` 와 대조 → **106/106 일치**
 
 `<VALUEn>` 이 위험한 이유는 **카드의 `Value` 가 화면 표시값이 아니라 스케일링 전 원본**이기 때문이다.
 
@@ -266,7 +317,34 @@
 
 **영문도 같은 한계가 있다.** BrawlAPI 영문 설명 430개 중 245개가 `x` 리터럴을 쓴다 ("increased by x%"). 완전히 깨끗한 것은 영문 101개(23%), 한글 95개(22%)다.
 
-**결론: 두 언어 모두 온전한 설명만 쓰면 104/424(25%)다.** 나머지는 이름만 표시한다. 수치를 지우면 "속도를 늦추고 의 피해를 줍니다" 처럼 조사가 붕 떠 한국어 문장이 깨진다.
+**수치 복원은 불가능하다고 결론냈다.** 같은 `Value` 필드에 원값·틱(20/초)·밀리초가 마커 없이 섞여 있다. "초" 단위 토큰이 참조하는 값의 분포만 봐도 1~9(6건), 10~99(64건), 100~999(10건), 1000+(3건)로 갈려 어느 스케일인지 판별할 근거가 없다. 변환이 이름에 명시된 `ticksasseconds` 사례는 4건뿐이라 규칙을 세울 표본도 못 된다. BrawlAPI 영문·Brawlify 모두 같은 자리를 비워두고 있어 대조군도 없다.
+
+**그래서 수치 대신 단위째로 자연어로 바꾼다.** 크기는 잃지만 능력이 무엇을 하는지는 그대로 남는다.
+
+```
+  <VALUE1>%   → 일정 비율     a percentage
+  <VALUE1>초  → 일정 시간     a short time
+  <VALUE1>초간 → 일정 시간 동안
+  <VALUE1>개  → 일정 수       some
+  <VALUE1>HP  → 일정량의 HP
+  <VALUE1>    → 일정량        some
+
+  "로켓의 수가 <VALUE1>% 늘어납니다"  →  "로켓의 수가 일정 비율 늘어납니다"
+```
+
+한국어는 치환 자리에 붙는 조사를 받침에 맞춰 함께 고친다. **조사 교정을 문장 전체에 걸면 안 된다** — "갇혀있**는** 동안"의 '는'은 조사가 아니라 어미인데 '은'으로 바뀌어 멀쩡한 문장이 깨진다. 내가 바꾼 자리 바로 뒤만 손댄다. 뒷 단어와 붙지 않게 띄어쓰기도 보정한다(`일정량피해` → `일정량 피해`, `만큼·씩·마다·의` 같은 접미사는 붙여 쓴다).
+
+**결론: 424/424 전부 표시한다.** 그중 411개는 실제 수치까지 들어가고, 13개는 수치만 자연어로 대체된다.
+
+```
+  실제 수치까지 표시   411 / 424   (97%)
+  수치를 자연어로 대체   13 / 424
+```
+
+수치가 끝내 안 나오는 13개는 게임 클라이언트가 계산하거나 이 CSV 덤프에 없는 컬럼이다
+(`cactusMinionHealing`, `bulletExplosionTriggerCount`, `spawnAreaEffectObject`,
+`healingTotal`, `largerAreaUlti` — 119개 파일 어디에도 없음을 확인했다).
+투사체의 `statusEffectEnemy` 계열도 `projectiles_logic` 에 컬럼이 없다.
 
 **기어에는 설명이 아예 없다.** `gear_boosts` 에 `_DESC` TID 가 없어 671개 전부 설명이 없다. 대신 수치가 있다.
 

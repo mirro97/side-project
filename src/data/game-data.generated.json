@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-26T13:43:41.215Z",
+  "version": "2026-08-26T14:45:42.796Z",
   "brawlers": [
     {
       "id": 16000000,
@@ -44,7 +44,10 @@
             "en": "Band-Aid",
             "ko": "밴드에이드"
           },
-          "description": null
+          "description": {
+            "en": "When Shelly falls below a percentage health, she instantly heals for some health. Band-Aid recharges in a short time.",
+            "ko": "HP가 일정 비율 이하로 떨어지면 즉시 HP를 일정량만큼 회복합니다. 일정 시간마다 밴드에이드를 사용할 수 있습니다."
+          }
         }
       ],
       "gadgets": [
@@ -65,7 +68,10 @@
             "en": "Clay Pigeons",
             "ko": "집중 사격"
           },
-          "description": null
+          "description": {
+            "en": "Shelly focuses her fire to a smaller area with an increased range. Can be used 3 times per activation.",
+            "ko": "사정거리를 늘리면서 더 적은 영역에 화력을 집중합니다. 활성화할 때마다 3번 사용할 수 있습니다."
+          }
         }
       ],
       "gears": [
@@ -181,7 +187,10 @@
             "en": "Slick Boots",
             "ko": "스피드 부츠"
           },
-          "description": null
+          "description": {
+            "en": "Colt's movement speed is increased by 13%.",
+            "ko": "콜트의 이동 속도가 13% 증가합니다."
+          }
         },
         {
           "id": 23000138,
@@ -189,7 +198,10 @@
             "en": "Magnum Special",
             "ko": "매그넘 스페셜"
           },
-          "description": null
+          "description": {
+            "en": "Colt's attack range and bullet speed are increased by a percentage.",
+            "ko": "일반 공격 사거리와 탄환 속도가 일정 비율 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -199,7 +211,10 @@
             "en": "Speedloader",
             "ko": "쾌속 장전기"
           },
-          "description": null
+          "description": {
+            "en": "Colt fires two quick shots that slow targets. Deals 320 damage.",
+            "ko": "빠르게 두 번 사격해 목표물의 속도를 늦추고 320의 피해를 줍니다."
+          }
         },
         {
           "id": 23000319,
@@ -207,7 +222,10 @@
             "en": "Silver Bullet",
             "ko": "실버 불렛"
           },
-          "description": null
+          "description": {
+            "en": "Colt fires a bullet that destroys the environment and pierces Brawlers. Deals 600 damage. Consumes ammo.",
+            "ko": "주변을 파괴하고 브롤러를 관통하는 총알을 발사해 600의 피해를 줍니다. 탄환이 소모됩니다."
+          }
         }
       ],
       "gears": [
@@ -335,7 +353,10 @@
             "en": "Berserker",
             "ko": "버서커"
           },
-          "description": null
+          "description": {
+            "en": "When Bull falls below a percentage health, his reload speed doubles!",
+            "ko": "HP가 일정 비율 이하로 떨어지면 재장전 속도가 두 배로 빨라집니다!"
+          }
         },
         {
           "id": 23000137,
@@ -343,7 +364,10 @@
             "en": "Tough Guy",
             "ko": "터프가이"
           },
-          "description": null
+          "description": {
+            "en": "When Bull falls below a percentage health, he gains a shield that reduces all damage he takes by a percentage.",
+            "ko": "HP가 일정 비율 이하로 떨어지면 입는 피해량을 일정 비율 감소시키는 보호막을 얻습니다."
+          }
         }
       ],
       "gadgets": [
@@ -353,7 +377,10 @@
             "en": "T-Bone Missile",
             "ko": "육즙 가득 미사일"
           },
-          "description": null
+          "description": {
+            "en": "Bull throws a projectile at the target Brawler, dealing 800 damage and healing for some if he hits.",
+            "ko": "목표 브롤러에게 발사체를 던져 800의 피해를 입히고, 명중 시 일정량의 HP를 회복합니다."
+          }
         },
         {
           "id": 23000310,
@@ -492,7 +519,10 @@
             "en": "More Rockets",
             "ko": "로켓 샤워!"
           },
-          "description": null
+          "description": {
+            "en": "Rocket Rain now rains down a percentage more rockets.",
+            "ko": "로켓 레인이 쏟아붓는 로켓의 수가 일정 비율 늘어납니다."
+          }
         },
         {
           "id": 23000150,
@@ -655,7 +685,10 @@
             "en": "Super Bouncy",
             "ko": "슈퍼 통통탄"
           },
-          "description": null
+          "description": {
+            "en": "Rico's bullets, from attack and Super alike, get Supercharged by their first bounce and deal +some damage!",
+            "ko": "일반 및 특수 공격의 탄환이 처음 튕겨져 나올 때 과충전되며 +일정량 추가 피해를 줍니다."
+          }
         },
         {
           "id": 23000156,
@@ -663,7 +696,10 @@
             "en": "Robo Retreat",
             "ko": "로봇 질주"
           },
-          "description": null
+          "description": {
+            "en": "Rico runs 35% faster when his health falls below 40%.",
+            "ko": "HP가 40% 이하로 떨어지면 리코가 35% 더 빠르게 움직입니다."
+          }
         }
       ],
       "gadgets": [
@@ -673,7 +709,10 @@
             "en": "Multiball Launcher",
             "ko": "통통탄 발사기"
           },
-          "description": null
+          "description": {
+            "en": "Rico Deploys a vending machine that has 2000 health - when destroyed fires bouncing projectiles in all directions.",
+            "ko": "리코가 2000HP의 자판기를 배치합니다. 파괴되면 모든 방향으로 튕겨 나가는 투사체를 발사합니다."
+          }
         },
         {
           "id": 23000409,
@@ -681,7 +720,10 @@
             "en": "Bouncy Castle",
             "ko": "바운시 캐슬"
           },
-          "description": null
+          "description": {
+            "en": "Rico fires a big bullet that, on hitting a wall or Brawler, splits into 3 smaller bullets.",
+            "ko": "리코가 큰 총알을 발사합니다. 총알이 벽이나 브롤러에 맞으면 3개의 더 작은 총알로 분열됩니다."
+          }
         }
       ],
       "gears": [
@@ -809,7 +851,10 @@
             "en": "Fertilize",
             "ko": "따뜻한 햇살"
           },
-          "description": null
+          "description": {
+            "en": "Super heals for a percentage of damage dealt.",
+            "ko": "입힌 피해량의 일정 비율만큼 특수 공격으로 회복합니다."
+          }
         },
         {
           "id": 23000151,
@@ -830,7 +875,10 @@
             "en": "Popping Pincushion",
             "ko": "가시방석"
           },
-          "description": null
+          "description": {
+            "en": "Spike aims and fires a wave of needles that deal 500 damage.",
+            "ko": "가시를 조준하고 발사해 500의 피해를 줍니다."
+          }
         },
         {
           "id": 23000406,
@@ -838,7 +886,10 @@
             "en": "Life Plant",
             "ko": "자연의 신비"
           },
-          "description": null
+          "description": {
+            "en": "Spike throws a large cactus with 1750 health to give cover to teammates. If destroyed, the cactus bursts, and all nearby teammates recover some health.",
+            "ko": "1750 HP를 지닌 커다란 선인장을 던져 팀원이 엄폐하도록 돕습니다. 선인장은 파괴될 시 폭발하며, 근처 아군을 일정량만큼 치유합니다."
+          }
         }
       ],
       "gears": [
@@ -966,7 +1017,10 @@
             "en": "Medical Use",
             "ko": "메디컬 알코올"
           },
-          "description": null
+          "description": {
+            "en": "Barley regains some health from each attack.",
+            "ko": "공격할 때마다 일정량의 HP를 회복합니다."
+          }
         },
         {
           "id": 23000158,
@@ -974,7 +1028,10 @@
             "en": "Extra Noxious",
             "ko": "유독성 알코올"
           },
-          "description": null
+          "description": {
+            "en": "Adds +some damage per second to Barley's attack.",
+            "ko": "일반 공격의 초당 피해량이 +일정량 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -995,7 +1052,10 @@
             "en": "Herbal Tonic",
             "ko": "약초 칵테일"
           },
-          "description": null
+          "description": {
+            "en": "Barley throws a healing potion at nearby allies that creates an area that heals for some health per second.",
+            "ko": "근처의 아군에게 치료 칵테일을 던져 초당 일정량의 HP를 회복하는 웅덩이를 만듭니다."
+          }
         }
       ],
       "gears": [
@@ -1111,7 +1171,10 @@
             "en": "Energize",
             "ko": "에너지 충전"
           },
-          "description": null
+          "description": {
+            "en": "Jessie can repair her gun turret for some of its missing health by zapping it with her attack.",
+            "ko": "일반 공격으로 자신의 터렛을 맞히면 터렛이 일정량의 HP를 회복합니다."
+          }
         },
         {
           "id": 23000149,
@@ -1119,7 +1182,10 @@
             "en": "Shocky",
             "ko": "쇼키"
           },
-          "description": null
+          "description": {
+            "en": "Scrappy the Turret now shoots energy orbs that bounce between enemies. The orbs' range after a bounce is a percentage of normal range.",
+            "ko": "터렛 스크래피가 적 사이를 튕겨 다니는 에너지 볼을 발사합니다. 튕긴 에너지 볼은 기본 거리의 일정 비율만큼 이동합니다."
+          }
         }
       ],
       "gadgets": [
@@ -1140,7 +1206,10 @@
             "en": "Recoil Spring",
             "ko": "반동 억제 스프링"
           },
-          "description": null
+          "description": {
+            "en": "Scrappy's attack speed is doubled for a short time.",
+            "ko": "터렛의 공격 속도가 일정 시간 동안 2배로 증가합니다."
+          }
         }
       ],
       "gears": [
@@ -1268,7 +1337,10 @@
             "en": "Bear With Me",
             "ko": "곰과 나"
           },
-          "description": null
+          "description": {
+            "en": "Nita recovers some health whenever her bear hits an enemy Brawler. When Nita deals damage to an enemy Brawler, her bear regains some health.",
+            "ko": "소환된 곰이 적 브롤러를 공격할 때마다 니타가 일정량의 HP를 회복합니다. 니타가 적 브롤러에게 피해를 주면 곰이 일정량의 HP를 회복합니다."
+          }
         },
         {
           "id": 23000136,
@@ -1276,7 +1348,10 @@
             "en": "Hyper Bear",
             "ko": "하이퍼 베어"
           },
-          "description": null
+          "description": {
+            "en": "Nita's bear attacks faster. Time between swipes is reduced by a percentage.",
+            "ko": "곰의 공격 속도가 더 빨라집니다. 앞발 휘두르기 간의 간격이 일정 비율 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -1297,7 +1372,10 @@
             "en": "Faux Fur",
             "ko": "인조 모피"
           },
-          "description": null
+          "description": {
+            "en": "For the next 3 seconds, Nita's bear gets a 35% shield against damage.",
+            "ko": "3초 동안 소환한 곰이 35% 피해를 흡수하는 보호막을 얻습니다."
+          }
         }
       ],
       "gears": [
@@ -1436,7 +1514,10 @@
             "en": "Demolition",
             "ko": "폭파"
           },
-          "description": null
+          "description": {
+            "en": "Adds +some damage to Mike's Super.",
+            "ko": "특수 공격의 피해량이 +일정량 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -1446,7 +1527,10 @@
             "en": "Fidget Spinner",
             "ko": "피젯 스피너"
           },
-          "description": null
+          "description": {
+            "en": "Dynamike spins furiously with 20% increased movement speed and throws multiple sticks of dynamite around himself. Each dynamite deals 800 damage to enemies.",
+            "ko": "이동 속도가 20% 증가해 맹렬하게 회전하면서 주변에 여러 개의 다이너마이트를 던집니다. 다이너마이트마다 적에게 800의 피해를 줍니다."
+          }
         },
         {
           "id": 23000294,
@@ -1454,7 +1538,10 @@
             "en": "Satchel Charge",
             "ko": "화약 주머니"
           },
-          "description": null
+          "description": {
+            "en": "Once activated, the next main attack also stuns enemies for a short time.",
+            "ko": "활성화 시 다음 일반 공격이 적을 일정 시간 동안 기절시킵니다."
+          }
         }
       ],
       "gears": [
@@ -1570,7 +1657,10 @@
             "en": "El Fuego",
             "ko": "엘 푸에고"
           },
-          "description": null
+          "description": {
+            "en": "Enemies caught in El Primo's Super will burn for some damage over 4 seconds.",
+            "ko": "특수 공격에 적중당한 적을 불태워 4초 동안 일정량 피해를 줍니다."
+          }
         },
         {
           "id": 23000140,
@@ -1578,7 +1668,10 @@
             "en": "Meteor Rush",
             "ko": "유성 러시"
           },
-          "description": null
+          "description": {
+            "en": "El Primo gains a 25% speed boost for 4 seconds after using his Super.",
+            "ko": "특수 공격을 사용한 후 이동 속도가 4초 동안 25% 빨라집니다."
+          }
         }
       ],
       "gadgets": [
@@ -1599,7 +1692,10 @@
             "en": "Asteroid Belt",
             "ko": "유성우 벨트"
           },
-          "description": null
+          "description": {
+            "en": "El Primo summons a small meteor to strike the nearest enemy. It deals some damage and destroys walls.",
+            "ko": "가장 가까이 있는 적의 위치에 작은 유성을 소환합니다. 유성은 일정량 피해를 주며 벽을 파괴합니다."
+          }
         }
       ],
       "gears": [
@@ -1727,7 +1823,10 @@
             "en": "Creepy Harvest",
             "ko": "영혼 사냥"
           },
-          "description": null
+          "description": {
+            "en": "Mortis reaps the life essence of Brawlers he defeats, restoring a percentage of his max health.",
+            "ko": "자신이 처치한 브롤러의 영혼을 흡수해 최대 HP의 일정 비율을 회복합니다."
+          }
         },
         {
           "id": 23000154,
@@ -1735,7 +1834,10 @@
             "en": "Coiled Snake",
             "ko": "전속력 돌진"
           },
-          "description": null
+          "description": {
+            "en": "Mortis gains his longer dash a short time faster.",
+            "ko": "장거리 돌진을 일정 시간 빨리 얻습니다."
+          }
         }
       ],
       "gadgets": [
@@ -1745,7 +1847,10 @@
             "en": "Combo Spinner",
             "ko": "콤보 스피너"
           },
-          "description": null
+          "description": {
+            "en": "Mortis spins his shovel dealing 1000 damage. Can also be aimed for a short-distance bat attack.",
+            "ko": "삽을 휘둘러 1000의 피해를 줍니다. 또한 조준해서 근거리 박쥐 공격을 할 수도 있습니다."
+          }
         },
         {
           "id": 23000290,
@@ -1884,7 +1989,10 @@
             "en": "Extra Toxic",
             "ko": "맹독"
           },
-          "description": null
+          "description": {
+            "en": "Crow's poison saps the strength of enemies, who deal a percentage less damage while poisoned.",
+            "ko": "단검의 독이 적의 공격력을 약화시켜 적의 피해량이 일정 비율 감소합니다."
+          }
         },
         {
           "id": 23000143,
@@ -1892,7 +2000,10 @@
             "en": "Carrion Crow",
             "ko": "약한 먹잇감"
           },
-          "description": null
+          "description": {
+            "en": "Crow deals +a percentage damage with his attack and Super to targets with a percentage or less health.",
+            "ko": "HP가 일정 비율 이하인 대상에게 일반 및 특수 공격으로 +일정 비율 추가 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -1902,7 +2013,10 @@
             "en": "Instapoison",
             "ko": "급성 독성"
           },
-          "description": null
+          "description": {
+            "en": "Crow instantly deals remaining poison damage to all Crow-poisoned enemies and gains a shield for 150% of the value.",
+            "ko": "크로우가 독 공격에 당한 모든 적에게 즉시 남은 독 피해를 입히고, 피해량의 150%에 해당하는 보호막을 획득합니다."
+          }
         },
         {
           "id": 23000286,
@@ -1910,7 +2024,10 @@
             "en": "Slowing Toxin",
             "ko": "둔화 독"
           },
-          "description": null
+          "description": {
+            "en": "Throw a kunai that damages, slows and poisons the first enemy hit for a short time.",
+            "ko": "피해를 주고 느리게 만드는 단검을 던집니다. 첫 번째로 단검에 맞은 적은 일정 시간 동안 독 지속 피해를 입습니다."
+          }
         }
       ],
       "gears": [
@@ -2038,7 +2155,10 @@
             "en": "Da Capo",
             "ko": "뮤직 테라피"
           },
-          "description": null
+          "description": {
+            "en": "When Poco's attack hits friendly Brawlers they now heal for some health.",
+            "ko": "일반 공격이 아군에 적중하면 적중당한 아군의 HP가 일정량만큼 회복됩니다."
+          }
         },
         {
           "id": 23000144,
@@ -2046,7 +2166,10 @@
             "en": "Screeching Solo",
             "ko": "불협화음"
           },
-          "description": null
+          "description": {
+            "en": "Poco's Super now also hits enemies, dealing some damage.",
+            "ko": "특수 공격이 적에게는 일정량 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -2056,7 +2179,10 @@
             "en": "Tuning Fork",
             "ko": "소리굽쇠"
           },
-          "description": null
+          "description": {
+            "en": "Poco and all nearby allies heal some health per second for a short time.",
+            "ko": "자신과 주변 아군의 HP가 일정 시간 동안 초당 일정량씩 회복됩니다."
+          }
         },
         {
           "id": 23000350,
@@ -2064,7 +2190,10 @@
             "en": "Protective Tunes",
             "ko": "보호의 선율"
           },
-          "description": null
+          "description": {
+            "en": "Removes active adverse effects from friendly Brawlers in a large area and gives some second immunity.",
+            "ko": "넓은 범위에 걸쳐 아군 브롤러에게 활성화된 해로운 효과를 제거하고 일정 시간 동안 면역 효과를 부여합니다."
+          }
         }
       ],
       "gears": [
@@ -2180,7 +2309,10 @@
             "en": "Circling Eagle",
             "ko": "독수리의 눈"
           },
-          "description": null
+          "description": {
+            "en": "Bo spots enemies hidden in bushes from a percentage longer distance than normally.",
+            "ko": "평소보다 일정 비율 더 먼 거리에서 덤불에 숨은 적을 발견할 수 있습니다."
+          }
         },
         {
           "id": 23000148,
@@ -2188,7 +2320,10 @@
             "en": "Snare A Bear",
             "ko": "곰 사냥"
           },
-          "description": null
+          "description": {
+            "en": "Instead of a knockback, Bo's traps now stun the enemy for a short time!",
+            "ko": "덫이 적을 뒤로 밀쳐내는 대신, 일정 시간 동안 적을 기절시킵니다!"
+          }
         }
       ],
       "gadgets": [
@@ -2198,7 +2333,10 @@
             "en": "Super Totem",
             "ko": "슈퍼 토템"
           },
-          "description": null
+          "description": {
+            "en": "Bo places a totem that increases allies' Super charging rate by 50%. The totem slowly loses its health over time.",
+            "ko": "아군의 특수 공격 충전 속도를 50% 증가시키는 토템을 설치합니다. 토템의 HP는 시간이 지날수록 감소합니다."
+          }
         },
         {
           "id": 23000289,
@@ -2206,7 +2344,10 @@
             "en": "Tripwire",
             "ko": "와이어 함정"
           },
-          "description": null
+          "description": {
+            "en": "Bo triggers all of his mines after a short time. During the delay the mines are completely undetectable to opponents.",
+            "ko": "일정 시간 뒤 덫을 폭발시킵니다. 폭발하기 전까지 덫이 적에게 감지되지 않습니다."
+          }
         }
       ],
       "gears": [
@@ -2334,7 +2475,10 @@
             "en": "Ambush",
             "ko": "매복"
           },
-          "description": null
+          "description": {
+            "en": "Piper's attack deals +some extra damage (at max range) when she's hidden in a bush.",
+            "ko": "덤불에 숨은 상태에서 공격하면 일정량(최대 사거리 기준) 추가 피해를 줍니다."
+          }
         },
         {
           "id": 23000152,
@@ -2342,7 +2486,10 @@
             "en": "Snappy Sniping",
             "ko": "재빠른 저격"
           },
-          "description": null
+          "description": {
+            "en": "When Piper hits an opponent with her attack, she reloads some ammo instantly.",
+            "ko": "일반 공격이 상대에게 적중하면 탄환 일정 수를 즉시 재장전합니다."
+          }
         }
       ],
       "gadgets": [
@@ -2352,7 +2499,10 @@
             "en": "Auto Aimer",
             "ko": "자동 조준기"
           },
-          "description": null
+          "description": {
+            "en": "Piper pops a defensive shot at the closest enemy, dealing some damage, while also pushing them back.",
+            "ko": "가장 가까운 적에게 호신용 탄환을 발사해 일정량의 피해를 주고 뒤로 밀쳐냅니다."
+          }
         },
         {
           "id": 23000291,
@@ -2479,7 +2629,10 @@
             "en": "Mamas Hug",
             "ko": "엄마의 포옹"
           },
-          "description": null
+          "description": {
+            "en": "Whenever Pam hits enemy Brawlers with Scrapstorm, she heals herself and nearby friendly Brawlers for some health.",
+            "ko": "메탈스톰으로 적 브롤러를 적중할 때마다 자신 및 가까운 아군의 HP가 일정량만큼 회복됩니다."
+          }
         },
         {
           "id": 23000139,
@@ -2487,7 +2640,10 @@
             "en": "Mamas Squeeze",
             "ko": "엄마의 폭풍 압박"
           },
-          "description": null
+          "description": {
+            "en": "Healing turret now also damages enemies for some damage per second.",
+            "ko": "치유 터렛이 적에게 초당 일정량 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -2497,7 +2653,10 @@
             "en": "Pulse Modulator",
             "ko": "파동 변조기"
           },
-          "description": null
+          "description": {
+            "en": "Pam triggers her turret to emit a pulse that heals allies inside the turret's range, including herself, for some health.",
+            "ko": "치유 터렛의 부스터를 가동해 터렛의 효과 범위 내 자신 및 아군의 HP를 일정량만큼 치유하는 파동을 일으킵니다."
+          }
         },
         {
           "id": 23000404,
@@ -2505,7 +2664,10 @@
             "en": "Scrapsucker",
             "ko": "고철 처리기"
           },
-          "description": null
+          "description": {
+            "en": "Each hit from Pam's next attack removes a percentage of opposing Brawlers' maximum ammo. Pam reclaims a percentage of the ammo for herself.",
+            "ko": "다음 공격이 적중할 때마다 적중한 상대의 최대 탄환의 일정 비율을 빼앗아 자신의 탄을 일정 비율 채웁니다."
+          }
         }
       ],
       "gears": [
@@ -2657,7 +2819,10 @@
             "en": "Psychic Enhancer",
             "ko": "초능력 증폭기"
           },
-          "description": null
+          "description": {
+            "en": "Tara and her allies are able to see all enemies, even inside bushes, for a short time.",
+            "ko": "자신과 아군이 일정 시간 동안 모든 적을 볼 수 있습니다. 덤불 안에 숨은 적도 발견할 수 있습니다."
+          }
         },
         {
           "id": 23000356,
@@ -2665,7 +2830,10 @@
             "en": "Support From Beyond",
             "ko": "그림자 소환"
           },
-          "description": null
+          "description": {
+            "en": "Tara surrounds herself with three weak Shadows that attack opponents and disappear after a short time.",
+            "ko": "자신 주변을 3개의 약한 그림자로 감싸 일정 시간 동안 상대를 공격하게 합니다."
+          }
         }
       ],
       "gears": [
@@ -2793,7 +2961,10 @@
             "en": "Steel Hoops",
             "ko": "강철 후프"
           },
-          "description": null
+          "description": {
+            "en": "After Barrel Roll all damage Darryl takes is reduced by a percentage for a short time.",
+            "ko": "롤링 배럴 후 대릴이 입는 모든 피해량이 일정 시간 동안 일정 비율 감소합니다."
+          }
         },
         {
           "id": 23000157,
@@ -2801,7 +2972,10 @@
             "en": "Rolling Reload",
             "ko": "롤링 리로드"
           },
-          "description": null
+          "description": {
+            "en": "When Darryl uses his Super, he doubles his reload speed for a short time.",
+            "ko": "특수 공격을 사용할 때 일정 시간 동안 재장전 속도가 두 배로 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -2811,7 +2985,10 @@
             "en": "Recoiling Rotator",
             "ko": "나선형 회전기"
           },
-          "description": null
+          "description": {
+            "en": "Darryl spins around and sprays a barrage of shots in all directions. Each shot deals some damage and recharges his Super by a percentage if it hits enemies!",
+            "ko": "회전하며 사방으로 탄환을 뿌립니다. 각 탄환은 일정량의 피해를 주고, 적을 맞히면 특수 공격이 일정 비율 충전됩니다!"
+          }
         },
         {
           "id": 23000313,
@@ -2819,7 +2996,10 @@
             "en": "Tar Barrel",
             "ko": "타르 통"
           },
-          "description": null
+          "description": {
+            "en": "Darryl creates a slowing area around himself for a short time.",
+            "ko": "일정 시간 동안 자신 주위에 감속 지대를 만듭니다."
+          }
         }
       ],
       "gears": [
@@ -2935,7 +3115,10 @@
             "en": "Heavy Coffers",
             "ko": "두둑한 금고"
           },
-          "description": null
+          "description": {
+            "en": "Penny's gold pouches burst with a percentage wider cone after each hit.",
+            "ko": "금화 주머니가 명중할 때마다 금화가 일정 비율 더 넓게 원뿔 모양으로 흩어집니다."
+          }
         },
         {
           "id": 23000142,
@@ -2943,7 +3126,10 @@
             "en": "Master Blaster",
             "ko": "블래스터 마스터"
           },
-          "description": null
+          "description": {
+            "en": "Penny's cannon deals some damage and knocks back nearby enemies on landing.",
+            "ko": "대포 배치 시 근처의 적을 밀어내고 일정량의 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -3095,7 +3281,10 @@
             "en": "Power Grab",
             "ko": "파워 그랩"
           },
-          "description": null
+          "description": {
+            "en": "Frank steals the power of a Brawler he defeats, increasing his damage by a percentage for a short time!",
+            "ko": "자신이 처치한 브롤러의 파워를 흡수해 일정 시간 동안 피해량이 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000153,
@@ -3103,7 +3292,10 @@
             "en": "Sponge",
             "ko": "스펀지"
           },
-          "description": null
+          "description": {
+            "en": "Frank gains +some health.",
+            "ko": "HP가 +일정량만큼 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -3113,7 +3305,10 @@
             "en": "Active Noise Canceling",
             "ko": "노이즈 캔슬링 헤드폰"
           },
-          "description": null
+          "description": {
+            "en": "Fires a soundwave in a target direction, dealing 600 damage to Brawlers. Frank becomes immune to Crowd Control for 3.5 secs.",
+            "ko": "목표물이 있는 방향으로 음파를 발사해 브롤러에게 600의 피해를 줍니다. 프랭크가 3.5초 동안 군중 제어에 면역 상태가 됩니다."
+          }
         },
         {
           "id": 23000351,
@@ -3121,7 +3316,10 @@
             "en": "Irresistible Attraction",
             "ko": "거부할 수 없는 이끌림"
           },
-          "description": null
+          "description": {
+            "en": "Frank aims a long-range attack that pulls enemies towards him. Consumes ammo. Does 1240 damage.",
+            "ko": "원거리 공격으로 적을 자신에게 끌어당깁니다. 탄환이 소모되며, 1240의 피해를 줍니다."
+          }
         }
       ],
       "gears": [
@@ -3237,7 +3435,10 @@
             "en": "Magic Puffs",
             "ko": "매직 오라"
           },
-          "description": null
+          "description": {
+            "en": "Gene heals all friendly Brawlers around him for some health per second.",
+            "ko": "주변에 있는 아군 브롤러의 HP가 초당 일정량만큼 회복됩니다."
+          }
         },
         {
           "id": 23000159,
@@ -3245,7 +3446,10 @@
             "en": "Spirit Slap",
             "ko": "영혼 따귀"
           },
-          "description": null
+          "description": {
+            "en": "Gene's Magic Hand also damages enemies, dealing some damage on hit.",
+            "ko": "진의 매직 핸드가 적에게 타격당 일정량 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -3255,7 +3459,10 @@
             "en": "Lamp Blowout",
             "ko": "요술 램프 폭발"
           },
-          "description": null
+          "description": {
+            "en": "All enemies close to Gene are instantly pushed back. If at least one enemy Brawler is within range, Gene will also restore a percentage of his max health.",
+            "ko": "주변에 있는 모든 적을 즉시 뒤로 밀쳐냅니다. 적 브롤러가 한 명이라도 범위 내에 있으면 최대 HP의 일정 비율을 회복합니다."
+          }
         },
         {
           "id": 23000352,
@@ -3263,7 +3470,10 @@
             "en": "Vengeful Spirits",
             "ko": "복수의 정령"
           },
-          "description": null
+          "description": {
+            "en": "Gene shoots a homing missile at all visible opponents within a large area, dealing up to some damage based on distance.",
+            "ko": "넓은 범위 내에 보이는 모든 상대에게 유도탄을 발사해 거리에 따라 최대 일정량 피해를 줍니다."
+          }
         }
       ],
       "gears": [
@@ -3391,7 +3601,10 @@
             "en": "Well Oiled",
             "ko": "셀프 수리"
           },
-          "description": null
+          "description": {
+            "en": "When Tick takes no damage and doesn't attack, he starts recovering health a short time sooner than normal.",
+            "ko": "피해를 받지 않고 공격하지 않으면 평소보다 일정 시간 빨리 HP 회복을 시작합니다."
+          }
         },
         {
           "id": 23000161,
@@ -3399,7 +3612,10 @@
             "en": "Automa-Tick Reload",
             "ko": "오토매틱 재장전"
           },
-          "description": null
+          "description": {
+            "en": "Tick's reload time is a percentage shorter.",
+            "ko": "재장전 시간이 일정 비율 빨라집니다."
+          }
         }
       ],
       "gadgets": [
@@ -3409,7 +3625,10 @@
             "en": "Mine Mania",
             "ko": "지뢰 마니아"
           },
-          "description": null
+          "description": {
+            "en": "Tick's next attack fires some mines.",
+            "ko": "다음 공격이 지뢰 일정 수를 발사합니다."
+          }
         },
         {
           "id": 23000355,
@@ -3417,7 +3636,10 @@
             "en": "Last Hurrah",
             "ko": "최후의 저항"
           },
-          "description": null
+          "description": {
+            "en": "Tick gains a percentage shield for a short time. After that, it bursts out for some damage.",
+            "ko": "일정 비율 피해 감소 보호막을 일정 시간 동안 생성합니다. 시간이 지나면 폭발해 주위에 일정량 피해를 줍니다."
+          }
         }
       ],
       "gears": [
@@ -3545,7 +3767,10 @@
             "en": "Smoke Trails",
             "ko": "안개 은신술"
           },
-          "description": null
+          "description": {
+            "en": "When Leon is not visible, he gains a 30% movement speed for the duration of his invisibility.",
+            "ko": "레온이 은신 상태일 때 이동 속도가 30% 증가합니다."
+          }
         },
         {
           "id": 23000141,
@@ -3553,7 +3778,10 @@
             "en": "Invisiheal",
             "ko": "은신 치유"
           },
-          "description": null
+          "description": {
+            "en": "Leon recovers 3300 health per second while his Super is active.",
+            "ko": "특수 공격이 활성화되면 초당 3300 HP를 회복합니다."
+          }
         }
       ],
       "gadgets": [
@@ -3705,7 +3933,10 @@
             "en": "Plant Life",
             "ko": "자연이 좋아"
           },
-          "description": null
+          "description": {
+            "en": "Rosa recovers some health per second when inside a bush.",
+            "ko": "덤불에 숨으면 초당 일정량의 HP를 회복합니다."
+          }
         },
         {
           "id": 23000147,
@@ -3713,7 +3944,10 @@
             "en": "Thorny Gloves",
             "ko": "가시 글러브"
           },
-          "description": null
+          "description": {
+            "en": "Rosa's punches gain +some damage during her Super.",
+            "ko": "특수 공격이 활성화되면 펀치 피해량이 +일정량 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -3734,7 +3968,10 @@
             "en": "Unfriendly Bushes",
             "ko": "가시 덤불"
           },
-          "description": null
+          "description": {
+            "en": "All opponents hiding in bushes take 500 damage and get slowed down for 3 seconds.",
+            "ko": "덤불에 숨어있는 모든 적이 500의 피해를 입고 3초 동안 느려집니다."
+          }
         }
       ],
       "gears": [
@@ -3850,7 +4087,10 @@
             "en": "Power Throw",
             "ko": "스피디 스로우"
           },
-          "description": null
+          "description": {
+            "en": "Carl throws his Pickaxe with a percentage more speed, allowing it to travel and return faster.",
+            "ko": "곡괭이를 일정 비율 더 빠르게 던져, 곡괭이가 날아가고 되돌아오는 속도가 빨라집니다."
+          }
         },
         {
           "id": 23000145,
@@ -3858,7 +4098,10 @@
             "en": "Protective Pirouette",
             "ko": "보호 피루엣"
           },
-          "description": null
+          "description": {
+            "en": "During Carl's Super, all damage he receives is reduced by a percentage.",
+            "ko": "특수 공격을 사용하는 동안 입는 피해량이 일정 비율 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -3868,7 +4111,10 @@
             "en": "Heat Ejector",
             "ko": "가열 장치"
           },
-          "description": null
+          "description": {
+            "en": "The next pickaxe Carl throws will drop a trail of hot rocks behind it! Opponents that touch them are set on fire and receive some damage per second.",
+            "ko": "다음으로 던진 곡괭이가 지나간 길 위에 뜨거운 바위 흔적을 남깁니다! 바위 흔적에 닿은 적은 불이 붙어 초당 일정량의 피해를 입습니다."
+          }
         },
         {
           "id": 23000317,
@@ -3995,7 +4241,10 @@
             "en": "Home Run",
             "ko": "홈런"
           },
-          "description": null
+          "description": {
+            "en": "Bibi's movement speed is increased by 12% when her Home Run bar is fully charged.",
+            "ko": "홈런 게이지가 가득 차면 비비의 이동 속도가 12% 증가합니다."
+          }
         },
         {
           "id": 23000146,
@@ -4003,7 +4252,10 @@
             "en": "Batting Stance",
             "ko": "타격 자세"
           },
-          "description": null
+          "description": {
+            "en": "When Bibi's Home run bar is fully charged, she shields herself from all damage by a percentage.",
+            "ko": "홈런 게이지가 가득 차면, 받는 모든 피해가 일정 비율 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -4024,7 +4276,10 @@
             "en": "Extra Sticky",
             "ko": "끈끈이 볼"
           },
-          "description": null
+          "description": {
+            "en": "Bibi throws bubble gum that slows all enemies in it by a percentage",
+            "ko": "비비가 풍선껌을 던져 풍선껌 속 모든 적의 이동 속도를 일정 비율 감소시킵니다."
+          }
         }
       ],
       "gears": [
@@ -4140,7 +4395,10 @@
             "en": "Boosted Booster",
             "ko": "부스터 증폭"
           },
-          "description": null
+          "description": {
+            "en": "Increases the Damage Booster's range by a percentage and boosts damage by an additional a percentage.",
+            "ko": "공격력 부스터의 범위가 일정 비율 증가하고 피해량이 일정 비율 추가로 증가합니다."
+          }
         },
         {
           "id": 23000181,
@@ -4148,7 +4406,10 @@
             "en": "Plugged In",
             "ko": "오버클럭"
           },
-          "description": null
+          "description": {
+            "en": "While near the Damage Booster 8-Bit gains +a percentage Movement Speed.",
+            "ko": "공격력 부스터 근처에 있으면 8비트가 +일정 비율의 이동 속도를 얻습니다."
+          }
         }
       ],
       "gadgets": [
@@ -4169,7 +4430,10 @@
             "en": "Extra Credits",
             "ko": "추가 코인"
           },
-          "description": null
+          "description": {
+            "en": "8-Bit fires some projectiles. Consumes ammo.",
+            "ko": "8비트가 일정 수의 투사체를 발사합니다. 탄환이 소모됩니다."
+          }
         }
       ],
       "gears": [
@@ -4297,7 +4561,10 @@
             "en": "Rude Sands",
             "ko": "거친 모래"
           },
-          "description": null
+          "description": {
+            "en": "Sandstorm now also damages enemies for some damage per second.",
+            "ko": "모래 폭풍이 적에게 초당 일정량 피해를 줍니다."
+          }
         },
         {
           "id": 23000187,
@@ -4305,7 +4572,10 @@
             "en": "Healing Winds",
             "ko": "치유의 바람"
           },
-          "description": null
+          "description": {
+            "en": "Sandstorm now also heals friendly Brawlers for some health per second.",
+            "ko": "모래 폭풍이 아군의 HP를 초당 일정량만큼 회복합니다."
+          }
         }
       ],
       "gadgets": [
@@ -4315,7 +4585,10 @@
             "en": "Sleep Stimulator",
             "ko": "수면 유도제"
           },
-          "description": null
+          "description": {
+            "en": "Sandy falls asleep for a short time and his health is fully restored.",
+            "ko": "일정 시간 동안 잠들어 HP를 전부 회복합니다."
+          }
         },
         {
           "id": 23000405,
@@ -4323,7 +4596,10 @@
             "en": "Sweet Dreams",
             "ko": "달콤한 꿈"
           },
-          "description": null
+          "description": {
+            "en": "Sandy's next attack lulls opponents to sleep for a short time. They will, however, wake up from any damage.",
+            "ko": "다음 공격은 상대를 일정 시간 동안 잠재웁니다. 하지만 수면 상태의 상대는 피해를 입으면 깨어납니다."
+          }
         }
       ],
       "gears": [
@@ -4462,7 +4738,10 @@
             "en": "Honeycomb",
             "ko": "벌집"
           },
-          "description": null
+          "description": {
+            "en": "Bea receives a percentage shield while Big Sting is Supercharged.",
+            "ko": "거대 벌침이 충전 상태일 때 일정 비율 피해 감소 보호막이 생성됩니다."
+          }
         }
       ],
       "gadgets": [
@@ -4483,7 +4762,10 @@
             "en": "Rattled Hive",
             "ko": "성난 벌집"
           },
-          "description": null
+          "description": {
+            "en": "Bea unleashes some angry bees that circle away from her, dealing more damage the further they go (up to some damage).",
+            "ko": "원형을 그리며 멀어지는 성난 벌 일정 수를 불러냅니다. 벌이 멀리 이동할수록 더 큰 피해를 줍니다. (최대 일정량 피해)"
+          }
         }
       ],
       "gears": [
@@ -4599,7 +4881,10 @@
             "en": "Bad Karma",
             "ko": "나쁜 냄새"
           },
-          "description": null
+          "description": {
+            "en": "Enemies that stay within the cloud of Emz's toxic hair spray suffer increasing damage, a percentage per hit.",
+            "ko": "독성 헤어스프레이 구름 안에 들어온 적이 받는 피해가 공격당 일정 비율씩 증가합니다."
+          }
         },
         {
           "id": 23000199,
@@ -4607,7 +4892,10 @@
             "en": "Hype",
             "ko": "후원 감사"
           },
-          "description": null
+          "description": {
+            "en": "Emz recovers some health per second for each enemy Brawler inside her Super's area of effect.",
+            "ko": "특수 공격 효과 범위 안의 적 브롤러 수만큼 초당 일정량의 HP를 회복합니다."
+          }
         }
       ],
       "gadgets": [
@@ -4617,7 +4905,10 @@
             "en": "Friendzoner",
             "ko": "지독한 향수"
           },
-          "description": null
+          "description": {
+            "en": "Emz fires off some hairspray that pushes enemies back. Deals 250 damage.",
+            "ko": "헤어스프레이를 뿌려 적을 밀어내고 250의 피해를 줍니다."
+          }
         },
         {
           "id": 23000459,
@@ -4625,7 +4916,10 @@
             "en": "Acid Spray",
             "ko": "산성 스프레이"
           },
-          "description": null
+          "description": {
+            "en": "Emz squirts out hairspray that goes through walls! Deals 560 damage.",
+            "ko": "장벽을 통과하는 헤어스프레이를 뿌립니다! 560의 피해를 줍니다."
+          }
         }
       ],
       "gears": [
@@ -4741,7 +5035,10 @@
             "en": "Handle With Care",
             "ko": "취급 주의"
           },
-          "description": null
+          "description": {
+            "en": "Periodically, the explosion damage of Mr. P's next overstuffed suitcase is increased by a percentage.",
+            "ko": "일정 시간마다 내용물이 가득 찬 여행 가방의 폭발 피해량이 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000205,
@@ -4749,7 +5046,10 @@
             "en": "Revolving Door",
             "ko": "회전문"
           },
-          "description": null
+          "description": {
+            "en": "All robo-porters from the home base now have a percentage more health and a percentage higher damage.",
+            "ko": "거점에서 생성된 모든 로봇 짐꾼의 HP가 일정 비율, 피해량이 일정 비율 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -4759,7 +5059,10 @@
             "en": "Service Bell",
             "ko": "서비스 벨"
           },
-          "description": null
+          "description": {
+            "en": "Mr. P buffs his current porter by increasing its damage by some and health by some.",
+            "ko": "현재 부른 짐꾼을 강화해 피해량을 일정량, HP를 일정량만큼 증가시킵니다."
+          }
         },
         {
           "id": 23000349,
@@ -4898,7 +5201,10 @@
             "en": "Super Charged",
             "ko": "슈퍼 차지"
           },
-          "description": null
+          "description": {
+            "en": "Hitting an enemy with Max's Main Attack extends the duration of her Super by 0.3 sec.",
+            "ko": "일반 공격이 적에게 명중하면 특수 공격 지속 시간이 0.3초 늘어납니다."
+          }
         },
         {
           "id": 23000211,
@@ -4930,7 +5236,10 @@
             "en": "Sneaky Sneakers",
             "ko": "공간 이동 운동화"
           },
-          "description": null
+          "description": {
+            "en": "Max throws a lightning bolt. If she reactivates the Gadget, or after a short time, she blinks back to the lightning bolt and heals any damage taken since.",
+            "ko": "맥스가 전기 표식을 던집니다. 가젯을 재활성화하거나 일정 시간이 지나면 전기 표식 위치로 순간이동하며, 그동안 받은 피해를 모두 회복합니다."
+          }
         }
       ],
       "gears": [
@@ -5046,7 +5355,10 @@
             "en": "Counter Crush",
             "ko": "친절한 반격"
           },
-          "description": null
+          "description": {
+            "en": "When receiving damage, Jacky returns the favor by converting a percentage of the damage into a Groundbreaker counterattack.",
+            "ko": "호의를 담아 받은 피해의 일정 비율을 휴대용 드릴 공격으로 되돌려줍니다."
+          }
         },
         {
           "id": 23000223,
@@ -5054,7 +5366,10 @@
             "en": "Hardy Hard Hat",
             "ko": "튼튼한 안전모"
           },
-          "description": null
+          "description": {
+            "en": "Jacky's Hard Hat protects her by reducing any damage she takes by a percentage.",
+            "ko": "받는 피해가 일정 비율 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -5064,7 +5379,10 @@
             "en": "Pneumatic Booster",
             "ko": "공기압 부스터"
           },
-          "description": null
+          "description": {
+            "en": "Jacky gets a burst of energy and moves 25% faster for 4 seconds.",
+            "ko": "폭발적인 힘이 솟아올라 이동 속도가 4초 동안 25% 증가합니다."
+          }
         },
         {
           "id": 23000486,
@@ -5203,7 +5521,10 @@
             "en": "Blustery Blow",
             "ko": "눈사태 주의"
           },
-          "description": null
+          "description": {
+            "en": "Gale's Super now stuns enemies for a short time if they are pushed against obstacles.",
+            "ko": "특수 공격에 밀려 장애물에 부딪힌 적들이 일정 시간 동안 기절합니다."
+          }
         },
         {
           "id": 23000229,
@@ -5211,7 +5532,10 @@
             "en": "Freezing Snow",
             "ko": "눈이 꽁꽁꽁"
           },
-          "description": null
+          "description": {
+            "en": "Gale's snow balls now also slow down opponents for 0.5 seconds.",
+            "ko": "눈덩이에 맞은 적이 0.5초 동안 느려집니다."
+          }
         }
       ],
       "gadgets": [
@@ -5351,7 +5675,10 @@
             "en": "Autofocus",
             "ko": "자동 집중"
           },
-          "description": null
+          "description": {
+            "en": "Peep deals up to some extra damage based on his travel distance.",
+            "ko": "피프가 이동 거리에 따라 최대 일정량의 추가 피해를 줍니다."
+          }
         },
         {
           "id": 23000235,
@@ -5359,7 +5686,10 @@
             "en": "Tempered Steel",
             "ko": "단련된 강철"
           },
-          "description": null
+          "description": {
+            "en": "Nani takes a percentage less damage while her Super is active.",
+            "ko": "특수 공격이 활성화 중일 때 피해를 일정 비율 적게 받습니다."
+          }
         }
       ],
       "gadgets": [
@@ -5380,7 +5710,10 @@
             "en": "Return To Sender",
             "ko": "반송"
           },
-          "description": null
+          "description": {
+            "en": "For the next a short time, the first time Nani takes damage from an enemy, a percentage of the damage is returned to the enemy.",
+            "ko": "다음 일정 시간 동안 처음으로 적에게 공격을 받으면 받는 피해의 일정 비율을 적에게 되돌려줍니다."
+          }
         }
       ],
       "gears": [
@@ -5508,7 +5841,10 @@
             "en": "Overgrowth",
             "ko": "과성장"
           },
-          "description": null
+          "description": {
+            "en": "Periodically, the next Seed Bomb will explode with a larger explosion radius.",
+            "ko": "일정 시간마다 다음 씨앗 폭탄의 폭발 반경이 커집니다."
+          }
         },
         {
           "id": 23000241,
@@ -5529,7 +5865,10 @@
             "en": "Garden Mulcher",
             "ko": "잔디깎이"
           },
-          "description": null
+          "description": {
+            "en": "Sprout consumes a bush to restore some health.",
+            "ko": "덤불을 소모해 일정량의 HP를 회복합니다."
+          }
         },
         {
           "id": 23000315,
@@ -5692,7 +6031,10 @@
             "en": "Power Surge",
             "ko": "파워 서지"
           },
-          "description": null
+          "description": {
+            "en": "Surge's power surges! Increase Super charge rate by 30 % for 5 sec.",
+            "ko": "서지가 더욱 강력해집니다! 특수 공격 충전율이 5초 동안 30% 증가합니다."
+          }
         },
         {
           "id": 23000485,
@@ -5700,7 +6042,10 @@
             "en": "Power Shield",
             "ko": "파워 실드"
           },
-          "description": null
+          "description": {
+            "en": "Within the next 2 seconds, Surge consumes 50 % of the damage of the next incoming hit and uses the energy to reload 2 ammo.",
+            "ko": "다음 2초 동안 서지가 받는 공격 1회의 피해량을 50% 줄이고 그 에너지를 이용해 2개의 탄환을 재장전합니다."
+          }
         }
       ],
       "gears": [
@@ -5827,7 +6172,10 @@
             "en": "Mass Tax",
             "ko": "보호세"
           },
-          "description": null
+          "description": {
+            "en": "Colette takes 60% less damage during her Super and gains 30% shield for 3 sec if she hits a Brawler.",
+            "ko": "콜레트가 특수 공격 중 입는 피해량이 60% 감소하며, 브롤러에게 공격이 명중할 경우 3초 동안 30%의 보호막을 얻습니다."
+          }
         }
       ],
       "gadgets": [
@@ -5837,7 +6185,10 @@
             "en": "Na-Ah",
             "ko": "부분 청구"
           },
-          "description": null
+          "description": {
+            "en": "Colette fires a projectile that charms a Brawler for a short time. Uses ammo.",
+            "ko": "브롤러를 일정 시간 동안 매혹시키는 투사체를 발사합니다. 탄환이 소모됩니다."
+          }
         },
         {
           "id": 23000457,
@@ -5845,7 +6196,10 @@
             "en": "Gotcha",
             "ko": "딱 걸렸어!"
           },
-          "description": null
+          "description": {
+            "en": "Colette fires a projectile that heals for 80% of damage dealt. Uses ammo and can be fired 3 times before cooldown.",
+            "ko": "콜레트가 입힌 피해량의 80%만큼 HP를 회복시키는 투사체를 발사합니다. 탄환이 소모되며, 재사용 대기 시간 전까지 3회 발사할 수 있습니다."
+          }
         }
       ],
       "gears": [
@@ -5972,7 +6326,10 @@
             "en": "Scorchin Siphon",
             "ko": "뜨거운 연료"
           },
-          "description": null
+          "description": {
+            "en": "While being near a puddle of fire fluid, Amber uses it to reload her firebreathing a percentage faster.",
+            "ko": "연료 웅덩이 주위에 있으면 일반 공격 재장전 속도가 일정 비율 빨라집니다."
+          }
         }
       ],
       "gadgets": [
@@ -5982,7 +6339,10 @@
             "en": "Fire Starters",
             "ko": "불쏘시개"
           },
-          "description": null
+          "description": {
+            "en": "Amber runs 15% faster for 3 seconds while spilling her fire fluid, which she can then ignite.",
+            "ko": "3초 동안 15%의 연료를 뿌리며 빠르게 달립니다. 땅에 뿌린 연료는 나중에 점화할 수 있습니다."
+          }
         },
         {
           "id": 23000488,
@@ -5990,7 +6350,10 @@
             "en": "Dancing Flames",
             "ko": "춤추는 불꽃"
           },
-          "description": null
+          "description": {
+            "en": "Amber creates some orbiting flames around her for a short time, dealing some damage on hit.",
+            "ko": "자기 주변을 빙빙 도는 불꽃 일정 수를 만들어 일정 시간 동안 주위의 적에게 타격당일정량의 피해를 입힙니다."
+          }
         }
       ],
       "gears": [
@@ -6130,7 +6493,10 @@
             "en": "Supercool",
             "ko": "빙결 지대"
           },
-          "description": null
+          "description": {
+            "en": "Opponents standing on Lou's Super area get frozen a percentage faster.",
+            "ko": "루의 특수 공격 지역에 서 있는 적이 일정 비율 더 빨리 얼어붙습니다."
+          }
         },
         {
           "id": 23000325,
@@ -6138,7 +6504,10 @@
             "en": "Hypothermia",
             "ko": "저체온증"
           },
-          "description": null
+          "description": {
+            "en": "Opponents lose up to a percentage of their damage based on how frozen they are from Lou's attacks.",
+            "ko": "루의 공격으로 얼어붙은 정도에 따라 적이 입히는 피해량이 최대 일정 비율 까지 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -6148,7 +6517,10 @@
             "en": "Ice Block",
             "ko": "얼음 방패"
           },
-          "description": null
+          "description": {
+            "en": "Lou shields himself with ice, becoming invulnerable for a short time.",
+            "ko": "얼음으로 자기 자신을 보호해 일정 시간 동안 무적 상태가 됩니다."
+          }
         },
         {
           "id": 23000400,
@@ -6156,7 +6528,10 @@
             "en": "Cryo Syrup",
             "ko": "냉동 시럽"
           },
-          "description": null
+          "description": {
+            "en": "Instantly adds a percentage freeze meter to opponents inside Lou's Super.",
+            "ko": "자신의 특수 공격 범위 내의 상대에게 즉시 일정 비율의 냉동 효과치를 부여합니다."
+          }
         }
       ],
       "gears": [
@@ -6284,7 +6659,10 @@
             "en": "Malaise",
             "ko": "부작용"
           },
-          "description": null
+          "description": {
+            "en": "Byron's Super will also cause opponents to receive a percentage less healing from any source for a short time.",
+            "ko": "특수 공격이 적이 받는 모든 치유 효과를 일정 시간 동안 일정 비율 감소시킵니다."
+          }
         },
         {
           "id": 23000332,
@@ -6292,7 +6670,10 @@
             "en": "Injection",
             "ko": "관통 주사"
           },
-          "description": null
+          "description": {
+            "en": "Periodically the next basic attack will pierce through targets.",
+            "ko": "일정 시간마다 다음 일반 공격이 적을 관통합니다."
+          }
         }
       ],
       "gadgets": [
@@ -6302,7 +6683,10 @@
             "en": "Shot In The Arm",
             "ko": "활력소"
           },
-          "description": null
+          "description": {
+            "en": "Byron uses one of his shots to heal himself some per second for a short time.",
+            "ko": "자신의 탄환 중 하나를 사용해 일정 시간 동안 초당 일정량만큼 자기 자신을 치유합니다."
+          }
         },
         {
           "id": 23000461,
@@ -6310,7 +6694,10 @@
             "en": "Booster Shots",
             "ko": "부스터 샷"
           },
-          "description": null
+          "description": {
+            "en": "Byron's next attack shoots some darts instead of one, each dealing a percentage less damage and a percentage less healing.",
+            "ko": "다음 일반 공격에서 원래의 1개 대신 일정 수의 다트가 발사됩니다. 단, 각 다트의 피해량은 일정 비율, 치유량은 일정 비율 감소합니다."
+          }
         }
       ],
       "gears": [
@@ -6426,7 +6813,10 @@
             "en": "Hard Landing",
             "ko": "하드 랜딩"
           },
-          "description": null
+          "description": {
+            "en": "Edgar's Super and Let's Fly Gadget will also deal 138 damage to nearby enemies upon landing, or 276 damage on a direct hit.",
+            "ko": "에드거의 특수 공격 및 플라이 하이 가젯이 착지 시 주변 적에게 138의 피해를 입히거나, 명중 시에는 276의 피해를 입힙니다."
+          }
         },
         {
           "id": 23000339,
@@ -6458,7 +6848,10 @@
             "en": "Hardcore",
             "ko": "하드코어"
           },
-          "description": null
+          "description": {
+            "en": "Edgar gets a shield that protects him from the next 3700 damage. The shield gets weaker over time.",
+            "ko": "다음 3700 피해를 흡수하는 보호막을 생성합니다. 시간이 지날수록 보호막의 피해 흡수량이 감소합니다."
+          }
         }
       ],
       "gears": [
@@ -6586,7 +6979,10 @@
             "en": "Air Superiority",
             "ko": "제공권"
           },
-          "description": null
+          "description": {
+            "en": "Supply Drop now includes a bomb that adds a percentage more damage to the drop and also allows it to destroy walls.",
+            "ko": "투하하는 보급품에 폭탄이 설치되어 일정 비율의 추가 피해를 주고 장벽을 파괴할 수 있게 됩니다."
+          }
         },
         {
           "id": 23000346,
@@ -6594,7 +6990,10 @@
             "en": "Field Promotion",
             "ko": "전장 진급"
           },
-          "description": null
+          "description": {
+            "en": "Friendly Brawlers have their maximum health increased by some every second that they are in range of this ability while it's active.",
+            "ko": "해당 능력이 활성화된 상태에서 아군 브롤러가 효과 범위 안에 머물면, 매초 최대 HP가 일정량만큼 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -6604,7 +7003,10 @@
             "en": "Take Cover",
             "ko": "엄폐물"
           },
-          "description": null
+          "description": {
+            "en": "Ruffs throws down some sandbags as cover. Each one has a percentage of Ruffs' max health.",
+            "ko": "엄폐할 수 있는 모래 자루 일정 수를 떨어뜨립니다. 각 모래 자루는 러프스의 최대 HP의 일정 비율을 가집니다."
+          }
         },
         {
           "id": 23000402,
@@ -6612,7 +7014,10 @@
             "en": "Air Support",
             "ko": "공중 지원"
           },
-          "description": null
+          "description": {
+            "en": "Ruffs calls a barrage around the nearest opponent, dealing some damage with each hit.",
+            "ko": "가장 가까운 상대에게 폭격을 유도해, 폭격당 일정량 피해를 줍니다."
+          }
         }
       ],
       "gears": [
@@ -6728,7 +7133,10 @@
             "en": "Zero Drag",
             "ko": "제로 드래그"
           },
-          "description": null
+          "description": {
+            "en": "Stu's Nitro Boost Super dash distance increases by a percentage.",
+            "ko": "나이트로 부스터의 돌진 거리가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000363,
@@ -6736,7 +7144,10 @@
             "en": "Gaso-Heal",
             "ko": "가소 힐"
           },
-          "description": null
+          "description": {
+            "en": "Using his Nitro Boost Super restores some of Stu's health.",
+            "ko": "나이트로 부스터를 사용하면 자기 자신의 HP를 일정량만큼 회복합니다."
+          }
         }
       ],
       "gadgets": [
@@ -6757,7 +7168,10 @@
             "en": "Breakthrough",
             "ko": "파괴적 돌진"
           },
-          "description": null
+          "description": {
+            "en": "Stu's next Super can bash through obstacles, making debris fly forward. Each piece of debris deals some damage to any opponent it hits.",
+            "ko": "스튜의 다음 특수 공격이 장애물을 파괴하며 잔해가 전방으로 날아갑니다. 잔해마다 적중한 상대에게 일정량 피해를 줍니다."
+          }
         }
       ],
       "gears": [
@@ -6873,7 +7287,10 @@
             "en": "Positive Feedback",
             "ko": "긍정적인 피드백"
           },
-          "description": null
+          "description": {
+            "en": "Belle gains a percentage shield whenever her Electro-Bolts hit a target.",
+            "ko": "전기 볼트가 명중할 때마다 벨이 일정 비율의 피해 감소 보호막을 얻습니다."
+          }
         },
         {
           "id": 23000370,
@@ -6881,7 +7298,10 @@
             "en": "Grounded",
             "ko": "일시 고장"
           },
-          "description": null
+          "description": {
+            "en": "Getting marked by Belle's Super prevents the opponent from reloading their attack for a short time.",
+            "ko": "특수 공격 표식이 남겨진 상대는 일정 시간 동안 공격 재장전을 할 수 없습니다."
+          }
         }
       ],
       "gadgets": [
@@ -6891,7 +7311,10 @@
             "en": "Nest Egg",
             "ko": "예비용 함정"
           },
-          "description": null
+          "description": {
+            "en": "Belle places a trap on the ground that will explode when triggered by an opponent. The trap deals 1040 damage, and slows down anyone within its blast radius for 3 seconds.",
+            "ko": "적이 건드리면 폭발하는 함정을 바닥에 설치합니다. 함정은 1040만큼 피해를 주고, 폭발 범위에 휩쓸리면 3초 동안 움직임이 느려집니다."
+          }
         },
         {
           "id": 23000463,
@@ -7030,7 +7453,10 @@
             "en": "Chain Reaction",
             "ko": "연쇄 반응"
           },
-          "description": null
+          "description": {
+            "en": "Each opponent within the area of a Sticky Blomb's explosion increases the Blomb's damage by a percentage.",
+            "ko": "폭발 범위 안에 있는 적의 수만큼 끈끈이 젤 폭탄의 피해량이 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000377,
@@ -7038,7 +7464,10 @@
             "en": "Super Sticky",
             "ko": "초강력 끈끈이"
           },
-          "description": null
+          "description": {
+            "en": "Secondary Sticky Blomb explosions from Squeak's Super also slow down opponents for a short time.",
+            "ko": "빅 젤 폭탄에서 분리된 두 번째 끈끈이 젤 폭탄에 맞은 적이 일정 시간 동안 느려집니다."
+          }
         }
       ],
       "gadgets": [
@@ -7048,7 +7477,10 @@
             "en": "Windup",
             "ko": "와인드업"
           },
-          "description": null
+          "description": {
+            "en": "Squeak's next Sticky Blomb deals a percentage more damage and has a percentage longer range.",
+            "ko": "다음 끈끈이 젤 폭탄이 일정 비율 더 큰 피해를 주며 사정거리가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000462,
@@ -7056,7 +7488,10 @@
             "en": "Residue",
             "ko": "불순물"
           },
-          "description": null
+          "description": {
+            "en": "Squeak's next Sticky Blomb leaves a residue area behind after exploding, slowing down enemies and giving allies sight into bushes for a short time.",
+            "ko": "다음에 폭발하는 끈끈이 젤 폭탄이 불순물 영역을 남겨 적의 속도를 늦추고 아군에게 일정 시간 동안 덤불 속을 볼 수 있게 해줍니다."
+          }
         }
       ],
       "gears": [
@@ -7172,7 +7607,10 @@
             "en": "Foot Patrol",
             "ko": "도보 순찰"
           },
-          "description": null
+          "description": {
+            "en": "When Grom's Super is fully charged, he gains +15% faster movement speed!",
+            "ko": "그롬의 특수 공격이 완전히 충전되면 이동 속도가 +15% 빨라집니다!"
+          }
         },
         {
           "id": 23000384,
@@ -7180,7 +7618,10 @@
             "en": "X-Factor",
             "ko": "X-팩터"
           },
-          "description": null
+          "description": {
+            "en": "The split from Grom's main attack deals up to +a percentage extra damage at max distance.",
+            "ko": "그롬의 일반 공격에서 갈라져 나온 파편이 최대 거리에서 +일정 비율의 추가 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -7201,7 +7642,10 @@
             "en": "Radio Check",
             "ko": "라디오 체크"
           },
-          "description": null
+          "description": {
+            "en": "Grom's next attack throws some Buds in rapid succession.",
+            "ko": "다음 일반 공격에서 일정 수의 무전기 버드를 연속적으로 빠르게 던집니다."
+          }
         }
       ],
       "gears": [
@@ -7317,7 +7761,10 @@
             "en": "Tougher Torpedo",
             "ko": "더 강한 튜브"
           },
-          "description": null
+          "description": {
+            "en": "The minimum duration of Buzz's Super stun is increased by a short time.",
+            "ko": "특수 공격의 최소 기절 효과 지속 시간이 일정 시간 증가합니다."
+          }
         },
         {
           "id": 23000391,
@@ -7325,7 +7772,10 @@
             "en": "Eyes Sharp",
             "ko": "날카로운 눈"
           },
-          "description": null
+          "description": {
+            "en": "Buzz's Super charging area is increased by a percentage.",
+            "ko": "특수 공격이 충전되는 구역이 일정 비율 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -7346,7 +7796,10 @@
             "en": "X-Ray-Shades",
             "ko": "엑스레이 고글"
           },
-          "description": null
+          "description": {
+            "en": "Buzz can see into all bushes in his Super charging area for a short time.",
+            "ko": "일정 시간 동안 특수 공격이 충전되는 영역의 모든 덤불 속을 볼 수 있습니다."
+          }
         }
       ],
       "gears": [
@@ -7486,7 +7939,10 @@
             "en": "Piggy Bank",
             "ko": "돼지 저금통"
           },
-          "description": null
+          "description": {
+            "en": "Griff throws a firecracker-filled piggy bank that explodes after a short delay, destroying obstacles and dealing 800 damage to opponents within range.",
+            "ko": "짧은 시간 내에 폭발하는 폭죽으로 가득 찬 돼지 저금통을 던집니다. 폭발 시 주변 장애물을 파괴하고 범위 내의 적에게 800의 피해를 입힙니다."
+          }
         },
         {
           "id": 23000487,
@@ -7494,7 +7950,10 @@
             "en": "Coin Shower",
             "ko": "코인 샤워"
           },
-          "description": null
+          "description": {
+            "en": "Griff throws a shower of coins at target area, dealing 300 damage per sec to opponents inside.",
+            "ko": "목표 범위에 코인 샤워를 쏟아부어 범위 내의 적에게 초당 300의 피해를 줍니다."
+          }
         }
       ],
       "gears": [
@@ -7622,7 +8081,10 @@
             "en": "First Bash",
             "ko": "뜨거운 분노"
           },
-          "description": null
+          "description": {
+            "en": "When hitting an opponent with his attack charges full, Ash gets even more angry. His Rage goes up by a percentage.",
+            "ko": "공격이 완전히 충전된 상태에서 상대를 명중시키면 애쉬는 더욱 분노합니다. 분노는 최대 일정 비율 까지 증가합니다."
+          }
         },
         {
           "id": 23000415,
@@ -7630,7 +8092,10 @@
             "en": "Mad As Heck",
             "ko": "분노 폭발"
           },
-          "description": null
+          "description": {
+            "en": "Ash progressively gains up to a percentage faster reload speed, equal to how enraged he's become.",
+            "ko": "분노한 정도에 따라 재장전 속도가 최대 일정 비율 까지 빨라집니다."
+          }
         }
       ],
       "gadgets": [
@@ -7640,7 +8105,10 @@
             "en": "Chill Pill",
             "ko": "진정제"
           },
-          "description": null
+          "description": {
+            "en": "Though furious, Ash has to collect himself. A full Rage meter will recover some health when this Gadget is popped - less Rage, less recovery.",
+            "ko": "화가 났더라도 정신을 똑바로 차려야죠! 분노 게이지가 가득 차면, HP가 일정량만큼 회복됩니다. 분노 게이지가 낮으면 회복량도 적어집니다."
+          }
         },
         {
           "id": 23000465,
@@ -7648,7 +8116,10 @@
             "en": "Rotten Banana",
             "ko": "썩은 바나나"
           },
-          "description": null
+          "description": {
+            "en": "Ash loses a percentage health and instantly gains a percentage rage.",
+            "ko": "일정 비율의 HP를 소모해 즉시 일정 비율의 분노 게이지를 얻습니다."
+          }
         }
       ],
       "gears": [
@@ -7776,7 +8247,10 @@
             "en": "Force Field",
             "ko": "힘의 장"
           },
-          "description": null
+          "description": {
+            "en": "Meg is protected by a percentage shield for a short time when her Mecha is destroyed.",
+            "ko": "메카가 파괴되면, 메그는 일정 시간 동안 일정 비율의 피해 감소 보호막을 얻습니다."
+          }
         },
         {
           "id": 23000422,
@@ -7797,7 +8271,10 @@
             "en": "Jolting Volts",
             "ko": "급속 충전"
           },
-          "description": null
+          "description": {
+            "en": "Heal the Mecha by some health per second for a short time. Can only be used in mecha form.",
+            "ko": "메카가 일정 시간 동안 초당 일정량의 HP를 회복합니다. 메카 모드일 때만 사용할 수 있습니다."
+          }
         },
         {
           "id": 23000489,
@@ -7805,7 +8282,10 @@
             "en": "Toolbox",
             "ko": "공구함"
           },
-          "description": null
+          "description": {
+            "en": "Meg ejects from the Mecha, launching it forward, dealing 800 damage on the way. Charges Super after during the next 6 seconds.",
+            "ko": "메그가 메카에서 탈출해 나오며 메카를 앞으로 발사해 경로에 있는 적에게 800의 피해를 입힙니다. 이후 6초 동안 특수 공격을 충전합니다."
+          }
         }
       ],
       "gears": [
@@ -7921,7 +8401,10 @@
             "en": "Improvise",
             "ko": "임기응변"
           },
-          "description": null
+          "description": {
+            "en": "When down to her last round, Lola deals an extra a percentage damage.",
+            "ko": "마지막 남은 탄환으로 공격할 때 일정 비율의 추가 피해를 줍니다."
+          }
         },
         {
           "id": 23000432,
@@ -7929,7 +8412,10 @@
             "en": "Sealed With A Kiss",
             "ko": "사랑을 담아"
           },
-          "description": null
+          "description": {
+            "en": "Projectiles from Lola's Ego will heal allies that are caught in its path by some health.",
+            "ko": "롤라의 분신이 쏜 탄환이 경로 상에 있는 아군을 일정량만큼 회복시킵니다."
+          }
         }
       ],
       "gadgets": [
@@ -7939,7 +8425,10 @@
             "en": "Freeze Frame",
             "ko": "정지 화면"
           },
-          "description": null
+          "description": {
+            "en": "Lola's Ego stops moving to strike a pose! Gaining a percentage shield for a short time.",
+            "ko": "롤라의 분신이 이동을 멈추고, 일정 시간 동안 일정 비율의 피해 감소 보호막을 얻습니다."
+          }
         },
         {
           "id": 23000456,
@@ -7947,7 +8436,10 @@
             "en": "Stunt Double",
             "ko": "대역"
           },
-          "description": null
+          "description": {
+            "en": "Lola and her Ego switch locations, both recovering some health.",
+            "ko": "롤라가 분신과 위치를 바꾸고 둘 다 HP를 일정량만큼 회복합니다."
+          }
         }
       ],
       "gears": [
@@ -8086,7 +8578,10 @@
             "en": "Divine Soles",
             "ko": "신성한 신발"
           },
-          "description": null
+          "description": {
+            "en": "Reduce some damage from incoming hits once periodically. Maximum reduction is a percentage of the incoming damage.",
+            "ko": "받는 피해량이 일정 시간마다 일정량만큼 감소합니다. 최대 감소량은 받는 피해량의 일정 비율 입니다."
+          }
         }
       ],
       "gadgets": [
@@ -8096,7 +8591,10 @@
             "en": "Corn-Fu",
             "ko": "팝콘 폭탄"
           },
-          "description": null
+          "description": {
+            "en": "Fang tosses a handful of corn kernels into the air, making it rain popcorn! Each kernel pop deals some damage.",
+            "ko": "공중에 옥수수 알갱이를 던지면 팝콘이 펑펑 쏟아집니다! 각 옥수수 알갱이는 폭발하며 일정량 피해를 줍니다."
+          }
         },
         {
           "id": 23000464,
@@ -8104,7 +8602,10 @@
             "en": "Roundhouse Kick",
             "ko": "돌려차기"
           },
-          "description": null
+          "description": {
+            "en": "Fang spins and hits all enemies around him, stunning them for a short time.",
+            "ko": "회전하며 주위의 모든 적을 공격합니다. 명중 시에는 적을 일정 시간 동안 기절시킵니다."
+          }
         }
       ],
       "gears": [
@@ -8231,7 +8732,10 @@
             "en": "Happy Surprise",
             "ko": "해피 서프라이즈"
           },
-          "description": null
+          "description": {
+            "en": "Periodically, the next largest egg hitting an enemy of her Egg Shooter will spawn a hatchling.",
+            "ko": "매 일정 시간마다, 에그 슈터가 발사한 알 중에서 적에게 명중하는 가장 큰 알이 해츨링을 낳습니다."
+          }
         }
       ],
       "gadgets": [
@@ -8406,7 +8910,10 @@
             "en": "Vocal Warm Up",
             "ko": "발성연습"
           },
-          "description": null
+          "description": {
+            "en": "Janet's attack focuses a percentage faster.",
+            "ko": "자넷의 일반 공격이 일정 비율 더 빠르게 집중됩니다."
+          }
         }
       ],
       "gadgets": [
@@ -8416,7 +8923,10 @@
             "en": "Drop The Bass",
             "ko": "강력한 베이스"
           },
-          "description": null
+          "description": {
+            "en": "Janet deploys a speaker that deals some damage per second to all enemies in the area until it gets destroyed.",
+            "ko": "스피커를 배치해 파괴될 때까지 주변의 모든 적에게 초당 일정량의 피해를 입힙니다."
+          }
         },
         {
           "id": 23000473,
@@ -8543,7 +9053,10 @@
             "en": "Black Powder",
             "ko": "검은 화약"
           },
-          "description": null
+          "description": {
+            "en": "The range of Bonnie's Star Launcher is increased by a percentage.",
+            "ko": "보니의 스타 런처 사거리가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000479,
@@ -8551,7 +9064,10 @@
             "en": "Wisdom Tooth",
             "ko": "사랑니"
           },
-          "description": null
+          "description": {
+            "en": "Loose Tooth shatters on hit, dealing a percentage extra damage to nearby enemies.",
+            "ko": "흔들리는 치아가 적에게 명중 시 산산조각나 근처의 적에게 일정 비율의 피해를 입힙니다."
+          }
         }
       ],
       "gadgets": [
@@ -8561,7 +9077,10 @@
             "en": "Sugar Rush",
             "ko": "슈가 러시"
           },
-          "description": null
+          "description": {
+            "en": "Clyde's movement and reload speed are increased by 30% for 5 seconds.",
+            "ko": "클라이드의 이동 속도와 재장전 속도가 5초 동안 30% 증가합니다."
+          }
         },
         {
           "id": 23000481,
@@ -8569,7 +9088,10 @@
             "en": "Crash Test",
             "ko": "충돌 테스트"
           },
-          "description": null
+          "description": {
+            "en": "Bonnie dashes forward, knocking back enemies and dealing some damage on hit.",
+            "ko": "보니가 앞으로 돌진하면서 적을 나가떨어지게 하며 타격당 일정량 피해를 입힙니다."
+          }
         }
       ],
       "gears": [
@@ -8697,7 +9219,10 @@
             "en": "Stencil Glue",
             "ko": "스텐실 글루"
           },
-          "description": null
+          "description": {
+            "en": "Cil mightily squeezes the enemy with all his might. Preventing them from attacking for a percentage longer.",
+            "ko": "실이 온 힘을 다해 적에게 일정 비율 더 오래 달라붙어 공격을 저지합니다."
+          }
         },
         {
           "id": 23000496,
@@ -8705,7 +9230,10 @@
             "en": "Ink Refills",
             "ko": "먹물 리필"
           },
-          "description": null
+          "description": {
+            "en": "Otis now shoots a percentage more ink drops.",
+            "ko": "오티스가 먹물 방울을 일정 비율 더 많이 발사합니다."
+          }
         }
       ],
       "gadgets": [
@@ -8726,7 +9254,10 @@
             "en": "Phat Splatter",
             "ko": "먹물 웅덩이"
           },
-          "description": null
+          "description": {
+            "en": "Otis's next attack shoots a giant ink ball that leaves a puddle, dealing some damage over time for a short time.",
+            "ko": "다음 공격에서 거대한 먹물 공을 발사해 웅덩이를 남깁니다. 이 먹물 웅덩이는 일정 시간에 걸쳐 일정량의 피해를 줍니다."
+          }
         }
       ],
       "gears": [
@@ -8854,7 +9385,10 @@
             "en": "Hearty Recovery",
             "ko": "원기회복"
           },
-          "description": null
+          "description": {
+            "en": "Upon recalling his Knuckle Busters, Sam instantly recovers a percentage of his missing health.",
+            "ko": "로켓 너클을 불러올 때 잃은 HP의 일정 비율을 바로 회복합니다."
+          }
         },
         {
           "id": 23000504,
@@ -9005,7 +9539,10 @@
             "en": "Health Bonanza",
             "ko": "회복 뿜뿜"
           },
-          "description": null
+          "description": {
+            "en": "Healing gained from spirits is increased by a percentage.",
+            "ko": "유령에서 얻는 회복치가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000512,
@@ -9013,7 +9550,10 @@
             "en": "Spirit Animal",
             "ko": "든든한 내 친구"
           },
-          "description": null
+          "description": {
+            "en": "Spooky increases the damage of a teammate by a percentage for a short time.",
+            "ko": "스푸키가 팀원이 입히는 피해량을 일정 시간 동안 일정 비율 증가시킵니다."
+          }
         }
       ],
       "gadgets": [
@@ -9023,7 +9563,10 @@
             "en": "Kooky Popper",
             "ko": "유령 팡팡"
           },
-          "description": null
+          "description": {
+            "en": "Explode all uncollected spirits, dealing some damage to nearby enemies.",
+            "ko": "수집되지 않은 유령을 모두 터뜨려 주변의 적에게 일정량의 피해를 줍니다."
+          }
         },
         {
           "id": 23000514,
@@ -9031,7 +9574,10 @@
             "en": "Soul Switcher",
             "ko": "영혼 교체"
           },
-          "description": null
+          "description": {
+            "en": "Gus loses a percentage health but gains a percentage spirit instantly.",
+            "ko": "HP 일정 비율을 소모해 즉시 일정 비율의 영혼치를 얻습니다."
+          }
         }
       ],
       "gears": [
@@ -9147,7 +9693,10 @@
             "en": "Blockbuster",
             "ko": "블록버스터"
           },
-          "description": null
+          "description": {
+            "en": "Buster's Lens Flare deals a percentage more damage for each ally in his Super's charge area.",
+            "ko": "버스터의 특수 공격 충전 영역 내의 팀원 한 명마다 렌즈 플레어가 일정 비율의 추가 피해를 줍니다."
+          }
         },
         {
           "id": 23000520,
@@ -9155,7 +9704,10 @@
             "en": "Kevlar Vest",
             "ko": "방탄 조끼"
           },
-          "description": null
+          "description": {
+            "en": "While Montage is active Buster takes a percentage less damage and is immune to knockbacks, slows and stuns.",
+            "ko": "몽타주가 활성화되어 있는 동안 버스터가 입는 피해량이 일정 비율 감소하며, 넉백, 감속 및 기절 효과에 면역 상태가 됩니다."
+          }
         }
       ],
       "gadgets": [
@@ -9165,7 +9717,10 @@
             "en": "Utility Belt",
             "ko": "유틸리티 벨트"
           },
-          "description": null
+          "description": {
+            "en": "Buster heals himself and all nearby allies for some health for each ally in his Super's charge area.",
+            "ko": "버스터의 특수 공격 충전 영역 내에 있는 각 팀원과 자신의 HP가 일정량만큼 회복됩니다."
+          }
         },
         {
           "id": 23000522,
@@ -9292,7 +9847,10 @@
             "en": "Single Bellomania",
             "ko": "강력한 한 방울"
           },
-          "description": null
+          "description": {
+            "en": "The first bell of Chester's attack sequence does a percentage damage.",
+            "ko": "체스터의 연속 공격 중 첫 번째 방울이 일정 비율의 피해를 줍니다."
+          }
         },
         {
           "id": 23000528,
@@ -9324,7 +9882,10 @@
             "en": "Candy Beans",
             "ko": "젤리 빈"
           },
-          "description": null
+          "description": {
+            "en": "Chester eats a mystery flavored candy bean from his cap, gaining a random buff for a short time.",
+            "ko": "모자에서 나오는 신비한 맛의 젤리 빈을 먹고 일정 시간 동안 무작위 강화 능력을 얻습니다."
+          }
         }
       ],
       "gears": [
@@ -9440,7 +10001,10 @@
             "en": "Fake Injury",
             "ko": "할리우드 액션"
           },
-          "description": null
+          "description": {
+            "en": "When Gray has full health, the next damage taken is reduced by a percentage.",
+            "ko": "HP가 가득 찼을 때 다음으로 받는 공격의 피해량이 일정 비율 감소합니다."
+          }
         },
         {
           "id": 23000536,
@@ -9448,7 +10012,10 @@
             "en": "New Perspective",
             "ko": "새로운 관점"
           },
-          "description": null
+          "description": {
+            "en": "When Gray or his Allies use Doors, they recover a percentage of their max hit points.",
+            "ko": "차원의 문을 사용한 자신 또는 팀원이 최대 HP의 일정 비율만큼 회복합니다."
+          }
         }
       ],
       "gadgets": [
@@ -9588,7 +10155,10 @@
             "en": "In My Sights",
             "ko": "시야 확보"
           },
-          "description": null
+          "description": {
+            "en": "Mandy shoots her candies with a percentage more speed while Focused.",
+            "ko": "맨디가 집중력을 발휘하는 동안 사탕을 일정 비율 더 빠르게 발사합니다."
+          }
         },
         {
           "id": 23000544,
@@ -9596,7 +10166,10 @@
             "en": "Hard Candy",
             "ko": "알사탕"
           },
-          "description": null
+          "description": {
+            "en": "Mandy receives a percentage shield while Focused.",
+            "ko": "맨디가 집중력을 발휘하면 일정 비율 피해 감소 보호막이 생성됩니다."
+          }
         }
       ],
       "gadgets": [
@@ -9606,7 +10179,10 @@
             "en": "Caramelize",
             "ko": "설탕 코팅"
           },
-          "description": null
+          "description": {
+            "en": "Mandy's next candy from her Candy Dispenser slows down enemies on hit for 2.5 seconds.",
+            "ko": "사탕 뽑기 기계에서 발사한 다음 사탕이 적중 시 2.5초 동안 적을 느리게 만듭니다."
+          }
         },
         {
           "id": 23000546,
@@ -9733,7 +10309,10 @@
             "en": "Quick Maths",
             "ko": "재빠른 계산"
           },
-          "description": null
+          "description": {
+            "en": "Marks created last a short time longer.",
+            "ko": "생성된 표식이 일정 시간 더 오래 지속됩니다."
+          }
         },
         {
           "id": 23000554,
@@ -9741,7 +10320,10 @@
             "en": "Recording",
             "ko": "녹화 모드"
           },
-          "description": null
+          "description": {
+            "en": "R-T and his legs take a percentage less damage when split.",
+            "ko": "분리 상태일 때 R-T 본체와 다리가 입는 피해량이 일정 비율 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -9881,7 +10463,10 @@
             "en": "Love Is Blind",
             "ko": "사랑의 콩깍지"
           },
-          "description": null
+          "description": {
+            "en": "Lantern's Curse also reduces reload speed of affected Brawlers by a percentage for a short time.",
+            "ko": "등불의 저주의 기본 효과와 더불어 적중한 적 브롤러의 재장전 속도를 일정 시간 동안 일정 비율 감소시킵니다."
+          }
         },
         {
           "id": 23000562,
@@ -9889,7 +10474,10 @@
             "en": "Obsession",
             "ko": "집착"
           },
-          "description": null
+          "description": {
+            "en": "Hexed enemies gain 33% movement speed while mind controlled.",
+            "ko": "꼭두각시로 조종당하는 적의 이동 속도가 33% 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -9899,7 +10487,10 @@
             "en": "Spellbound",
             "ko": "오싹한 매력"
           },
-          "description": null
+          "description": {
+            "en": "Willow's next Lantern's Curse deals some more damage and applies the entire damage instantly rather than over time.",
+            "ko": "다음 등불의 저주 공격이 일정량의 추가 피해를 줍니다. 단, 지속 피해 대신 총 피해량을 한 번에 입힙니다."
+          }
         },
         {
           "id": 23000564,
@@ -9907,7 +10498,10 @@
             "en": "Dive",
             "ko": "잠수"
           },
-          "description": null
+          "description": {
+            "en": "Willow dives for a short time, becoming untargetable but unable to take any action for the duration.",
+            "ko": "일정 시간 동안 잠수하여 누구에게도 공격받지 않습니다. 단, 그동안 어떤 행동도 할 수 없습니다."
+          }
         }
       ],
       "gears": [
@@ -10023,7 +10617,10 @@
             "en": "Pinpoint Precision",
             "ko": "나노 정밀도"
           },
-          "description": null
+          "description": {
+            "en": "Pressure rocket deals a percentage more damage at max distance.",
+            "ko": "압력 로켓이 최대 거리로 발사되면 일정 비율 더 큰 피해를 줍니다."
+          }
         },
         {
           "id": 23000570,
@@ -10031,7 +10628,10 @@
             "en": "Tremors",
             "ko": "후덜덜"
           },
-          "description": null
+          "description": {
+            "en": "Enemies hit by Shockwave are also slowed down for a short time.",
+            "ko": "충격파를 받은 적들이 일정 시간 동안 느려집니다."
+          }
         }
       ],
       "gadgets": [
@@ -10041,7 +10641,10 @@
             "en": "Disengage",
             "ko": "철수!"
           },
-          "description": null
+          "description": {
+            "en": "Maisie blasts the ground, stunning enemies for a short time while dashing forward.",
+            "ko": "지면을 강타하여 적을 일정 시간 동안 기절시키며 앞으로 돌진합니다."
+          }
         },
         {
           "id": 23000572,
@@ -10049,7 +10652,10 @@
             "en": "Finish Them",
             "ko": "로켓 피니시"
           },
-          "description": null
+          "description": {
+            "en": "Maisie instantly reloads some ammo and increases the next Pressure Rocket damage by a percentage of the target's missing HP.",
+            "ko": "로켓 일정 수를 즉시 재장전하고, 줄어든 적 HP의 일정 비율만큼 다음 압력 로켓의 피해량이 증가합니다."
+          }
         }
       ],
       "gears": [
@@ -10165,7 +10771,10 @@
             "en": "Its Gonna Blow",
             "ko": "터질 것 같아!"
           },
-          "description": null
+          "description": {
+            "en": "When Balloon Blast is charged over 80%, Hank gains 10% extra movement speed.",
+            "ko": "펑펑 풍선이 80% 이상 충전되면 행크가 10%의 추가 이동 속도를 얻습니다."
+          }
         },
         {
           "id": 23000578,
@@ -10173,7 +10782,10 @@
             "en": "Take Cover",
             "ko": "뒤로 숨어!"
           },
-          "description": null
+          "description": {
+            "en": "Hank takes a percentage less damage when near a wall.",
+            "ko": "장벽 근처에 있으면 피해를 일정 비율 덜 받습니다."
+          }
         }
       ],
       "gadgets": [
@@ -10183,7 +10795,10 @@
             "en": "Water Balloons",
             "ko": "물풍선"
           },
-          "description": null
+          "description": {
+            "en": "The next Balloon Blast also slows down enemies for a short time.",
+            "ko": "다음 풍선 폭발이 적을 일정 시간 동안 느리게 만듭니다."
+          }
         },
         {
           "id": 23000580,
@@ -10191,7 +10806,10 @@
             "en": "Barricade",
             "ko": "방어벽"
           },
-          "description": null
+          "description": {
+            "en": "Hank takes a percentage reduced damage for a short time.",
+            "ko": "일정 시간 동안 받는 피해량이 일정 비율 감소합니다."
+          }
         }
       ],
       "gears": [
@@ -10307,7 +10925,10 @@
             "en": "Comboshrooms",
             "ko": "콤보 버섯"
           },
-          "description": null
+          "description": {
+            "en": "Hitting the second mushroom to the same target as the first, deals a percentage extra damage.",
+            "ko": "두 번째 버섯이 동일한 적에게 명중하면, 일정 비율의 추가 피해를 줍니다."
+          }
         },
         {
           "id": 23000586,
@@ -10315,7 +10936,10 @@
             "en": "Mushroom Kingdom",
             "ko": "버섯 왕국"
           },
-          "description": null
+          "description": {
+            "en": "Cordelius spawns some mushrooms to the Shadow Realm after using his Super, healing allies and damaging enemies for some health on pickup.",
+            "ko": "특수 공격을 사용한 후 그림자 영역에 버섯 일정 수를 생성합니다. 이 버섯은 아군의 HP를 일정량만큼 회복시키고, 적에게는 같은 양의 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -10336,7 +10960,10 @@
             "en": "Poison Mushroom",
             "ko": "독버섯"
           },
-          "description": null
+          "description": {
+            "en": "Cordelius's next main attack shoots a poison mushroom that prevents the enemy from attacking for a short time.",
+            "ko": "다음 일반 공격으로 독버섯을 발사해 적이 일정 시간 동안 공격하지 못하도록 합니다."
+          }
         }
       ],
       "gears": [
@@ -10452,7 +11079,10 @@
             "en": "Fast Food",
             "ko": "패스트푸드"
           },
-          "description": null
+          "description": {
+            "en": "When Doug revives an ally successfully, he will heal for a percentage of his max health.",
+            "ko": "더그가 아군을 성공적으로 부활시키면, 최대 HP의 일정 비율을 회복합니다."
+          }
         },
         {
           "id": 23000594,
@@ -10460,7 +11090,10 @@
             "en": "Self Service",
             "ko": "셀프 서비스"
           },
-          "description": null
+          "description": {
+            "en": "Snack Attack also heals Doug by some.",
+            "ko": "스낵 어택이 일정량만큼 더그 자신도 치유합니다."
+          }
         }
       ],
       "gadgets": [
@@ -10600,7 +11233,10 @@
             "en": "Heat Retention",
             "ko": "열기 유지"
           },
-          "description": null
+          "description": {
+            "en": "Super will consume a percentage less Heat when used.",
+            "ko": "특수 공격 사용 시 일정 비율 더 적은 열기를 소모합니다."
+          }
         },
         {
           "id": 23000602,
@@ -10608,7 +11244,10 @@
             "en": "Heat Shield",
             "ko": "열기 보호막"
           },
-          "description": null
+          "description": {
+            "en": "While the Heat is over a percentage, reduce damage taken by a percentage.",
+            "ko": "열기가 일정 비율 이상인 동안 받는 피해량이 일정 비율 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -10618,7 +11257,10 @@
             "en": "Overcooked",
             "ko": "오버쿡"
           },
-          "description": null
+          "description": {
+            "en": "Next basic attack shoots burning cookies, dealing some extra damage over time.",
+            "ko": "다음 일반 공격에서 불타는 쿠키를 발사해 지속적으로 일정량의 추가 피해를 줍니다."
+          }
         },
         {
           "id": 23000604,
@@ -10626,7 +11268,10 @@
             "en": "Made With Love",
             "ko": "사랑의 쿠키"
           },
-          "description": null
+          "description": {
+            "en": "Next basic attack shoots perfectly baked cookies ignoring enemies and healing allies for some over time instead.",
+            "ko": "다음 일반 공격에서 사랑을 담아 완벽하게 구운 쿠키를 발사해 적에게 피해를 주는 대신 아군의 HP를 일정량만큼 지속적으로 치유합니다."
+          }
         }
       ],
       "gears": [
@@ -10742,7 +11387,10 @@
             "en": "Pit Stop",
             "ko": "정차"
           },
-          "description": null
+          "description": {
+            "en": "Increase the maximum amount of Posts by some.",
+            "ko": "최대 신호기 개수가 일정 수 더 증가합니다."
+          }
         },
         {
           "id": 23000610,
@@ -10750,7 +11398,10 @@
             "en": "Tickets Please",
             "ko": "티켓 검사"
           },
-          "description": null
+          "description": {
+            "en": "Dashing through enemies with his Super will also steal 33% of their ammo.",
+            "ko": "특수 공격으로 적에게 돌진하면 적의 탄환을 33% 빼앗습니다."
+          }
         }
       ],
       "gadgets": [
@@ -10890,7 +11541,10 @@
             "en": "Digestive",
             "ko": "소화"
           },
-          "description": null
+          "description": {
+            "en": "Cocooned enemies lose a percentage of their health while cocooned.",
+            "ko": "적이 고치에 갇혀있는 동안 일정 비율의 HP를 잃습니다."
+          }
         },
         {
           "id": 23000624,
@@ -10898,7 +11552,10 @@
             "en": "Slimy",
             "ko": "끈끈이"
           },
-          "description": null
+          "description": {
+            "en": "Cocoon leaves a slimy trail behind it for a short time that slows down enemies walking over it.",
+            "ko": "고치가 일정 시간 동안 끈적한 흔적을 남기며, 그 위를 지나는 적의 이동 속도가 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -10908,7 +11565,10 @@
             "en": "Spiders",
             "ko": "거미"
           },
-          "description": null
+          "description": {
+            "en": "Charlie releases some spiders that seek and attack the nearest enemies.",
+            "ko": "가장 가까운 적을 찾아 공격하는 거미 일정 수를 방출합니다."
+          }
         },
         {
           "id": 23000626,
@@ -10916,7 +11576,10 @@
             "en": "Personal Space",
             "ko": "프라이버시"
           },
-          "description": null
+          "description": {
+            "en": "Charlie cocoons herself, healing a percentage of her total health.",
+            "ko": "고치로 자신의 몸을 감싸 총 HP의 일정 비율만큼 회복합니다."
+          }
         }
       ],
       "gears": [
@@ -11032,7 +11695,10 @@
             "en": "Monkey Business",
             "ko": "몽키 비즈니스"
           },
-          "description": null
+          "description": {
+            "en": "Periodically, Mico's basic attack steals ammo from his enemies after hitting them.",
+            "ko": "일정 시간마다 일반 공격이 명중한 적의 탄환을 빼앗습니다."
+          }
         },
         {
           "id": 23000638,
@@ -11040,7 +11706,10 @@
             "en": "Record Smash",
             "ko": "쇼킹 스매시"
           },
-          "description": null
+          "description": {
+            "en": "Mico deals a percentage extra damage against non Brawlers.",
+            "ko": "브롤러가 아닌 적에게 일정 비율의 추가 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -11050,7 +11719,10 @@
             "en": "Clipping Scream",
             "ko": "고막 주의"
           },
-          "description": null
+          "description": {
+            "en": "Mico lets out a deafening scream towards the nearest enemy, dealing 1140 damage and slowing down enemies for a short time on hit.",
+            "ko": "가장 가까운 적을 향해 귀가 먹을 듯한 고함을 내질러 1140의 피해를 입힙니다. 공격이 적중한 적은 일정 시간 동안 이동 속도가 느려집니다."
+          }
         },
         {
           "id": 23000640,
@@ -11058,7 +11730,10 @@
             "en": "Presto",
             "ko": "구름판"
           },
-          "description": null
+          "description": {
+            "en": "Mico's next jump has a percentage longer range.",
+            "ko": "다음 점프 시 일정 비율 더 멀리 뜁니다."
+          }
         }
       ],
       "gears": [
@@ -11174,7 +11849,10 @@
             "en": "Power Hungry",
             "ko": "파워 헝그리"
           },
-          "description": null
+          "description": {
+            "en": "Kit gains a percentage power from each Power Cube.",
+            "ko": "키트가 각 파워 큐브에서 일정 비율의 파워를 얻습니다"
+          }
         },
         {
           "id": 23000647,
@@ -11182,7 +11860,10 @@
             "en": "Overly Attached",
             "ko": "과잉 애착"
           },
-          "description": null
+          "description": {
+            "en": "Kit attaches to friendly Brawlers for a short time longer.",
+            "ko": "아군 브롤러에게 붙어 있는 시간이 일정 시간 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -11192,7 +11873,10 @@
             "en": "Cardboard Box",
             "ko": "종이 상자"
           },
-          "description": null
+          "description": {
+            "en": "Hide in a cardboard box becoming invisible for a short time. Charges the Super some faster while stationary.",
+            "ko": "종이 상자에 숨어 일정 시간 동안 투명 모드가 됩니다. 이동하지 않을 때 특수 공격이 일정량 더 빨리 충전됩니다."
+          }
         },
         {
           "id": 23000649,
@@ -11200,7 +11884,10 @@
             "en": "Cheeseburger",
             "ko": "치즈버거"
           },
-          "description": null
+          "description": {
+            "en": "Heals himself and the friendly Brawler he is attached to for some.",
+            "ko": "붙어 있는 아군 브롤러와 자신을 일정량만큼 치유합니다."
+          }
         }
       ],
       "gears": [
@@ -11316,7 +12003,10 @@
             "en": "Protocol Protect",
             "ko": "방위 프로토콜"
           },
-          "description": null
+          "description": {
+            "en": "While Lawrie is in range, transfer a percentage incoming damage to himself instead.",
+            "ko": "로리가 범위 내에 있으면 받는 피해량의 일정 비율을 로리에게 옮깁니다."
+          }
         },
         {
           "id": 23000660,
@@ -11324,7 +12014,10 @@
             "en": "Protocol Assist",
             "ko": "지원 프로토콜"
           },
-          "description": null
+          "description": {
+            "en": "While Lawrie is in range, reload a percentage of your ammo whenever he damages an enemy.",
+            "ko": "로리가 범위 내에 있으면 적에게 피해를 줄 때마다 탄환이 일정 비율 재장전됩니다."
+          }
         }
       ],
       "gadgets": [
@@ -11345,7 +12038,10 @@
             "en": "Order Fall Back",
             "ko": "후퇴 명령"
           },
-          "description": null
+          "description": {
+            "en": "Dash towards Lawrie while Lawrie dashes towards you, healing both for a percentage of max health.",
+            "ko": "로리와 래리가 서로를 향해 돌진하여 둘 다 최대 HP의 일정 비율을 회복합니다."
+          }
         }
       ],
       "gears": [
@@ -11461,7 +12157,10 @@
             "en": "Fast Beats",
             "ko": "빠른 비트"
           },
-          "description": null
+          "description": {
+            "en": "Melodie gains 6% increased movement speed from each note orbiting her.",
+            "ko": "멜로디 주위를 도는 각 음표가 멜로디의 이동 속도를 6%씩 증가시킵니다."
+          }
         },
         {
           "id": 23000668,
@@ -11469,7 +12168,10 @@
             "en": "Extended Mix",
             "ko": "익스텐디드 믹스"
           },
-          "description": null
+          "description": {
+            "en": "Melodie's notes last for a percentage longer before vanishing.",
+            "ko": "음표의 지속 시간이 일정 비율 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -11479,7 +12181,10 @@
             "en": "Perfect Pitch",
             "ko": "퍼펙트 피치"
           },
-          "description": null
+          "description": {
+            "en": "Melodie's notes get a percentage increased movement speed and a percentage wider orbit for a short time.",
+            "ko": "멜로디 주위를 도는 음표의 이동 속도가 일정 비율 증가하고, 궤도가 일정 시간 동안 일정 비율 넓어집니다."
+          }
         },
         {
           "id": 23000670,
@@ -11487,7 +12192,10 @@
             "en": "Interlude",
             "ko": "간주"
           },
-          "description": null
+          "description": {
+            "en": "Melodie gains a percentage Shield from each note orbiting her.",
+            "ko": "멜로디 주위를 도는 각 음표가 멜로디에게 일정 비율 보호막을 부여합니다."
+          }
         }
       ],
       "gears": [
@@ -11603,7 +12311,10 @@
             "en": "Empower",
             "ko": "힐링타임"
           },
-          "description": null
+          "description": {
+            "en": "Staying inside the Super will heal Angelo for some per second.",
+            "ko": "특수 공격으로 생성한 독 구름 안에 머무르면 초당 일정량의 HP를 회복합니다."
+          }
         },
         {
           "id": 23000676,
@@ -11611,7 +12322,10 @@
             "en": "Flow",
             "ko": "흘러흘러"
           },
-          "description": null
+          "description": {
+            "en": "Angelo gains a percentage increased movement speed after entering water.",
+            "ko": "물에 들어간 후 이동 속도가 일정 비율 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -11621,7 +12335,10 @@
             "en": "Stinging Flight",
             "ko": "따끔한 비행"
           },
-          "description": null
+          "description": {
+            "en": "Fly into the air for a short time. Drains some health from nearby enemies on takeoff.",
+            "ko": "일정 시간 동안 공중을 납니다. 날아오를 때 근처에 있는 적의 HP를 일정량만큼 흡수합니다."
+          }
         },
         {
           "id": 23000678,
@@ -11748,7 +12465,10 @@
             "en": "Expose",
             "ko": "약점 공략"
           },
-          "description": null
+          "description": {
+            "en": "Periodically, the next Lance Stab exposes enemies on hit. Exposed enemies take a percentage increased damage for a short time.",
+            "ko": "일정 시간마다 다음 랜스 찌르기로 피해를 준 적을 노출시킵니다. 노출된 적은 일정 시간 동안 일정 비율 추가 피해를 받습니다."
+          }
         },
         {
           "id": 23000735,
@@ -11756,7 +12476,10 @@
             "en": "Shredding",
             "ko": "슈레딩"
           },
-          "description": null
+          "description": {
+            "en": "Dragon Solo now also heals for some when activated.",
+            "ko": "드래곤 솔로를 사용하면 일정량만큼 치유합니다."
+          }
         }
       ],
       "gadgets": [
@@ -11777,7 +12500,10 @@
             "en": "Last Stand",
             "ko": "최후의 몸부림"
           },
-          "description": null
+          "description": {
+            "en": "Draco can not fall under one health for a short time.",
+            "ko": "드라코의 HP가 일정 시간 동안 1HP 아래로 내려가지 않습니다."
+          }
         }
       ],
       "gears": [
@@ -11893,7 +12619,10 @@
             "en": "Spiky",
             "ko": "따끔한 일격"
           },
-          "description": null
+          "description": {
+            "en": "After teleporting to an enemy, Lily's next attack deals some more damage",
+            "ko": "적에게 순간이동한 후 다음 일반 공격의 피해량이 일정량 증가합니다."
+          }
         },
         {
           "id": 23000753,
@@ -11901,7 +12630,10 @@
             "en": "Vigilance",
             "ko": "경계 태세"
           },
-          "description": null
+          "description": {
+            "en": "Gain 15% movement speed while an enemy is in her Super charge radius.",
+            "ko": "적이 특수 공격 충전 반경 안에 있는 동안 릴리의 이동 속도가15% 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -11911,7 +12643,10 @@
             "en": "Vanish",
             "ko": "증발"
           },
-          "description": null
+          "description": {
+            "en": "Lily enters the Shadow Realm for a short time",
+            "ko": "일정 시간 동안 그림자 영역에 들어갑니다."
+          }
         },
         {
           "id": 23000755,
@@ -12038,7 +12773,10 @@
             "en": "Floor Is Fine",
             "ko": "끈적한 바닥"
           },
-          "description": null
+          "description": {
+            "en": "Berry gains a percentage increased reload speed when standing on his own melted ice cream.",
+            "ko": "자신이 던진 녹은 아이스크림 위에 서 있는 동안 재장전 속도가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000765,
@@ -12046,7 +12784,10 @@
             "en": "Making A Mess",
             "ko": "엉망진창"
           },
-          "description": null
+          "description": {
+            "en": "Berry's basic attack gains a percentage extra damage on impact in areas with no ice cream.",
+            "ko": "아이스크림이 묻지 않은 구역에 일반 공격 적중 시 일정 비율의 추가 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -12056,7 +12797,10 @@
             "en": "Friendship Is Great",
             "ko": "위대한 우정"
           },
-          "description": null
+          "description": {
+            "en": "Berry swipes his tail, knocking back enemies and healing nearby allies for some health.",
+            "ko": "꼬리를 휘둘러 적을 뒤로 밀치며 주변 아군의 HP를 일정량만큼 치유합니다."
+          }
         },
         {
           "id": 23000767,
@@ -12064,7 +12808,10 @@
             "en": "Healthy Additives",
             "ko": "건강한 첨가물"
           },
-          "description": null
+          "description": {
+            "en": "Berry's next main attack area lasts for a percentage longer.",
+            "ko": "다음 일반 공격이 일정 비율 더 오래 지속됩니다."
+          }
         }
       ],
       "gears": [
@@ -12180,7 +12927,10 @@
             "en": "Recon",
             "ko": "정찰"
           },
-          "description": null
+          "description": {
+            "en": "Clancy starts the match with some tokens.",
+            "ko": "토큰을 일정 수 보유한 상태로 매치를 시작합니다."
+          }
         },
         {
           "id": 23000773,
@@ -12201,7 +12951,10 @@
             "en": "Snappy Shooting",
             "ko": "황금빛 사격"
           },
-          "description": null
+          "description": {
+            "en": "Clancy gains double tokens for a short time.",
+            "ko": "일정 시간 동안 토큰 획득량이 두 배로 증가합니다."
+          }
         },
         {
           "id": 23000775,
@@ -12209,7 +12962,10 @@
             "en": "Tactical Retreat",
             "ko": "작전상 후퇴"
           },
-          "description": null
+          "description": {
+            "en": "Clancy dashes and reloads some ammo",
+            "ko": "돌진하며 탄환 일정 수를 장전합니다."
+          }
         }
       ],
       "gears": [
@@ -12336,7 +13092,10 @@
             "en": "Speeding Ticket",
             "ko": "과속 딱지"
           },
-          "description": null
+          "description": {
+            "en": "Moe's Driller has 25% increased travel speed.",
+            "ko": "드릴러의 이동 속도가 25% 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -12346,7 +13105,10 @@
             "en": "Dodgy Digging",
             "ko": "보물찾기"
           },
-          "description": null
+          "description": {
+            "en": "Moe digs up some \"borrowed\" goods, increasing his Super charge rate by a percentage for a short time.",
+            "ko": "땅속에서 \\q발견한\\q 물건을 사용해 일정 시간 동안 특수 공격 충전 속도가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000807,
@@ -12473,7 +13235,10 @@
             "en": "Studied The Blade",
             "ko": "회칼 연마"
           },
-          "description": null
+          "description": {
+            "en": "Slashimi's slices have a percentage longer range",
+            "ko": "참치 슬라이스의 사정거리가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000816,
@@ -12481,7 +13246,10 @@
             "en": "Nigiri Nemesis",
             "ko": "절치부심"
           },
-          "description": null
+          "description": {
+            "en": "After avoiding damage for a short time, gets a percentage damage reduction from the next enemy attack.",
+            "ko": "일정 시간 동안 피해를 받지 않으면 다음에 받는 공격의 피해량이 일정 비율 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -12491,7 +13259,10 @@
             "en": "Dashi Dash",
             "ko": "전진 베기 수련"
           },
-          "description": null
+          "description": {
+            "en": "Kenji's basic attack only uses Dash for the next a short time.",
+            "ko": "다음 일정 시간 동안 일반 공격으로 전진 베기만 사용합니다."
+          }
         },
         {
           "id": 23000818,
@@ -12499,7 +13270,10 @@
             "en": "Hosomaki Healing",
             "ko": "치유의 김초밥"
           },
-          "description": null
+          "description": {
+            "en": "Kenji instantly heals a percentage of damage taken over the last a short time.",
+            "ko": "지난 일정 시간 동안 피해를 입어 손실한 HP의 일정 비율을 즉시 회복합니다."
+          }
         }
       ],
       "gears": [
@@ -12626,7 +13400,10 @@
             "en": "Hardened Hoodie",
             "ko": "튼튼한 후드티"
           },
-          "description": null
+          "description": {
+            "en": "Shade gets a percentage damage reduction while in its Incorporeal Form.",
+            "ko": "무형의 모습일 때 받는 피해량이 일정 비율 감소합니다."
+          }
         }
       ],
       "gadgets": [
@@ -12636,7 +13413,10 @@
             "en": "Longarms",
             "ko": "팔척귀신"
           },
-          "description": null
+          "description": {
+            "en": "The next main attack has a percentage longer range.",
+            "ko": "다음 일반 공격의 사정거리가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000835,
@@ -12644,7 +13424,10 @@
             "en": "Jump Scare",
             "ko": "깜짝 놀랐지"
           },
-          "description": null
+          "description": {
+            "en": "Shade spooks nearby enemies, slowing them for a short time.",
+            "ko": "주변의 적들을 겁주어 일정 시간 동안 느리게 만듭니다."
+          }
         }
       ],
       "gears": [
@@ -12771,7 +13554,10 @@
             "en": "Numbing Needles",
             "ko": "마비의 바늘"
           },
-          "description": null
+          "description": {
+            "en": "Gris-Gris' attack now also slows the enemy for a short time",
+            "ko": "그리그리의 공격이 일정 시간 동안 적을 느리게 만듭니다."
+          }
         }
       ],
       "gadgets": [
@@ -12911,7 +13697,10 @@
             "en": "Do Not Pass Go",
             "ko": "통행금지"
           },
-          "description": null
+          "description": {
+            "en": "When you shoot through environment deal some more damage.",
+            "ko": "지형물을 관통한 발사체의 피해량이 일정량만큼 증가합니다."
+          }
         },
         {
           "id": 23000876,
@@ -12919,7 +13708,10 @@
             "en": "Rule Bending",
             "ko": "꼼수"
           },
-          "description": null
+          "description": {
+            "en": "Critical success also increases allies reload speed within the area by a percentage.",
+            "ko": "특수 공격이 범위 내 아군의 재장전 속도를 일정 비율 증가시켜 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -12929,7 +13721,10 @@
             "en": "Mansions Of Meeple",
             "ko": "미플의 저택"
           },
-          "description": null
+          "description": {
+            "en": "Meeple's next attack creates dice towers around the impact area and deals some damage.",
+            "ko": "다음 일반 공격이 적중한 영역에 주사위 성벽을 생성해 일정량의 피해를 줍니다."
+          }
         },
         {
           "id": 23000878,
@@ -13056,7 +13851,10 @@
             "en": "Kick Push",
             "ko": "킥 앤 푸시"
           },
-          "description": null
+          "description": {
+            "en": "While near walls Ollie kicks off his hoverboard and gains 20% extra movement speed.",
+            "ko": "벽 근처에서 올리의 이동 속도가 20% 증가합니다."
+          }
         },
         {
           "id": 23000884,
@@ -13064,7 +13862,10 @@
             "en": "Renegade",
             "ko": "레니게이드"
           },
-          "description": null
+          "description": {
+            "en": "After dashing forward with his Super, Ollie gains some decaying shield over a short time.",
+            "ko": "특수 공격을 사용해 앞으로 돌진한 후, 일정 시간 동안 점점 소멸하는 일정량의 보호막을 얻습니다."
+          }
         }
       ],
       "gadgets": [
@@ -13074,7 +13875,10 @@
             "en": "Regulate",
             "ko": "컨트롤 킥"
           },
-          "description": null
+          "description": {
+            "en": "Ollie jumps and does a rad kickflip, hypnotizing all enemies where he lands for a short time.",
+            "ko": "점프 후 멋진 킥플립을 선보이며 착지 지점의 모든 적을 일정 시간 동안 최면 상태로 만듭니다."
+          }
         },
         {
           "id": 23000886,
@@ -13082,7 +13886,10 @@
             "en": "All Eyez On Me",
             "ko": "시선집중"
           },
-          "description": null
+          "description": {
+            "en": "Ollie's next attack will hypnotize any enemies hit for a short time.",
+            "ko": "다음 공격이 적중한 모든 적을 일정 시간 동안 최면 상태에 빠뜨립니다."
+          }
         }
       ],
       "gears": [
@@ -13198,7 +14005,10 @@
             "en": "42% Burnt",
             "ko": "42% 연소"
           },
-          "description": null
+          "description": {
+            "en": "The explosions from Lumi's Blast Beat also set the area alight for a short time. Fire damage also scales with explosion damage. Damage per second for the biggest explosion: some",
+            "ko": "특수 공격으로 발생한 폭발이 일정 시간 동안 주변을 불태웁니다. 화염 피해량은 폭발 피해량에 비례하며, 가장 큰 폭발은 초당 일정량의 피해를 줍니다."
+          }
         },
         {
           "id": 23000906,
@@ -13206,7 +14016,10 @@
             "en": "Half-Time",
             "ko": "하프 타임"
           },
-          "description": null
+          "description": {
+            "en": "Lumi slows enemies hit by her recalled morning stars for a short time.",
+            "ko": "되돌아오는 루미의 철퇴에 맞은 적이 일정 시간 동안 느려집니다."
+          }
         }
       ],
       "gadgets": [
@@ -13216,7 +14029,10 @@
             "en": "Hit The Lights",
             "ko": "도화선"
           },
-          "description": null
+          "description": {
+            "en": "Lumi ignites her morning stars on the ground, producing flames which damage nearby enemies for a short time. Damage per second: some",
+            "ko": "철퇴를 바닥에 내리쳐 불꽃을 일으키며, 주변의 적들에게 일정 시간 동안 피해를 줍니다. 초당 피해량: 일정량"
+          }
         },
         {
           "id": 23000908,
@@ -13224,7 +14040,10 @@
             "en": "Grim And Frostbitten",
             "ko": "발이 꽁꽁꽁"
           },
-          "description": null
+          "description": {
+            "en": "Lumi creates freezing winds around her morning stars on the ground, creating a slippery surface for some secs.",
+            "ko": "철퇴 주위 바닥에 차가운 바람을 일으켜 일정 시간 동안 표면을 미끄럽게 만듭니다."
+          }
         }
       ],
       "gears": [
@@ -13340,7 +14159,10 @@
             "en": "Hieroglyph Halt",
             "ko": "그대로 멈춰라"
           },
-          "description": null
+          "description": {
+            "en": "Finx reduces the reload speed of any enemy Brawlers hit by his main attack by a percentage for a short time.",
+            "ko": "일반 공격에 맞은 모든 적 브롤러의 재장전 속도를 일정 시간 동안 일정 비율 감소시킵니다."
+          }
         },
         {
           "id": 23000916,
@@ -13348,7 +14170,10 @@
             "en": "Primer",
             "ko": "상부상조"
           },
-          "description": null
+          "description": {
+            "en": "Damage dealt only from Finx's projectiles that are sped up by Time Warp, will increase the Super duration by a short time each.",
+            "ko": "특수 공격으로 속도가 증가한 핑크스의 발사체가 명중할 때마다, 특수 공격의 지속 시간이 일정 시간씩 연장됩니다."
+          }
         }
       ],
       "gadgets": [
@@ -13358,7 +14183,10 @@
             "en": "Back To The Finxture",
             "ko": "과거로의 귀환"
           },
-          "description": null
+          "description": {
+            "en": "Finx steps back in time, returning to the position and ammo he had a short time ago.",
+            "ko": "핑크스가 시간을 되돌려 일정 시간 전의 위치와 탄환 상태로 돌아갑니다."
+          }
         },
         {
           "id": 23000918,
@@ -13366,7 +14194,10 @@
             "en": "No Escape",
             "ko": "탈출 불가"
           },
-          "description": null
+          "description": {
+            "en": "Finx's next projectiles from his main attack freeze the enemies in time for a short time, making them unable to take actions for the duration, but also making them immune to any damage.",
+            "ko": "다음 일반 공격이 적을 일정 시간 동안 멈추게 하여, 그동안 아무런 행동도 할 수 없게 만듭니다. (단, 피해 또한 입지 않습니다.)"
+          }
         }
       ],
       "gears": [
@@ -13482,7 +14313,10 @@
             "en": "The Crowd Goes Mild",
             "ko": "떼창"
           },
-          "description": null
+          "description": {
+            "en": "Being near teammates gives Jae-yong a 10% speed boost per teammate in range.",
+            "ko": "팀원들과 가까이 있으면 재용이 팀원 한 명당 10%의 속도 증가 효과를 얻습니다."
+          }
         },
         {
           "id": 23000930,
@@ -13490,7 +14324,10 @@
             "en": "Extra High Note",
             "ko": "절대 고음"
           },
-          "description": null
+          "description": {
+            "en": "Main Attacks now deal an additional a percentage Damage per target pierced.",
+            "ko": "일반 공격이 관통한 대상 하나당 일정 비율의 추가 피해를 줍니다."
+          }
         }
       ],
       "gadgets": [
@@ -13500,7 +14337,10 @@
             "en": "Weekend Warrior",
             "ko": "주말 바라기"
           },
-          "description": null
+          "description": {
+            "en": "Deals area damage and increases main attack damage for a short time.",
+            "ko": "광역 피해를 주고 일정 시간 동안 일반 공격의 피해량을 증가시킵니다."
+          }
         },
         {
           "id": 23000932,
@@ -13508,7 +14348,10 @@
             "en": "Time For A Slow Song",
             "ko": "발라드 타임"
           },
-          "description": null
+          "description": {
+            "en": "Jae-yong slows enemies around him and his attacks will leave trails of slowing paperwork for a short time.",
+            "ko": "주변의 적을 느리게 만들고, 공격 시에는 서류를 떨어뜨려 일정 시간 동안 적의 이동 속도를 느리게 하는 흔적을 남깁니다."
+          }
         }
       ],
       "gears": [
@@ -13624,7 +14467,10 @@
             "en": "Advanced Techniques",
             "ko": "고급 기술"
           },
-          "description": null
+          "description": {
+            "en": "Hitting an enemy in a Strike Spot also slows them by a percentage for a short time",
+            "ko": "스트라이크 스팟으로 명중한 적의 이동 속도가 일정 시간 동안 일정 비율만큼 느려집니다."
+          }
         },
         {
           "id": 23000939,
@@ -13632,7 +14478,10 @@
             "en": "Gratuity Included",
             "ko": "서비스 요금"
           },
-          "description": null
+          "description": {
+            "en": "Removes a percentage ammo from Brawlers initially caught in the Fan Storm",
+            "ko": "부채 폭풍에 먼저 갇힌 브롤러들의 탄약을 일정 비율 제거합니다."
+          }
         }
       ],
       "gadgets": [
@@ -13642,7 +14491,10 @@
             "en": "Gracious Host",
             "ko": "자비로운 주인"
           },
-          "description": null
+          "description": {
+            "en": "Switch to Ninja Aspect and gain a percentage Movement Speed for a short time",
+            "ko": "닌자 모습으로 전환해 일정 시간 동안 이동 속도가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23000941,
@@ -13769,7 +14621,10 @@
             "en": "Lizard Limbs",
             "ko": "도마뱀 재생력"
           },
-          "description": null
+          "description": {
+            "en": "While enraged Alli regenerates health faster out of combat after only a short time.",
+            "ko": "분노 상태일 때, 알리가 전투에서 벗어난 후 단 일정 시간 만에 더 빠르게 체력을 회복합니다."
+          }
         },
         {
           "id": 23000990,
@@ -13777,7 +14632,10 @@
             "en": "You Better Run You Better Take Cover",
             "ko": "분노의 추격자"
           },
-          "description": null
+          "description": {
+            "en": "Alli reloads a percentage faster while enraged.",
+            "ko": "분노 상태일 때 탄환을 일정 비율 더 빠르게 재장전합니다."
+          }
         }
       ],
       "gadgets": [
@@ -13787,7 +14645,10 @@
             "en": "Feed The Gators",
             "ko": "악어밥 주기"
           },
-          "description": null
+          "description": {
+            "en": "The next main attack heals Alli for a percentage of damage dealt.",
+            "ko": "다음 일반 공격이 적에게 입힌 피해량의 일정 비율만큼 알리를 치유합니다."
+          }
         },
         {
           "id": 23000992,
@@ -13795,7 +14656,10 @@
             "en": "Cold-Blooded",
             "ko": "냉혈"
           },
-          "description": null
+          "description": {
+            "en": "Alli becomes enraged for the next some secs. Can only be activated when an enemy is visible.",
+            "ko": "다음 일정 시간 동안 분노 상태가 됩니다. 적이 보일 때만 활성화할 수 있습니다."
+          }
         }
       ],
       "gears": [
@@ -13911,7 +14775,10 @@
             "en": "New Insect Overlords",
             "ko": "곤충 방어막"
           },
-          "description": null
+          "description": {
+            "en": "Ants also reduce the damage of enemies by a percentage",
+            "ko": "개미가 적이 주는 피해를 일정 비율만큼 감소시킵니다."
+          }
         },
         {
           "id": 23000999,
@@ -13943,7 +14810,10 @@
             "en": "Worker Ants",
             "ko": "일개미"
           },
-          "description": null
+          "description": {
+            "en": "Trunk heals from the first source of damage taken for the next some secs.",
+            "ko": "다음 일정 시간 동안 처음으로 받은 피해를 회복합니다."
+          }
         }
       ],
       "gears": [
@@ -14059,7 +14929,10 @@
             "en": "Zum Zum Zum",
             "ko": "줌 줌 줌"
           },
-          "description": null
+          "description": {
+            "en": "Mina's combo Attack 3 also heals for a percentage of damage done.",
+            "ko": "3개의 콤보 공격이 적에게 입힌 피해량의 일정 비율만큼 미나를 치유합니다."
+          }
         },
         {
           "id": 23001040,
@@ -14080,7 +14953,10 @@
             "en": "Windmill",
             "ko": "윈드밀"
           },
-          "description": null
+          "description": {
+            "en": "Creates a wall of wind that blocks projectiles for a short time.",
+            "ko": "바람의 장벽을 생성해 일정 시간 동안 발사체를 막습니다."
+          }
         },
         {
           "id": 23001042,
@@ -14207,7 +15083,10 @@
             "en": "Thunderstruck",
             "ko": "마른하늘에 날벼락"
           },
-          "description": null
+          "description": {
+            "en": "Brawlers damaged by Ziggy's Super are slowed by a percentage for a short time.",
+            "ko": "지기의 특수 공격에 피해를 입은 브롤러는 일정 시간 동안 이동 속도가 일정 비율 감소합니다."
+          }
         },
         {
           "id": 23001048,
@@ -14215,7 +15094,10 @@
             "en": "The Great Ziggini",
             "ko": "자기애 뿜뿜"
           },
-          "description": null
+          "description": {
+            "en": "Hitting with a lightning strike increases the damage of the next main attack by a percentage.",
+            "ko": "낙뢰가 적중하면 그 다음 일반 공격의 피해량이 일정 비율 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -14225,7 +15107,10 @@
             "en": "Electric Shuffle",
             "ko": "끊임없는 벼락"
           },
-          "description": null
+          "description": {
+            "en": "Ziggy hits the nearest enemy with lightning strikes every second for a short time. These attacks cost no ammo.",
+            "ko": "가장 가까이에 있는 적을 일정 시간 동안 매 초마다 낙뢰로 내려칩니다. 해당 공격은 탄환을 소모하지 않습니다."
+          }
         },
         {
           "id": 23001050,
@@ -14352,7 +15237,10 @@
             "en": "Mission Swimpossible",
             "ko": "미션 스윔파서블"
           },
-          "description": null
+          "description": {
+            "en": "Pierce's last ammo also slows enemies by a percentage.",
+            "ko": "피어스의 마지막 탄환이 적중하면 적의 이동 속도가 일정 비율 감소합니다."
+          }
         },
         {
           "id": 23001061,
@@ -14360,7 +15248,10 @@
             "en": "Slip N Snipe",
             "ko": "삐끗 스나이프"
           },
-          "description": null
+          "description": {
+            "en": "When collecting a shell, Pierce gains a short burst (a percentage) of movement speed.",
+            "ko": "탄피를 모을 때마다 피어스의 이동 속도가 일정 비율 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -14370,7 +15261,10 @@
             "en": "Bottomless Mags",
             "ko": "무한 매그넘"
           },
-          "description": null
+          "description": {
+            "en": "Reload some ammo and drop a shell next to Pierce.",
+            "ko": "탄환 일정 수를 재장전하면 피어스 옆에 탄피 1개가 떨어집니다."
+          }
         },
         {
           "id": 23001063,
@@ -14378,7 +15272,10 @@
             "en": "You Only Brawl Twice",
             "ko": "단 두 번의 브롤"
           },
-          "description": null
+          "description": {
+            "en": "Pierce will absorb all shells and gain some shield for each one, while also pushing back nearby enemies.",
+            "ko": "피어스가 모든 탄피를 흡수하고, 탄피 1개당 일정량의 보호막을 얻는 동시에 주변의 적을 밀어냅니다."
+          }
         }
       ],
       "gears": [
@@ -14494,7 +15391,10 @@
             "en": "Plie Protection",
             "ko": "플리에 강화"
           },
-          "description": null
+          "description": {
+            "en": "Increases Super charge rate by a percentage if no damage has been received for some secs",
+            "ko": "일정 시간 동안 피해를 받지 않으면, 특수 공격 충전 속도가 일정 비율 증가합니다."
+          }
         },
         {
           "id": 23001069,
@@ -14502,7 +15402,10 @@
             "en": "A Helping Hand",
             "ko": "도움의 손"
           },
-          "description": null
+          "description": {
+            "en": "SHADOW PUPPET now heals for some after charging up.",
+            "ko": "특수 공격 시 충전한 후에 일정량의 HP를 회복합니다."
+          }
         }
       ],
       "gadgets": [
@@ -14523,7 +15426,10 @@
             "en": "Disappearing Act",
             "ko": "사라지는 공연"
           },
-          "description": null
+          "description": {
+            "en": "Gigi creates an area that makes herself and allies invisible while inside. Lasts some secs.",
+            "ko": "일정 시간 동안 유지되는 영역을 만들고, 그 안에 있는 지지와 아군은 은신 상태가 됩니다."
+          }
         }
       ],
       "gears": [
@@ -14639,7 +15545,10 @@
             "en": "Biotic Ecosystem",
             "ko": "생물군계"
           },
-          "description": null
+          "description": {
+            "en": "If Glowy is tethered to an enemy and a teammate at the same time, it will reduce the enemy damage by a percentage and increase the teammate's damage by a percentage.",
+            "ko": "글로이가 적과 아군에게 동시에 연결된 상태일 경우, 적이 가하는 피해량을 일정 비율 감소시키며 아군의 피해량을 일정 비율 증가시킵니다."
+          }
         },
         {
           "id": 23001182,
@@ -14647,7 +15556,10 @@
             "en": "Parasitism",
             "ko": "기생"
           },
-          "description": null
+          "description": {
+            "en": "Tethering to an enemy also heals Glowy for a percentage of the damage dealt.",
+            "ko": "글로이가 적과 연결되어 있을 경우, 자신이 입힌 피해량의 일정 비율만큼 회복합니다."
+          }
         }
       ],
       "gadgets": [
@@ -14657,7 +15569,10 @@
             "en": "Slippery Savior",
             "ko": "미끌미끌 구원자"
           },
-          "description": null
+          "description": {
+            "en": "Glowy dashes in a target direction, healing himself and teammates for some on arrival.",
+            "ko": "글로이가 목표 방향으로 돌진하며, 목표 지점에 도착 시 자신과 아군의 HP를 일정량만큼 회복시킵니다."
+          }
         },
         {
           "id": 23001184,
@@ -14665,7 +15580,10 @@
             "en": "More Lumens",
             "ko": "루멘 추가!"
           },
-          "description": null
+          "description": {
+            "en": "Glowy supercharges his glowbeam tethers, doubling the damage/healing rate for some secs.",
+            "ko": "글로이가 글로우빔 사슬을 충전해 일정 시간 동안 피해량과 치유량을 두 배로 증가시킵니다."
+          }
         }
       ],
       "gears": [
@@ -14781,7 +15699,10 @@
             "en": "Dusk Runners",
             "ko": "황혼 속 질주"
           },
-          "description": null
+          "description": {
+            "en": "Shadows have +15% movement speed.",
+            "ko": "그림자의 이동 속도가 + 15% 증가합니다."
+          }
         },
         {
           "id": 23001190,
@@ -14802,7 +15723,10 @@
             "en": "A Starr Is Born",
             "ko": "스타 이즈 본"
           },
-          "description": null
+          "description": {
+            "en": "Sirius fires a projectile that summons a Shadow on hit, also slowing the hit target by a percentage for a short time.",
+            "ko": "발사체를 날려 보내 대상 브롤러에게 명중하면 그림자를 뽑아냅니다. 또한 대상의 속도가 일정 시간 동안 일정 비율 감소합니다."
+          }
         },
         {
           "id": 23001192,
@@ -14810,7 +15734,10 @@
             "en": "Master Of Shadows",
             "ko": "그림자 지배자"
           },
-          "description": null
+          "description": {
+            "en": "Summoned Shadows return to Sirius, who heals them for 25% of their health.",
+            "ko": "불러낸 그림자를 자신에게 돌아오도록 하여 HP의 25%를 회복시킵니다."
+          }
         }
       ],
       "gears": [
@@ -14937,7 +15864,10 @@
             "en": "Venomous",
             "ko": "치명적인 독"
           },
-          "description": null
+          "description": {
+            "en": "Poison damage scales with the target Brawler's current percent health, dealing up to an extra 100 damage when a target is at 100% health.",
+            "ko": "독 피해가 대상 브롤러의 현재 HP 비율에 비례하여 증가하며, 대상의 HP가 100%인 경우 최대 100의 추가 피해를 입힙니다."
+          }
         }
       ],
       "gadgets": [
@@ -14947,7 +15877,10 @@
             "en": "Poison Puddles",
             "ko": "독 웅덩이"
           },
-          "description": null
+          "description": {
+            "en": "All enemies currently poisoned by Najia will create poisonous puddles for the next 2 sec.",
+            "ko": "독 피해를 입은 모든 적이 2초 동안 유독성 웅덩이를 생성합니다."
+          }
         },
         {
           "id": 23001219,
@@ -15098,7 +16031,10 @@
             "en": "Spiritual Healing",
             "ko": "영적 치유"
           },
-          "description": null
+          "description": {
+            "en": "Damian throws his microphone to a target location. The first teammate to pick it up is healed for 1600 health.",
+            "ko": "데미안이 목표 위치에 마이크를 던집니다. 마이크를 가장 먼저 주운 팀원의 HP를 1600만큼 치유합니다."
+          }
         },
         {
           "id": 23001248,
@@ -15225,7 +16161,10 @@
             "en": "Power Level Maximum",
             "ko": "파워 레벨: 최대"
           },
-          "description": null
+          "description": {
+            "en": "Hitting an enemy Brawler while transformed increases your damage by 5% to a maximum of 5%.",
+            "ko": "변신한 상태에서 상대 브롤러에게 공격이 적중하면 피해량이 5% 증가하며, 최대 5%까지 증가할 수 있습니다."
+          }
         },
         {
           "id": 23001254,
@@ -15233,7 +16172,10 @@
             "en": "Mystical Starr Technique",
             "ko": "미스틱 스타 테크닉"
           },
-          "description": null
+          "description": {
+            "en": "Starr Nova's main attack also heals teammates for 480, charging her Super based on healing.",
+            "ko": "스타 노바의 일반 공격이 아군의 HP를 480만큼 회복하며, 회복량에 따라 특수 공격이 충전됩니다."
+          }
         }
       ],
       "gadgets": [
@@ -15254,7 +16196,10 @@
             "en": "Shining Starr Of Friendship And Justice",
             "ko": "우정과 정의의 샤이닝 스타"
           },
-          "description": null
+          "description": {
+            "en": "Starr Nova fires an energy ball that damages enemies and heals teammates for 800. This energy ball can also be teleported to before it hits a target!",
+            "ko": "에너지 구체를 발사해 적에게 피해를 입히고 팀원을 800만큼 치유합니다. 목표물에 적중하기 전에 스타 노바는 에너지 구체의 위치로 순간이동할 수 있습니다!"
+          }
         }
       ],
       "gears": [
@@ -15381,7 +16326,10 @@
             "en": "Unstoppaball",
             "ko": "저지 불가능"
           },
-          "description": null
+          "description": {
+            "en": "Bolt is immune to crowd control for 1 seconds after activating his Super.",
+            "ko": "볼트가 특수 공격을 발동한 후 1초 동안 군중 제어에 면역 상태가 됩니다."
+          }
         }
       ],
       "gadgets": [
@@ -15391,7 +16339,10 @@
             "en": "Oil Change",
             "ko": "엔진 오일 교체"
           },
-          "description": null
+          "description": {
+            "en": "Bolt gains some - some health shield based on his current speed.",
+            "ko": "볼트가 현재 속도에 따라 일정량~일정량의 HP 보호막을 얻습니다."
+          }
         },
         {
           "id": 23001282,
@@ -15529,7 +16480,10 @@
             "en": "His Mother’s Son",
             "ko": "자랑스러운 아들"
           },
-          "description": null
+          "description": {
+            "en": "Nori gains +20% speed for 1 sec whenever he hits an enemy with his Main Attack.",
+            "ko": "일반 공격이 적에게 명중할 때마다 1초 동안 이동 속도가 +20% 증가합니다."
+          }
         }
       ],
       "gadgets": [
@@ -15539,7 +16493,10 @@
             "en": "Sushi Snack",
             "ko": "초밥 간식"
           },
-          "description": null
+          "description": {
+            "en": "Nori eats up to 3 fish to heal himself for 1000 per fish.",
+            "ko": "최대 3마리의 물고기를 먹고 한 마리당 HP를 1000 회복합니다."
+          }
         },
         {
           "id": 23001298,
@@ -15547,7 +16504,10 @@
             "en": "Gonna Need A Bigger Net",
             "ko": "초대형 그물"
           },
-          "description": null
+          "description": {
+            "en": "Aim a fishing net that roots the first Brawler hit for 1.3 sec and deals 400 damage.",
+            "ko": "그물을 이용해 공격에 첫 번째로 맞은 브롤러를 1.3초 동안 속박하고 400의 피해를 입힙니다."
+          }
         }
       ],
       "gears": [
