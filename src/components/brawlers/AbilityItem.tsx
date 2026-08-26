@@ -15,12 +15,24 @@ function iconUrl(kind: AbilityKind, id: number): string {
   return `https://cdn.brawlify.com/${kind}/regular/${id}.png`
 }
 
-/** 기어 수치를 사람이 읽는 형태로 (예: +15%) */
+/**
+ * 기어 수치를 사람이 읽는 형태로 (예: +15%, +2초)
+ * ticks 는 게임의 시간 단위다. 1초가 20틱이다.
+ */
 function formatModifier(m: Gear['modifier']): string | null {
   if (!m) return null
-  if (m.type === 'percent') return `+${m.value}%`
-  if (m.type === 'value') return `+${m.value}`
-  return null
+  switch (m.type) {
+    case 'percent':
+      return `+${m.value}%`
+    case 'value':
+      return `+${m.value}`
+    case 'ticks': {
+      const sec = Math.round((m.value / 20) * 10) / 10
+      return `+${sec}s`
+    }
+    default:
+      return null
+  }
 }
 
 export function AbilityItem({
@@ -39,7 +51,12 @@ export function AbilityItem({
   const description = ability.description?.[locale]
 
   return (
-    <div className="bg-bg-surface rounded-chip flex items-start gap-2.5 px-2.5 py-2">
+    // 설명이 없으면(기어는 671개 전부) 아이콘과 이름을 세로 가운데로 맞춘다
+    <div
+      className={`bg-bg-surface rounded-chip flex gap-2.5 px-2.5 py-2 ${
+        description ? 'items-start' : 'items-center'
+      }`}
+    >
       <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center">
         {broken ? (
           <span className="bg-border-strong h-2 w-2 rounded-full" aria-hidden />
@@ -57,7 +74,7 @@ export function AbilityItem({
         )}
       </span>
       <div className="min-w-0 flex-1">
-        <div className="flex items-baseline gap-1.5">
+        <div className={`flex gap-1.5 ${description ? 'items-baseline' : 'items-center'}`}>
           <span className="truncate text-[11px] font-semibold">{ability.name[locale]}</span>
           {modifier && (
             <span className="text-brand-hover shrink-0 text-[10px] font-bold">{modifier}</span>

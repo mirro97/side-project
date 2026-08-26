@@ -1,5 +1,7 @@
 # 브롤스타즈 API 레퍼런스
 
+> 현재 무엇이 만들어졌는지는 [프로젝트 현황](../STATUS.md) 을 본다.
+
 조사일: 2026-08-24
 목적: 사이드 프로젝트에서 사용 가능한 브롤스타즈 관련 API 전수 조사 및 제약 정리
 검증 상태: 발급한 실제 키로 직접 호출(`api.brawlstars.com`)과 프록시 호출(`bsproxy.royaleapi.dev`) 양쪽 200 OK 확인 완료
@@ -243,7 +245,7 @@
   공식 /brawlers/{id}          id, name(대문자) 만. 설명 없음
   BrawlAPI /v1/brawlers/{id}   정식 영문명 + 영문 설명 + 이미지
   game/csv_logic/cards         스타파워·가젯의 TID 와 Value 필드 (1438행, 424/424 매칭)
-  game/csv_logic/gear_boosts   기어의 TID 와 ModifierValue/Type (19행, 19/19 매칭)
+  game/csv_logic/gear_boosts   기어의 TID 와 ModifierValue/Type (기어 종류 19개, 19/19 매칭)
   localization/kr              위 TID 로 한글명·한글설명 조회
 ```
 
@@ -266,7 +268,16 @@
 
 **결론: 두 언어 모두 온전한 설명만 쓰면 104/424(25%)다.** 나머지는 이름만 표시한다. 수치를 지우면 "속도를 늦추고 의 피해를 줍니다" 처럼 조사가 붕 떠 한국어 문장이 깨진다.
 
-**기어는 설명 대신 수치가 있다.** `ModifierValue` + `ModifierType`(`percent`/`value`)로 "속도 +15%" 형태를 만들 수 있고 19/19 전부 확보된다.
+**기어에는 설명이 아예 없다.** `gear_boosts` 에 `_DESC` TID 가 없어 671개 전부 설명이 없다. 대신 수치가 있다.
+
+```
+  ModifierType   percent 349 · value 216 · ticks 106
+  표시 예시       속도 +15% · 회복 +50 · 시야 +2s
+```
+
+`ticks` 는 게임의 시간 단위로 **1초가 20틱**이다. 변환하지 않으면 "시야 +40" 처럼 의미 없는 값이 된다.
+
+기어 종류는 19개지만 브롤러마다 사용 가능 목록이 달라, 106종에 걸친 슬롯 총합은 671개다.
 
 ### 2-6. 공식 API와의 목록 불일치
 
