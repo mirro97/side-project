@@ -3,10 +3,10 @@ import { useCallback, useMemo, useState } from 'react'
 import { Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { useQuery } from '@tanstack/react-query'
 import { getBrawlers } from '@/lib/game-data'
 import { countByRole, filterBrawlers, sortBrawlers, type SortKey } from '@/lib/brawlers'
 import { useMainAccount } from '@/hooks/useMainAccount'
+import { usePlayer } from '@/hooks/usePlayer'
 import { useInfiniteList } from '@/hooks/useInfiniteList'
 import {
   Select,
@@ -19,8 +19,7 @@ import { EmptyState } from '@/components/state/EmptyState'
 import { BrawlerCard } from './BrawlerCard'
 import { BrawlerDetailSlot } from './BrawlerDetailSlot'
 import { FilterChips, type ChipOption } from './FilterChips'
-import type { BsErrorKind } from '@/lib/bs/errors'
-import type { Player, PlayerBrawler } from '@/types/api'
+import type { PlayerBrawler } from '@/types/api'
 import type { Brawler, Locale, RoleKey } from '@/types/game'
 
 const PAGE = 30
@@ -40,17 +39,6 @@ const SORTS: { key: SortKey; label: string }[] = [
   { key: 'rarity', label: 'sortRarity' },
 ]
 
-interface PlayerResult {
-  ok: boolean
-  data?: Player
-  kind?: BsErrorKind
-}
-
-async function fetchPlayer(tag: string): Promise<PlayerResult> {
-  const res = await fetch(`/api/player/${encodeURIComponent(tag)}`)
-  return (await res.json()) as PlayerResult
-}
-
 export function BrawlerBrowser({ locale }: { locale: Locale }) {
   const t = useTranslations('brawlers')
   const tr = useTranslations('role')
@@ -65,16 +53,11 @@ export function BrawlerBrowser({ locale }: { locale: Locale }) {
   const roleCounts = useMemo(() => countByRole(all), [all])
 
   // 대표 계정이 있을 때만 진행도를 얹는다
-  const { data: playerData } = useQuery({
-    queryKey: ['player', mainAccountTag],
-    queryFn: () => fetchPlayer(mainAccountTag as string),
-    enabled: Boolean(mainAccountTag),
-  })
+  const { player } = usePlayer(mainAccountTag)
   const owned = useMemo((): Map<number, PlayerBrawler> | null => {
-    const p = playerData?.ok ? playerData.data : undefined
-    if (!p) return null
-    return new Map(p.brawlers.map(b => [b.id, b]))
-  }, [playerData])
+    if (!player) return null
+    return new Map(player.brawlers.map(b => [b.id, b]))
+  }, [player])
 
   const visible = useMemo(
     () =>

@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { countByMode, filterByMode, toEventViews, type EventView } from '@/lib/events'
 import { FilterChips, type ChipOption } from '@/components/brawlers/FilterChips'
@@ -25,22 +25,30 @@ export function EventBrowser({ initial, locale }: { initial: EventView[]; locale
 
   /**
    * 30분 캐시가 걸린 정적 페이지라 보는 동안 슬롯이 끝날 수 있다.
-   * 만료된 것을 빼고, 전부 빠지면 로테이션을 다시 받는다.
+   * 만료된 것을 뺀다.
+   *
+   * 재조회는 업데이터 안에서 하지 않는다 — React 는 업데이터를 순수 함수로 보고
+   * StrictMode 에서 두 번 호출하므로 요청이 두 번 나간다.
    */
   const handleEnded = useCallback((slotId: number) => {
-    setViews(prev => {
-      const next = prev.filter(v => v.slotId !== slotId)
-      if (next.length === 0) {
-        void fetch('/api/events')
-          .then(r => r.json() as Promise<EventsResult>)
-          .then(j => {
-            if (j.ok && j.data) setViews(toEventViews(j.data))
-          })
-          .catch(() => {})
-      }
-      return next
-    })
+    setViews(prev => prev.filter(v => v.slotId !== slotId))
   }, [])
+
+  // 목록이 비면 로테이션을 다시 받는다. 한 번만 나가도록 잠근다
+  const refetching = useRef(false)
+  useEffect(() => {
+    if (views.length > 0 || refetching.current) return
+    refetching.current = true
+    fetch('/api/events')
+      .then(r => r.json() as Promise<EventsResult>)
+      .then(j => {
+        if (j.ok && j.data) setViews(toEventViews(j.data))
+      })
+      .catch(() => {})
+      .finally(() => {
+        refetching.current = false
+      })
+  }, [views.length])
 
   const counts = countByMode(views)
   const options: ChipOption[] = Object.entries(counts)

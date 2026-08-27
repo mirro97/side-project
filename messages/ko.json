@@ -187,7 +187,7 @@
     "cancel": "취소",
     "changeKey": "키 변경",
     "empty": "브롤러, 기어, 조합 무엇이든 물어보세요.",
-    "emptyWithFocus": "{name} 에 대해 물어보세요. 지금 보고 있는 정보가 함께 전달됩니다.",
+    "emptyWithFocus": "{name}에 대해 물어보세요. 지금 보고 있는 정보가 함께 전달됩니다.",
     "placeholder": "질문 입력",
     "send": "보내기",
     "thinking": "생각 중…"

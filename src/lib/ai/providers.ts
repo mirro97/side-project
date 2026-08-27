@@ -15,10 +15,15 @@ function messageFrom(json: unknown, fallback: string): string {
   return typeof m === 'string' && m ? m : fallback
 }
 
-function statusHint(status: number): string {
+/**
+ * 접두어는 정보가 있을 때만 붙인다.
+ * Gemini 는 잘못된 키에도 400 을 주므로 상태 코드만으로 인증 문제를 가릴 수 없다
+ * (실측: 400 "API key not valid"). 그런 경우 API 메시지가 이미 원인을 말한다.
+ */
+function statusHint(status: number): string | null {
   if (status === 401 || status === 403) return 'AUTH'
   if (status === 429) return 'RATE'
-  return 'OTHER'
+  return null
 }
 
 /**
@@ -26,7 +31,9 @@ function statusHint(status: number): string {
  * 세 provider 모두 { error: { message } } 형태라 어댑터별로 나눌 이유가 없었다.
  */
 export function describeError(status: number, json: unknown): string {
-  return `${statusHint(status)}: ${messageFrom(json, `HTTP ${status}`)}`
+  const hint = statusHint(status)
+  const message = messageFrom(json, `HTTP ${status}`)
+  return hint ? `${hint}: ${message}` : message
 }
 
 const GEMINI_BASE = 'https://generativelanguage.googleapis.com/v1beta'

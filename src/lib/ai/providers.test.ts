@@ -41,6 +41,13 @@ describe('공통 규약', () => {
     expect(describeError(429, null)).toContain('RATE')
   })
 
+  it('상태 코드로 원인을 알 수 없으면 접두어를 붙이지 않는다', () => {
+    // Gemini 는 잘못된 키에도 400 을 준다. "OTHER:" 는 정보가 아니다
+    expect(describeError(400, { error: { message: 'API key not valid' } })).toBe(
+      'API key not valid',
+    )
+  })
+
   it('예상 못 한 응답 형태에도 터지지 않는다', () => {
     for (const p of PROVIDERS) {
       const a = adapterFor(p)
