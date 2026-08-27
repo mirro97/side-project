@@ -76,5 +76,98 @@
     "specialRule": "Special rule",
     "endsAt": "Ends",
     "empty": "No events running"
+  },
+  "recommend": {
+    "title": "Brawlers for you",
+    "intro": "Answer four questions and we'll find brawlers that fit you.",
+    "retake": "Start over",
+    "usingAccount": "Your account's play style is factored in",
+    "noAccount": "Set a main account to factor in how you actually play",
+    "groupFamiliar": "Ones you already play well",
+    "groupFresh": "Ones you haven't tried",
+    "groupSingle": "Brawlers that fit you",
+    "matchScore": "match",
+    "axisMatch": "{axis} match",
+    "q": {
+      "range": {
+        "label": "How close do you like to fight?",
+        "close": "Up close",
+        "mid": "Depends",
+        "far": "From afar"
+      },
+      "durability": {
+        "label": "Front line or support?",
+        "back": "Support from behind",
+        "flex": "Either",
+        "front": "Front line"
+      },
+      "mobility": {
+        "label": "Mobility or firepower?",
+        "power": "Firepower",
+        "balance": "Both",
+        "speed": "Mobility"
+      },
+      "risk": {
+        "label": "Will you risk dying for one big hit?",
+        "safe": "Play it safe",
+        "even": "Sometimes",
+        "gamble": "Go for it"
+      }
+    },
+    "axis": {
+      "range": "Range",
+      "durability": "Durability",
+      "mobility": "Mobility",
+      "risk": "Risk"
+    },
+    "band": {
+      "range": {
+        "low": "you prefer fighting up close",
+        "mid": "you're comfortable at any range",
+        "high": "you prefer dealing damage safely from a distance"
+      },
+      "durability": {
+        "low": "you prefer supporting from the back",
+        "mid": "you move between front and back",
+        "high": "you prefer soaking damage up front"
+      },
+      "mobility": {
+        "low": "you'd trade speed for firepower",
+        "mid": "you balance speed and firepower",
+        "high": "you'd rather move fast"
+      },
+      "risk": {
+        "low": "you prefer safe play",
+        "mid": "you take measured risks",
+        "high": "you'll gamble for a big play"
+      }
+    },
+    "reason": {
+      "match": "Your {axis} preference lines up exactly.",
+      "close": "The overall fit is good.",
+      "none": "Nothing here clashes with your style."
+    },
+    "trait": {
+      "range": {
+        "low": "Short range",
+        "mid": "Moderate range",
+        "high": "Long range"
+      },
+      "durability": {
+        "low": "low health",
+        "mid": "average health",
+        "high": "high health"
+      },
+      "mobility": {
+        "low": "slow",
+        "mid": "average speed",
+        "high": "fast"
+      },
+      "risk": {
+        "low": "steady",
+        "mid": "swingy",
+        "high": "high-risk"
+      }
+    }
   }
 }

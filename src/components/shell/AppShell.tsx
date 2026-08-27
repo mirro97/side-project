@@ -11,7 +11,7 @@ export function AppShell({ locale, children }: { locale: string; children: React
         <div className="flex items-center gap-6">
           <span className="flex items-center gap-1.5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/icons/logo-main.svg" alt="" aria-hidden className="h-5 w-5" />
+            <img src="/icons/logo-main.svg" alt="" aria-hidden className="h-6 w-6" />
             <span className="text-[15px] font-extrabold tracking-tight">Brawl Companion</span>
           </span>
           <NavTabs locale={locale} className="hidden md:flex" />
