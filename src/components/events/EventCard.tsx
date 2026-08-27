@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { CountdownTimer } from '@/components/display/CountdownTimer'
-import { EventTime } from './EventTime'
+import { LocalTime } from '@/components/display/LocalTime'
 import type { EventView } from '@/lib/events'
 import type { Locale } from '@/types/game'
 
@@ -67,7 +67,7 @@ export function EventCard({
 
         <div className="flex shrink-0 flex-col items-end gap-0.5">
           <CountdownTimer end={view.end} onEnded={() => onEnded(view.slotId)} />
-          <EventTime end={view.end} locale={locale} />
+          <LocalTime at={view.end} locale={locale} />
         </div>
       </div>
     </div>
