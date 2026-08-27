@@ -5,6 +5,7 @@ const data = raw as unknown as GameData
 
 const byId = new Map(data.brawlers.map(b => [b.id, b]))
 const modeById = new Map(data.modes.map(m => [m.modeId, m]))
+const modeByKey = new Map(data.modes.map(m => [m.apiKey, m]))
 
 export function getBrawlers(): Brawler[] {
   return data.brawlers
@@ -30,4 +31,9 @@ export function searchBrawlers(query: string): Brawler[] {
   return data.brawlers.filter(
     b => b.name.en.toLowerCase().includes(q) || b.name.ko.toLowerCase().includes(q),
   )
+}
+
+/** 배틀로그는 modeId 대신 'brawlBall' 같은 API 키로 모드를 알려준다 */
+export function getModeByKey(apiKey: string): GameMode | undefined {
+  return modeByKey.get(apiKey)
 }
