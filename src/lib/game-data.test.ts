@@ -4,6 +4,7 @@ import {
   getBrawler,
   getMode,
   getModeByKey,
+  modeLabel,
   searchBrawlers,
   getRanges,
 } from './game-data'
@@ -68,5 +69,32 @@ describe('게임 데이터 로더', () => {
         expect(v).toBeLessThanOrEqual(1)
       }
     }
+  })
+})
+
+describe('modeLabel', () => {
+  it('생성 데이터에 있는 모드는 현지화 이름을 쓴다', () => {
+    expect(modeLabel('brawlBall', 'ko')).toBe('브롤 볼')
+  })
+
+  it('영어 이름이 API 키 그대로면 번역이 아니므로 다듬어 쓴다', () => {
+    // 빌드 스크립트가 modes 의 name.en 에 키를 그대로 넣는다. 그걸 그대로 내보내면
+    // 영어 화면에 'brawlBall' 이 뜬다
+    expect(modeLabel('brawlBall', 'en')).toBe('Brawl Ball')
+    expect(modeLabel('soloShowdown', 'en')).toBe('Solo Showdown')
+  })
+
+  it('데이터에 없는 모드는 API 키를 다듬어 보여준다', () => {
+    // 실측으로 확인한 미수록 모드들
+    expect(modeLabel('lastStand', 'ko')).toBe('Last Stand')
+    expect(modeLabel('heist', 'ko')).toBe('Heist')
+    expect(modeLabel('wipeout', 'en')).toBe('Wipeout')
+    expect(modeLabel('basketBrawl', 'en')).toBe('Basket Brawl')
+  })
+
+  it('숫자가 섞인 키도 끊어 읽는다', () => {
+    // 대소문자만 보면 'Brawl Ball5 V5' 가 된다
+    expect(modeLabel('brawlBall5V5', 'en')).toBe('Brawl Ball 5V5')
+    expect(modeLabel('deathmatch5v5', 'en')).toBe('Deathmatch 5v5')
   })
 })

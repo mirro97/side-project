@@ -8,8 +8,8 @@ import type { LocalizedText } from '@/types/game'
 export interface EventView {
   slotId: number
   modeId: number
-  /** 생성 데이터에 없는 신규 모드면 null 이다 */
-  modeName: LocalizedText | null
+  /** 'gemGrab' 같은 API 키. 표시 이름은 modeLabel 이 만든다 */
+  modeKey: string
   modeIconUrl: string | null
   mapName: string
   mapImageUrl: string
@@ -62,7 +62,7 @@ export function toEventViews(slots: EventSlot[], now: Date = new Date()): EventV
       {
         slotId: s.slotId,
         modeId: s.event.modeId,
-        modeName: mode?.name ?? null,
+        modeKey: s.event.mode,
         // 48000000 오프셋이 붙은 imageId 를 써야 한다. modeId 를 그대로 넣으면 404
         modeIconUrl: mode ? `${MODE_ICON}/${mode.imageId}.png` : null,
         mapName: s.event.map,

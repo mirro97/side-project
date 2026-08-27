@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
   addFavorite,
-  modeLabel,
   normalizeTag,
   removeFavorite,
   summarizeBattles,
@@ -123,19 +122,5 @@ describe('summarizeBrawlers', () => {
 
   it('보유가 없어도 터지지 않는다', () => {
     expect(summarizeBrawlers([], 106)).toEqual({ ownedCount: 0, total: 106, top: [] })
-  })
-})
-
-describe('modeLabel', () => {
-  it('생성 데이터에 있는 모드는 현지화 이름을 쓴다', () => {
-    expect(modeLabel('brawlBall', 'ko')).toBe('브롤 볼')
-    expect(modeLabel('brawlBall', 'en')).toBe('Brawl Ball')
-  })
-
-  it('데이터에 없는 모드는 API 키를 다듬어 보여준다', () => {
-    // 실측으로 확인한 미수록 모드들
-    expect(modeLabel('lastStand', 'ko')).toBe('Last Stand')
-    expect(modeLabel('heist', 'ko')).toBe('Heist')
-    expect(modeLabel('wipeout', 'en')).toBe('Wipeout')
   })
 })

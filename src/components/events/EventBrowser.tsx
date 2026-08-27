@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { countByMode, filterByMode, toEventViews, type EventView } from '@/lib/events'
+import { modeLabel } from '@/lib/game-data'
 import { FilterChips, type ChipOption } from '@/components/brawlers/FilterChips'
 import { EmptyState } from '@/components/state/EmptyState'
 import { EventCard } from './EventCard'
@@ -52,8 +53,11 @@ export function EventBrowser({ initial, locale }: { initial: EventView[]; locale
 
   const counts = countByMode(views)
   const options: ChipOption[] = Object.entries(counts)
-    .map(([id, count]) => ({ key: id, label: modeLabel(views, Number(id), locale), count }))
-    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
+    .map(([id, count]) => ({ key: id, label: chipLabel(views, Number(id), locale), count }))
+    // localeCompare 에 로케일을 넘기지 않으면 실행 환경의 기본 로케일을 쓴다.
+    // 서버(Node)는 라틴 문자를 앞에, 브라우저(ko)는 한글을 앞에 놓아 칩 순서가 갈리고
+    // 하이드레이션이 깨진다 — 실측으로 확인했다. lib/brawlers 의 정렬과 같은 규칙이다
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, locale))
 
   const shown = filterByMode(views, modeId)
 
@@ -82,8 +86,8 @@ export function EventBrowser({ initial, locale }: { initial: EventView[]; locale
   )
 }
 
-/** 모드명은 뷰에 이미 현지화되어 들어 있다. 없으면 맵 이름으로 대신한다 */
-function modeLabel(views: EventView[], modeId: number, locale: Locale): string {
+/** 칩은 modeId 로 묶여 있어 먼저 그 모드의 슬롯을 찾아 API 키를 꺼낸다 */
+function chipLabel(views: EventView[], modeId: number, locale: Locale): string {
   const hit = views.find(v => v.modeId === modeId)
-  return hit?.modeName?.[locale] ?? String(modeId)
+  return hit ? modeLabel(hit.modeKey, locale) : String(modeId)
 }

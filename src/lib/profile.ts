@@ -1,7 +1,5 @@
-import { getModeByKey } from './game-data'
 import { sameTag } from './ranking'
 import type { ParsedBattle, PlayerBrawler } from '@/types/api'
-import type { Locale } from '@/types/game'
 
 /**
  * 브롤스타즈 태그에 실제로 존재하는 문자만.
@@ -69,23 +67,4 @@ const TOP_COUNT = 3
 export function summarizeBrawlers(owned: PlayerBrawler[], total: number) {
   const top = [...owned].sort((a, b) => b.trophies - a.trophies).slice(0, TOP_COUNT)
   return { ownedCount: owned.length, total, top }
-}
-
-/** camelCase API 키를 사람이 읽을 수 있게 띄운다. lastStand → Last Stand */
-function humanize(key: string): string {
-  const spaced = key.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-  return spaced.charAt(0).toUpperCase() + spaced.slice(1)
-}
-
-/**
- * 배틀로그의 battle.mode 는 'brawlBall' 같은 API 키다.
- *
- * 생성 데이터에 있는 모드는 현지화 이름을 쓴다. 다만 영어 이름은 빌드 스크립트가
- * API 키를 그대로 넣어둔 자리라(모드에는 EN 로케일 소스가 없다) 번역이 아니다.
- * 그 경우와 데이터에 아예 없는 모드(heist·megaBoss·wipeout 등 실측으로 확인)는
- * 키를 읽을 수 있게 다듬어 보여준다 — 이름을 지어내지 않는다.
- */
-export function modeLabel(apiKey: string, locale: Locale): string {
-  const name = getModeByKey(apiKey)?.name[locale]
-  return !name || name === apiKey ? humanize(apiKey) : name
 }

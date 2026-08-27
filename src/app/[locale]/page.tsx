@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getEventsRotationApi, getRankingsClubsApi, getRankingsPlayersApi } from '@/lib/bs/api'
 import { sortByEndingSoon } from '@/lib/home'
 import { parseBrawlTime } from '@/lib/bs/parse'
-import { getMode } from '@/lib/game-data'
+import { getMode, modeLabel } from '@/lib/game-data'
 import { BsError, type BsErrorKind } from '@/lib/bs/errors'
 import { SectionCard } from '@/components/home/SectionCard'
 import { EventRow } from '@/components/home/EventRow'
@@ -94,10 +94,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               return (
                 <EventRow
                   key={e.slotId}
-                  modeName={mode?.name[l] ?? e.event.mode}
+                  modeName={modeLabel(e.event.mode, l)}
                   mapName={e.event.map}
                   // 48000000 오프셋이 붙은 imageId 를 써야 한다. modeId 를 그대로 넣으면 404
-                  iconUrl={`https://cdn.brawlify.com/game-modes/regular/${mode?.imageId ?? 0}.png`}
+                  iconUrl={
+                    mode ? `https://cdn.brawlify.com/game-modes/regular/${mode.imageId}.png` : null
+                  }
                   end={end}
                 />
               )

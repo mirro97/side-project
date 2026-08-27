@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { CountdownTimer } from '@/components/display/CountdownTimer'
+import { modeLabel } from '@/lib/game-data'
 import { LocalTime } from '@/components/display/LocalTime'
 import type { EventView } from '@/lib/events'
 import type { Locale } from '@/types/game'
@@ -36,7 +37,7 @@ export function EventCard({
       )}
 
       <div className="relative flex items-center gap-2.5 px-3 py-3">
-        {view.modeIconUrl && (
+        {view.modeIconUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={view.modeIconUrl}
@@ -45,12 +46,15 @@ export function EventCard({
             height={30}
             className="h-[30px] w-[30px] shrink-0"
           />
+        ) : (
+          // 신규 모드는 아이콘 ID 를 모른다. 자리를 비우면 카드마다 글자 시작점이 어긋난다
+          <span className="bg-bg-elevated/60 rounded-chip h-[30px] w-[30px] shrink-0" />
         )}
 
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
             <span className="truncate text-[13px] font-bold">
-              {view.modeName?.[locale] ?? view.mapName}
+              {modeLabel(view.modeKey, locale)}
             </span>
             {view.modifiers.map((m, i) => (
               <span
