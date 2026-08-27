@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { normalizeTag } from '@/lib/profile'
 
@@ -15,6 +15,7 @@ export function TagForm({
   onSubmit: (tag: string) => void
 }) {
   const t = useTranslations('profile')
+  const errorId = useId()
   const [value, setValue] = useState(defaultValue)
   const [invalid, setInvalid] = useState(false)
 
@@ -42,6 +43,7 @@ export function TagForm({
           placeholder={t('tagPlaceholder')}
           aria-label={t('tagPlaceholder')}
           aria-invalid={invalid}
+          aria-describedby={invalid ? errorId : undefined}
           autoCapitalize="characters"
           autoCorrect="off"
           spellCheck={false}
@@ -56,7 +58,12 @@ export function TagForm({
           {t('lookup')}
         </button>
       </div>
-      {invalid && <p className="text-danger text-[11px]">{t('invalidTag')}</p>}
+      {/* 입력 직후 나타나므로 스크린리더에 바로 읽히게 한다 */}
+      {invalid && (
+        <p id={errorId} role="alert" className="text-danger text-[11px]">
+          {t('invalidTag')}
+        </p>
+      )}
     </form>
   )
 }

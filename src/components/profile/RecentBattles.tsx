@@ -5,7 +5,8 @@ import { useTranslations } from 'next-intl'
 import { ErrorState } from '@/components/state/ErrorState'
 import { RowSkeleton } from '@/components/state/Skeletons'
 import { getBrawler } from '@/lib/game-data'
-import { parseBattle, type BattleLogItem } from '@/lib/bs/parse'
+import { LocalTime } from '@/components/display/LocalTime'
+import { parseBattle, parseBrawlTime, type BattleLogItem } from '@/lib/bs/parse'
 import { modeLabel, summarizeBattles } from '@/lib/profile'
 import type { BsErrorKind } from '@/lib/bs/errors'
 import type { ParsedBattle } from '@/types/api'
@@ -26,6 +27,8 @@ async function fetchBattlelog(tag: string): Promise<BattlelogResult> {
 function Row({ battle, locale }: { battle: ParsedBattle; locale: Locale }) {
   const t = useTranslations('profile.battles')
   const meta = battle.brawlerId ? getBrawler(battle.brawlerId) : null
+  // 형식이 다르면 null 이다. 그때는 시각을 비운다
+  const at = parseBrawlTime(battle.battleTime)
 
   // 쇼다운 계열에는 result 가 없고 rank 만 온다 (실측)
   const outcome = battle.result
@@ -63,17 +66,24 @@ function Row({ battle, locale }: { battle: ParsedBattle; locale: Locale }) {
         )}
       </div>
 
-      {outcome && <span className={`shrink-0 text-[11px] font-bold ${tone}`}>{outcome}</span>}
-      {battle.trophyChange !== null && battle.trophyChange !== 0 && (
-        <span
-          className={`w-8 shrink-0 text-right text-[11px] font-bold ${
-            battle.trophyChange > 0 ? 'text-success' : 'text-danger'
-          }`}
-        >
-          {battle.trophyChange > 0 ? '+' : ''}
-          {battle.trophyChange}
+      <div className="flex shrink-0 flex-col items-end gap-0.5">
+        <span className="flex items-center gap-2">
+          {outcome && <span className={`text-[11px] font-bold ${tone}`}>{outcome}</span>}
+          {battle.trophyChange !== null && battle.trophyChange !== 0 && (
+            <span
+              className={`w-8 text-right text-[11px] font-bold ${
+                battle.trophyChange > 0 ? 'text-success' : 'text-danger'
+              }`}
+            >
+              {battle.trophyChange > 0 ? '+' : ''}
+              {battle.trophyChange}
+            </span>
+          )}
         </span>
-      )}
+        {at && (
+          <LocalTime at={at} locale={locale} className="text-text-tertiary text-[10px] tabular-nums" />
+        )}
+      </div>
     </li>
   )
 }
@@ -113,7 +123,16 @@ export function RecentBattles({ tag, locale }: { tag: string; locale: Locale }) 
                 {summary.draws > 0 && ` · ${summary.draws}${t('draw')}`}
               </span>
             )}
-            <span className={summary.trophyDelta >= 0 ? 'text-success' : 'text-danger'}>
+            {/* 0 을 초록으로 칠하면 이득처럼 보인다. 변화 없음은 중립색이다 */}
+            <span
+              className={
+                summary.trophyDelta > 0
+                  ? 'text-success'
+                  : summary.trophyDelta < 0
+                    ? 'text-danger'
+                    : 'text-text-secondary'
+              }
+            >
               {summary.trophyDelta > 0 ? '+' : ''}
               {summary.trophyDelta}
             </span>

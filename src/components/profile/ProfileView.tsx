@@ -26,10 +26,13 @@ export function ProfileView({ locale }: { locale: Locale }) {
   const params = useSearchParams()
   const { mainAccountTag } = useMainAccount()
 
-  // ?tag= 가 있으면 그 계정을, 없으면 대표 계정을 본다.
-  // 손으로 고친 깨진 값은 없는 것으로 친다
-  const queryTag = normalizeTag(params.get('tag') ?? '')
-  const tag = queryTag ?? mainAccountTag
+  // ?tag= 가 있으면 그 계정을, 없으면 대표 계정을 본다
+  const raw = params.get('tag')
+  const queryTag = raw ? normalizeTag(raw) : null
+  // 링크의 태그가 깨졌을 때 대표 계정으로 슬쩍 바꾸지 않는다.
+  // 조용히 폴백하면 남이 보낸 링크를 열었는데 내 계정이 떠서 오해한다
+  const brokenLink = Boolean(raw) && queryTag === null
+  const tag = brokenLink ? null : (queryTag ?? mainAccountTag)
 
   // 홈·랭킹·추천과 같은 키라 react-query 가 요청을 합친다
   const { player, isPending, isError, errorKind, refetch } = usePlayer(tag)
@@ -40,10 +43,12 @@ export function ProfileView({ locale }: { locale: Locale }) {
     <div className="flex flex-col gap-3 px-3 py-4">
       <h1 className="text-[17px] font-bold">{t('title')}</h1>
 
-      {/* 보는 계정이 바뀌면 입력칸도 그 태그로 맞춘다 */}
-      <TagForm key={tag ?? ''} defaultValue={tag ?? ''} onSubmit={show} />
+      {/* 보는 계정이 바뀌면 입력칸도 그 태그로 맞춘다. 깨진 링크는 고칠 수 있게 그대로 둔다 */}
+      <TagForm key={tag ?? raw ?? ''} defaultValue={tag ?? raw ?? ''} onSubmit={show} />
 
-      {!tag ? (
+      {brokenLink ? (
+        <EmptyState message={t('invalidTag')} />
+      ) : !tag ? (
         <EmptyState message={t('prompt')} />
       ) : isPending ? (
         <div className="border-border-subtle bg-bg-surface rounded-card border p-3">

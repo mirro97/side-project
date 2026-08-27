@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import { getBrawlers, getBrawler, getMode, searchBrawlers, getRanges } from './game-data'
+import {
+  getBrawlers,
+  getBrawler,
+  getMode,
+  getModeByKey,
+  searchBrawlers,
+  getRanges,
+} from './game-data'
 
 describe('게임 데이터 로더', () => {
   it('브롤러를 100종 이상 읽는다', () => {
@@ -39,6 +46,14 @@ describe('게임 데이터 로더', () => {
   it('modeId 로 게임모드를 찾고 imageId 에 오프셋이 붙는다', () => {
     expect(getMode(5)?.imageId).toBe(48000005)
     expect(getMode(0)?.imageId).toBe(48000000)
+  })
+
+  it('배틀로그의 API 키로도 같은 모드를 찾는다', () => {
+    // 배틀로그는 modeId 대신 mode 문자열을 준다. 이 연결이 끊기면 전투 목록의
+    // 모드명이 전부 폴백(영문 키)으로 떨어진다
+    expect(getModeByKey('brawlBall')?.modeId).toBe(5)
+    expect(getModeByKey('soloShowdown')?.modeId).toBe(6)
+    expect(getModeByKey('없는모드')).toBeUndefined()
   })
 
   it('희귀도 색상이 전부 올바른 hex 다', () => {
