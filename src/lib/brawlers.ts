@@ -5,7 +5,8 @@ export type SortKey = 'released' | 'name' | 'rarity'
 export interface BrawlerFilter {
   query?: string
   role?: RoleKey | null
-  rarityId?: number | null
+  /** 체크박스 다중 선택. 비어있거나 없으면 필터링하지 않는다 */
+  rarityIds?: number[]
 }
 
 /**
@@ -22,7 +23,7 @@ export function filterBrawlers(list: Brawler[], f: BrawlerFilter): Brawler[] {
     if (q && !matchesQuery(b, q)) return false
     // role 이 null 인 19종은 어떤 역할 필터에도 걸리지 않는다
     if (f.role && b.role !== f.role) return false
-    if (f.rarityId != null && b.rarity.id !== f.rarityId) return false
+    if (f.rarityIds && f.rarityIds.length > 0 && !f.rarityIds.includes(b.rarity.id)) return false
     return true
   })
 }

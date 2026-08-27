@@ -22,6 +22,15 @@
     "marksman": "저격수",
     "artillery": "투척수"
   },
+  "rarity": {
+    "common": "일반",
+    "rare": "희귀",
+    "superRare": "초희귀",
+    "epic": "영웅",
+    "mythic": "신화",
+    "legendary": "전설",
+    "ultraLegendary": "울트라 전설"
+  },
   "error": {
     "maintenance": "브롤스타즈 점검 중입니다",
     "notFound": "해당 태그의 플레이어가 없습니다",

@@ -1,5 +1,6 @@
 'use client'
 import { useTranslations } from 'next-intl'
+import { useGlitch } from 'react-powerglitch'
 import { RarityBadge } from '@/components/display/RarityBadge'
 import { RoleBadge } from '@/components/display/RoleBadge'
 import { StatBar } from '@/components/display/StatBar'
@@ -55,11 +56,18 @@ export function BrawlerDetail({
 }) {
   const t = useTranslations('brawlers')
   const ranges = getRanges()
+  // 상세 화면의 포트레이트에만 재미로 붙인다 — hover 할 때만 짧게 글리치, 평소엔 정적이라
+  // 스탯을 읽는 데 방해되지 않는다. createContainers(기본값) 때문에 img 를 직접 ref 하지 않고
+  // 감싸는 div 를 ref 한다 — 조건부 렌더링 대상이 아닌 고정 엘리먼트여야 한다
+  const { ref: portraitRef } = useGlitch({ playMode: 'hover' })
 
   return (
     <div>
       <div className="mb-3.5 flex items-start gap-3">
-        <div className="bg-bg-surface rounded-card h-[84px] w-[84px] shrink-0 overflow-hidden">
+        <div
+          ref={portraitRef}
+          className="bg-bg-surface rounded-card h-[84px] w-[84px] shrink-0 overflow-hidden"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={brawler.images.portrait}

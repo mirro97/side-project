@@ -1,12 +1,15 @@
 "use client"
+import { useState } from "react"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 
 /**
- * 데스크톱은 오른쪽 사이드 드로어, 모바일은 바텀시트다.
+ * 데스크톱은 가운데 모달, 모바일은 바텀시트다.
  *
- * vaul 은 direction 에 따라 transform 으로 위치를 잡으므로
- * CSS 로 방향을 덮을 수 없다. direction 자체를 바꿔야 한다.
+ * vaul Drawer 는 방향(top/bottom/left/right)만 지원해서 CSS 로는 "가운데 모달"을
+ * 만들 수 없다. 방향을 바꾸는 대신 데스크톱은 Dialog(radix), 모바일은 기존
+ * Drawer 로 컴포넌트 자체를 나눈다.
  */
 export function DetailPanel({
   open,
@@ -21,30 +24,39 @@ export function DetailPanel({
 }) {
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
+  // Dialog 와 Drawer 는 서로 다른 컴포넌트 트리라 isDesktop 이 바뀔 때마다 그대로
+  // 반영하면 렌더 중에 통째로 언마운트/리마운트된다 — 패널이 열려있는 도중에
+  // 창 크기를 데스크톱↔모바일 경계로 넘기면 스크롤 위치·전환 애니메이션이 날아간다.
+  // open 이 바뀌는(닫힘→열림, 열림→닫힘) 그 순간의 isDesktop 값으로 고정하고,
+  // 열려있는 동안 리사이즈해도 바뀌지 않게 한다. (React 공식 "prop 변화에 따른
+  // state 조정" 패턴 — effect 없이 렌더 중에 처리해 깜빡임도 없다)
+  const [prevOpen, setPrevOpen] = useState(open)
+  const [renderAsDesktop, setRenderAsDesktop] = useState(isDesktop)
+  if (open !== prevOpen) {
+    setPrevOpen(open)
+    setRenderAsDesktop(isDesktop)
+  }
+
+  const handleOpenChange = (o: boolean) => {
+    if (!o) onClose()
+  }
+
+  if (renderAsDesktop) {
+    return (
+      <Dialog open={open} onOpenChange={handleOpenChange}>
+        <DialogContent className="border-border-subtle bg-bg-elevated w-[480px] max-w-[calc(100%-2rem)] gap-0 p-0">
+          <DialogTitle className="sr-only">{title}</DialogTitle>
+          <div className="overflow-y-auto px-4 pt-6 pb-8">{children}</div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
   return (
-    <Drawer
-      open={open}
-      onOpenChange={o => {
-        if (!o) onClose()
-      }}
-      direction={isDesktop ? "right" : "bottom"}
-    >
-      <DrawerContent
-        className={
-          isDesktop
-            ? "border-border-subtle bg-bg-elevated h-dvh w-[420px]"
-            : "border-border-subtle bg-bg-elevated max-h-[85dvh]"
-        }
-      >
+    <Drawer open={open} onOpenChange={handleOpenChange}>
+      <DrawerContent className="border-border-subtle bg-bg-elevated max-h-[85dvh]">
         <DrawerTitle className="sr-only">{title}</DrawerTitle>
-        {/*
-          direction="right" 일 때 shadcn 이 드래그 핸들을 hidden 으로 감춘다.
-          모바일에서는 핸들의 mt-4 가 상단 여백을 만들어주지만 데스크톱에는 그게 없어
-          콘텐츠가 화면 최상단에 붙어 잘린 것처럼 보인다. 직접 여백을 준다.
-        */}
-        <div className={`overflow-y-auto px-4 pb-8 ${isDesktop ? "pt-6" : "pt-2"}`}>
-          {children}
-        </div>
+        <div className="overflow-y-auto px-4 pt-2 pb-8">{children}</div>
       </DrawerContent>
     </Drawer>
   )

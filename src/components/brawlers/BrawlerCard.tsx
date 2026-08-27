@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { formatTrophies } from '@/lib/format'
 import type { Brawler, Locale } from '@/types/game'
 
@@ -6,7 +7,11 @@ export interface BrawlerProgress {
   trophies: number
 }
 
-export function BrawlerCard({
+/**
+ * memo + id 기반 onSelect — 검색어를 칠 때마다 최대 ~106장이 새로 리렌더되지
+ * 않도록 한다. onSelect 가 카드마다 새 클로저가 아니라 안정된 참조여야 memo 가 먹힌다
+ */
+export const BrawlerCard = memo(function BrawlerCard({
   brawler,
   locale,
   progress,
@@ -19,12 +24,12 @@ export function BrawlerCard({
   progress?: BrawlerProgress
   /** 대표 계정이 있고 미보유일 때만 */
   locked?: boolean
-  onSelect: () => void
+  onSelect: (id: number) => void
 }) {
   return (
     <button
-      onClick={onSelect}
-      className={`border-border-subtle bg-bg-surface rounded-card overflow-hidden border text-left ${
+      onClick={() => onSelect(brawler.id)}
+      className={`border-border-subtle bg-bg-surface rounded-card relative overflow-hidden border text-left transition-transform hover:z-10 hover:scale-105 hover:border-brand ${
         locked ? 'opacity-30' : ''
       }`}
     >
@@ -54,4 +59,4 @@ export function BrawlerCard({
       </div>
     </button>
   )
-}
+})
