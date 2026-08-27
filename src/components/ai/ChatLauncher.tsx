@@ -19,6 +19,12 @@ import type { Locale } from '@/types/game'
 export function ChatLauncher({ locale }: { locale: Locale }) {
   const t = useTranslations('ai')
   const [open, setOpen] = useState(false)
+  /**
+   * 검색 그라운딩이 막혔다는 사실은 패널보다 오래 살아야 한다.
+   * ChatPanel 은 패널을 닫으면 언마운트되므로 거기 두면 다시 열 때마다
+   * 실패할 게 뻔한 호출을 또 보낸다. 런처는 레이아웃에 있어 계속 떠 있다.
+   */
+  const [searchBlocked, setSearchBlocked] = useState(false)
   // 브롤러 상세가 열려 있으면 그 브롤러를 질문 맥락에 싣는다
   const brawlerId = useSearchParams().get('brawler')
   const focus = brawlerId ? (getBrawler(Number(brawlerId)) ?? null) : null
@@ -35,7 +41,12 @@ export function ChatLauncher({ locale }: { locale: Locale }) {
       </button>
 
       <DetailPanel open={open} onClose={() => setOpen(false)} title={t('title')}>
-        <ChatPanel locale={locale} focus={focus} />
+        <ChatPanel
+          locale={locale}
+          focus={focus}
+          searchBlocked={searchBlocked}
+          onSearchBlocked={() => setSearchBlocked(true)}
+        />
       </DetailPanel>
     </>
   )

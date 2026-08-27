@@ -220,6 +220,8 @@
     "provider": "제공자",
     "apiKey": "API 키",
     "model": "모델",
+    "webSearch": "웹검색",
+    "searchSkipped": "검색 할당량이 차서 검색 없이 답했습니다. 최신 정보가 아닐 수 있어요.",
     "getKey": "{provider} 키 발급받기",
     "loadModels": "모델 불러오기",
     "loadingModels": "불러오는 중…",

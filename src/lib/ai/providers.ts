@@ -1,4 +1,4 @@
-import type { Adapter, Call, ChatMessage, Provider } from './types'
+import type { Adapter, Call, ChatMessage, ChatReply, Provider } from './types'
 
 /** 응답 형태가 바뀌어도 터지지 않게, 꺼낼 때마다 모양을 확인한다 */
 function pick(o: unknown, ...path: (string | number)[]): unknown {
@@ -27,13 +27,36 @@ function statusHint(status: number): string | null {
 }
 
 /**
+ * 어떤 할당량이 막혔는지.
+ *
+ * 429 메시지는 "you exceeded your current quota" 라고만 해서 **모델 쿼터인지
+ * 검색 그라운딩 쿼터인지 구분이 안 된다.** Gemini 는 본문에 그 id 를 넣어주는데
+ * 메시지만 꺼내면서 버리고 있었다. BYOK 라 사용자가 직접 판단해야 해서 함께 보여준다.
+ */
+function quotaId(json: unknown): string | null {
+  const details = pick(json, 'error', 'details')
+  if (!Array.isArray(details)) return null
+  for (const d of details) {
+    const violations = pick(d, 'violations')
+    if (!Array.isArray(violations)) continue
+    for (const v of violations) {
+      const id = pick(v, 'quotaId') ?? pick(v, 'quotaMetric')
+      if (typeof id === 'string' && id) return id
+    }
+  }
+  return null
+}
+
+/**
  * API 가 준 메시지를 그대로 쓴다. 우리가 지어내지 않는다.
  * 세 provider 모두 { error: { message } } 형태라 어댑터별로 나눌 이유가 없었다.
  */
 export function describeError(status: number, json: unknown): string {
   const hint = statusHint(status)
   const message = messageFrom(json, `HTTP ${status}`)
-  return hint ? `${hint}: ${message}` : message
+  const quota = quotaId(json)
+  const body = quota ? `${message} [${quota}]` : message
+  return hint ? `${hint}: ${body}` : body
 }
 
 const GEMINI_BASE = 'https://generativelanguage.googleapis.com/v1beta'
@@ -56,7 +79,8 @@ const gemini: Adapter = {
       // "models/gemini-…" 형태라 접두어를 벗긴다
       .map(n => n.replace(/^models\//, ''))
   },
-  chat(key, model, system, messages) {
+  chat(key, model, system, messages, opts) {
+    const search = opts?.search !== false
     return {
       url: `${GEMINI_BASE}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`,
       init: {
@@ -69,17 +93,23 @@ const gemini: Adapter = {
             role: m.role === 'assistant' ? 'model' : 'user',
             parts: [{ text: m.text }],
           })),
+          // 검색 도구는 다른 도구와 함께 못 쓴다. 우리는 이것 하나뿐이라 해당 없다
+          ...(search ? { tools: [{ google_search: {} }] } : {}),
         }),
       },
     }
   },
   parseChat(json) {
     const parts = pick(json, 'candidates', 0, 'content', 'parts')
-    if (!Array.isArray(parts)) return ''
-    return parts
-      .map(p => pick(p, 'text'))
-      .filter((t): t is string => typeof t === 'string')
-      .join('')
+    const text = Array.isArray(parts)
+      ? parts
+          .map(p => pick(p, 'text'))
+          .filter((t): t is string => typeof t === 'string')
+          .join('')
+      : ''
+    // 그라운딩을 안 탄 응답에는 없다. 그때는 위젯도 없다
+    const widget = pick(json, 'candidates', 0, 'groundingMetadata', 'searchEntryPoint', 'renderedContent')
+    return { text, searchWidget: typeof widget === 'string' ? widget : undefined }
   },
 }
 
@@ -119,7 +149,7 @@ const openai: Adapter = {
   },
   parseChat(json) {
     const text = pick(json, 'choices', 0, 'message', 'content')
-    return typeof text === 'string' ? text : ''
+    return { text: typeof text === 'string' ? text : '' }
   },
 }
 
@@ -171,12 +201,14 @@ const anthropic: Adapter = {
   },
   parseChat(json) {
     const blocks = pick(json, 'content')
-    if (!Array.isArray(blocks)) return ''
-    return blocks
-      .filter(b => pick(b, 'type') === 'text')
-      .map(b => pick(b, 'text'))
-      .filter((t): t is string => typeof t === 'string')
-      .join('')
+    if (!Array.isArray(blocks)) return { text: '' }
+    return {
+      text: blocks
+        .filter(b => pick(b, 'type') === 'text')
+        .map(b => pick(b, 'text'))
+        .filter((t): t is string => typeof t === 'string')
+        .join(''),
+    }
   },
 }
 
@@ -186,22 +218,65 @@ export function adapterFor(provider: Provider): Adapter {
   return ADAPTERS[provider]
 }
 
-export interface CallResult {
+export interface CallResult extends ChatReply {
   ok: boolean
   /** ok 면 본문, 아니면 API 가 준 에러 메시지 */
   text: string
+  /** 검색 할당량이 막혀 검색 없이 답한 경우. 화면이 그 사실을 알린다 */
+  searchSkipped?: boolean
+  /** 재시도 판단용. UI 는 쓰지 않는다 */
+  status?: number
 }
 
-/** 브라우저가 직접 부른다. 우리 서버를 거치지 않는다 */
+/**
+ * 웹검색을 붙인 provider. 지금은 Gemini 하나다.
+ *
+ * OpenAI 는 검색을 켜려면 `gpt-4o-search-preview` 계열로 **모델이 강제**돼서
+ * 모델을 직접 고르는 BYOK 와 부딪힌다. Anthropic 은 도구 방식이라 모델 제약이 없어
+ * 다음 순서로 붙이기 좋다.
+ *
+ * 켜진 provider 와 아닌 provider 가 눈에 띄게 다르게 답하므로 화면에 표시한다.
+ */
+const SEARCH_PROVIDERS = new Set<Provider>(['gemini'])
+
+export function supportsSearch(provider: Provider): boolean {
+  return SEARCH_PROVIDERS.has(provider)
+}
+
+/**
+ * 브라우저가 직접 부른다. 우리 서버를 거치지 않는다.
+ *
+ * **검색 그라운딩은 모델 호출과 별개 할당량을 쓴다** (무료 5,000프롬프트/월,
+ * 유료도 하루 1,500건까지만 무료). 그쪽만 소진돼도 429 가 나는데, 검색을 빼면
+ * 답할 수 있는 질문이 대부분이다. 통째로 막지 말고 한 번만 검색 없이 다시 부른다.
+ *
+ * 두 번째가 성공하면 그 자체로 진단이다 — 막힌 건 모델이 아니라 검색이었다.
+ * 호출부는 그때 `searchSkipped` 를 보고 다음 질문부터 검색을 꺼야 한다.
+ * 매번 실패할 게 뻔한 호출을 한 번씩 더 보내면 답이 그만큼 늦어진다.
+ */
 export async function callChat(
   provider: Provider,
   key: string,
   model: string,
   system: string,
   messages: ChatMessage[],
+  opts?: { search?: boolean },
 ): Promise<CallResult> {
   const a = adapterFor(provider)
-  return run(a.chat(key, model, system, messages), a)
+  const search = opts?.search !== false && supportsSearch(provider)
+
+  const first = await run(a.chat(key, model, system, messages, { search }), a)
+  // 이미 검색을 끄고 보낸 경우. 성공했으면 최신이 아니라는 사실만 함께 알린다
+  if (!search) {
+    return first.ok && supportsSearch(provider) ? { ...first, searchSkipped: true } : first
+  }
+  if (first.ok || first.status !== 429) return first
+
+  // 어떤 할당량이 막혔는지는 first.text 에 들어 있다. 재시도가 성공하면 화면에서 사라지므로 남긴다
+  console.warn(`[ai] 검색 그라운딩이 막혀 검색 없이 재시도합니다 — ${first.text}`)
+  const retry = await run(a.chat(key, model, system, messages, { search: false }), a)
+  // 재시도도 막혔으면 원래 오류를 보여준다. 두 번째 메시지가 더 정확하지 않다
+  return retry.ok ? { ...retry, searchSkipped: true } : first
 }
 
 export async function callModels(provider: Provider, key: string): Promise<string[] | null> {
@@ -226,7 +301,7 @@ async function run(call: Call, a: Adapter): Promise<CallResult> {
     return { ok: false, text: `NETWORK: ${e instanceof Error ? e.message : 'fetch failed'}` }
   }
   const json: unknown = await res.json().catch(() => null)
-  if (!res.ok) return { ok: false, text: describeError(res.status, json) }
-  const text = a.parseChat(json)
-  return text ? { ok: true, text } : { ok: false, text: 'EMPTY: 응답이 비어 있습니다' }
+  if (!res.ok) return { ok: false, text: describeError(res.status, json), status: res.status }
+  const reply = a.parseChat(json)
+  return reply.text ? { ok: true, ...reply } : { ok: false, text: 'EMPTY: 응답이 비어 있습니다' }
 }

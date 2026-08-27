@@ -1,17 +1,37 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useByok } from '@/hooks/useByok'
-import { callChat } from '@/lib/ai/providers'
+import { callChat, supportsSearch } from '@/lib/ai/providers'
 import { buildSystemPrompt } from '@/lib/ai/prompt'
 import { getBrawlers } from '@/lib/game-data'
+import { toEventViews } from '@/lib/events'
 import { KeySetup } from './KeySetup'
 import type { ChatMessage } from '@/lib/ai/types'
+import type { EventSlot } from '@/types/api'
 import type { Brawler, Locale } from '@/types/game'
 
 interface Turn extends ChatMessage {
   /** 실패한 응답은 말풍선 대신 경고로 그린다 */
   error?: boolean
+  /** Gemini 검색 그라운딩이 준 검색 추천 위젯 HTML */
+  searchWidget?: string
+  /** 검색 할당량이 막혀 검색 없이 답한 경우 */
+  searchSkipped?: boolean
+}
+
+interface EventsResult {
+  ok: boolean
+  data?: EventSlot[]
+}
+
+/** 로테이션은 30분마다 바뀐다. 채팅 여닫을 때마다 다시 받을 이유가 없다 */
+const EVENTS_STALE_MS = 30 * 60_000
+
+async function fetchEvents(): Promise<EventsResult> {
+  const res = await fetch('/api/events')
+  return (await res.json()) as EventsResult
 }
 
 /**
@@ -20,9 +40,26 @@ interface Turn extends ChatMessage {
  */
 const MAX_SENT_TURNS = 12
 
-export function ChatPanel({ locale, focus }: { locale: Locale; focus: Brawler | null }) {
+export function ChatPanel({
+  locale,
+  focus,
+  searchBlocked,
+  onSearchBlocked,
+}: {
+  locale: Locale
+  focus: Brawler | null
+  /** 검색 그라운딩이 이미 막힌 것으로 확인됐는가 */
+  searchBlocked: boolean
+  onSearchBlocked: () => void
+}) {
   const t = useTranslations('ai')
   const { byok, survey, setByok } = useByok()
+  // 이벤트 페이지와 같은 라우트를 쓴다. 실패해도 채팅은 그대로 동작한다
+  const { data: events } = useQuery({
+    queryKey: ['events'],
+    queryFn: fetchEvents,
+    staleTime: EVENTS_STALE_MS,
+  })
   const [turns, setTurns] = useState<Turn[]>([])
   const [input, setInput] = useState('')
   const [busy, setBusy] = useState(false)
@@ -55,6 +92,9 @@ export function ChatPanel({ locale, focus }: { locale: Locale; focus: Brawler | 
     )
   }
 
+  // 지원하더라도 이미 막힌 게 확인됐으면 없는 것으로 친다
+  const searchAvailable = supportsSearch(byok.provider) && !searchBlocked
+
   const send = async () => {
     const text = input.trim()
     if (!text || busy) return
@@ -65,9 +105,13 @@ export function ChatPanel({ locale, focus }: { locale: Locale; focus: Brawler | 
 
     const system = buildSystemPrompt({
       locale,
-      brawlerNames: getBrawlers().map(b => b.name.en),
+      brawlerNames: getBrawlers().map(b => b.name),
       focus,
       survey,
+      // 보내는 시점에 만료된 슬롯을 걸러낸다
+      events: events?.ok && events.data ? toEventViews(events.data) : null,
+      // 막힌 걸 알면서 "검색할 수 있다"고 하면 모델이 찾아본 척 답한다
+      hasSearch: searchAvailable,
     })
     // 브라우저가 직접 부른다. 키는 우리 서버를 지나가지 않는다
     const res = await callChat(
@@ -76,10 +120,21 @@ export function ChatPanel({ locale, focus }: { locale: Locale; focus: Brawler | 
       byok.model,
       system,
       next.slice(-MAX_SENT_TURNS).map(({ role, text: body }) => ({ role, text: body })),
+      { search: searchAvailable },
     )
+    if (res.searchSkipped) onSearchBlocked()
     if (!alive.current) return
     setBusy(false)
-    setTurns([...next, { role: 'assistant', text: res.text, error: !res.ok }])
+    setTurns([
+      ...next,
+      {
+        role: 'assistant',
+        text: res.text,
+        error: !res.ok,
+        searchWidget: res.searchWidget,
+        searchSkipped: res.searchSkipped,
+      },
+    ])
   }
 
   return (
@@ -87,9 +142,18 @@ export function ChatPanel({ locale, focus }: { locale: Locale; focus: Brawler | 
     // 중첩되면 모바일 바텀시트에서 입력창이 화면 밖으로 밀린다
     <div className="flex flex-col gap-3">
       <div className="text-text-tertiary flex items-center justify-between gap-2 text-[11px]">
-        <span className="truncate">
-          {byok.provider} · {byok.model}
-          {focus && ` · ${focus.name[locale]}`}
+        {/* 상태는 전부 왼쪽 한 줄로 모은다. justify-between 에 항목이 셋이면
+            가운데 것이 붕 떠서 [키 변경] 과 경쟁한다 */}
+        <span className="flex min-w-0 items-center gap-1">
+          <span className="truncate">
+            {byok.provider} · {byok.model}
+            {focus && ` · ${focus.name[locale]}`}
+          </span>
+          {searchAvailable && (
+            // 누를 수 있는 것이 아니므로 칩으로 만들지 않는다. 색만 살짝 준다.
+            // 막힌 뒤에도 띄워두면 "검색된 답"이라는 거짓 신호가 된다
+            <span className="text-brand-hover shrink-0">· {t('webSearch')}</span>
+          )}
         </span>
         <button
           onClick={() => setEditingKey(true)}
@@ -106,17 +170,30 @@ export function ChatPanel({ locale, focus }: { locale: Locale; focus: Brawler | 
       ) : (
         <div className="flex flex-col gap-2.5">
           {turns.map((m, i) => (
-            <div
-              key={i}
-              className={`rounded-card px-3 py-2 text-[12px] leading-relaxed whitespace-pre-wrap ${
-                m.role === 'user'
-                  ? 'bg-brand/15 ml-8'
-                  : m.error
-                    ? 'border-warning text-warning mr-8 border'
-                    : 'bg-bg-surface mr-8'
-              }`}
-            >
-              {m.text}
+            <div key={i}>
+              <div
+                className={`rounded-card px-3 py-2 text-[12px] leading-relaxed whitespace-pre-wrap ${
+                  m.role === 'user'
+                    ? 'bg-brand/15 ml-8'
+                    : m.error
+                      ? 'border-warning text-warning mr-8 border'
+                      : 'bg-bg-surface mr-8'
+                }`}
+              >
+                {m.text}
+              </div>
+              {m.searchSkipped && (
+                // 최신인 줄 알고 읽으면 안 되므로 조용히 넘어가지 않는다
+                <p className="text-text-tertiary mt-1 mr-8 text-[10px]">{t('searchSkipped')}</p>
+              )}
+              {m.searchWidget && (
+                /* Google 이 준 HTML·CSS 를 그대로 그린다. 검색 추천 표시는 그라운딩 ToS 의무다.
+                   출처는 HTTPS 로 받은 provider 응답이고 <script> 는 React 가 실행하지 않는다 */
+                <div
+                  className="mt-1.5 mr-8 overflow-x-auto"
+                  dangerouslySetInnerHTML={{ __html: m.searchWidget }}
+                />
+              )}
             </div>
           ))}
           {busy && <div className="text-text-tertiary text-[11px]">{t('thinking')}</div>}
