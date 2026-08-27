@@ -1,6 +1,13 @@
 'use client'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { callModels } from '@/lib/ai/providers'
 import { PROVIDERS, type ByokConfig, type Provider } from '@/lib/ai/types'
 
@@ -114,17 +121,20 @@ export function KeySetup({
             {loading ? t('loadingModels') : t('loadModels')}
           </button>
           {models ? (
-            <select
-              value={model}
-              onChange={e => setModel(e.target.value)}
-              className="border-border-strong bg-bg-surface rounded-card min-w-0 flex-1 px-2 py-2 text-[12px] outline-none"
-            >
-              {models.map(m => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
+            // 네이티브 select 는 화살표 위치·간격을 브라우저가 정해서 어긋난다.
+            // 랭킹 국가 선택과 같은 컴포넌트를 쓴다
+            <Select value={model} onValueChange={setModel}>
+              <SelectTrigger className="min-w-0 flex-1" aria-label={t('model')}>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {models.map(m => (
+                  <SelectItem key={m} value={m}>
+                    {m}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           ) : (
             <input
               value={model}

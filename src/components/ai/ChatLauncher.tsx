@@ -35,9 +35,21 @@ export function ChatLauncher({ locale }: { locale: Locale }) {
         onClick={() => setOpen(true)}
         aria-label={t('open')}
         title={t('open')}
-        className="bg-brand fixed right-4 bottom-24 z-30 flex h-12 w-12 items-center justify-center rounded-full text-[20px] shadow-lg md:bottom-6"
+        /* 아이콘과 라벨을 세로로 쌓으면 둘 다 자리가 없다. 가로로 눕히고
+           별은 반투명 원 안에 넣어 엠블럼처럼 세운다.
+           그림자는 쓰지 않는다 — 브랜드색 글로우가 번져 보였다. 경계는 링으로만 준다 */
+        className="from-brand-hover to-brand fixed right-4 bottom-24 z-30 flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-br py-2 pr-4 pl-2 ring-1 ring-white/15 transition-transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95 md:bottom-6"
       >
-        <span aria-hidden>✦</span>
+        <span
+          aria-hidden
+          className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-[15px] leading-none text-white"
+        >
+          ✦
+        </span>
+        {/* shimmer 는 background-clip:text 라 바탕이 될 글자색을 낮은 불투명도로 준다 */}
+        <span className="shimmer shimmer-color-white shimmer-spread-200 text-[12px] leading-none font-bold text-white/70">
+          {t('launcher')}
+        </span>
       </button>
 
       <DetailPanel open={open} onClose={() => setOpen(false)} title={t('title')}>

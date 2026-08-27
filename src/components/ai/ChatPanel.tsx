@@ -157,14 +157,16 @@ export function ChatPanel({
         </span>
         <button
           onClick={() => setEditingKey(true)}
-          className="text-brand-hover shrink-0 font-semibold"
+          /* 상태 줄에 섞여 있어 글자만으로는 눌리는 것인지 안 보였다.
+             테두리로 영역을 주고 hover 에서 반응하게 한다 */
+          className="border-border-strong text-text-secondary hover:border-brand hover:text-brand-hover rounded-chip shrink-0 cursor-pointer border px-2 py-0.5 font-semibold transition-colors"
         >
           {t('changeKey')}
         </button>
       </div>
 
       {turns.length === 0 ? (
-        <p className="text-text-tertiary text-[12px] leading-relaxed">
+        <p className="shimmer shimmer-color-brand-hover shimmer-spread-200 text-text-tertiary text-[12px] leading-relaxed">
           {focus ? t('emptyWithFocus', { name: focus.name[locale] }) : t('empty')}
         </p>
       ) : (

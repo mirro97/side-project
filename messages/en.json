@@ -216,6 +216,7 @@
   "ai": {
     "title": "AI assistant",
     "open": "Open AI assistant",
+    "launcher": "Ask AI",
     "setupIntro": "Add your own AI key to use chat. The key stays in this browser and is never sent to our server.",
     "provider": "Provider",
     "apiKey": "API key",
