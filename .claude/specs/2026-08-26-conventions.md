@@ -37,11 +37,13 @@
   GET /rankings/{country}/clubs      getRankingsClubsApi
   GET /events/rotation               getEventsRotationApi
   GET /players/{tag}                 getPlayerApi
+  GET /players/{tag}/battlelog       getPlayerBattlelogApi
   GET /brawlers                      getBrawlersApi
 ```
 
-**쓰지 않는 래퍼는 두지 않는다.** `/players/{tag}/battlelog` 는 전적 축적(v1.5)에서 필요해지면
-그때 추가한다. 미리 만들어 두면 "구현됐다"로 오해된다.
+**쓰지 않는 래퍼는 두지 않는다.** 미리 만들어 두면 "구현됐다"로 오해된다.
+`getPlayerBattlelogApi` 가 실제로 이 규칙에 걸려 한 번 지워졌고, 프로필의 최근 전투 목록이
+호출부가 되면서 되살아났다. **호출부가 생기는 시점에 추가한다.**
 
 경로를 그대로 옮기는 이유는 **API 레퍼런스와 대조하기 쉽기 때문**이다. `fetchPlayerRanking` 같은 이름은 어느 엔드포인트인지 다시 찾아봐야 한다.
 
