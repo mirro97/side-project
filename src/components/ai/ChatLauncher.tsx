@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { DetailPanel } from '@/components/panel/DetailPanel'
@@ -23,8 +23,21 @@ export function ChatLauncher({ locale }: { locale: Locale }) {
    * 검색 그라운딩이 막혔다는 사실은 패널보다 오래 살아야 한다.
    * ChatPanel 은 패널을 닫으면 언마운트되므로 거기 두면 다시 열 때마다
    * 실패할 게 뻔한 호출을 또 보낸다. 런처는 레이아웃에 있어 계속 떠 있다.
+   *
+   * 새로고침도 넘긴다. 메모리에만 두면 페이지를 열 때마다 첫 질문이 429 를
+   * 한 번씩 맞는다 (실측). 할당량은 그 사이에 돌아오지 않는다.
+   * 탭을 닫으면 지워지는 sessionStorage 가 이 수명에 맞는다.
    */
-  const [searchBlocked, setSearchBlocked] = useState(false)
+  // 서버는 sessionStorage 를 모른다. 서버/클라이언트 스냅샷을 갈라 하이드레이션을 맞춘다
+  // (useEffect + setState 는 cascading render 룰에 걸린다 — 컨벤션 3-2)
+  const storedBlock = useSyncExternalStore(noopSubscribe, readBlocked, () => false)
+  const [blockedNow, setBlockedNow] = useState(false)
+  const searchBlocked = blockedNow || storedBlock
+
+  const blockSearch = () => {
+    writeBlocked()
+    setBlockedNow(true)
+  }
   // 브롤러 상세가 열려 있으면 그 브롤러를 질문 맥락에 싣는다
   const brawlerId = useSearchParams().get('brawler')
   const focus = brawlerId ? (getBrawler(Number(brawlerId)) ?? null) : null
@@ -57,9 +70,32 @@ export function ChatLauncher({ locale }: { locale: Locale }) {
           locale={locale}
           focus={focus}
           searchBlocked={searchBlocked}
-          onSearchBlocked={() => setSearchBlocked(true)}
+          onSearchBlocked={blockSearch}
         />
       </DetailPanel>
     </>
   )
+}
+
+/** 구독할 외부 상태가 없다. 서버/클라이언트를 가르는 용도로만 쓴다 */
+const noopSubscribe = () => () => {}
+
+/** 탭이 살아 있는 동안만 기억한다. 쿼터가 돌아오면 새 탭에서 다시 시도된다 */
+const BLOCKED_KEY = 'bc.searchBlocked'
+
+function readBlocked(): boolean {
+  try {
+    return sessionStorage.getItem(BLOCKED_KEY) === '1'
+  } catch {
+    // 시크릿 모드나 저장소 차단. 기억을 못 할 뿐 채팅은 그대로 동작한다
+    return false
+  }
+}
+
+function writeBlocked(): void {
+  try {
+    sessionStorage.setItem(BLOCKED_KEY, '1')
+  } catch {
+    /* 저장 못 해도 이번 세션 메모리 상태는 유지된다 */
+  }
 }

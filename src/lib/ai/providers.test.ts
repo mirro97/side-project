@@ -231,6 +231,9 @@ function stubFetch(responses: { status: number; json: unknown }[]) {
 describe('callChat 의 검색 폴백', () => {
   afterEach(() => vi.unstubAllGlobals())
 
+  /** 검색 여부에 따라 다른 프롬프트가 나가는지 보려고 값을 다르게 준다 */
+  const SYS = (search: boolean) => (search ? 'SYS+search' : 'SYS')
+
   const OK = { candidates: [{ content: { parts: [{ text: '답' }] } }] }
   const QUOTA = { error: { message: 'You exceeded your current quota' } }
 
@@ -239,7 +242,7 @@ describe('callChat 의 검색 폴백', () => {
       { status: 429, json: QUOTA },
       { status: 200, json: OK },
     ])
-    return callChat('gemini', 'K', 'm', 'SYS', MSGS).then(res => {
+    return callChat('gemini', 'K', 'm', SYS, MSGS).then(res => {
       expect(calls).toHaveLength(2)
       expect(calls[0].body.tools).toEqual([{ google_search: {} }])
       // 두 번째는 검색을 빼고 나가야 한다
@@ -250,9 +253,21 @@ describe('callChat 의 검색 폴백', () => {
     })
   })
 
+  it('재시도에는 검색 지시가 빠진 프롬프트를 보낸다', () => {
+    // 그대로 재사용하면 모델이 "검색해 볼게요" 라고 약속해 놓고 검색 없이 답한다
+    const calls = stubFetch([
+      { status: 429, json: QUOTA },
+      { status: 200, json: OK },
+    ])
+    return callChat('gemini', 'K', 'm', SYS, MSGS).then(() => {
+      expect(calls[0].body.system_instruction).toEqual({ parts: [{ text: 'SYS+search' }] })
+      expect(calls[1].body.system_instruction).toEqual({ parts: [{ text: 'SYS' }] })
+    })
+  })
+
   it('재시도도 막히면 원래 오류를 보여준다', () => {
     const calls = stubFetch([{ status: 429, json: QUOTA }])
-    return callChat('gemini', 'K', 'm', 'SYS', MSGS).then(res => {
+    return callChat('gemini', 'K', 'm', SYS, MSGS).then(res => {
       expect(calls).toHaveLength(2)
       expect(res.ok).toBe(false)
       expect(res.text).toMatch(/^RATE:/)
@@ -263,7 +278,7 @@ describe('callChat 의 검색 폴백', () => {
   it('검색을 끄고 부르면 한 번만 나가고 최신이 아님을 알린다', () => {
     // 앞선 질문에서 이미 막힌 걸 확인한 경우다. 실패할 호출을 또 보내지 않는다
     const calls = stubFetch([{ status: 200, json: OK }])
-    return callChat('gemini', 'K', 'm', 'SYS', MSGS, { search: false }).then(res => {
+    return callChat('gemini', 'K', 'm', SYS, MSGS, { search: false }).then(res => {
       expect(calls).toHaveLength(1)
       expect(calls[0].body.tools).toBeUndefined()
       expect(res.searchSkipped).toBe(true)
@@ -273,14 +288,14 @@ describe('callChat 의 검색 폴백', () => {
   it('검색을 안 쓰는 provider 는 searchSkipped 를 붙이지 않는다', () => {
     // 애초에 검색이 없는 provider 라 "검색 없이 답했다"는 안내가 뜨면 안 된다
     stubFetch([{ status: 200, json: { choices: [{ message: { content: '답' } }] } }])
-    return callChat('openai', 'K', 'm', 'SYS', MSGS, { search: false }).then(res => {
+    return callChat('openai', 'K', 'm', SYS, MSGS, { search: false }).then(res => {
       expect(res.searchSkipped).toBeUndefined()
     })
   })
 
   it('429 가 아니면 다시 부르지 않는다', () => {
     const calls = stubFetch([{ status: 401, json: { error: { message: 'bad key' } } }])
-    return callChat('gemini', 'K', 'm', 'SYS', MSGS).then(res => {
+    return callChat('gemini', 'K', 'm', SYS, MSGS).then(res => {
       expect(calls).toHaveLength(1)
       expect(res.text).toMatch(/^AUTH:/)
     })
@@ -288,7 +303,7 @@ describe('callChat 의 검색 폴백', () => {
 
   it('검색을 안 쓰는 provider 는 429 여도 다시 부르지 않는다', () => {
     const calls = stubFetch([{ status: 429, json: QUOTA }])
-    return callChat('openai', 'K', 'm', 'SYS', MSGS).then(() => {
+    return callChat('openai', 'K', 'm', SYS, MSGS).then(() => {
       expect(calls).toHaveLength(1)
     })
   })

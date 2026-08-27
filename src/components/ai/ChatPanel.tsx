@@ -103,16 +103,18 @@ export function ChatPanel({
     setInput('')
     setBusy(true)
 
-    const system = buildSystemPrompt({
-      locale,
-      brawlerNames: getBrawlers().map(b => b.name),
-      focus,
-      survey,
-      // 보내는 시점에 만료된 슬롯을 걸러낸다
-      events: events?.ok && events.data ? toEventViews(events.data) : null,
-      // 막힌 걸 알면서 "검색할 수 있다"고 하면 모델이 찾아본 척 답한다
-      hasSearch: searchAvailable,
-    })
+    // 검색 없이 재시도할 때 다시 부른다. 검색 지시가 남아 있으면
+    // 모델이 "검색해 볼게요" 라고 약속해 놓고 검색 없이 답한다
+    const system = (hasSearch: boolean) =>
+      buildSystemPrompt({
+        locale,
+        brawlerNames: getBrawlers().map(b => b.name),
+        focus,
+        survey,
+        // 보내는 시점에 만료된 슬롯을 걸러낸다
+        events: events?.ok && events.data ? toEventViews(events.data) : null,
+        hasSearch,
+      })
     // 브라우저가 직접 부른다. 키는 우리 서버를 지나가지 않는다
     const res = await callChat(
       byok.provider,

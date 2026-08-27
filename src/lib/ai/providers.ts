@@ -250,22 +250,25 @@ export function supportsSearch(provider: Provider): boolean {
  * 유료도 하루 1,500건까지만 무료). 그쪽만 소진돼도 429 가 나는데, 검색을 빼면
  * 답할 수 있는 질문이 대부분이다. 통째로 막지 말고 한 번만 검색 없이 다시 부른다.
  *
+ * 시스템 프롬프트를 문자열이 아니라 **함수로 받는 이유가 여기 있다** — 재시도에는
+ * 검색 지시가 빠진 프롬프트가 필요하다. 그대로 재사용하면 모델이 "웹 검색으로
+ * 확인해 볼게요" 라고 약속해 놓고 검색 없이 답한다 (실측).
+ *
  * 두 번째가 성공하면 그 자체로 진단이다 — 막힌 건 모델이 아니라 검색이었다.
  * 호출부는 그때 `searchSkipped` 를 보고 다음 질문부터 검색을 꺼야 한다.
- * 매번 실패할 게 뻔한 호출을 한 번씩 더 보내면 답이 그만큼 늦어진다.
  */
 export async function callChat(
   provider: Provider,
   key: string,
   model: string,
-  system: string,
+  buildSystem: (search: boolean) => string,
   messages: ChatMessage[],
   opts?: { search?: boolean },
 ): Promise<CallResult> {
   const a = adapterFor(provider)
   const search = opts?.search !== false && supportsSearch(provider)
 
-  const first = await run(a.chat(key, model, system, messages, { search }), a)
+  const first = await run(a.chat(key, model, buildSystem(search), messages, { search }), a)
   // 이미 검색을 끄고 보낸 경우. 성공했으면 최신이 아니라는 사실만 함께 알린다
   if (!search) {
     return first.ok && supportsSearch(provider) ? { ...first, searchSkipped: true } : first
@@ -274,7 +277,7 @@ export async function callChat(
 
   // 어떤 할당량이 막혔는지는 first.text 에 들어 있다. 재시도가 성공하면 화면에서 사라지므로 남긴다
   console.warn(`[ai] 검색 그라운딩이 막혀 검색 없이 재시도합니다 — ${first.text}`)
-  const retry = await run(a.chat(key, model, system, messages, { search: false }), a)
+  const retry = await run(a.chat(key, model, buildSystem(false), messages, { search: false }), a)
   // 재시도도 막혔으면 원래 오류를 보여준다. 두 번째 메시지가 더 정확하지 않다
   return retry.ok ? { ...retry, searchSkipped: true } : first
 }
