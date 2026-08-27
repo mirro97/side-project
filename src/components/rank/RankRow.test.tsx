@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, vi } from 'vitest'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { NextIntlClientProvider } from 'next-intl'
 import { RankRow } from './RankRow'
 import messages from '../../../messages/en.json'
@@ -47,5 +47,18 @@ describe('RankRow', () => {
                iconUrl="b.png" subtitle="30/30" />,
     )
     expect(screen.getByText('30/30')).toBeInTheDocument()
+  })
+
+  it('누를 수 있으면 버튼으로 낸다 — 키보드로 도달해야 한다', () => {
+    // div + onClick 은 탭으로 갈 수도 엔터로 누를 수도 없다
+    const onClick = vi.fn()
+    wrap(<RankRow rank={1} name="A" trophies={1} iconUrl="x.png" onClick={onClick} />)
+    fireEvent.click(screen.getByRole('button'))
+    expect(onClick).toHaveBeenCalledOnce()
+  })
+
+  it('누를 수 없으면 버튼이 아니다', () => {
+    wrap(<RankRow rank={1} name="A" trophies={1} iconUrl="x.png" />)
+    expect(screen.queryByRole('button')).toBeNull()
   })
 })

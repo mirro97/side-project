@@ -1,8 +1,8 @@
 'use client'
 import { useMemo, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useMainAccount } from '@/hooks/useMainAccount'
+import { usePlayer } from '@/hooks/usePlayer'
 import { getBrawlers } from '@/lib/game-data'
 import { loadSettings, saveSettings } from '@/lib/storage'
 import {
@@ -17,20 +17,7 @@ import {
 } from '@/lib/recommend'
 import { SurveyForm } from './SurveyForm'
 import { ResultList } from './ResultList'
-import type { BsErrorKind } from '@/lib/bs/errors'
-import type { Player } from '@/types/api'
 import type { Locale } from '@/types/game'
-
-interface PlayerResult {
-  ok: boolean
-  data?: Player
-  kind?: BsErrorKind
-}
-
-async function fetchPlayer(tag: string): Promise<PlayerResult> {
-  const res = await fetch(`/api/player/${encodeURIComponent(tag)}`)
-  return (await res.json()) as PlayerResult
-}
 
 /** 저장된 축 값에서 어떤 선택지를 골랐는지 되찾는다 */
 function keysOf(survey: Vector | null): Partial<Record<Axis, string>> {
@@ -55,18 +42,13 @@ export function RecommendView({ locale }: { locale: Locale }) {
   const [retaking, setRetaking] = useState(false)
 
   // 홈·랭킹과 같은 키라 react-query 가 요청을 합친다
-  const { data } = useQuery({
-    queryKey: ['player', mainAccountTag],
-    queryFn: () => fetchPlayer(mainAccountTag as string),
-    enabled: Boolean(mainAccountTag),
-  })
+  const { player } = usePlayer(mainAccountTag)
 
   const saved = settings.survey
   const answers = draft ?? saved
   const complete = answers !== null && QUESTIONS.every(q => typeof answers[q.axis] === 'number')
 
   const all = useMemo(() => getBrawlers(), [])
-  const player = data?.ok ? data.data : undefined
 
   const result = useMemo(() => {
     if (!complete) return null

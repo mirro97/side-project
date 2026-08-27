@@ -1,25 +1,12 @@
 'use client'
 import { useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useQuery } from '@tanstack/react-query'
 import { getBrawler } from '@/lib/game-data'
 import { useMainAccount } from '@/hooks/useMainAccount'
+import { usePlayer } from '@/hooks/usePlayer'
 import { DetailPanel } from '@/components/panel/DetailPanel'
 import { BrawlerDetail } from './BrawlerDetail'
-import type { BsErrorKind } from '@/lib/bs/errors'
-import type { Player } from '@/types/api'
 import type { Locale } from '@/types/game'
-
-interface PlayerResult {
-  ok: boolean
-  data?: Player
-  kind?: BsErrorKind
-}
-
-async function fetchPlayer(tag: string): Promise<PlayerResult> {
-  const res = await fetch(`/api/player/${encodeURIComponent(tag)}`)
-  return (await res.json()) as PlayerResult
-}
 
 /**
  * useSearchParams 는 정적 렌더링을 클라이언트로 밀어낸다(BAILOUT_TO_CLIENT_SIDE_RENDERING).
@@ -34,13 +21,8 @@ export function BrawlerDetailSlot({ locale }: { locale: Locale }) {
   const brawler = id ? getBrawler(Number(id)) : undefined
 
   // 그리드와 같은 키라 react-query 가 요청을 합친다
-  const { data } = useQuery({
-    queryKey: ['player', mainAccountTag],
-    queryFn: () => fetchPlayer(mainAccountTag as string),
-    enabled: Boolean(mainAccountTag),
-  })
-  const mine =
-    brawler && data?.ok ? data.data?.brawlers.find(b => b.id === brawler.id) : undefined
+  const { player } = usePlayer(mainAccountTag)
+  const mine = brawler ? player?.brawlers.find(b => b.id === brawler.id) : undefined
 
   // 상세를 열 때 어떤 데이터가 실렸는지 콘솔에서 바로 본다. 개발 중에만 찍는다
   useEffect(() => {

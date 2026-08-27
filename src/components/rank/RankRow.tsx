@@ -30,10 +30,14 @@ export function RankRow({
   const t = useTranslations('common')
   const color = nameColor ? argbToHex(nameColor) : null
 
+  // 누를 수 있으면 button 으로 낸다.
+  // div + onClick 은 탭으로 도달할 수도 엔터로 누를 수도 없다
+  const Tag = onClick ? 'button' : 'div'
+
   return (
-    <div
-      onClick={onClick}
-      className={`border-border-subtle flex items-center gap-2.5 border-b px-3 py-2.5 last:border-b-0 ${
+    <Tag
+      {...(onClick ? { type: 'button' as const, onClick } : {})}
+      className={`border-border-subtle flex w-full items-center gap-2.5 border-b px-3 py-2.5 text-left last:border-b-0 ${
         onClick ? 'cursor-pointer' : ''
       } ${isMe ? 'bg-brand/15 rounded-card ring-brand ring-1' : ''}`}
     >
@@ -63,6 +67,6 @@ export function RankRow({
         )}
       </div>
       <TrophyValue value={trophies} />
-    </div>
+    </Tag>
   )
 }
