@@ -10,7 +10,7 @@ export function parseBrawlTime(s: string): Date | null {
 
 type Participant = { tag: string; brawler?: { id: number } }
 
-interface BattleLogItem {
+export interface BattleLogItem {
   battleTime: string
   event?: { mode?: string; map?: string }
   battle?: {

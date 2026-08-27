@@ -47,13 +47,16 @@ describe('toEventViews', () => {
     // modeId 를 그대로 넣으면 404 다. 48000000 오프셋이 붙어야 한다
     const [v] = toEventViews([slot(1, 5, '20260827T080000.000Z')], NOW)
     expect(v.modeIconUrl).toBe('https://cdn.brawlify.com/game-modes/regular/48000005.png')
-    expect(v.modeName?.ko).toBe('브롤 볼')
+    expect(v.modeKey).toBe('brawlBall')
   })
 
-  it('생성 데이터에 없는 모드는 null 로 둔다', () => {
-    // 신규 모드는 항상 데이터가 늦다. 빌드를 깨지 않고 폴백한다
-    const [v] = toEventViews([slot(1, 999999, '20260827T080000.000Z')], NOW)
-    expect(v.modeName).toBeNull()
+  it('생성 데이터에 없는 모드는 아이콘만 비우고 키는 남긴다', () => {
+    // 신규 모드는 항상 데이터가 늦다. 아이콘은 포기해도 이름은 키에서 만들 수 있다
+    const [v] = toEventViews(
+      [slot(1, 999999, '20260827T080000.000Z', { mode: 'futureMode' })],
+      NOW,
+    )
+    expect(v.modeKey).toBe('futureMode')
     expect(v.modeIconUrl).toBeNull()
   })
 

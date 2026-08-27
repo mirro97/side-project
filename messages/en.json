@@ -179,6 +179,40 @@
       }
     }
   },
+  "profile": {
+    "title": "Profile",
+    "prompt": "Enter a tag to look up an account",
+    "tagPlaceholder": "Enter #tag",
+    "invalidTag": "That tag is not valid",
+    "lookup": "Look up",
+    "setMain": "Set as my account",
+    "setMainConfirm": "Set this account as your main?",
+    "setMainOverwrite": "This replaces your current main account",
+    "mainBadge": "My account",
+    "unsetMain": "Unset",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "favorites": "Favorites",
+    "addFavorite": "Add to favorites",
+    "removeFavorite": "Remove from favorites",
+    "noFavorites": "No saved tags yet",
+    "stats": {
+      "victories3v3": "3v3 wins",
+      "solo": "Solo wins",
+      "duo": "Duo wins",
+      "club": "Club",
+      "noClub": "No club",
+      "owned": "Brawlers"
+    },
+    "battles": {
+      "title": "Recent battles",
+      "empty": "No recent battles",
+      "victory": "W",
+      "defeat": "L",
+      "draw": "D",
+      "rank": "Rank {rank}"
+    }
+  },
   "ai": {
     "title": "AI assistant",
     "open": "Open AI assistant",

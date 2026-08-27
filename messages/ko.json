@@ -179,6 +179,40 @@
       }
     }
   },
+  "profile": {
+    "title": "프로필",
+    "prompt": "태그를 입력하면 계정을 조회합니다",
+    "tagPlaceholder": "#태그 입력",
+    "invalidTag": "태그 형식이 올바르지 않습니다",
+    "lookup": "조회",
+    "setMain": "내 계정으로 지정",
+    "setMainConfirm": "해당 계정을 대표 계정으로 설정할까요?",
+    "setMainOverwrite": "기존 대표 계정을 덮어씁니다",
+    "mainBadge": "대표 계정",
+    "unsetMain": "해제",
+    "confirm": "확인",
+    "cancel": "취소",
+    "favorites": "즐겨찾기",
+    "addFavorite": "즐겨찾기 추가",
+    "removeFavorite": "즐겨찾기 해제",
+    "noFavorites": "저장한 태그가 없습니다",
+    "stats": {
+      "victories3v3": "3대3 승리",
+      "solo": "솔로 승리",
+      "duo": "듀오 승리",
+      "club": "클럽",
+      "noClub": "클럽 없음",
+      "owned": "보유 브롤러"
+    },
+    "battles": {
+      "title": "최근 전투",
+      "empty": "최근 전투가 없습니다",
+      "victory": "승",
+      "defeat": "패",
+      "draw": "무",
+      "rank": "{rank}위"
+    }
+  },
   "ai": {
     "title": "AI 도우미",
     "open": "AI 도우미 열기",

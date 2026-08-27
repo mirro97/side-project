@@ -31,3 +31,11 @@ export function getEventsRotationApi() {
 export function getPlayerApi(tag: string) {
   return bsFetch<Player>(`/players/${encodeTag(tag)}`)
 }
+
+/**
+ * 최근 전투 25전. 개인 데이터라 캐시하지 않는다.
+ * 코드 리뷰 때 호출부가 없어 지웠던 래퍼인데, 프로필이 쓰기 시작해 되살렸다.
+ */
+export function getPlayerBattlelogApi(tag: string) {
+  return bsFetch<Paged<unknown>>(`/players/${encodeTag(tag)}/battlelog`)
+}
