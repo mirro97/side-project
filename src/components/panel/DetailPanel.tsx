@@ -53,7 +53,9 @@ export function DetailPanel({
   }
 
   return (
-    <Drawer open={open} onOpenChange={handleOpenChange}>
+    // autoFocus 를 빼면 vaul 이 포커스 이동을 막아 바깥 트리거에 남고,
+    // 그 트리거는 열리는 순간 aria-hidden 이 되어 브라우저가 경고한다
+    <Drawer open={open} onOpenChange={handleOpenChange} autoFocus>
       <DrawerContent className="border-border-subtle bg-bg-elevated max-h-[85dvh]">
         <DrawerTitle className="sr-only">{title}</DrawerTitle>
         <div className="overflow-y-auto px-4 pt-2 pb-8">{children}</div>

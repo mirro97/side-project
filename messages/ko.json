@@ -216,10 +216,13 @@
   "ai": {
     "title": "AI 도우미",
     "open": "AI 도우미 열기",
+    "launcher": "AI 추천",
     "setupIntro": "본인의 AI 키를 넣으면 채팅을 쓸 수 있습니다. 키는 이 브라우저에만 저장되고 서버로 전송되지 않습니다.",
     "provider": "제공자",
     "apiKey": "API 키",
     "model": "모델",
+    "webSearch": "웹검색",
+    "searchSkipped": "검색 할당량이 차서 검색 없이 답했습니다. 최신 정보가 아닐 수 있어요.",
     "getKey": "{provider} 키 발급받기",
     "loadModels": "모델 불러오기",
     "loadingModels": "불러오는 중…",

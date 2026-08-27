@@ -216,10 +216,13 @@
   "ai": {
     "title": "AI assistant",
     "open": "Open AI assistant",
+    "launcher": "Ask AI",
     "setupIntro": "Add your own AI key to use chat. The key stays in this browser and is never sent to our server.",
     "provider": "Provider",
     "apiKey": "API key",
     "model": "Model",
+    "webSearch": "Web search",
+    "searchSkipped": "Search quota is used up, so this answer was written without searching. It may not be current.",
     "getKey": "Get a {provider} key",
     "loadModels": "Load models",
     "loadingModels": "Loading…",

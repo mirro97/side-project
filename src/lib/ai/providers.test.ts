@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { adapterFor, describeError } from './providers'
+import { describe, it, expect, vi, afterEach } from 'vitest'
+import { adapterFor, callChat, describeError } from './providers'
 import { PROVIDERS, type ChatMessage } from './types'
 
 const MSGS: ChatMessage[] = [
@@ -48,12 +48,34 @@ describe('공통 규약', () => {
     )
   })
 
+  it('어떤 할당량이 막혔는지 함께 보여준다', () => {
+    // 메시지만 보면 모델 쿼터인지 검색 쿼터인지 구분이 안 된다
+    const msg = describeError(429, {
+      error: {
+        message: 'You exceeded your current quota',
+        details: [
+          {
+            '@type': 'type.googleapis.com/google.rpc.QuotaFailure',
+            violations: [{ quotaId: 'GenerateRequestsPerDayPerProjectPerModel-FreeTier' }],
+          },
+        ],
+      },
+    })
+    expect(msg).toBe(
+      'RATE: You exceeded your current quota [GenerateRequestsPerDayPerProjectPerModel-FreeTier]',
+    )
+  })
+
+  it('할당량 정보가 없으면 메시지만 쓴다', () => {
+    expect(describeError(429, { error: { message: 'slow down' } })).toBe('RATE: slow down')
+  })
+
   it('예상 못 한 응답 형태에도 터지지 않는다', () => {
     for (const p of PROVIDERS) {
       const a = adapterFor(p)
-      expect(a.parseChat(null)).toBe('')
-      expect(a.parseChat({})).toBe('')
-      expect(a.parseChat({ weird: 1 })).toBe('')
+      expect(a.parseChat(null).text).toBe('')
+      expect(a.parseChat({}).text).toBe('')
+      expect(a.parseChat({ weird: 1 }).text).toBe('')
       expect(a.parseModels(null)).toEqual([])
       expect(a.parseModels({})).toEqual([])
     }
@@ -91,8 +113,39 @@ describe('gemini', () => {
 
   it('여러 part 를 이어 붙인다', () => {
     expect(
-      a.parseChat({ candidates: [{ content: { parts: [{ text: 'ab' }, { text: 'cd' }] } }] }),
+      a.parseChat({ candidates: [{ content: { parts: [{ text: 'ab' }, { text: 'cd' }] } }] }).text,
     ).toBe('abcd')
+  })
+
+  it('검색 도구를 켜서 보낸다', () => {
+    // 이게 빠지면 모델이 검색하지 않고 학습 데이터로만 답한다
+    expect(bodyOf(a.chat('K', 'm', 's', MSGS).init).tools).toEqual([{ google_search: {} }])
+  })
+
+  it('검색을 끄면 도구를 빼고 보낸다', () => {
+    // 그라운딩 할당량이 막혔을 때 검색 없이 다시 부르는 경로다
+    const body = bodyOf(a.chat('K', 'm', 's', MSGS, { search: false }).init)
+    expect(body.tools).toBeUndefined()
+    expect(body.contents).toBeDefined()
+  })
+
+  it('검색 추천 위젯을 함께 꺼낸다', () => {
+    // 이 HTML 을 화면에 그리는 것이 그라운딩 ToS 의무다
+    const r = a.parseChat({
+      candidates: [
+        {
+          content: { parts: [{ text: 'hi' }] },
+          groundingMetadata: { searchEntryPoint: { renderedContent: '<div>chips</div>' } },
+        },
+      ],
+    })
+    expect(r.text).toBe('hi')
+    expect(r.searchWidget).toBe('<div>chips</div>')
+  })
+
+  it('그라운딩을 안 탄 응답에는 위젯이 없다', () => {
+    const r = a.parseChat({ candidates: [{ content: { parts: [{ text: 'hi' }] } }] })
+    expect(r.searchWidget).toBeUndefined()
   })
 })
 
@@ -118,7 +171,7 @@ describe('openai', () => {
   })
 
   it('응답을 꺼낸다', () => {
-    expect(a.parseChat({ choices: [{ message: { content: 'hi' } }] })).toBe('hi')
+    expect(a.parseChat({ choices: [{ message: { content: 'hi' } }] }).text).toBe('hi')
   })
 })
 
@@ -154,7 +207,104 @@ describe('anthropic', () => {
           { type: 'text', text: 'ab' },
           { type: 'text', text: 'cd' },
         ],
-      }),
+      }).text,
     ).toBe('abcd')
+  })
+})
+
+/** fetch 를 세워 두고 호출 횟수와 body 를 본다 */
+function stubFetch(responses: { status: number; json: unknown }[]) {
+  const calls: { url: string; body: Record<string, unknown> }[] = []
+  let i = 0
+  vi.stubGlobal('fetch', (url: string, init: RequestInit) => {
+    calls.push({ url, body: bodyOf(init) })
+    const r = responses[Math.min(i++, responses.length - 1)]
+    return Promise.resolve({
+      ok: r.status >= 200 && r.status < 300,
+      status: r.status,
+      json: () => Promise.resolve(r.json),
+    } as Response)
+  })
+  return calls
+}
+
+describe('callChat 의 검색 폴백', () => {
+  afterEach(() => vi.unstubAllGlobals())
+
+  /** 검색 여부에 따라 다른 프롬프트가 나가는지 보려고 값을 다르게 준다 */
+  const SYS = (search: boolean) => (search ? 'SYS+search' : 'SYS')
+
+  const OK = { candidates: [{ content: { parts: [{ text: '답' }] } }] }
+  const QUOTA = { error: { message: 'You exceeded your current quota' } }
+
+  it('429 면 검색을 빼고 한 번 다시 부른다', () => {
+    const calls = stubFetch([
+      { status: 429, json: QUOTA },
+      { status: 200, json: OK },
+    ])
+    return callChat('gemini', 'K', 'm', SYS, MSGS).then(res => {
+      expect(calls).toHaveLength(2)
+      expect(calls[0].body.tools).toEqual([{ google_search: {} }])
+      // 두 번째는 검색을 빼고 나가야 한다
+      expect(calls[1].body.tools).toBeUndefined()
+      expect(res.ok).toBe(true)
+      expect(res.text).toBe('답')
+      expect(res.searchSkipped).toBe(true)
+    })
+  })
+
+  it('재시도에는 검색 지시가 빠진 프롬프트를 보낸다', () => {
+    // 그대로 재사용하면 모델이 "검색해 볼게요" 라고 약속해 놓고 검색 없이 답한다
+    const calls = stubFetch([
+      { status: 429, json: QUOTA },
+      { status: 200, json: OK },
+    ])
+    return callChat('gemini', 'K', 'm', SYS, MSGS).then(() => {
+      expect(calls[0].body.system_instruction).toEqual({ parts: [{ text: 'SYS+search' }] })
+      expect(calls[1].body.system_instruction).toEqual({ parts: [{ text: 'SYS' }] })
+    })
+  })
+
+  it('재시도도 막히면 원래 오류를 보여준다', () => {
+    const calls = stubFetch([{ status: 429, json: QUOTA }])
+    return callChat('gemini', 'K', 'm', SYS, MSGS).then(res => {
+      expect(calls).toHaveLength(2)
+      expect(res.ok).toBe(false)
+      expect(res.text).toMatch(/^RATE:/)
+      expect(res.searchSkipped).toBeUndefined()
+    })
+  })
+
+  it('검색을 끄고 부르면 한 번만 나가고 최신이 아님을 알린다', () => {
+    // 앞선 질문에서 이미 막힌 걸 확인한 경우다. 실패할 호출을 또 보내지 않는다
+    const calls = stubFetch([{ status: 200, json: OK }])
+    return callChat('gemini', 'K', 'm', SYS, MSGS, { search: false }).then(res => {
+      expect(calls).toHaveLength(1)
+      expect(calls[0].body.tools).toBeUndefined()
+      expect(res.searchSkipped).toBe(true)
+    })
+  })
+
+  it('검색을 안 쓰는 provider 는 searchSkipped 를 붙이지 않는다', () => {
+    // 애초에 검색이 없는 provider 라 "검색 없이 답했다"는 안내가 뜨면 안 된다
+    stubFetch([{ status: 200, json: { choices: [{ message: { content: '답' } }] } }])
+    return callChat('openai', 'K', 'm', SYS, MSGS, { search: false }).then(res => {
+      expect(res.searchSkipped).toBeUndefined()
+    })
+  })
+
+  it('429 가 아니면 다시 부르지 않는다', () => {
+    const calls = stubFetch([{ status: 401, json: { error: { message: 'bad key' } } }])
+    return callChat('gemini', 'K', 'm', SYS, MSGS).then(res => {
+      expect(calls).toHaveLength(1)
+      expect(res.text).toMatch(/^AUTH:/)
+    })
+  })
+
+  it('검색을 안 쓰는 provider 는 429 여도 다시 부르지 않는다', () => {
+    const calls = stubFetch([{ status: 429, json: QUOTA }])
+    return callChat('openai', 'K', 'm', SYS, MSGS).then(() => {
+      expect(calls).toHaveLength(1)
+    })
   })
 })
