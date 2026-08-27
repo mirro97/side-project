@@ -1,4 +1,5 @@
 'use client'
+import { chipClassName } from './chipStyles'
 
 export interface ChipOption {
   key: string
@@ -8,14 +9,7 @@ export interface ChipOption {
 
 function Chip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
-    <button
-      onClick={onClick}
-      className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${
-        active
-          ? 'border-brand bg-brand/15 text-brand-hover'
-          : 'border-border-subtle bg-bg-surface text-text-secondary'
-      }`}
-    >
+    <button onClick={onClick} className={chipClassName(active)}>
       {label}
     </button>
   )

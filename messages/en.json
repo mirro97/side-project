@@ -22,6 +22,15 @@
     "marksman": "Marksman",
     "artillery": "Artillery"
   },
+  "rarity": {
+    "common": "Common",
+    "rare": "Rare",
+    "superRare": "Super Rare",
+    "epic": "Epic",
+    "mythic": "Mythic",
+    "legendary": "Legendary",
+    "ultraLegendary": "Ultra Legendary"
+  },
   "error": {
     "maintenance": "Brawl Stars is under maintenance",
     "notFound": "No player with that tag",

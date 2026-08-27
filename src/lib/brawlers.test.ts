@@ -24,7 +24,16 @@ describe('filterBrawlers', () => {
     expect(filterBrawlers(all, { role: 'tank' }).some(b => b.role === null)).toBe(false)
   })
   it('희귀도로 거른다', () => {
-    expect(filterBrawlers(all, { rarityId: 5 }).every(b => b.rarity.id === 5)).toBe(true)
+    expect(filterBrawlers(all, { rarityIds: [5] }).every(b => b.rarity.id === 5)).toBe(true)
+  })
+  it('희귀도를 여러 개 체크하면 합집합으로 거른다', () => {
+    const r = filterBrawlers(all, { rarityIds: [5, 6] })
+    expect(r.every(b => b.rarity.id === 5 || b.rarity.id === 6)).toBe(true)
+    expect(r.some(b => b.rarity.id === 5)).toBe(true)
+    expect(r.some(b => b.rarity.id === 6)).toBe(true)
+  })
+  it('희귀도 체크가 없으면 거르지 않는다', () => {
+    expect(filterBrawlers(all, { rarityIds: [] }).length).toBe(all.length)
   })
   it('검색과 역할을 함께 적용한다', () => {
     expect(filterBrawlers(all, { query: 'a', role: 'tank' }).every(b => b.role === 'tank')).toBe(true)
