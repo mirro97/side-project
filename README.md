@@ -1,18 +1,14 @@
 <div align="center">
-
-# ✦ Brawl Companion
-
-**브롤스타즈 전적 · 브롤러 도감 · 이벤트를 한 화면에서**
-
-[![Live](https://img.shields.io/badge/브롤%20컴패니언-brawl--side.vercel.app-8B5CF6?style=flat-square)](https://brawl-side.vercel.app)
-[![Next.js](https://img.shields.io/badge/Next.js-16-000?style=flat-square&logo=nextdotjs)](https://nextjs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
-[![Tests](https://img.shields.io/badge/tests-278%20passing-3DD68C?style=flat-square)](#검증)
-
-한국어 · English · 비공식 팬 프로젝트
-
-<img src="docs/screenshots/home.png" width="820" alt="홈 화면 — 유저 순위, 클랜 순위, 진행 중인 이벤트" />
-
+  <h1>✦ Brawl Companion</h1>
+  <p><b>브롤스타즈 전적 · 브롤러 도감 · 이벤트를 한 화면에서</b></p>
+  <p>
+    <a href="https://brawl-side.vercel.app"><img src="https://img.shields.io/badge/브롤%20컴패니언-brawl--side.vercel.app-8B5CF6?style=flat-square" alt="Live" /></a>
+    <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Next.js-16-000?style=flat-square&logo=nextdotjs" alt="Next.js 16" /></a>
+    <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript" alt="TypeScript" /></a>
+    <img src="https://img.shields.io/badge/tests-278%20passing-3DD68C?style=flat-square" alt="278 tests passing" />
+  </p>
+  <p><sub>한국어 · English · 비공식 팬 프로젝트</sub></p>
+  <img src="docs/screenshots/home.png" width="820" alt="홈 화면 — 유저 순위, 클랜 순위, 진행 중인 이벤트" />
 </div>
 
 ---
@@ -70,6 +66,28 @@
 
 ---
 
+## 데이터는 직접 만듭니다
+
+공식 API 는 **브롤러 이름과 ID 만** 줍니다. 이미지도, 역할도, 능력 설명도, 수치도 없습니다. 도감을 만들려면 게임 데이터를 직접 조립해야 합니다.
+
+`npm run build:data` 가 공식 API · BrawlAPI · 게임 CSV 12개 · 로케일 파일을 엮어 번들에 넣을 JSON 하나를 만듭니다. 앱은 런타임에 게임 데이터를 받지 않습니다.
+
+**능력 설명 432개를 전부 복원했습니다.** 게임 원문에는 수치 자리가 치환자로 비어 있고, 그 치환자가 CSV 를 건너뛰며 참조합니다.
+
+```
+원문   HP가 <!card.value>% 이하로 떨어지면 <!card.character.maxHealth>만큼 회복합니다
+       → cards → characters 를 따라가 실제 값을 찾는다
+결과   HP가 40% 이하로 떨어지면 3900만큼 회복합니다
+```
+
+경로를 따라 실제 수치를 채운 게 191개, 값이 어느 CSV 에도 없어 *"일정 비율"* 같은 자연어로 바꾼 게 나머지입니다. **빈칸이나 `<VALUE1>` 을 그대로 내보내지 않습니다.**
+
+**필드 이름을 믿으면 기능이 통째로 죽습니다.** 사거리를 `characters.AutoAttackRange` 에서 가져오면 106종 중 100종이 값 12 로 같습니다 — 엘 프리모와 파이퍼가 똑같아지고 추천 알고리즘의 사거리 축이 무의미해집니다. 실제 사거리는 `WeaponSkill → skills.CastingRange` 이고 6~30 범위에 23개 고유값으로 갈립니다.
+
+이런 함정과 실측 결과는 [API 레퍼런스](.claude/docs/brawl-stars-api-reference.md)에 정리해 뒀습니다.
+
+---
+
 ## 기술 스택
 
 ```
@@ -86,34 +104,11 @@ Vercel
 
 ```bash
 npm install
-cp .env.example .env.local   # 아래 참고
+cp .env.example .env.local   # 필요한 키와 IP 화이트리스트 안내가 들어 있다
 npm run dev
 ```
 
-### 환경변수
-
-| 변수 | 필수 | 용도 |
-|---|:---:|---|
-| `BRAWL_STARS_TOKEN` | ✅ | 공식 API 키 |
-| `GEMINI_API_KEY` | — | AI 설명을 직접 생성할 때만. 앱 실행엔 불필요 |
-
-공식 API 키는 **IP 화이트리스트**가 걸려 있어 서버리스에서 직접 부르면 403 이 납니다. 이 프로젝트는 [RoyaleAPI 프록시](https://docs.royaleapi.com/proxy.html)를 경유하므로, [개발자 포털](https://developer.brawlstars.com)에서 키를 만들 때 화이트리스트에 `45.79.218.79` 를 넣으면 됩니다.
-
-### 데이터 생성
-
-브롤러 스탯·능력·이미지 URL 은 빌드 산출물이라 앱은 런타임에 게임 데이터를 받지 않습니다. **게임 업데이트로 브롤러가 추가됐을 때만** 다시 만듭니다.
-
-```bash
-npm run build:data                  # 브롤러 · 모드 · 능력 설명
-npm run build:ai                    # AI 설명 (없는 종만 생성)
-npm run build:ai -- --id 16000000   # 한 종만 다시
-```
-
-### 검증
-
-```bash
-npx tsc --noEmit && npx eslint . && npm test
-```
+게임 데이터와 AI 설명은 빌드 산출물이라 **게임 업데이트로 브롤러가 추가됐을 때만** 다시 만듭니다 — `npm run build:data` · `npm run build:ai`.
 
 ---
 
@@ -147,13 +142,6 @@ public/data/ai/       AI 설명 (브롤러별 · 로케일별)
 
 ---
 
-<div align="center">
-<sub>
-
-This material is unofficial and is not endorsed by Supercell.
+**고지** — This material is unofficial and is not endorsed by Supercell.
 For more information see Supercell's [Fan Content Policy](https://www.supercell.com/fan-content-policy).
-
 이미지는 [Brawlify CDN](https://github.com/Brawlify/CDN) 을 사용합니다.
-
-</sub>
-</div>
