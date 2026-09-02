@@ -64,9 +64,13 @@
     "health": "Health",
     "speed": "Speed",
     "range": "Range",
+    "attack": "Attack",
+    "super": "Super",
     "starPowers": "Star powers",
     "gadgets": "Gadgets",
-    "gears": "Gears"
+    "gears": "Gears",
+    "howToPlay": "How to play",
+    "recommendedGears": "Recommended gears"
   },
   "ranking": {
     "title": "Rankings",

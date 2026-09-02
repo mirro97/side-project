@@ -1,5 +1,6 @@
 'use client'
 import { useTranslations } from 'next-intl'
+import { getAiTrait } from '@/lib/ai-content'
 import { standoutAxes, type Scored } from '@/lib/recommend'
 import type { Locale } from '@/types/game'
 
@@ -10,13 +11,16 @@ import type { Locale } from '@/types/game'
  * 같으니 다섯 카드에 똑같은 문장이 반복됐다. 사용자 성향은 목록 위에 한 번만 쓰고,
  * 카드에는 그 브롤러가 어떤 브롤러인지를 쓴다.
  *
- * 설계서 5-5 의 사전 생성 문구(636건)는 아직 없다. 벡터에서 뽑을 수 있는 만큼만 쓰고,
- * 생성물이 생기면 이 자리를 대체한다.
+ * 설계서 5-5 의 사전 생성 문구가 있으면 그걸 쓰고, 없으면 벡터에서 뽑는다.
+ * **대체가 아니라 우선순위다** — 106종이 다 차기 전에도 목록이 일관되게 보여야 한다.
  */
-function useReason() {
+function useReason(locale: Locale) {
   const tr = useTranslations('recommend')
 
   return (s: Scored) => {
+    const written = getAiTrait(s.brawler.id, locale)
+    if (written) return written
+
     const traits = standoutAxes(s.brawler.vector)
     // 명사형 구절이라 어느 언어에서도 그대로 이어 붙는다
     const desc = traits.map(x => tr(`trait.${x.axis}.${x.band}`)).join(' · ')
@@ -37,7 +41,7 @@ export function ResultList({
   locale: Locale
 }) {
   const t = useTranslations('recommend')
-  const reasonOf = useReason()
+  const reasonOf = useReason(locale)
 
   if (items.length === 0) return null
 
