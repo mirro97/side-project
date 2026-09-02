@@ -59,7 +59,36 @@ export function describeError(status: number, json: unknown): string {
   return hint ? `${hint}: ${body}` : body
 }
 
-const GEMINI_BASE = 'https://generativelanguage.googleapis.com/v1beta'
+const GEMINI_BASE = process.env.NEXT_PUBLIC_GEMINI_BASE ?? 'https://generativelanguage.googleapis.com/v1beta'
+
+/**
+ * Gemini 는 `:generateContent` 를 은퇴시키고 Interactions API 로 옮겼다.
+ *
+ * 2026-09-02 실측: 구 엔드포인트는 **모든 모델에서 404** 를 준다
+ * ("no longer available to new users ... We recommend you to use the Interactions API").
+ * 429 가 아니라 404 이고, 같은 키로 interactions 는 200 이 온다 — 쿼터 문제가 아니다.
+ *
+ * 요청 모양이 완전히 다르다. contents/parts/role 은 전부 거부된다.
+ */
+function geminiHeaders(key: string): HeadersInit {
+  return { 'x-goog-api-key': key, 'content-type': 'application/json' }
+}
+
+/**
+ * 그라운딩 위젯을 응답 어디에 넣는지 확인하지 못했다 — 검색 쿼터가 막혀 있어
+ * 성공한 그라운딩 응답을 한 번도 못 봤다. 경로를 지어내는 대신 훑어서 찾는다.
+ * 표시가 ToS 의무라 못 찾으면 안 그리는 쪽이 아니라, 찾으면 그리는 쪽으로 둔다.
+ */
+function findRenderedContent(node: unknown, depth = 0): string | undefined {
+  if (depth > 6 || !node || typeof node !== 'object') return undefined
+  const entry = pick(node, 'searchEntryPoint', 'renderedContent')
+  if (typeof entry === 'string' && entry) return entry
+  for (const v of Object.values(node as Record<string, unknown>)) {
+    const hit = findRenderedContent(v, depth + 1)
+    if (hit) return hit
+  }
+  return undefined
+}
 
 const gemini: Adapter = {
   listModels(key) {
@@ -70,7 +99,7 @@ const gemini: Adapter = {
     if (!Array.isArray(models)) return []
     return models
       .filter(m => {
-        // 텍스트 생성을 지원하는 것만 고른다. 임베딩 모델이 섞여 온다
+        // 텍스트 생성을 지원하는 것만 고른다. 임베딩·TTS 모델이 섞여 온다
         const methods = pick(m, 'supportedGenerationMethods')
         return !Array.isArray(methods) || methods.includes('generateContent')
       })
@@ -82,34 +111,40 @@ const gemini: Adapter = {
   chat(key, model, system, messages, opts) {
     const search = opts?.search !== false
     return {
-      url: `${GEMINI_BASE}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`,
+      url: `${GEMINI_BASE}/interactions`,
       init: {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: geminiHeaders(key),
         body: JSON.stringify({
-          system_instruction: { parts: [{ text: system }] },
-          contents: messages.map(m => ({
-            // Gemini 는 assistant 를 model 이라고 부른다
-            role: m.role === 'assistant' ? 'model' : 'user',
-            parts: [{ text: m.text }],
+          model,
+          system_instruction: system,
+          // 스텝 목록이다. role: user/model 을 쓰는 턴 목록은 거부된다
+          // ("use step_list input format instead of turn_list" — 실측)
+          input: messages.map(m => ({
+            type: m.role === 'assistant' ? 'model_output' : 'user_input',
+            content: [{ type: 'text', text: m.text }],
           })),
-          // 검색 도구는 다른 도구와 함께 못 쓴다. 우리는 이것 하나뿐이라 해당 없다
-          ...(search ? { tools: [{ google_search: {} }] } : {}),
+          // type 없이 { google_search: {} } 로 보내면 400 이다 (실측)
+          ...(search ? { tools: [{ type: 'google_search' }] } : {}),
         }),
       },
     }
   },
   parseChat(json) {
-    const parts = pick(json, 'candidates', 0, 'content', 'parts')
-    const text = Array.isArray(parts)
-      ? parts
-          .map(p => pick(p, 'text'))
+    const steps = pick(json, 'steps')
+    const text = Array.isArray(steps)
+      ? steps
+          .filter(s => pick(s, 'type') === 'model_output')
+          .flatMap(s => {
+            const c = pick(s, 'content')
+            return Array.isArray(c) ? c : []
+          })
+          .filter(c => pick(c, 'type') === 'text')
+          .map(c => pick(c, 'text'))
           .filter((t): t is string => typeof t === 'string')
           .join('')
       : ''
-    // 그라운딩을 안 탄 응답에는 없다. 그때는 위젯도 없다
-    const widget = pick(json, 'candidates', 0, 'groundingMetadata', 'searchEntryPoint', 'renderedContent')
-    return { text, searchWidget: typeof widget === 'string' ? widget : undefined }
+    return { text, searchWidget: findRenderedContent(json) }
   },
 }
 

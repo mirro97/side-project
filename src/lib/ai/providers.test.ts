@@ -85,20 +85,28 @@ describe('공통 규약', () => {
 describe('gemini', () => {
   const a = adapterFor('gemini')
 
-  it('키를 쿼리 파라미터로 보낸다', () => {
+  it('채팅은 interactions 로, 키는 헤더로 보낸다', () => {
+    // :generateContent 는 은퇴했다. 전 모델이 404 다 (2026-09-02 실측)
+    const call = a.chat('K', 'gemini-x', 's', MSGS)
+    expect(call.url).toContain('/interactions')
+    expect(call.url).not.toContain('generateContent')
+    expect(headersOf(call.init)['x-goog-api-key']).toBe('K')
+  })
+
+  it('목록 조회는 키를 쿼리로 보낸다', () => {
     expect(a.listModels('K').url).toContain('?key=K')
-    expect(a.chat('K', 'gemini-x', 's', MSGS).url).toContain('generateContent?key=K')
   })
 
-  it('assistant 를 model 로 바꿔 보낸다', () => {
+  it('assistant 를 model_output 스텝으로 바꿔 보낸다', () => {
+    // role: user/model 을 쓰는 턴 목록은 거부된다 (use step_list instead of turn_list)
     const body = bodyOf(a.chat('K', 'm', 'SYS', MSGS).init)
-    const contents = body.contents as { role: string }[]
-    expect(contents.map(c => c.role)).toEqual(['user', 'model', 'user'])
+    const input = body.input as { type: string }[]
+    expect(input.map(c => c.type)).toEqual(['user_input', 'model_output', 'user_input'])
   })
 
-  it('시스템 프롬프트를 전용 필드로 보낸다', () => {
+  it('시스템 프롬프트를 최상위 문자열로 보낸다', () => {
     const body = bodyOf(a.chat('K', 'm', 'SYS', MSGS).init)
-    expect(JSON.stringify(body.system_instruction)).toContain('SYS')
+    expect(body.system_instruction).toBe('SYS')
   })
 
   it('models/ 접두어를 벗기고 텍스트 모델만 남긴다', () => {
@@ -111,32 +119,38 @@ describe('gemini', () => {
     expect(models).toEqual(['gemini-a'])
   })
 
-  it('여러 part 를 이어 붙인다', () => {
+  it('model_output 스텝의 텍스트만 이어 붙인다', () => {
+    // thought 스텝이 함께 오는데 그건 답이 아니다
     expect(
-      a.parseChat({ candidates: [{ content: { parts: [{ text: 'ab' }, { text: 'cd' }] } }] }).text,
+      a.parseChat({
+        steps: [
+          { type: 'thought', signature: 'xx' },
+          { type: 'model_output', content: [{ type: 'text', text: 'ab' }, { type: 'text', text: 'cd' }] },
+        ],
+      }).text,
     ).toBe('abcd')
   })
 
   it('검색 도구를 켜서 보낸다', () => {
-    // 이게 빠지면 모델이 검색하지 않고 학습 데이터로만 답한다
-    expect(bodyOf(a.chat('K', 'm', 's', MSGS).init).tools).toEqual([{ google_search: {} }])
+    // type 없이 { google_search: {} } 로 보내면 400 이다 (실측)
+    expect(bodyOf(a.chat('K', 'm', 's', MSGS).init).tools).toEqual([{ type: 'google_search' }])
   })
 
   it('검색을 끄면 도구를 빼고 보낸다', () => {
     // 그라운딩 할당량이 막혔을 때 검색 없이 다시 부르는 경로다
     const body = bodyOf(a.chat('K', 'm', 's', MSGS, { search: false }).init)
     expect(body.tools).toBeUndefined()
-    expect(body.contents).toBeDefined()
+    expect(body.input).toBeDefined()
   })
 
-  it('검색 추천 위젯을 함께 꺼낸다', () => {
-    // 이 HTML 을 화면에 그리는 것이 그라운딩 ToS 의무다
+  it('검색 추천 위젯을 어디에 있든 찾아낸다', () => {
+    // 이 HTML 을 화면에 그리는 것이 그라운딩 ToS 의무인데, 새 API 가 이걸
+    // 어디에 넣는지는 확인하지 못했다 (검색 쿼터가 막혀 성공 응답을 못 봤다).
+    // 경로를 지어내는 대신 훑어서 찾는다
     const r = a.parseChat({
-      candidates: [
-        {
-          content: { parts: [{ text: 'hi' }] },
-          groundingMetadata: { searchEntryPoint: { renderedContent: '<div>chips</div>' } },
-        },
+      steps: [
+        { type: 'model_output', content: [{ type: 'text', text: 'hi' }] },
+        { grounding: { searchEntryPoint: { renderedContent: '<div>chips</div>' } } },
       ],
     })
     expect(r.text).toBe('hi')
@@ -144,7 +158,7 @@ describe('gemini', () => {
   })
 
   it('그라운딩을 안 탄 응답에는 위젯이 없다', () => {
-    const r = a.parseChat({ candidates: [{ content: { parts: [{ text: 'hi' }] } }] })
+    const r = a.parseChat({ steps: [{ type: 'model_output', content: [{ type: 'text', text: 'hi' }] }] })
     expect(r.searchWidget).toBeUndefined()
   })
 })
@@ -234,7 +248,7 @@ describe('callChat 의 검색 폴백', () => {
   /** 검색 여부에 따라 다른 프롬프트가 나가는지 보려고 값을 다르게 준다 */
   const SYS = (search: boolean) => (search ? 'SYS+search' : 'SYS')
 
-  const OK = { candidates: [{ content: { parts: [{ text: '답' }] } }] }
+  const OK = { steps: [{ type: 'model_output', content: [{ type: 'text', text: '답' }] }] }
   const QUOTA = { error: { message: 'You exceeded your current quota' } }
 
   it('429 면 검색을 빼고 한 번 다시 부른다', () => {
@@ -244,7 +258,7 @@ describe('callChat 의 검색 폴백', () => {
     ])
     return callChat('gemini', 'K', 'm', SYS, MSGS).then(res => {
       expect(calls).toHaveLength(2)
-      expect(calls[0].body.tools).toEqual([{ google_search: {} }])
+      expect(calls[0].body.tools).toEqual([{ type: 'google_search' }])
       // 두 번째는 검색을 빼고 나가야 한다
       expect(calls[1].body.tools).toBeUndefined()
       expect(res.ok).toBe(true)
@@ -260,8 +274,8 @@ describe('callChat 의 검색 폴백', () => {
       { status: 200, json: OK },
     ])
     return callChat('gemini', 'K', 'm', SYS, MSGS).then(() => {
-      expect(calls[0].body.system_instruction).toEqual({ parts: [{ text: 'SYS+search' }] })
-      expect(calls[1].body.system_instruction).toEqual({ parts: [{ text: 'SYS' }] })
+      expect(calls[0].body.system_instruction).toBe('SYS+search')
+      expect(calls[1].body.system_instruction).toBe('SYS')
     })
   })
 
