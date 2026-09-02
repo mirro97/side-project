@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-26T14:45:42.796Z",
+  "version": "2026-09-02T15:53:35.966Z",
   "brawlers": [
     {
       "id": 16000000,
@@ -19,9 +19,12 @@
       },
       "stats": {
         "hp": 3900,
-        "speed": 770,
+        "speed": 800,
         "range": 23
       },
+      "attackDesc": null,
+      "superDesc": null,
+      "shortDesc": "폭발적인 피해량으로 탱커와 어쌔신에 대응하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000000.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000000.png"
@@ -151,7 +154,7 @@
       "vector": {
         "range": 0.7083333333333334,
         "durability": 0.3958333333333333,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.1762152777777778
       }
     },
@@ -173,9 +176,12 @@
       },
       "stats": {
         "hp": 3100,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": null,
+      "superDesc": null,
+      "shortDesc": "지속적인 원거리 피해를 입힙니다.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000001.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000001.png"
@@ -189,7 +195,7 @@
           },
           "description": {
             "en": "Colt's movement speed is increased by 13%.",
-            "ko": "콜트의 이동 속도가 13% 증가합니다."
+            "ko": "이동 속도가 13% 증가합니다."
           }
         },
         {
@@ -317,7 +323,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.22916666666666666,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.09635416666666667
       }
     },
@@ -339,9 +345,12 @@
       },
       "stats": {
         "hp": 5000,
-        "speed": 770,
+        "speed": 800,
         "range": 16
       },
+      "attackDesc": null,
+      "superDesc": null,
+      "shortDesc": "특수 공격으로 벽을 부수고 거리를 좁히세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000002.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000002.png"
@@ -378,8 +387,8 @@
             "ko": "육즙 가득 미사일"
           },
           "description": {
-            "en": "Bull throws a projectile at the target Brawler, dealing 800 damage and healing for some if he hits.",
-            "ko": "목표 브롤러에게 발사체를 던져 800의 피해를 입히고, 명중 시 일정량의 HP를 회복합니다."
+            "en": "Bull throws a projectile at the target Brawler, dealing 800 damage and healing for 800 if he hits.",
+            "ko": "목표 브롤러에게 발사체를 던져 800의 피해를 입히고, 명중 시 800 HP를 회복합니다."
           }
         },
         {
@@ -483,7 +492,7 @@
       "vector": {
         "range": 0.4166666666666667,
         "durability": 0.625,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.21874999999999997
       }
     },
@@ -505,9 +514,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": null,
+      "superDesc": null,
+      "shortDesc": "브롤러와 벽을 부숴버립니다!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000003.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000003.png"
@@ -649,7 +661,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.20833333333333334,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.09895833333333333
       }
     },
@@ -671,9 +683,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 720,
+        "speed": 750,
         "range": 29
       },
+      "attackDesc": "벽에 맞고 튕겨 나온 탄환이 더 먼 거리까지 공격합니다. 지형물 뒤도 안전하진 않습니다!",
+      "superDesc": "적을 관통하는 사거리가 긴 탄환을 연발합니다. 벽에 튕겨 나온 탄환은 더 먼 거리까지 공격합니다.",
+      "shortDesc": "탄환을 튕겨 더 멀리 공격합니다!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000004.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000004.png"
@@ -711,14 +726,14 @@
           },
           "description": {
             "en": "Rico Deploys a vending machine that has 2000 health - when destroyed fires bouncing projectiles in all directions.",
-            "ko": "리코가 2000HP의 자판기를 배치합니다. 파괴되면 모든 방향으로 튕겨 나가는 투사체를 발사합니다."
+            "ko": "리코가 2000 HP의 자판기를 배치합니다. 파괴될 시 모든 방향으로 튕겨 나가는 투사체를 발사합니다."
           }
         },
         {
           "id": 23000409,
           "name": {
-            "en": "Bouncy Castle",
-            "ko": "바운시 캐슬"
+            "en": "Multiball",
+            "ko": "멀티볼"
           },
           "description": {
             "en": "Rico fires a big bullet that, on hitting a wall or Brawler, splits into 3 smaller bullets.",
@@ -815,7 +830,7 @@
       "vector": {
         "range": 0.9583333333333334,
         "durability": 0.20833333333333334,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.03298611111111108
       }
     },
@@ -837,9 +852,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 720,
+        "speed": 750,
         "range": 23
       },
+      "attackDesc": "폭발할 때 사방으로 가시가 튀어나오는 작은 선인장을 투척합니다.",
+      "superDesc": "스파이크가 던진 가시 수류탄이 터지면서 폭발 범위 안의 적에게 피해를 주고 느리게 만듭니다.",
+      "shortDesc": "특수 공격과 가시로 적의 움직임을 제한하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000005.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000005.png"
@@ -981,7 +999,7 @@
       "vector": {
         "range": 0.7083333333333334,
         "durability": 0.20833333333333334,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.23090277777777773
       }
     },
@@ -1003,9 +1021,12 @@
       },
       "stats": {
         "hp": 2700,
-        "speed": 720,
+        "speed": 750,
         "range": 22
       },
+      "attackDesc": "발리가 던진 병이 깨지면서 적에게 피해를 주고, 쏟아져 나온 내용물 위에 서 있는 적에게 지속 피해를 줍니다.",
+      "superDesc": "병을 던져 넓은 지역을 불바다로 만듭니다. 발리의 특별 서비스입니다!",
+      "shortDesc": "화염병을 던져 적의 활동 영역을 제어하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000006.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000006.png"
@@ -1135,7 +1156,7 @@
       "vector": {
         "range": 0.6666666666666666,
         "durability": 0.14583333333333334,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.28472222222222227
       }
     },
@@ -1157,9 +1178,12 @@
       },
       "stats": {
         "hp": 3300,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": "적을 맞히면 범위 내 다른 적에게 튕겨 나가 피해를 주는 에너지 볼을 발사합니다. 에너지 볼은 최대 3명에게 피해를 주며, 튕길 때마다 피해량이 일정량씩 감소합니다.",
+      "superDesc": "자동으로 적을 공격하는 터렛을 설치합니다. 100% 재활용 고철로 만들어졌습니다!",
+      "shortDesc": "터렛을 배치해 맵을 지배하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000007.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000007.png"
@@ -1301,7 +1325,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.2708333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.09114583333333334
       }
     },
@@ -1323,9 +1347,12 @@
       },
       "stats": {
         "hp": 4200,
-        "speed": 720,
+        "speed": 750,
         "range": 18
       },
+      "attackDesc": "전방으로 충격파를 쏴 범위 안에 있는 적에게 피해를 줍니다.",
+      "superDesc": "커다란 아기 곰을 소환해 적을 사냥합니다.",
+      "shortDesc": "강력한 곰, 브루스로 압박하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000008.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000008.png"
@@ -1467,7 +1494,7 @@
       "vector": {
         "range": 0.5,
         "durability": 0.4583333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.27083333333333337
       }
     },
@@ -1489,9 +1516,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 770,
+        "speed": 800,
         "range": 22
       },
+      "attackDesc": null,
+      "superDesc": null,
+      "shortDesc": "벽 뒤에서 안전하게 공격을 퍼부으세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000009.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000009.png"
@@ -1621,7 +1651,7 @@
       "vector": {
         "range": 0.6666666666666666,
         "durability": 0.20833333333333334,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.2638888888888889
       }
     },
@@ -1643,9 +1673,12 @@
       },
       "stats": {
         "hp": 6500,
-        "speed": 770,
+        "speed": 800,
         "range": 9
       },
+      "attackDesc": "분노로 불타오르는 주먹을 4번 연속 날립니다. 매운 주먹맛 좀 보실래요?",
+      "superDesc": "높이 점프한 뒤 팔꿈치로 적을 때려눕히고 지형물을 파괴합니다!",
+      "shortDesc": "뛰어들되 다수의 적을 피하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000010.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000010.png"
@@ -1670,7 +1703,7 @@
           },
           "description": {
             "en": "El Primo gains a 25% speed boost for 4 seconds after using his Super.",
-            "ko": "특수 공격을 사용한 후 이동 속도가 4초 동안 25% 빨라집니다."
+            "ko": "특수 공격을 사용한 후 이동 속도가 4초간 25% 빨라집니다."
           }
         }
       ],
@@ -1682,8 +1715,8 @@
             "ko": "보충제 수플렉스"
           },
           "description": {
-            "en": "El Primo grabs the closest enemy within his reach and flips them like a pancake over his broad shoulders.",
-            "ko": "범위 내의 가장 가까운 적을 잡아, 넓은 어깨 넘어 뒤로 메칩니다. 마치 팬케이크 같군요!"
+            "en": "El Primo Dashes, grabbing any hit enemies and suplexing them behind him.",
+            "ko": "돌진해서 공격이 명중한 적들을 잡아 뒤로 내던집니다."
           }
         },
         {
@@ -1693,8 +1726,8 @@
             "ko": "유성우 벨트"
           },
           "description": {
-            "en": "El Primo summons a small meteor to strike the nearest enemy. It deals some damage and destroys walls.",
-            "ko": "가장 가까이 있는 적의 위치에 작은 유성을 소환합니다. 유성은 일정량 피해를 주며 벽을 파괴합니다."
+            "en": "El primo flexes his pecs and destroys any incoming projectiles for 1 sec.",
+            "ko": "가슴 근육을 뽐내며 1초간 다가오는 모든 투사체를 파괴합니다."
           }
         }
       ],
@@ -1787,7 +1820,7 @@
       "vector": {
         "range": 0.125,
         "durability": 0.9375,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.0546875
       }
     },
@@ -1809,9 +1842,12 @@
       },
       "stats": {
         "hp": 4000,
-        "speed": 820,
+        "speed": 855,
         "range": 8
       },
+      "attackDesc": "전방으로 돌진하며 삽을 휘두릅니다. 세 번의 돌진 공격이 모두 준비되면 잠시 멈춘 후 더 멀리 돌진합니다.",
+      "superDesc": "흡혈박쥐 떼를 불러내서 적 브롤러의 HP를 흡수해 자신의 HP를 회복합니다. 으스스하네요!",
+      "shortDesc": "HP가 낮거나 고립된 적에게 달려드세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000011.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000011.png"
@@ -1975,9 +2011,12 @@
       },
       "stats": {
         "hp": 2800,
-        "speed": 820,
+        "speed": 855,
         "range": 26
       },
+      "attackDesc": "치명적인 단검 세 개를 던집니다. 독이 묻은 칼날에 베인 적은 일정 시간 동안 지속 피해를 입으며, 받는 모든 치유 효과가 감소합니다.",
+      "superDesc": "하늘로 날아올라 착지 시 독이 묻은 여러 개의 단검을 주위에 흩뿌립니다.",
+      "shortDesc": "원거리에서 적에게 독으로 공격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000012.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000012.png"
@@ -2025,8 +2064,8 @@
             "ko": "둔화 독"
           },
           "description": {
-            "en": "Throw a kunai that damages, slows and poisons the first enemy hit for a short time.",
-            "ko": "피해를 주고 느리게 만드는 단검을 던집니다. 첫 번째로 단검에 맞은 적은 일정 시간 동안 독 지속 피해를 입습니다."
+            "en": "Throw a kunai that damages, slows and poisons the first enemy hit for 2 sec.",
+            "ko": "피해를 주고 느리게 만드는 단검을 던집니다. 첫 번째로 단검에 맞은 적은 2초 동안 독 지속 피해를 입습니다."
           }
         }
       ],
@@ -2141,9 +2180,12 @@
       },
       "stats": {
         "hp": 4000,
-        "speed": 720,
+        "speed": 750,
         "range": 21
       },
+      "attackDesc": "기타를 연주해 영혼을 울리는 음파를 정면으로 내보냅니다. 음파에 맞은 아군의 HP는 치유되고, 적은 피해를 입습니다.",
+      "superDesc": "경쾌한 멜로디를 연주하여 범위 안의 아군과 자신의 HP를 회복합니다. 적에게는 영향을 주지 않습니다.",
+      "shortDesc": "즉각적인 치유 효과로 팀을 도우세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000013.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000013.png"
@@ -2156,8 +2198,8 @@
             "ko": "뮤직 테라피"
           },
           "description": {
-            "en": "When Poco's attack hits friendly Brawlers they now heal for some health.",
-            "ko": "일반 공격이 아군에 적중하면 적중당한 아군의 HP가 일정량만큼 회복됩니다."
+            "en": "When Poco's attack hits friendly Brawlers they heal for additional some health.",
+            "ko": "일반 공격이 아군에 적중하면 해당 아군의 HP가 일정량만큼 추가로 회복됩니다."
           }
         },
         {
@@ -2167,8 +2209,8 @@
             "ko": "불협화음"
           },
           "description": {
-            "en": "Poco's Super now also hits enemies, dealing some damage.",
-            "ko": "특수 공격이 적에게는 일정량 피해를 줍니다."
+            "en": "Poco's Super now also hits enemies, dealing 100 damage.",
+            "ko": "이제 포코의 특수 공격이 적에게 100의 피해를 줍니다."
           }
         }
       ],
@@ -2180,8 +2222,8 @@
             "ko": "소리굽쇠"
           },
           "description": {
-            "en": "Poco and all nearby allies heal some health per second for a short time.",
-            "ko": "자신과 주변 아군의 HP가 일정 시간 동안 초당 일정량씩 회복됩니다."
+            "en": "Poco and all nearby allies heal for some health some times.",
+            "ko": "포코와 주변의 모든 아군이 일정 수에 걸쳐 일정량의 HP를 회복합니다."
           }
         },
         {
@@ -2191,8 +2233,8 @@
             "ko": "보호의 선율"
           },
           "description": {
-            "en": "Removes active adverse effects from friendly Brawlers in a large area and gives some second immunity.",
-            "ko": "넓은 범위에 걸쳐 아군 브롤러에게 활성화된 해로운 효과를 제거하고 일정 시간 동안 면역 효과를 부여합니다."
+            "en": "Poco creates a large AoE lasting 4 seconds that removes all adverse effects and grants them immunity while inside.",
+            "ko": "4초 동안 지속되는 넓은 광역 기술을 시전합니다. 해당 범위 내에서 모든 상태 이상 효과가 제거되고 면역 효과가 부여됩니다."
           }
         }
       ],
@@ -2273,7 +2315,7 @@
       "vector": {
         "range": 0.625,
         "durability": 0.4166666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.21874999999999997
       }
     },
@@ -2295,9 +2337,12 @@
       },
       "stats": {
         "hp": 3800,
-        "speed": 720,
+        "speed": 750,
         "range": 26
       },
+      "attackDesc": "폭발하는 화살 세 발을 쏴 독수리의 발톱처럼 적들을 갈기갈기 찢습니다.",
+      "superDesc": "지면에 폭발 덫을 설치합니다. 적이 밟으면 잠시 후 덫이 폭발해 적을 뒤로 밀쳐내며 피해를 줍니다.",
+      "shortDesc": "숨겨진 함정을 사용해 공간을 압박하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000014.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000014.png"
@@ -2439,7 +2484,7 @@
       "vector": {
         "range": 0.8333333333333334,
         "durability": 0.375,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.10416666666666664
       }
     },
@@ -2461,9 +2506,12 @@
       },
       "stats": {
         "hp": 2800,
-        "speed": 720,
+        "speed": 750,
         "range": 30
       },
+      "attackDesc": "우산으로 위장한 총으로 저격합니다. 적이 멀리 있을수록 더 큰 피해를 줍니다.",
+      "superDesc": "끈질기게 쫓아다니는 이들을 피해 수류탄을 남기고 공중으로 우아하게 점프해 떠납니다.",
+      "shortDesc": "원거리에서 공격하고 특수 공격으로 탈출하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000015.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000015.png"
@@ -2593,7 +2641,7 @@
       "vector": {
         "range": 1,
         "durability": 0.16666666666666666,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0
       }
     },
@@ -2615,9 +2663,12 @@
       },
       "stats": {
         "hp": 5000,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": "넓은 범위에 대량의 고철 파편을 발사합니다. 위험하니 안전 고글은 필수입니다!",
+      "superDesc": "치유 터렛으로 자기 자신과 범위 내 팀원의 HP를 회복합니다.",
+      "shortDesc": "전장을 사수하고 팀원을 치유하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000016.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000016.png"
@@ -2759,7 +2810,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.625,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.046875
       }
     },
@@ -2781,9 +2832,12 @@
       },
       "stats": {
         "hp": 3300,
-        "speed": 720,
+        "speed": 750,
         "range": 24
       },
+      "attackDesc": "타라가 손목을 한번 까딱해 적을 관통하는 타로 카드 3장을 날립니다! 엄청난 기술이죠!",
+      "superDesc": "상상을 초월하는 중력장을 만들어 냅니다! 중력장 안으로 빨려 들어간 적들은 서로 부딪히며 피해를 받습니다.",
+      "shortDesc": "다수의 적을 응징하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000017.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000017.png"
@@ -2925,7 +2979,7 @@
       "vector": {
         "range": 0.75,
         "durability": 0.2708333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.18229166666666669
       }
     },
@@ -2947,9 +3001,12 @@
       },
       "stats": {
         "hp": 5500,
-        "speed": 770,
+        "speed": 800,
         "range": 18
       },
+      "attackDesc": "이중총열 산탄총 2정을 연발해 근거리에서 큰 피해를 줍니다.",
+      "superDesc": "통으로 들어간 대릴이 데굴데굴 굴러가며 적을 넘어뜨리고, 받는 피해량을 줄이며 벽에 튕겨 나옵니다. 특수 공격은 시간이 지나면 충전됩니다!",
+      "shortDesc": "데굴데굴 굴러 목표물에 폭발적인 피해를 입히세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000018.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000018.png"
@@ -3079,7 +3136,7 @@
       "vector": {
         "range": 0.5,
         "durability": 0.7291666666666666,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.13541666666666669
       }
     },
@@ -3093,7 +3150,7 @@
         "en": "Penny doesn't care about studying old maps or puzzling over sea shanty riddles. She's a pirate so she can blow stuff up and grab whatever she wants!",
         "ko": "오래된 보물 지도나 고대 선원의 수수께끼에는 전혀 관심이 없고, 오로지 대포를 쏘고 보물을 훔치는 것에만 열중하는 개구쟁이 해적입니다!"
       },
-      "role": "artillery",
+      "role": "controller",
       "rarity": {
         "id": 3,
         "name": "Super Rare",
@@ -3101,9 +3158,12 @@
       },
       "stats": {
         "hp": 3500,
-        "speed": 720,
+        "speed": 750,
         "range": 26
       },
+      "attackDesc": "가짜 금화가 가득한 주머니를 쏩니다. 주머니가 적에게 적중하면 안에 있던 금화가 터져 나오며 적중한 적 뒤에 숨어있던 적들에게도 피해를 줍니다.",
+      "superDesc": "대포를 설치해 멀리 있는 적을 공격합니다. 탄착 지점은 불길에 휩싸이게 됩니다.",
+      "shortDesc": "대포를 이용해 맵을 지배하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000019.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000019.png"
@@ -3245,7 +3305,7 @@
       "vector": {
         "range": 0.8333333333333334,
         "durability": 0.3125,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.11458333333333331
       }
     },
@@ -3267,9 +3327,12 @@
       },
       "stats": {
         "hp": 6800,
-        "speed": 770,
+        "speed": 800,
         "range": 18
       },
+      "attackDesc": "망치를 들어 올리는 데 시간이 조금 걸리지만, 한 번 내리치면 강력한 충격파가 발생합니다. 프랭크의 HP가 감소하면 공격 속도가 증가합니다.",
+      "superDesc": "강력한 타격으로 충격파를 내보내 지형물을 파괴하고 일정 시간 동안 적을 기절시킵니다.",
+      "shortDesc": "기절과 높은 HP를 이용해 공간을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000020.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000020.png"
@@ -3399,7 +3462,7 @@
       "vector": {
         "range": 0.5,
         "durability": 1,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0
       }
     },
@@ -3421,9 +3484,12 @@
       },
       "stats": {
         "hp": 3800,
-        "speed": 720,
+        "speed": 750,
         "range": 17
       },
+      "attackDesc": "램프를 사용해 마법 연기를 구 형태의 탄환으로 만들어 발사합니다. 적에게 명중하지 않으면, 방사형으로 분열되며 피해를 줍니다.",
+      "superDesc": "램프에서 거대한 마법의 손이 나와 명중한 적을 자신의 위치로 끌어옵니다!",
+      "shortDesc": "원거리 당기기 스킬로 적을 고립시키세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000021.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000021.png"
@@ -3565,7 +3631,7 @@
       "vector": {
         "range": 0.4583333333333333,
         "durability": 0.375,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.33854166666666674
       }
     },
@@ -3587,9 +3653,12 @@
       },
       "stats": {
         "hp": 2400,
-        "speed": 720,
+        "speed": 750,
         "range": 26
       },
+      "attackDesc": "공중에서 분리되는 지뢰 다발을 던집니다. 지뢰는 공격 대상에 닿는 순간 또는 몇 초 후 폭발합니다.",
+      "superDesc": "폭탄으로 된 머리를 분리해 던집니다. 머리 폭탄은 착지 후 가장 가까운 대상을 향해 이동해 접촉 시 폭발합니다!",
+      "shortDesc": "안전한 위치에서 공간을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000022.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000022.png"
@@ -3731,7 +3800,7 @@
       "vector": {
         "range": 0.8333333333333334,
         "durability": 0.08333333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.15277777777777773
       }
     },
@@ -3753,9 +3822,12 @@
       },
       "stats": {
         "hp": 3300,
-        "speed": 820,
+        "speed": 855,
         "range": 29
       },
+      "attackDesc": "손목 스냅으로 수리검 4개를 던집니다. 적이 가까이 있을수록 더 큰 피해를 줍니다.",
+      "superDesc": "레온이 일정 시간 동안 은신 상태가 되고, 공격할 때 다시 모습을 드러냅니다. 가까이에 있는 적은 레온을 발견할 수 있습니다.",
+      "shortDesc": "몰래 숨어들어 암살하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000023.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000023.png"
@@ -3919,9 +3991,12 @@
       },
       "stats": {
         "hp": 5400,
-        "speed": 770,
+        "speed": 800,
         "range": 11
       },
+      "attackDesc": "완벽한 기술로 강력한 주먹을 연타로 날립니다!",
+      "superDesc": "튼튼한 덩굴로 몸을 감싸, 받는 모든 피해가 일정 시간 동안 일정 비율 감소합니다.",
+      "shortDesc": "가능할 때마다 덤불을 활용합니다!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000024.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000024.png"
@@ -4051,7 +4126,7 @@
       "vector": {
         "range": 0.20833333333333334,
         "durability": 0.7083333333333334,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.23090277777777773
       }
     },
@@ -4073,9 +4148,12 @@
       },
       "stats": {
         "hp": 4200,
-        "speed": 720,
+        "speed": 750,
         "range": 25
       },
+      "attackDesc": "곡괭이를 부메랑처럼 던집니다. 되돌아온 곡괭이를 잡은 후에 다시 던질 수 있습니다.",
+      "superDesc": "몇 초간 엄청난 속도로 회전하며, 가까이 있는 상대에게 피해를 줍니다.",
+      "shortDesc": "곡괭이를 부메랑처럼 던져 더 많은 피해를 입히세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000025.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000025.png"
@@ -4205,7 +4283,7 @@
       "vector": {
         "range": 0.7916666666666666,
         "durability": 0.4583333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.11284722222222225
       }
     },
@@ -4227,9 +4305,12 @@
       },
       "stats": {
         "hp": 5000,
-        "speed": 820,
+        "speed": 855,
         "range": 11
       },
+      "attackDesc": "비비가 야구 방망이를 휘두릅니다. 홈런 게이지가 완전히 충전된 상태에서 공격하면, 적을 날려버릴 수 있습니다!",
+      "superDesc": "비비가 풍선껌을 방망이로 쳐냅니다. 날아간 풍선껌은 벽에 튕기고 적을 관통하며, 같은 대상에게도 여러 번 피해를 줄 수 있습니다!",
+      "shortDesc": "공격을 충전하고 적을 뻥 날리세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000026.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000026.png"
@@ -4243,7 +4324,7 @@
           },
           "description": {
             "en": "Bibi's movement speed is increased by 12% when her Home Run bar is fully charged.",
-            "ko": "홈런 게이지가 가득 차면 비비의 이동 속도가 12% 증가합니다."
+            "ko": "홈런 게이지가 가득 차면 이동 속도가 12% 증가합니다."
           }
         },
         {
@@ -4277,8 +4358,8 @@
             "ko": "끈끈이 볼"
           },
           "description": {
-            "en": "Bibi throws bubble gum that slows all enemies in it by a percentage",
-            "ko": "비비가 풍선껌을 던져 풍선껌 속 모든 적의 이동 속도를 일정 비율 감소시킵니다."
+            "en": "Bibi throws bubble gum that slows all enemies in it by 20%",
+            "ko": "비비가 풍선껌을 던져 풍선껌 속 모든 적의 이동 속도를 20% 감소시킵니다."
           }
         }
       ],
@@ -4381,9 +4462,12 @@
       },
       "stats": {
         "hp": 5200,
-        "speed": 580,
+        "speed": 600,
         "range": 30
       },
+      "attackDesc": "좁게 퍼지는 블래스터 빔을 연사해 대상에게 피해를 줍니다.",
+      "superDesc": "효과 범위 안에 있는 모든 아군 브롤러의 공격력을 올려주는 터렛을 설치합니다.",
+      "shortDesc": "전장을 사수하고 아군을 강화하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000027.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000027.png"
@@ -4407,8 +4491,8 @@
             "ko": "오버클럭"
           },
           "description": {
-            "en": "While near the Damage Booster 8-Bit gains +a percentage Movement Speed.",
-            "ko": "공격력 부스터 근처에 있으면 8비트가 +일정 비율의 이동 속도를 얻습니다."
+            "en": "While near the Damage Booster 8-Bit gains +25% Movement Speed.",
+            "ko": "공격력 부스터 근처에 있으면 8비트가 +25%의 이동 속도를 얻습니다."
           }
         }
       ],
@@ -4525,7 +4609,7 @@
       "vector": {
         "range": 1,
         "durability": 0.6666666666666666,
-        "mobility": 0.14285714285714285,
+        "mobility": 0.1774193548387097,
         "risk": 0
       }
     },
@@ -4547,9 +4631,12 @@
       },
       "stats": {
         "hp": 4100,
-        "speed": 770,
+        "speed": 800,
         "range": 18
       },
+      "attackDesc": "상대를 관통하는 예리한 자갈을 퍼부어 공격합니다. 아얏!",
+      "superDesc": "일정 시간 동안 안에 있는 아군 브롤러를 숨길 수 있는 모래 폭풍을 소환합니다.",
+      "shortDesc": "모래 폭풍으로 표적을 제어하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000028.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000028.png"
@@ -4691,7 +4778,7 @@
       "vector": {
         "range": 0.5,
         "durability": 0.4375,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.28125
       }
     },
@@ -4713,9 +4800,12 @@
       },
       "stats": {
         "hp": 2800,
-        "speed": 720,
+        "speed": 750,
         "range": 30
       },
+      "attackDesc": "장거리에서 벌침을 발사합니다. 벌침이 적중할 경우 힘을 충전한 뒤 다음 공격으로 엄청난 피해를 줍니다!",
+      "superDesc": "제트기처럼 빠르게 움직이고 적을 향해 선회하는 드론 무리를 내보냅니다. 드론에 맞은 적은 느려집니다.",
+      "shortDesc": "공격을 적중시키고 강력한 벌을 내리세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000029.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000029.png"
@@ -4845,7 +4935,7 @@
       "vector": {
         "range": 1,
         "durability": 0.16666666666666666,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0
       }
     },
@@ -4867,9 +4957,12 @@
       },
       "stats": {
         "hp": 3900,
-        "speed": 720,
+        "speed": 750,
         "range": 20
       },
+      "attackDesc": "헤어스프레이를 뿌려 공격합니다. 너무나 독해 얼굴이 녹아내릴 거 같습니다!",
+      "superDesc": "자기 주변에 독성 구름을 만들어 적의 이동 속도를 늦추고 피해를 입힙니다.",
+      "shortDesc": "대규모 공격으로 맵을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000030.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000030.png"
@@ -4999,7 +5092,7 @@
       "vector": {
         "range": 0.5833333333333334,
         "durability": 0.3958333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.2517361111111111
       }
     },
@@ -5021,9 +5114,12 @@
       },
       "stats": {
         "hp": 3700,
-        "speed": 720,
+        "speed": 750,
         "range": 21
       },
+      "attackDesc": "분노로 가득차 무거운 여행 가방을 던집니다. 가방이 장애물에 맞거나 최대 거리에 이르면 튕겨져 나와, 떨어질 때 폭발과 함께 광역 피해를 줍니다.",
+      "superDesc": "작은 펭귄 머리 로봇 짐꾼들이 생성되는 거점을 배치해 적(그리고 제멋대로인 손님)을 공격합니다.",
+      "shortDesc": "짐꾼을 이용해 맵을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000031.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000031.png"
@@ -5165,7 +5261,7 @@
       "vector": {
         "range": 0.625,
         "durability": 0.3541666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.24218749999999997
       }
     },
@@ -5187,9 +5283,12 @@
       },
       "stats": {
         "hp": 3500,
-        "speed": 820,
+        "speed": 855,
         "range": 25
       },
+      "attackDesc": "블래스터로 여러 발사체를 빠르게 쏩니다. 많이 쏠 수 있으며 장전도 빠릅니다.",
+      "superDesc": "자신과 근처 아군의 이동 속도를 순간적으로 높여줍니다. 빨리 가죠!",
+      "shortDesc": "아군에게 강력한 이동 속도 버프를 부여하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000032.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000032.png"
@@ -5237,8 +5336,8 @@
             "ko": "공간 이동 운동화"
           },
           "description": {
-            "en": "Max throws a lightning bolt. If she reactivates the Gadget, or after a short time, she blinks back to the lightning bolt and heals any damage taken since.",
-            "ko": "맥스가 전기 표식을 던집니다. 가젯을 재활성화하거나 일정 시간이 지나면 전기 표식 위치로 순간이동하며, 그동안 받은 피해를 모두 회복합니다."
+            "en": "Max throws a lightning bolt. If she reactivates the Gadget, or after 3 seconds, she blinks back to the lightning bolt and heals any damage taken since.",
+            "ko": "맥스가 전기 표식을 던집니다. 가젯을 재활성화하거나 3초가 지나면 전기 표식 위치로 순간이동하며 그동안 받은 피해를 모두 회복합니다."
           }
         }
       ],
@@ -5341,9 +5440,12 @@
       },
       "stats": {
         "hp": 5200,
-        "speed": 770,
+        "speed": 800,
         "range": 10
       },
+      "attackDesc": "재키가 휴대용 드릴을 타고 깡충깡충 뛰어다니며 주변 지역을 흔듭니다. 너무 가까이 있는 적들은 머리가 지끈거릴 겁니다!",
+      "superDesc": "바닥에 구멍을 뚫어 적들을 끌어당깁니다!",
+      "shortDesc": "적에게 가까이 다가가 큰 광역 피해를 입히세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000034.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000034.png"
@@ -5485,7 +5587,7 @@
       "vector": {
         "range": 0.16666666666666666,
         "durability": 0.6666666666666666,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.27777777777777785
       }
     },
@@ -5507,9 +5609,12 @@
       },
       "stats": {
         "hp": 4000,
-        "speed": 720,
+        "speed": 750,
         "range": 25
       },
+      "attackDesc": "적을 향해 거대한 눈덩이 벽을 발사합니다!",
+      "superDesc": "거센 눈보라를 일으켜 경로 상의 모든 적을 뒤로 밀쳐냅니다.",
+      "shortDesc": "적을 밀어내 맵을 제어하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000035.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000035.png"
@@ -5639,7 +5744,7 @@
       "vector": {
         "range": 0.7916666666666666,
         "durability": 0.4166666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.12152777777777779
       }
     },
@@ -5661,9 +5766,12 @@
       },
       "stats": {
         "hp": 2500,
-        "speed": 720,
+        "speed": 750,
         "range": 26
       },
+      "attackDesc": "서로 다른 각도로 움직이고 끝에서 모이는 3개의 빛의 구슬을 발사합니다.",
+      "superDesc": "피프를 원격으로 조종할 수 있으며, 피프가 적에게 닿으면 폭발합니다!",
+      "shortDesc": "원거리에서 공격하거나 전부 맞혀 큰 피해를 입히세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000036.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000036.png"
@@ -5805,7 +5913,7 @@
       "vector": {
         "range": 0.8333333333333334,
         "durability": 0.10416666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.14930555555555552
       }
     },
@@ -5827,9 +5935,12 @@
       },
       "stats": {
         "hp": 3200,
-        "speed": 720,
+        "speed": 750,
         "range": 15
       },
+      "attackDesc": "터지기 전까지 튕겨 다니는 씨앗 덩어리를 던집니다! 씨앗 덩어리는 일정 시간이 지나거나 적과 접촉하면 폭발합니다.",
+      "superDesc": "슈퍼 씨앗을 사용해 통과할 수 없는 두꺼운 덩굴 울타리를 일시적으로 생성합니다.",
+      "shortDesc": "벽을 세우고 투사체를 튕겨내 공격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000037.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000037.png"
@@ -5971,7 +6082,7 @@
       "vector": {
         "range": 0.375,
         "durability": 0.25,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.46875
       }
     },
@@ -5993,9 +6104,12 @@
       },
       "stats": {
         "hp": 3300,
-        "speed": 680,
+        "speed": 705,
         "range": 20
       },
+      "attackDesc": "적에게 접촉하면 2개로 분열되는 주스를 발사합니다.",
+      "superDesc": "특수 공격을 사용할 때마다 서지가 최대 3단계까지 업그레이드됩니다. 처치되면 업그레이드가 사라집니다.\\n1단계: 이동 속도 증가\\n2단계: 사정거리 증가\\n3단계: 일반 공격이 2개 대신 6개로 나눠짐",
+      "shortDesc": "특수 공격으로 레벨을 올리거나 뛰어드세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000038.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000038.png"
@@ -6032,7 +6146,7 @@
             "ko": "파워 서지"
           },
           "description": {
-            "en": "Surge's power surges! Increase Super charge rate by 30 % for 5 sec.",
+            "en": "Surge's power surges! Increase Super charge rate by 30% for 5 sec.",
             "ko": "서지가 더욱 강력해집니다! 특수 공격 충전율이 5초 동안 30% 증가합니다."
           }
         },
@@ -6043,7 +6157,7 @@
             "ko": "파워 실드"
           },
           "description": {
-            "en": "Within the next 2 seconds, Surge consumes 50 % of the damage of the next incoming hit and uses the energy to reload 2 ammo.",
+            "en": "Within the next 2 seconds, Surge consumes 50% of the damage of the next incoming hit and uses the energy to reload 2 ammo.",
             "ko": "다음 2초 동안 서지가 받는 공격 1회의 피해량을 50% 줄이고 그 에너지를 이용해 2개의 탄환을 재장전합니다."
           }
         }
@@ -6125,7 +6239,7 @@
       "vector": {
         "range": 0.5833333333333334,
         "durability": 0.2708333333333333,
-        "mobility": 0.5,
+        "mobility": 0.5161290322580645,
         "risk": 0.3038194444444445
       }
     },
@@ -6147,9 +6261,12 @@
       },
       "stats": {
         "hp": 3600,
-        "speed": 720,
+        "speed": 750,
         "range": 26
       },
+      "attackDesc": "적 브롤러가 내지 않았던 HP 세금을 징수합니다. HP가 많을수록 더 많이 징수합니다.",
+      "superDesc": "앞뒤로 돌진하며 경로의 모든 적에게 적의 최대 HP에 비례한 피해를 줍니다.",
+      "shortDesc": "높은 HP의 적과 물체를 파괴하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000039.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000039.png"
@@ -6186,8 +6303,8 @@
             "ko": "부분 청구"
           },
           "description": {
-            "en": "Colette fires a projectile that charms a Brawler for a short time. Uses ammo.",
-            "ko": "브롤러를 일정 시간 동안 매혹시키는 투사체를 발사합니다. 탄환이 소모됩니다."
+            "en": "Colette fires a projectile that charms a Brawler for 0.5 sec. Uses ammo.",
+            "ko": "브롤러를 0.5초 동안 매혹시키는 투사체를 발사합니다. 탄환이 소모됩니다."
           }
         },
         {
@@ -6279,7 +6396,7 @@
       "vector": {
         "range": 0.8333333333333334,
         "durability": 0.3333333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.1111111111111111
       }
     },
@@ -6301,9 +6418,12 @@
       },
       "stats": {
         "hp": 3400,
-        "speed": 720,
+        "speed": 750,
         "range": 25
       },
+      "attackDesc": "적에게 활활 타오르는 불길을 내뿜습니다. 보기엔 멋지지만 가까이 가면 뜨거우니 조심하세요!",
+      "superDesc": "연료가 든 병을 던져 나중에 점화시킬 수 있습니다. 덤불과 적을 활활 태워버리세요! (주의: 한 번에 한 병씩만 사용 가능)",
+      "shortDesc": "불을 이용해 덤불을 파괴하고 공간을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000040.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000040.png"
@@ -6316,8 +6436,8 @@
             "ko": "야생 불꽃"
           },
           "description": {
-            "en": "Amber can have two fuel puddles on the ground simultaneously and she will recharge her Super automatically when standing near one.",
-            "ko": "연료 웅덩이를 동시에 2개까지 생성할 수 있습니다. 웅덩이 주위에 서 있으면 특수 공격이 자동으로 충전됩니다."
+            "en": "Amber's Fire Fluid becomes sticky, attaching to Brawlers and leaving a trail of oil while they move.",
+            "ko": "연료가 끈적해져 브롤러에 달라붙고, 해당 브롤러가 움직임에 따라 기름 자국이 남습니다."
           }
         },
         {
@@ -6327,8 +6447,8 @@
             "ko": "뜨거운 연료"
           },
           "description": {
-            "en": "While being near a puddle of fire fluid, Amber uses it to reload her firebreathing a percentage faster.",
-            "ko": "연료 웅덩이 주위에 있으면 일반 공격 재장전 속도가 일정 비율 빨라집니다."
+            "en": "Amber reloads a percentage of her fire-breathing when an enemy takes fire damage.",
+            "ko": "적이 화염 피해를 입을 때마다 앰버가 화염 입김의 일정 비율을 재장전합니다."
           }
         }
       ],
@@ -6340,8 +6460,8 @@
             "ko": "불쏘시개"
           },
           "description": {
-            "en": "Amber runs 15% faster for 3 seconds while spilling her fire fluid, which she can then ignite.",
-            "ko": "3초 동안 15%의 연료를 뿌리며 빠르게 달립니다. 땅에 뿌린 연료는 나중에 점화할 수 있습니다."
+            "en": "Amber summons an Oil barrel with 1750 health, spilling oil when destroyed.",
+            "ko": "파괴되면 기름이 쏟아지는 1750 HP의 배럴을 소환합니다."
           }
         },
         {
@@ -6351,8 +6471,8 @@
             "ko": "춤추는 불꽃"
           },
           "description": {
-            "en": "Amber creates some orbiting flames around her for a short time, dealing some damage on hit.",
-            "ko": "자기 주변을 빙빙 도는 불꽃 일정 수를 만들어 일정 시간 동안 주위의 적에게 타격당일정량의 피해를 입힙니다."
+            "en": "Amber creates some orbiting flames around her for 5 seconds, dealing 950 damage on hit.",
+            "ko": "자기 주변을 빙빙 도는 불꽃 일정 수를 만들어 5초 동안 주위의 적에게 타격당950의 피해를 입힙니다."
           }
         }
       ],
@@ -6457,7 +6577,7 @@
       "vector": {
         "range": 0.7916666666666666,
         "durability": 0.2916666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.14756944444444445
       }
     },
@@ -6479,9 +6599,12 @@
       },
       "stats": {
         "hp": 3500,
-        "speed": 720,
+        "speed": 750,
         "range": 28
       },
+      "attackDesc": "꽁꽁 얼린 빙수로 상대를 집중 공격해 결국엔 일정 시간 동안 완전히 얼려버립니다.",
+      "superDesc": "차가운 시럽이 담긴 캔을 던져 미끄러운 얼음 지역을 생성합니다. 이렇게 만들어진 얼음 지역은 적을 천천히 얼어붙게 만들고 피해를 주기도 합니다. 발이 빠른 상대에게 효과적이죠!",
+      "shortDesc": "강력한 얼음 공격으로 맵을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000041.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000041.png"
@@ -6623,7 +6746,7 @@
       "vector": {
         "range": 0.9166666666666666,
         "durability": 0.3125,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.05729166666666669
       }
     },
@@ -6645,9 +6768,12 @@
       },
       "stats": {
         "hp": 2600,
-        "speed": 720,
+        "speed": 750,
         "range": 30
       },
+      "attackDesc": "장거리에서 적과 아군을 모두 맞힐 수 있는 다트를 쏩니다. 적에게는 지속 피해를, 아군에게는 지속 치유를 선사합니다!",
+      "superDesc": "아군은 치유하고 적에게는 피해를 주는 물약병을 던집니다.",
+      "shortDesc": "아군을 치유하거나 독 공격으로 저격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000042.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000042.png"
@@ -6777,7 +6903,7 @@
       "vector": {
         "range": 1,
         "durability": 0.125,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0
       }
     },
@@ -6799,9 +6925,12 @@
       },
       "stats": {
         "hp": 3700,
-        "speed": 820,
+        "speed": 855,
         "range": 6
       },
+      "attackDesc": "적에게 재빠른 펀치를 날려 피해를 주고, 펀치가 적중할 때마다 자기 자신을 치유합니다.",
+      "superDesc": "모든 장애물을 날렵하게 뛰어넘으며 일시적으로 속도가 빨라집니다. 특수 공격은 시간이 지나면서 천천히 충전됩니다.",
+      "shortDesc": "뛰어들어서 고립된 적을 처치하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000043.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000043.png"
@@ -6965,9 +7094,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": "트윈 레이저가 장벽에 여러 번 튕겨 나옵니다. 장애물 뒤도 안전하지 않습니다!",
+      "superDesc": "보급품 투하를 요청합니다. 맞은 적은 피해를 입으며, 아군 브롤러가 획득하면 HP와 피해량이 증가하는 파워업이 생성됩니다. 파워업의 효과는 중첩되지 않으며, 브롤러가 처치되면 사라집니다.",
+      "shortDesc": "팀원을 버프하고 적을 원거리에서 공격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000044.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000044.png"
@@ -7097,7 +7229,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.20833333333333334,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.09895833333333333
       }
     },
@@ -7119,9 +7251,12 @@
       },
       "stats": {
         "hp": 3500,
-        "speed": 720,
+        "speed": 750,
         "range": 23
       },
+      "attackDesc": "적을 뜨겁게 강타하는 불꽃탄 두 발을 연사합니다.",
+      "superDesc": "일반 공격이 적에 적중하면, 짧은 거리를 돌진하며 닿은 적을 불태우는 타이어 자국을 남기는 나이트로 부스터를 충전합니다.",
+      "shortDesc": "돌진 스킬로 적에게 가까이 다가가거나 공격을 피하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000045.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000045.png"
@@ -7251,7 +7386,7 @@
       "vector": {
         "range": 0.7083333333333334,
         "durability": 0.3125,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.20052083333333331
       }
     },
@@ -7273,9 +7408,12 @@
       },
       "stats": {
         "hp": 2900,
-        "speed": 720,
+        "speed": 750,
         "range": 30
       },
+      "attackDesc": "장거리 전기 볼트탄을 발사해 명중한 적에게 피해를 줍니다. 전기 볼트는 일정 시간이 지난 후 가까운 다른 적에게 튕겨 피해를 줍니다.",
+      "superDesc": "명중한 적에게 표식을 남기는 특수탄을 발사합니다. 표식이 남은 적은 받는 모든 피해가 증가합니다. 한 번에 한 대상에만 표식을 남길 수 있습니다.",
+      "shortDesc": "튕기는 총알로 상대를 저격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000046.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000046.png"
@@ -7417,7 +7555,7 @@
       "vector": {
         "range": 1,
         "durability": 0.1875,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0
       }
     },
@@ -7439,9 +7577,12 @@
       },
       "stats": {
         "hp": 3800,
-        "speed": 720,
+        "speed": 750,
         "range": 23
       },
+      "attackDesc": "커다란 폭발과 함께 피해를 주는 끈적끈적하고 불안정한 젤 덩어리를 던집니다. 젤 덩어리는 명중한 상대에 달라붙습니다.",
+      "superDesc": "폭발성 젤 덩어리를 던집니다. 폭발 시 작은 끈끈이 젤 폭탄 여섯 개가 사방으로 날아갑니다!",
+      "shortDesc": "폭발 공격으로 벽 너머의 적까지 노리세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000047.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000047.png"
@@ -7571,7 +7712,7 @@
       "vector": {
         "range": 0.7083333333333334,
         "durability": 0.375,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.18229166666666663
       }
     },
@@ -7593,9 +7734,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 720,
+        "speed": 750,
         "range": 23
       },
+      "attackDesc": "폭발성 무전기인 버드를 던집니다! 무전기는 십자형으로 폭발하며 경로 상에 있는 적에게 피해를 줍니다.",
+      "superDesc": "무전기 버드의 도움으로 거대 폭탄을 투척해 막대한 피해를 입히고 벽을 부수며, 그 폭발력으로 모든 적을 뒤로 밀쳐냅니다.",
+      "shortDesc": "벽 뒤에서 안전하게 공격을 퍼부으세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000048.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000048.png"
@@ -7725,7 +7869,7 @@
       "vector": {
         "range": 0.7083333333333334,
         "durability": 0.20833333333333334,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.23090277777777773
       }
     },
@@ -7747,9 +7891,12 @@
       },
       "stats": {
         "hp": 5000,
-        "speed": 770,
+        "speed": 800,
         "range": 8
       },
+      "attackDesc": "호루라기를 불어 부채꼴 모양으로 빠르게 5번 공격합니다.",
+      "superDesc": "레스큐 튜브를 던집니다. 튜브가 적이나 벽에 맞으면 버즈가 해당 위치로 날아가 근처의 상대를 기절시킵니다. 기절 시간은 튜브의 이동 거리에 비례합니다.",
+      "shortDesc": "맵을 휘젓고 다니며 적을 기절시키세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000049.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000049.png"
@@ -7879,7 +8026,7 @@
       "vector": {
         "range": 0.08333333333333333,
         "durability": 0.625,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.34375
       }
     },
@@ -7901,9 +8048,12 @@
       },
       "stats": {
         "hp": 3700,
-        "speed": 720,
+        "speed": 750,
         "range": 25
       },
+      "attackDesc": "상대에게 좁은 부채꼴로 퍼지는 동전을 3번 연속해 던집니다.",
+      "superDesc": "넓은 범위에 날카로운 지폐를 뿌립니다. 그냥 버리기에는 너무 소중해서 날렸던 지폐는 돌아오며 한 번 더 피해를 줍니다. 멀리 있는 상대에게 더 큰 피해를 줍니다.",
+      "shortDesc": "중거리에서 폭발적인 공격으로 적을 처치하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000050.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000050.png"
@@ -8045,7 +8195,7 @@
       "vector": {
         "range": 0.7916666666666666,
         "durability": 0.3541666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.13454861111111113
       }
     },
@@ -8067,9 +8217,12 @@
       },
       "stats": {
         "hp": 5900,
-        "speed": 720,
+        "speed": 750,
         "range": 14
       },
+      "attackDesc": "화를 내며 빗자루로 상대를 박살 냅니다. 먼지를 먹고 싶지 않으면 피하세요!",
+      "superDesc": "청소를 돕는 로봇 쥐?! 상대와 접촉하면 폭발해 피해를 주고 애쉬의 분노 게이지도 크게 올립니다.",
+      "shortDesc": "쥐 떼를 풀어 적을 공격하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000051.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000051.png"
@@ -8211,7 +8364,7 @@
       "vector": {
         "range": 0.3333333333333333,
         "durability": 0.8125,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.125
       }
     },
@@ -8233,9 +8386,12 @@
       },
       "stats": {
         "hp": 2400,
-        "speed": 820,
+        "speed": 855,
         "range": 27
       },
+      "attackDesc": "블래스터로 탄환을 빠르게 점사해 상대의 인내심을 자극합니다.",
+      "superDesc": "메그가 메카에 탑승해 전장에 대혼란을 일으킵니다! 착지 시 메카가 주변 적들에게 일정량의 피해를 입힙니다.",
+      "shortDesc": "메카를 이용해 공간을 확보하고 탈출하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000052.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000052.png"
@@ -8260,7 +8416,7 @@
           },
           "description": {
             "en": "The Mecha recovers 600 health for each enemy hit with Feel the Steel (Super in Mech).",
-            "ko": "강철 팔뚝(메카 특수 공격)이 적에게 명중할 때마다 메카가 600HP를 회복합니다."
+            "ko": "강철 팔뚝(메카 특수 공격)이 적에게 명중할 때마다 메카가 600 HP를 회복합니다."
           }
         }
       ],
@@ -8279,8 +8435,8 @@
         {
           "id": 23000489,
           "name": {
-            "en": "Toolbox",
-            "ko": "공구함"
+            "en": "Repurpose",
+            "ko": "용도 변경"
           },
           "description": {
             "en": "Meg ejects from the Mecha, launching it forward, dealing 800 damage on the way. Charges Super after during the next 6 seconds.",
@@ -8387,9 +8543,12 @@
       },
       "stats": {
         "hp": 4000,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": "가장 좋아하는 패션 아이템이 전장에서는 무기가 됩니다! 여우의 반짝이는 다이아몬드 눈에서 탄환이 빠르게 발사됩니다.",
+      "superDesc": "롤라는 자신의 모든 동작을 따라하는 분신을 내보냅니다. 하지만 롤라와의 거리가 너무 가까우면 적에게 피해를 덜 입힙니다.",
+      "shortDesc": "분신을 활용해 여러 공격로를 통제하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000053.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000053.png"
@@ -8531,7 +8690,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.4166666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.07291666666666666
       }
     },
@@ -8553,9 +8712,12 @@
       },
       "stats": {
         "hp": 4800,
-        "speed": 770,
+        "speed": 800,
         "range": 8
       },
+      "attackDesc": "재빠르게 발차기를 날리며, 대상을 빗나가면 신발이 벗겨져 날아갑니다!",
+      "superDesc": "적에게 돌진해 초강력 발차기를 날립니다. 적중하면 가까이 있는 적에게 연속으로 3번 더 발차기를 날립니다.",
+      "shortDesc": "원거리에서 적을 공격한 뒤 뛰어들어 처치하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000054.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000054.png"
@@ -8685,7 +8847,7 @@
       "vector": {
         "range": 0.08333333333333333,
         "durability": 0.5833333333333334,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.3819444444444444
       }
     },
@@ -8707,9 +8869,12 @@
       },
       "stats": {
         "hp": 3100,
-        "speed": 720,
+        "speed": 750,
         "range": 28
       },
+      "attackDesc": "알 3개를 연속으로 발사합니다. 발사되는 알은 점점 더 커지며 더 많은 피해를 줍니다.",
+      "superDesc": "해츨링 한 무리를 부화시키는 커다란 알을 낳습니다. 해츨링들은 적에게 붙어 시간이 지남에 따라 피해를 줍니다.",
+      "shortDesc": "물 위를 이동하고 해츨링을 풀어 놓으세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000056.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000056.png"
@@ -8863,7 +9028,7 @@
       "vector": {
         "range": 0.9166666666666666,
         "durability": 0.22916666666666666,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.06423611111111115
       }
     },
@@ -8885,9 +9050,12 @@
       },
       "stats": {
         "hp": 3400,
-        "speed": 720,
+        "speed": 750,
         "range": 12
       },
+      "attackDesc": "고음으로 노래합니다. 음을 길게 뽑아낼수록 집중도가 높아져 더 멀리 뻗어갑니다.",
+      "superDesc": "제트팩을 이용해 잠시 동안 하늘로 날아오릅니다. 지속 시간 내내 공중에서 적을 공격합니다.",
+      "shortDesc": "특수 공격을 이용해 위에서 안전하게 폭탄을 투하하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000057.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000057.png"
@@ -9017,7 +9185,7 @@
       "vector": {
         "range": 0.25,
         "durability": 0.2916666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.53125
       }
     },
@@ -9039,9 +9207,12 @@
       },
       "stats": {
         "hp": 5000,
-        "speed": 620,
+        "speed": 630,
         "range": 27
       },
+      "attackDesc": "보니가 클라이드를 사용해 적들을 향하여 커다란 치아를 발사합니다.",
+      "superDesc": "클라이드가 보니를 공중으로 쏘아 올립니다. 보니는 장애물 위를 넘을 수 있으며, 착지하면서 근처의 적들에게 피해를 줍니다.",
+      "shortDesc": "상대를 저격한 뒤 뛰어들어 큰 피해를 입히세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000058.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000058.png"
@@ -9183,7 +9354,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.625,
-        "mobility": 0.2857142857142857,
+        "mobility": 0.27419354838709675,
         "risk": 0.046875
       }
     },
@@ -9205,9 +9376,12 @@
       },
       "stats": {
         "hp": 3600,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": "팔처럼 움직이는 스프레이 건에서 먹물 방울을 발사합니다.",
+      "superDesc": "오티스가 던진 실이 처음으로 명중한 적에게 달라붙어 짧은 시간 동안 공격을 저지합니다.",
+      "shortDesc": "탱커에게 폭발적인 피해를 입히고, 침묵 스킬로 위협에 대응하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000059.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000059.png"
@@ -9349,7 +9523,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.3333333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.08333333333333334
       }
     },
@@ -9371,9 +9545,12 @@
       },
       "stats": {
         "hp": 5700,
-        "speed": 770,
+        "speed": 800,
         "range": 9
       },
+      "attackDesc": "강력한 2연타를 날립니다. 장갑을 꼈을 땐 훨씬 더 많은 피해를 입힙니다.",
+      "superDesc": "로켓 너클을 날려 땅에 떨어질 때까지 적중한 모든 적에게 피해를 줍니다. 재사용 시 바닥에 있는 너클이 샘에게 돌아오면서 관통하는 적에게 다시 피해를 입힙니다.",
+      "shortDesc": "주먹을 날린 뒤 회수하고, 계속 반복하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000060.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000060.png"
@@ -9503,7 +9680,7 @@
       "vector": {
         "range": 0.125,
         "durability": 0.7708333333333334,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.20052083333333331
       }
     },
@@ -9525,9 +9702,12 @@
       },
       "stats": {
         "hp": 3300,
-        "speed": 720,
+        "speed": 750,
         "range": 28
       },
+      "attackDesc": "적에게 풍선을 던집니다. 이 공격이 여러 번 적중하면 유령이 나타나며, 거스나 팀원이 유령을 수집하면 소량의 HP를 회복합니다.",
+      "superDesc": "풍선으로 만든 절친 스푸키로 자신이나 팀원 한 명 주위에 보호막을 만들어 주변의 적을 밀어냅니다.",
+      "shortDesc": "팀원을 버프하고 적을 저격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000061.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000061.png"
@@ -9551,8 +9731,8 @@
             "ko": "든든한 내 친구"
           },
           "description": {
-            "en": "Spooky increases the damage of a teammate by a percentage for a short time.",
-            "ko": "스푸키가 팀원이 입히는 피해량을 일정 시간 동안 일정 비율 증가시킵니다."
+            "en": "Spooky increases the damage of a teammate by 25% for 5 seconds.",
+            "ko": "스푸키가 팀원이 입히는 피해량을 5초 동안 25% 증가시킵니다."
           }
         }
       ],
@@ -9571,12 +9751,12 @@
         {
           "id": 23000514,
           "name": {
-            "en": "Soul Switcher",
-            "ko": "영혼 교체"
+            "en": "Knockback Spirit",
+            "ko": "넉백 유령"
           },
           "description": {
-            "en": "Gus loses a percentage health but gains a percentage spirit instantly.",
-            "ko": "HP 일정 비율을 소모해 즉시 일정 비율의 영혼치를 얻습니다."
+            "en": "Gus throws a spirit, knocking back enemies and dealing 540 damage.",
+            "ko": "유령을 던져 적을 뒤로 밀어내고 540의 피해를 입힙니다."
           }
         }
       ],
@@ -9657,7 +9837,7 @@
       "vector": {
         "range": 0.9166666666666666,
         "durability": 0.2708333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.06076388888888892
       }
     },
@@ -9679,9 +9859,12 @@
       },
       "stats": {
         "hp": 5000,
-        "speed": 770,
+        "speed": 800,
         "range": 16
       },
+      "attackDesc": "영사기 렌즈로 빛을 쏴 범위 내 적에게 피해를 줍니다.",
+      "superDesc": "자신 앞에 보호막을 형성해 적의 공격을 막고 반사합니다.",
+      "shortDesc": "적의 투사체를 반사해 큰 피해를 입히세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000062.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000062.png"
@@ -9811,7 +9994,7 @@
       "vector": {
         "range": 0.4166666666666667,
         "durability": 0.625,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.21874999999999997
       }
     },
@@ -9833,9 +10016,12 @@
       },
       "stats": {
         "hp": 3800,
-        "speed": 770,
+        "speed": 800,
         "range": 25
       },
+      "attackDesc": "체스터의 모자가 부채꼴로 방울을 발사합니다. 처음에는 1개, 그다음에는 2개, 그리고 3개, 마지막으로는 4개의 방울을 쏩니다.",
+      "superDesc": null,
+      "shortDesc": "무작위 공격을 마스터해 맵을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000063.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000063.png"
@@ -9965,7 +10151,7 @@
       "vector": {
         "range": 0.7916666666666666,
         "durability": 0.375,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.13020833333333337
       }
     },
@@ -9987,9 +10173,12 @@
       },
       "stats": {
         "hp": 3400,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": null,
+      "superDesc": null,
+      "shortDesc": "포털을 이용해 아군과 함께 움직여 보세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000064.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000064.png"
@@ -10119,7 +10308,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.2916666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.08854166666666666
       }
     },
@@ -10141,9 +10330,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": "사탕 뽑기 기계에서 사탕을 발사합니다. 맨디가 움직이지 않는 동안에는 집중력을 발휘해 공격 범위가 증가합니다.",
+      "superDesc": "적과 지형물을 관통하는 긴 설탕 광선을 발사해 막대한 피해를 줍니다.",
+      "shortDesc": "자리를 지켜 초장거리에서 공격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000065.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000065.png"
@@ -10273,7 +10465,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.20833333333333334,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.09895833333333333
       }
     },
@@ -10295,9 +10487,12 @@
       },
       "stats": {
         "hp": 4100,
-        "speed": 720,
+        "speed": 750,
         "range": 30
       },
+      "attackDesc": "탄환 한 발을 발사하여 명중한 적에게 표식을 남깁니다. 표식이 있는 적에게 다시 피해를 입히면 추가 피해를 주며 표식이 사라집니다.",
+      "superDesc": null,
+      "shortDesc": "목표물에 표식을 남기고 폭발적인 피해를 입힙니다!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000066.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000066.png"
@@ -10427,7 +10622,7 @@
       "vector": {
         "range": 1,
         "durability": 0.4375,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0
       }
     },
@@ -10449,9 +10644,12 @@
       },
       "stats": {
         "hp": 3300,
-        "speed": 720,
+        "speed": 750,
         "range": 22
       },
+      "attackDesc": "등불을 던져 적중한 적에게 지속 피해를 줍니다.",
+      "superDesc": "올챙이 한 마리를 발사해 명중한 적 브롤러를 완전히 치유하고 마음대로 조종합니다. 윌로우는 조종 상태의 적을 원하는 대로 움직이며 기본 공격을 사용할 수 있습니다. 조종 상태는 일정 시간 후 또는 브롤러의 HP가 일정 비율 남으면 종료됩니다.",
+      "shortDesc": "적들이 서로 공격하게 하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000067.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000067.png"
@@ -10464,8 +10662,8 @@
             "ko": "사랑의 콩깍지"
           },
           "description": {
-            "en": "Lantern's Curse also reduces reload speed of affected Brawlers by a percentage for a short time.",
-            "ko": "등불의 저주의 기본 효과와 더불어 적중한 적 브롤러의 재장전 속도를 일정 시간 동안 일정 비율 감소시킵니다."
+            "en": "Lantern's Curse also reduces reload speed of affected Brawlers by 30% for 3 seconds.",
+            "ko": "등불의 저주의 기본 효과와 더불어 적중한 브롤러의 재장전 속도를 3초 동안 30% 감소시킵니다."
           }
         },
         {
@@ -10581,7 +10779,7 @@
       "vector": {
         "range": 0.6666666666666666,
         "durability": 0.2708333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.2430555555555556
       }
     },
@@ -10603,9 +10801,12 @@
       },
       "stats": {
         "hp": 4000,
-        "speed": 720,
+        "speed": 750,
         "range": 26
       },
+      "attackDesc": "멀리 날아갈수록 더 빠르게 움직이는 로켓을 발사합니다.",
+      "superDesc": "너무 가까이 가지 마세요! 그렇지 않으면 거리두기를 당할 겁니다!",
+      "shortDesc": "다가오는 적을 응징하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000068.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000068.png"
@@ -10735,7 +10936,7 @@
       "vector": {
         "range": 0.8333333333333334,
         "durability": 0.4166666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.09722222222222218
       }
     },
@@ -10756,10 +10957,13 @@
         "color": "#d850ff"
       },
       "stats": {
-        "hp": 5200,
-        "speed": 720,
+        "hp": 5500,
+        "speed": 750,
         "range": 10
       },
+      "attackDesc": null,
+      "superDesc": null,
+      "shortDesc": "공격을 충전한 뒤 전투를 개시합니다.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000069.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000069.png"
@@ -10888,9 +11092,9 @@
       ],
       "vector": {
         "range": 0.16666666666666666,
-        "durability": 0.6666666666666666,
-        "mobility": 0.6428571428571429,
-        "risk": 0.27777777777777785
+        "durability": 0.7291666666666666,
+        "mobility": 0.6612903225806451,
+        "risk": 0.22569444444444448
       }
     },
     {
@@ -10911,9 +11115,12 @@
       },
       "stats": {
         "hp": 3500,
-        "speed": 820,
+        "speed": 855,
         "range": 16
       },
+      "attackDesc": "정원 관리 도구로 버섯 2개를 발사하여 적중하는 적에게 피해를 줍니다.",
+      "superDesc": "벽을 관통하는 그림자 버섯을 발사해 명중한 적과 자신을 일정 시간 동안 그림자 영역으로 이동시킵니다. 그림자 영역 내에 있는 동안 코델리우스의 이동 속도는 일정 비율, 재장전 속도는 일정 비율 증가합니다.",
+      "shortDesc": "그림자 영역을 활용해 목표를 고립시키세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000070.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000070.png"
@@ -11065,9 +11272,12 @@
       },
       "stats": {
         "hp": 5200,
-        "speed": 770,
+        "speed": 800,
         "range": 10
       },
+      "attackDesc": "아군에게는 든든한 음식을, 적에게는 상한 음식을 줍니다. 아군을 치유하고 적에게는 피해를 줍니다.",
+      "superDesc": "아군이나 더그 자신을 위한 매운맛 핫도그를 준비했습니다. 효과를 받은 브롤러가 처치되면, 잠시 후 일정 비율의 HP를 가지고 부활합니다.",
+      "shortDesc": "근거리에서 큰 피해를 입히고 스스로 부활하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000071.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000071.png"
@@ -11197,7 +11407,7 @@
       "vector": {
         "range": 0.16666666666666666,
         "durability": 0.6666666666666666,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.27777777777777785
       }
     },
@@ -11219,9 +11429,12 @@
       },
       "stats": {
         "hp": 4300,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": "갓 구운 따끈따끈한 쿠키를 오븐에서 빠르게 발사해 명중한 적에게 피해를 주며, 피해를 주는 동안 오븐의 열기가 살짝 내려갑니다. 열기가 높을수록 피해량이 증가합니다.",
+      "superDesc": "쌓인 열기를 모두 소모하고 방출해 폭발을 일으켜 주변 모든 적에게 피해를 줍니다. 열기가 높을수록 피해량이 증가합니다.",
+      "shortDesc": "열기를 충전해 폭발적인 피해를 입히세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000072.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000072.png"
@@ -11351,7 +11564,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.4791666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.06510416666666666
       }
     },
@@ -11365,17 +11578,20 @@
         "en": "Once a brilliant maestro, now a train conductor, Chuck traded the symphonies of the concert halls for the cacophonies of the Ghost Station, all in the hope of discovering the next big thing in music!",
         "ko": "한때 오케스트라의 뛰어난 마에스트로였으나 지금은 열차 차장으로 일하고 있습니다. 콘서트홀의 교향곡을 고스트 스테이션의 불협화음과 맞바꾼 셈이죠. 하지만 음악에 대한 꿈은 여전하답니다!"
       },
-      "role": "damage",
+      "role": "controller",
       "rarity": {
         "id": 5,
         "name": "Mythic",
         "color": "#fe5e72"
       },
       "stats": {
-        "hp": 4700,
-        "speed": 770,
-        "range": 20
+        "hp": 4400,
+        "speed": 800,
+        "range": 18
       },
+      "attackDesc": "모자에서 적을 관통하는 증기를 발사해 피해를 줍니다. 적이 척과 가까이에 있을수록 더 큰 피해를 입습니다.",
+      "superDesc": "시야에 있는 가장 가까운 신호기로 돌진하여 경로 내의 적들에게 피해를 줍니다. 시야에 신호기가 없으면 새 신호기를 땅에 던집니다.",
+      "shortDesc": "신호기를 투척해 공격과 후퇴에 활용하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000073.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000073.png"
@@ -11388,8 +11604,8 @@
             "ko": "정차"
           },
           "description": {
-            "en": "Increase the maximum amount of Posts by some.",
-            "ko": "최대 신호기 개수가 일정 수 더 증가합니다."
+            "en": "Placing a Pole slows a percentage any hit enemy for a short time.",
+            "ko": "신호기를 배치해 공격이 명중한 적의 이동 속도를 일정 시간 동안 일정 비율 감소시킵니다."
           }
         },
         {
@@ -11412,8 +11628,8 @@
             "ko": "경로 변경"
           },
           "description": {
-            "en": "Chuck removes the nearest Post and recharges his Super.",
-            "ko": "가장 가까운 신호기를 제거하고 특수 공격을 충전합니다."
+            "en": "Chuck removes the nearest Post and charges 50% of his Super.",
+            "ko": "가장 가까운 신호기를 제거하고 특수 공격을 50% 충전합니다."
           }
         },
         {
@@ -11423,8 +11639,8 @@
             "ko": "고스트 열차"
           },
           "description": {
-            "en": "Chuck's next Super can go through walls!",
-            "ko": "다음 특수 공격이 벽을 통과합니다."
+            "en": "Chuck's Supers can go through walls for 8 seconds!",
+            "ko": "특수 공격이 8초 동안 벽을 통과할 수 있습니다!"
           }
         }
       ],
@@ -11503,10 +11719,10 @@
         }
       ],
       "vector": {
-        "range": 0.5833333333333334,
-        "durability": 0.5625,
-        "mobility": 0.8214285714285714,
-        "risk": 0.18229166666666666
+        "range": 0.5,
+        "durability": 0.5,
+        "mobility": 0.8225806451612904,
+        "risk": 0.25
       }
     },
     {
@@ -11527,9 +11743,12 @@
       },
       "stats": {
         "hp": 3700,
-        "speed": 720,
+        "speed": 750,
         "range": 27
       },
+      "attackDesc": "요요를 앞으로 던집니다. 요요는 적중하는 첫 번째 적에게 피해를 입힌 후 다시 되돌아옵니다.",
+      "superDesc": "털뭉치를 던져 적중한 적을 감싸 고치에 가둡니다. 털북숭이 고치에 갇힌 적은 고치가 파괴될 때까지 무력화됩니다.",
+      "shortDesc": "고치를 사용해 적을 전장에서 쓸모없게 만듭니다!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000074.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000074.png"
@@ -11659,7 +11878,7 @@
       "vector": {
         "range": 0.875,
         "durability": 0.3541666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.08072916666666666
       }
     },
@@ -11681,9 +11900,12 @@
       },
       "stats": {
         "hp": 3500,
-        "speed": 820,
+        "speed": 855,
         "range": 12
       },
+      "attackDesc": "앞으로 짧은 거리를 점프해 마이크로 적을 공격합니다. 착지 후 주변에 있는 적에게 피해를 줍니다.",
+      "superDesc": "화면 밖으로 벗어나 무적 상태에서 착지 지점을 고를 수 있습니다. 착지할 때 주변의 적에게 피해를 줍니다.",
+      "shortDesc": "벽과 적의 공격을 뛰어넘으세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000075.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000075.png"
@@ -11720,8 +11942,8 @@
             "ko": "고막 주의"
           },
           "description": {
-            "en": "Mico lets out a deafening scream towards the nearest enemy, dealing 1140 damage and slowing down enemies for a short time on hit.",
-            "ko": "가장 가까운 적을 향해 귀가 먹을 듯한 고함을 내질러 1140의 피해를 입힙니다. 공격이 적중한 적은 일정 시간 동안 이동 속도가 느려집니다."
+            "en": "Mico lets out a deafening scream towards the nearest enemy, dealing 1140 damage and slowing down enemies for 2 seconds on hit.",
+            "ko": "가장 가까운 적을 향해 귀가 먹을 듯한 고함을 내질러 1140의 피해를 입힙니다. 공격이 적중한 적은 2초 동안 이동 속도가 느려집니다."
           }
         },
         {
@@ -11835,9 +12057,12 @@
       },
       "stats": {
         "hp": 3100,
-        "speed": 820,
+        "speed": 855,
         "range": 11
       },
+      "attackDesc": "원뿔 범위 내의 적을 할큅니다.",
+      "superDesc": "펄쩍 뛰어 다른 브롤러의 등에 업힙니다. 지속적으로 아군을 치유하고 적에게는 피해를 줍니다.",
+      "shortDesc": "아군을 치유하거나 적을 암살하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000076.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000076.png"
@@ -11989,9 +12214,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 770,
+        "speed": 800,
         "range": 22
       },
+      "attackDesc": "장애물을 뛰어넘는 티켓 묶음을 쏩니다. 티켓은 땅에 떨어진 후 두 번 폭발하여 주변의 적에게 피해를 줍니다.",
+      "superDesc": "지원 요청 신호를 보내 쌍둥이 로리를 소환합니다. 호출된 로리는 적을 추적하며 테이저건으로 정의를 실현합니다.",
+      "shortDesc": "팀워크로 적을 압도하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000077.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000077.png"
@@ -12121,7 +12349,7 @@
       "vector": {
         "range": 0.6666666666666666,
         "durability": 0.20833333333333334,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.2638888888888889
       }
     },
@@ -12142,10 +12370,13 @@
         "color": "#fe5e72"
       },
       "stats": {
-        "hp": 3800,
-        "speed": 720,
+        "hp": 4000,
+        "speed": 750,
         "range": 24
       },
+      "attackDesc": "마이크에서 작은 몬스터 음표를 발사해 적에게 피해를 줍니다. 적중 시에는 멜로디 주위를 도는 음표가 생성됩니다.",
+      "superDesc": "적을 잡기 위해 전방으로 여러 번 돌진할 수 있습니다.",
+      "shortDesc": "음표를 쌓고 뛰어드세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000078.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000078.png"
@@ -12274,9 +12505,9 @@
       ],
       "vector": {
         "range": 0.75,
-        "durability": 0.375,
-        "mobility": 0.6428571428571429,
-        "risk": 0.15625
+        "durability": 0.4166666666666667,
+        "mobility": 0.6612903225806451,
+        "risk": 0.14583333333333331
       }
     },
     {
@@ -12297,9 +12528,12 @@
       },
       "stats": {
         "hp": 3100,
-        "speed": 820,
+        "speed": 855,
         "range": 30
       },
+      "attackDesc": null,
+      "superDesc": null,
+      "shortDesc": "공격을 충전해 저격하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000079.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000079.png"
@@ -12323,8 +12557,8 @@
             "ko": "흘러흘러"
           },
           "description": {
-            "en": "Angelo gains a percentage increased movement speed after entering water.",
-            "ko": "물에 들어간 후 이동 속도가 일정 비율 증가합니다."
+            "en": "Angelo gains 25% increased movement speed after entering water.",
+            "ko": "물에 들어간 후 이동 속도가 25% 증가합니다."
           }
         }
       ],
@@ -12451,9 +12685,12 @@
       },
       "stats": {
         "hp": 5600,
-        "speed": 720,
+        "speed": 750,
         "range": 12
       },
+      "attackDesc": "랜스를 앞으로 찔러 전방의 적을 관통하는 피해를 줍니다. 최대 사거리에서 가장 큰 피해를 입힙니다.",
+      "superDesc": "불을 뿜는 용에 올라타 이동 속도가 증가하고 받는 피해량이 감소합니다.",
+      "shortDesc": "찌르고 드래곤에 올라탄 뒤 압도하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000080.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000080.png"
@@ -12583,7 +12820,7 @@
       "vector": {
         "range": 0.25,
         "durability": 0.75,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.1875
       }
     },
@@ -12605,9 +12842,12 @@
       },
       "stats": {
         "hp": 4200,
-        "speed": 820,
+        "speed": 855,
         "range": 6
       },
+      "attackDesc": "가시로 앞을 찔러 피해를 줍니다.",
+      "superDesc": "씨앗을 일직선으로 던집니다. 적중 시 해당 적의 등 뒤로 릴리가 순간이동합니다.",
+      "shortDesc": "덤불과 특수 공격을 활용해 적에게 가까이 다가가세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000081.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000081.png"
@@ -12632,7 +12872,7 @@
           },
           "description": {
             "en": "Gain 15% movement speed while an enemy is in her Super charge radius.",
-            "ko": "적이 특수 공격 충전 반경 안에 있는 동안 릴리의 이동 속도가15% 증가합니다."
+            "ko": "적이 특수 공격 충전 반경 안에 있는 동안 릴리의 이동 속도가 15% 증가합니다."
           }
         }
       ],
@@ -12759,9 +12999,12 @@
       },
       "stats": {
         "hp": 2600,
-        "speed": 720,
+        "speed": 750,
         "range": 19
       },
+      "attackDesc": "목표 지점에 녹은 아이스크림을 던져 아군을 지속적으로 회복시키고 적에게는 지속적인 피해를 줍니다.",
+      "superDesc": "회전하며 앞으로 돌진해 자신의 주위에 녹은 아이스크림을 던져 아군을 지속적으로 회복시키고 적에게는 지속적인 피해를 줍니다.",
+      "shortDesc": "공간을 통제하고 아군을 치유하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000082.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000082.png"
@@ -12891,7 +13134,7 @@
       "vector": {
         "range": 0.5416666666666666,
         "durability": 0.125,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.4010416666666667
       }
     },
@@ -12913,9 +13156,12 @@
       },
       "stats": {
         "hp": 3800,
-        "speed": 720,
+        "speed": 750,
         "range": 23
       },
+      "attackDesc": "일반 공격이 단계별로 업그레이드됩니다.\\n1단계: 페인트볼을 한 번 발사합니다.\\n2단계: 공격 시마다 페인트볼을 두 번 발사합니다!\\n3단계: 공격 시마다 추가 페인트볼 2발을 대각선 방향으로 발사합니다!",
+      "superDesc": "클랜시의 특수 공격은 단계별로 업그레이드됩니다.\\n1단계: 전방에 부채꼴 범위로 엄청난 양의 페인트볼을 발사합니다.\\n2단계: 페인트볼이 더 멀리 날아갑니다.\\n3단계: 페인트볼이 일정 비율의 추가 피해를 주고 이동 속도가 증가합니다!",
+      "shortDesc": "공격해서 공격 단계를 올려 적을 압도하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000083.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000083.png"
@@ -13045,7 +13291,7 @@
       "vector": {
         "range": 0.7083333333333334,
         "durability": 0.375,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.18229166666666663
       }
     },
@@ -13067,9 +13313,12 @@
       },
       "stats": {
         "hp": 3600,
-        "speed": 770,
+        "speed": 800,
         "range": 15
       },
+      "attackDesc": "한 번 튕기며 작은 조각으로 부서지는 바위 하나를 던집니다. 각 바위는 충격을 받으면 돌로 부서집니다. 바위와 돌은 모두 피해를 입힙니다.",
+      "superDesc": "자신의 든든한 드릴러를 타고 목표한 장소로 드릴을 뚫으며 이동해 브롤러를 위로 밀쳐내고 피해를 줍니다. 모가 드릴러 안에 있을 때는 새로운 일반 공격을 합니다.",
+      "shortDesc": "드릴로 적을 끝까지 추격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000084.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000084.png"
@@ -13199,7 +13448,7 @@
       "vector": {
         "range": 0.375,
         "durability": 0.3333333333333333,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.41666666666666674
       }
     },
@@ -13221,9 +13470,12 @@
       },
       "stats": {
         "hp": 4000,
-        "speed": 820,
+        "speed": 855,
         "range": 8
       },
+      "attackDesc": "일반 공격으로 전진 베기와 크게 베기를 번갈아 사용합니다. 전진 베기는 이동하는 직선상의 모든 적에게 피해를 주고, 크게 베기는 전방의 넓은 부채꼴 범위 내 모든 적에게 피해를 줍니다.",
+      "superDesc": "능숙한 칼놀림으로 목표 영역에 큰 피해를 주며, 특수 공격이 지속되는 동안 무적 상태가 됩니다.",
+      "shortDesc": "계속 공격적으로 플레이하고, 공격을 통해 치유하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000085.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000085.png"
@@ -13375,9 +13627,12 @@
       },
       "stats": {
         "hp": 3700,
-        "speed": 820,
+        "speed": 855,
         "range": 11
       },
+      "attackDesc": "커다란 포옹으로 상대를 감싸지만, 유령의 몸이라 그런지 의도치 않게 피해를 입힙니다. 포옹의 중심에 있는 적에게는 더 큰 피해를 주며, 벽을 관통해 적을 껴안을 수도 있습니다!",
+      "superDesc": "물리적 세계를 떠나 무형의 모습으로 변해 지형물을 자유자재로 통과할 수 있으며, 이동 속도가 증가합니다.",
+      "shortDesc": "벽을 활용해 공격을 피하고 적에게 가까이 다가가세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000086.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000086.png"
@@ -13401,8 +13656,8 @@
             "ko": "튼튼한 후드티"
           },
           "description": {
-            "en": "Shade gets a percentage damage reduction while in its Incorporeal Form.",
-            "ko": "무형의 모습일 때 받는 피해량이 일정 비율 감소합니다."
+            "en": "Shade gets 30% damage reduction while in its Incorporeal Form.",
+            "ko": "특수 공격 무형의 상태일 때 받는 피해량이 30% 감소합니다."
           }
         }
       ],
@@ -13414,8 +13669,8 @@
             "ko": "팔척귀신"
           },
           "description": {
-            "en": "The next main attack has a percentage longer range.",
-            "ko": "다음 일반 공격의 사정거리가 일정 비율 증가합니다."
+            "en": "The next main attack has 50% longer range.",
+            "ko": "다음 일반 공격의 사정거리가 50% 증가합니다."
           }
         },
         {
@@ -13425,8 +13680,8 @@
             "ko": "깜짝 놀랐지"
           },
           "description": {
-            "en": "Shade spooks nearby enemies, slowing them for a short time.",
-            "ko": "주변의 적들을 겁주어 일정 시간 동안 느리게 만듭니다."
+            "en": "Shade jumps a short distance, fearing enemies for 1 sec when landing.",
+            "ko": "짧은 거리를 점프해 착지 시 적을 1초 동안 공포 상태로 만듭니다."
           }
         }
       ],
@@ -13529,9 +13784,12 @@
       },
       "stats": {
         "hp": 3100,
-        "speed": 720,
+        "speed": 750,
         "range": 19
       },
+      "attackDesc": "현재 서 있는 환경에 따라 공격에 다른 강화 효과를 부여합니다!\\n땅: 피해량 증가\\n수풀: 사정거리 증가\\n물: 감속 효과",
+      "superDesc": "오싹한 주술 인형 그리그리를 소환합니다. 그리그리는 가장 가까운 적에게 이동해 바늘을 던져 피해를 줍니다.",
+      "shortDesc": "지형을 활용해 그리그리를 소환하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000087.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000087.png"
@@ -13555,8 +13813,8 @@
             "ko": "마비의 바늘"
           },
           "description": {
-            "en": "Gris-Gris' attack now also slows the enemy for a short time",
-            "ko": "그리그리의 공격이 일정 시간 동안 적을 느리게 만듭니다."
+            "en": "Gris-Gris' attack now also slows the enemy for 1 sec",
+            "ko": "그리그리의 공격이 1초 동안 적을 느리게 만듭니다."
           }
         }
       ],
@@ -13661,7 +13919,7 @@
       "vector": {
         "range": 0.5416666666666666,
         "durability": 0.22916666666666666,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.35329861111111116
       }
     },
@@ -13675,7 +13933,7 @@
         "en": "Meeple knows the rules to every board game in existence and if you break them... Well let's just say you don't want to break them. They hate cheaters and those who break the rules. There's only one exception... Meeple themselves!",
         "ko": "미플은 이 세상에 존재하는 모든 보드게임의 규칙을 꿰뚫고 있습니다. 그리고 하나 확실히 말씀드리죠... 규칙을 어기고 싶지는 않으실 겁니다. 미플은 속임수나 규칙 위반을 극도로 싫어하거든요. 하지만 깐깐한 미플에게도 단 하나의 예외가 있습니다. 바로 미플 자신은 속임수를 써도 된다는 것이죠!"
       },
-      "role": null,
+      "role": "controller",
       "rarity": {
         "id": 4,
         "name": "Epic",
@@ -13683,9 +13941,12 @@
       },
       "stats": {
         "hp": 3300,
-        "speed": 720,
+        "speed": 750,
         "range": 23
       },
+      "attackDesc": "가장 가까운 적을 향해 살짝 이끌려 날아가는 강력한 발사체를 발사합니다.",
+      "superDesc": "20면체 주사위를 굴렸는데 숫자 21이 나오도록 미플이 속임수를 썼습니다. 일정 시간 동안 특수 공격 범위 내 모든 아군의 발사체가 지형물을 관통합니다.",
+      "shortDesc": "벽을 관통하는 공격을 하고 맵을 통제하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000089.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000089.png"
@@ -13815,7 +14076,7 @@
       "vector": {
         "range": 0.7083333333333334,
         "durability": 0.2708333333333333,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.2126736111111111
       }
     },
@@ -13829,7 +14090,7 @@
         "en": "Ollie rides his customized hoverboard around Starr Park, grinding rails and causing trouble! A fan of old school hip hop, Ollie blasts his favorite tunes wherever he goes. His music is infectious... literally. Brawlers can't help but dance when they hear it.",
         "ko": "개조한 호버보드를 타고 스타 파크 곳곳을 누비며 말썽을 피우는 장난꾸러기입니다! 올드스쿨 힙합 음악을 사랑하는 올리는 어디를 가든 좋아하는 음악을 크게 틀어놓습니다. 올리의 음악은 꽤 중독적이랍니다! 듣는 순간 자신도 모르게 춤을 추게 될 거예요."
       },
-      "role": null,
+      "role": "tank",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -13837,9 +14098,12 @@
       },
       "stats": {
         "hp": 5400,
-        "speed": 770,
+        "speed": 800,
         "range": 19
       },
+      "attackDesc": "올리의 호버보드가 음파를 발사해 적을 관통하며 피해를 입힙니다.",
+      "superDesc": "멋진 호버보드 묘기로 앞으로 돌진하며 음악 블라스트를 충전해 주변 모든 적에게 일정량의 피해를 입히고 일정 시간 동안 최면 상태로 만듭니다. 음악 블라스트를 충전하는 동안 최대 탄약의 일정 비율을 소모하고, 최면에 걸린 적은 올리 쪽으로 이동하며 조작이 불가능해집니다.",
+      "shortDesc": "피해량을 흡수하고 최면술을 이용하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000090.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000090.png"
@@ -13852,7 +14116,7 @@
             "ko": "킥 앤 푸시"
           },
           "description": {
-            "en": "While near walls Ollie kicks off his hoverboard and gains 20% extra movement speed.",
+            "en": "While near walls, Ollie kicks off his hoverboard and gains 20% extra movement speed.",
             "ko": "벽 근처에서 올리의 이동 속도가 20% 증가합니다."
           }
         },
@@ -13863,8 +14127,8 @@
             "ko": "레니게이드"
           },
           "description": {
-            "en": "After dashing forward with his Super, Ollie gains some decaying shield over a short time.",
-            "ko": "특수 공격을 사용해 앞으로 돌진한 후, 일정 시간 동안 점점 소멸하는 일정량의 보호막을 얻습니다."
+            "en": "After dashing forward with his Super, Ollie gains a 3000 decaying shield over 4 seconds.",
+            "ko": "특수 공격을 사용해 앞으로 돌진한 후, 4초 동안 점점 소멸하는 3000의 보호막을 얻습니다."
           }
         }
       ],
@@ -13969,7 +14233,7 @@
       "vector": {
         "range": 0.5416666666666666,
         "durability": 0.7083333333333334,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.13368055555555555
       }
     },
@@ -13991,9 +14255,12 @@
       },
       "stats": {
         "hp": 3500,
-        "speed": 720,
+        "speed": 750,
         "range": 24
       },
+      "attackDesc": "철퇴를 하나씩 던집니다. 두 개의 철퇴를 모두 던진 후, 세 번째 공격에서는 이를 자신에게 불러들여 경로에 있는 모든 적에게 피해를 입힙니다!",
+      "superDesc": "바닥을 3번 내려쳐 폭발을 일으키며 광역 피해를 줍니다. 세 번째 폭발은 적을 잠시 속박해 움직일 수 없게 합니다. (단, 공격은 계속 할 수 있습니다.)",
+      "shortDesc": "되돌아오는 무기를 이용해 새로운 공격 각을 노리세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000091.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000091.png"
@@ -14123,7 +14390,7 @@
       "vector": {
         "range": 0.75,
         "durability": 0.3125,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.171875
       }
     },
@@ -14137,7 +14404,7 @@
         "en": "The owner of Starr Park's escape room, Finx is meant to help visitors complete tasks. Instead, he uses his time controlling abilities to cause mischief! Also, he LOVES cats.",
         "ko": "스타 파크에서 방탈출 카페를 운영하고 있습니다. 원래는 방문객들이 미션을 완수하도록 도와야 하지만, 시간 조종 능력을 사용해 장난치는 걸 더 즐깁니다! 그리고... 고양이를 정말 사랑한답니다."
       },
-      "role": null,
+      "role": "controller",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -14145,9 +14412,12 @@
       },
       "stats": {
         "hp": 3700,
-        "speed": 770,
+        "speed": 800,
         "range": 25
       },
+      "attackDesc": "장거리 발사체 3개를 발사하며, 양쪽의 바깥 발사체 2개는 중앙 발사체 피해량의 50%의 피해를 줍니다.",
+      "superDesc": "일정 구역의 시간을 왜곡시켜 특수 공격에 맞은 적 브롤러의 발사체 속도를 감소시키고 자신과 팀원의 발사체 속도를 증가시킵니다. 또한, 핑크스의 발사체 피해량이 증가합니다.",
+      "shortDesc": "적의 투사체를 느리게 만들어 공간을 장악하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000092.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000092.png"
@@ -14160,8 +14430,8 @@
             "ko": "그대로 멈춰라"
           },
           "description": {
-            "en": "Finx reduces the reload speed of any enemy Brawlers hit by his main attack by a percentage for a short time.",
-            "ko": "일반 공격에 맞은 모든 적 브롤러의 재장전 속도를 일정 시간 동안 일정 비율 감소시킵니다."
+            "en": "Finx reduces the reload speed of any enemy Brawlers hit by his main attack by 25% for 3 seconds.",
+            "ko": "일반 공격에 맞은 모든 적 브롤러의 재장전 속도를 3초 동안 25% 감소시킵니다."
           }
         },
         {
@@ -14277,7 +14547,7 @@
       "vector": {
         "range": 0.7916666666666666,
         "durability": 0.3541666666666667,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.13454861111111113
       }
     },
@@ -14291,7 +14561,7 @@
         "en": "By day, Jae-yong is your average office worker. By night, he is a karaoke GOD... or so he thinks. The jury is still out on his singing skills.",
         "ko": "낮에는 평범한 직장인이지만 밤이 되면 (자칭) 노래방의 신이 됩니다! 그의 가창력에 대한 평가는 아직 보류 중이라고 하네요..."
       },
-      "role": null,
+      "role": "support",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -14299,9 +14569,12 @@
       },
       "stats": {
         "hp": 3700,
-        "speed": 770,
+        "speed": 800,
         "range": 25
       },
+      "attackDesc": "두 가지 모드에 따라 다른 효과를 가진 관통 투사체를 발사합니다.\\n근무 모드: 발사체의 피해량은 더 적지만, 자신과 팀원의 이동 속도를 상승시켜주는 슬립스트림을 생성합니다.\\n파티 모드: 관통하면서 피해를 입히는 발사체로 팀원을 치유합니다.",
+      "superDesc": "재용의 파티 모드와 근무 모드를 전환해 보세요! 모드에 따라 재용의 일반 공격 효과가 달라집니다.\\n근무 모드: 가까이에 있는 모든 팀원의 이동 속도를 일시적으로 증가시킵니다.\\n파티 모드: 가까이에 있는 모든 팀원을 치유합니다.",
+      "shortDesc": "속도를 이용해 공격적으로 플레이하고, 회복으로 안전을 확보하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000093.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000093.png"
@@ -14314,8 +14587,8 @@
             "ko": "떼창"
           },
           "description": {
-            "en": "Being near teammates gives Jae-yong a 10% speed boost per teammate in range.",
-            "ko": "팀원들과 가까이 있으면 재용이 팀원 한 명당 10%의 속도 증가 효과를 얻습니다."
+            "en": "Being near teammates gives Jae-yong a 15% speed boost per teammate in range.",
+            "ko": "팀원들과 가까이 있으면 재용이 팀원 한 명당 15%의 속도 증가 효과를 얻습니다."
           }
         },
         {
@@ -14431,7 +14704,7 @@
       "vector": {
         "range": 0.7916666666666666,
         "durability": 0.3541666666666667,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.13454861111111113
       }
     },
@@ -14445,7 +14718,7 @@
         "en": "Kaze was raised to be a living weapon by her parents, but this was not the life she wanted. After escaping to Starr Park with Kenji, she can now live how she wants. However, she is still torn between the two aspects of her life, being a humble geisha and a deadly ninja.",
         "ko": "부모님에 의해 인간 병기로 길러졌지만, 그것은 카제가 원하던 삶이 아니었습니다. 켄지와 함께 스타 파크로 탈출한 그녀는 이제 비로소 자신이 선택한 삶을 살 수 있게 되었죠. 하지만 여전히 순종적인 게이샤와 치명적인 닌자라는 두 모습 사이에서 갈등하고 있습니다."
       },
-      "role": null,
+      "role": "assassin",
       "rarity": {
         "id": 7,
         "name": "Ultra Legendary",
@@ -14453,9 +14726,12 @@
       },
       "stats": {
         "hp": 4100,
-        "speed": 820,
+        "speed": 855,
         "range": 8
       },
+      "attackDesc": "짧은 거리를 돌진하여 가장 가까이에 있는 적을 공격합니다. 카제는 특정한 각도에서 공격하는 '스트라이크 스팟'을 가지고 있습니다.\\n스트라이크 스팟으로 적을 명중하면 일정 비율의 피해를 입히고 스크라이크 스팟의 위치가 재설정됩니다.",
+      "superDesc": "부채를 던져 광역 피해를 주는 무시무시한 폭풍을 일으킵니다. 부채 폭풍 안에 있는 적은 폭풍 바깥을 볼 수 없습니다. 또한, 부채 폭풍에 닿은 적에게도 피해를 입힙니다.",
+      "shortDesc": "게이샤 모드로 지역을 장악하고, 닌자 모드로 공격하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000094.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000094.png"
@@ -14599,7 +14875,7 @@
         "en": "Alli is the shy mechanic of the Love Swamp. She loves to get her hands dirty, by either fixing broken machines or... mercilessly stalking other Brawlers. If you're walking home late at night and hear an odd noise, it's probably Alli trying to say hello.",
         "ko": "알리는 사랑의 늪의 수줍은 정비공입니다. 고장 난 기계를 고치는 걸 좋아하지만... 때로는 다른 브롤러들을 무자비하게 쫓아다니며 손을 더럽히는 것도 즐기죠. 밤늦게 귀가 중에 어딘가에서 이상한 소리가 들린다면, 아마 알리가 인사하러 온 걸지도 몰라요."
       },
-      "role": null,
+      "role": "assassin",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -14607,9 +14883,12 @@
       },
       "stats": {
         "hp": 3900,
-        "speed": 770,
+        "speed": 800,
         "range": 8
       },
+      "attackDesc": "알리가 앞으로 돌진하면서 무기를 휘두릅니다. 덤불이나 물에 있는 경우, 돌진하는 대신 앞으로 뛰어오릅니다.",
+      "superDesc": "알리가 은신 상태(깜빡이는 투명화)로 변합니다. 공격을 해도 은신이 해제되지 않으며, 다음 일반 공격이 적의 현재 HP에 비례해 추가 피해를 입힙니다. 즉, 적의 HP가 높을수록 알리의 공격이 더욱 강력해집니다!",
+      "shortDesc": "덤불과 물을 활용해 매복하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000095.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000095.png"
@@ -14739,7 +15018,7 @@
       "vector": {
         "range": 0.08333333333333333,
         "durability": 0.3958333333333333,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.5538194444444445
       }
     },
@@ -14753,7 +15032,7 @@
         "en": "Trunk is a suspiciously uncanny-looking tree. It couldn't be because Trunk is actually a colony of hyper-intelligent ants controlling a fake mechanical tree? No, that would be ridiculous.",
         "ko": "수상할 정도로 기묘한 모습을 한 나무입니다. 혹시 초지능 개미 집단이 조종하는 가짜 나무 기계인 건 아닐까요? 에이, 설마요... 그럴 리 없죠."
       },
-      "role": null,
+      "role": "tank",
       "rarity": {
         "id": 4,
         "name": "Epic",
@@ -14761,9 +15040,12 @@
       },
       "stats": {
         "hp": 5200,
-        "speed": 770,
+        "speed": 800,
         "range": 10
       },
+      "attackDesc": "짧은 지연 후 빙글빙글 돌며 적에게 피해를 주고 개미를 흩뿌립니다. 개미 근처에 있으면 트렁크의 이동 속도가 일정 비율 증가하고, 피해량은 일정 비율 증가합니다. 또한, 공격 범위의 가장자리에 있는 적은 더 큰피해를 입습니다.",
+      "superDesc": "적을 향해 몸을 날리며, 이동 경로에 개미를 흩뿌립니다. 벽에 부딪히면 튕겨나갈 수도 있습니다!",
+      "shortDesc": "개미를 이용해 속도를 얻고 돌진하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000096.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000096.png"
@@ -14893,7 +15175,7 @@
       "vector": {
         "range": 0.16666666666666666,
         "durability": 0.6666666666666666,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.27777777777777785
       }
     },
@@ -14907,7 +15189,7 @@
         "en": "Mina is a b-girl who mixes capoeira into her breakdance battles like it's second nature. She hangs out at SK8 Beats with Ollie and uses his mixtapes to practice new moves!",
         "ko": "미나는 비보이가 아닌 비걸로, 카포에라 기술을 마치 제2의 천성인 것 처럼 브레이크 댄스 배틀에 녹여냅니다. Sk8 비트에서 올리와 어울리며 그의 믹스테이프를 빌려 새로운 춤 동작을 연습한답니다!"
       },
-      "role": null,
+      "role": "damage",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -14915,9 +15197,12 @@
       },
       "stats": {
         "hp": 3600,
-        "speed": 770,
+        "speed": 800,
         "range": 24
       },
+      "attackDesc": "일정 시간 안에 3개의 사거리 공격을 순서대로 시전합니다. 빠르게 공격하지 않으면, 콤보의 흐름이 끊겨 순서를 다시 시작해야 합니다.\\n공격 1: 좁은 공격 범위와 장거리\\n공격 2: 보통 공격 범위와 중거리\\n공격 3: 넓은 공격 범위와 단거리",
+      "superDesc": "공중으로 뛰어올라 강력한 허리케인을 일으키며, 전방의 적들에게 막대한 피해를 입히고 날려버립니다.",
+      "shortDesc": "특수 공격을 일반 공격과 연계하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000097.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000097.png"
@@ -15047,7 +15332,7 @@
       "vector": {
         "range": 0.75,
         "durability": 0.3333333333333333,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.16666666666666669
       }
     },
@@ -15061,7 +15346,7 @@
         "en": "Ziggy is an uber theatrical magician who excels at using electricity in his act. He's a bit full of himself, but hey, he can literally control lightning. Just remember... they're not tricks, they're illusions.",
         "ko": "최고의 무대 마술사로 공연에서 번개를 잘 사용합니다. 조금 자기애가 강한 면이 있지만 말 그대로 번개를 다룰 줄 안다니까요? 하지만 기억하세요... 속임수가 아니라 환영이에요!"
       },
-      "role": null,
+      "role": "controller",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -15069,9 +15354,12 @@
       },
       "stats": {
         "hp": 3200,
-        "speed": 770,
+        "speed": 800,
         "range": 22
       },
+      "attackDesc": "목표 지점에 낙뢰를 생성합니다. 짧은 시간 뒤, 낙뢰가 마술처럼 나타나 광역 피해를 입힙니다.",
+      "superDesc": "심혈을 기울여 완성한 트릭을 공개합니다! 거대한 전기 폭풍이 적용 범위를 빠르게 휩쓸고 지나갑니다. 그 안에 적 브롤러가 갇히면, 폭풍이 서서히 움직이며 적에게 엄청난 피해를 입힙니다.",
+      "shortDesc": "번개를 소환해 공간을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000098.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000098.png"
@@ -15201,7 +15489,7 @@
       "vector": {
         "range": 0.6666666666666666,
         "durability": 0.25,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.25
       }
     },
@@ -15215,7 +15503,7 @@
         "en": "You know pool lifeguards? Pierce is one of those. Except he shoots people instead of saving them. OK maybe he isn't like a lifeguard at all. When Buzz decides there has been too much pee in the pool, he calls in Pierce to 'clean up'.",
         "ko": "수영장 안전 요원 아시죠? 피어스는 그중 한 명입니다. 다만 사람을 구하는 대신 쏠 뿐이죠. 아니, 사실 안전과는 전혀 거리가 먼 것 같네요.\\n사람들이 수영장에 오줌을 너무 많이 쌌다고 버즈가 판단하면, 피어스를 불러 '청소하게' 합니다."
       },
-      "role": null,
+      "role": "marksman",
       "rarity": {
         "id": 6,
         "name": "Legendary",
@@ -15223,9 +15511,12 @@
       },
       "stats": {
         "hp": 3000,
-        "speed": 720,
+        "speed": 750,
         "range": 30
       },
+      "attackDesc": "원거리에서 강력한 샷을 쏩니다. 발사체가 적에게 명중하면 피어스가 옆에 탄피를 떨어뜨립니다. 탄피를 회수하면 주변에서 가장 가깝고 눈에 보이는 적에게 자동으로 관통 공격을 발사합니다. 피어스는 탄피를 회수하거나 탄환을 모두 소진했을 때만 재장전합니다. 탄창의 마지막 탄환은 추가 피해를 입힙니다.",
+      "superDesc": "피어스가 영역을 표시한 뒤 영역 안에 있는 모든 브롤러에게 관통 공격을 발사합니다. 상대에게 명중할 때마다 피어스 옆에 탄피가 떨어집니다.",
+      "shortDesc": "마지막 한 발이 피해량의 핵심입니다.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000099.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000099.png"
@@ -15249,8 +15540,8 @@
             "ko": "삐끗 스나이프"
           },
           "description": {
-            "en": "When collecting a shell, Pierce gains a short burst (a percentage) of movement speed.",
-            "ko": "탄피를 모을 때마다 피어스의 이동 속도가 일정 비율 증가합니다."
+            "en": "When collecting a shell, Pierce gains a short burst (15%) of movement speed.",
+            "ko": "탄피를 모을 때마다 순간적으로 피어스의 이동 속도가 15% 증가합니다."
           }
         }
       ],
@@ -15355,7 +15646,7 @@
       "vector": {
         "range": 1,
         "durability": 0.20833333333333334,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0
       }
     },
@@ -15367,9 +15658,9 @@
       },
       "description": {
         "en": "A cursed puppet who brings an unsettling vibe, Gigi and her bonded magician's glove are never found apart. You can find her in the Oddities Shop, dancing between the bookshelves.",
-        "ko": "저주받은 꼭두각시 지지는 어딘가 불안한 기운을 풍깁니다. 자신과 한 몸처럼 묶인 마술사의 장갑과 떨어져 있는 법이 없죠. 기묘한 상점의 책장 사이에서 춤추고 있는 지지를 발견할 수 있을 거예요."
+        "ko": "저주받은 꼭두각시 지지는 어딘가 불안한 기운을 풍깁니다. 자신과 한 몸처럼 묶인 마술사의 장갑과 떨어져 있는 법이 없죠. 기이한 상점의 책장 사이에서 춤추고 있는 지지를 발견할 수 있을 거예요."
       },
-      "role": null,
+      "role": "assassin",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -15377,9 +15668,12 @@
       },
       "stats": {
         "hp": 4100,
-        "speed": 820,
+        "speed": 855,
         "range": 10
       },
+      "attackDesc": "빙글빙글 돌며 주변의 모든 적에게 피해를 입히고, 돌면서 이동 속도가 증가합니다.",
+      "superDesc": "일정 시간 동안 에너지를 모은 뒤 지정한 위치에 나타납니다. 그 후 일정 시간 동안 다시 충전하여 시작 위치로 돌아올 수 있으며, 이동하면서 적에게 피해를 줍니다.",
+      "shortDesc": "적을 피한 뒤 뛰어들어 마무리하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000100.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000100.png"
@@ -15523,7 +15817,7 @@
         "en": "A marine biologist working at the Starr Park aquarium, Glowy is obsessed with sea life, wanting to introduce it to as many visitors as he can. Although he might seem a bit creepy, he's actually a nice guy! Maybe.",
         "ko": "스타 파크 수족관에서 일하는 해양 생물학자 글로이는 해양 생물을 정말로 좋아하며, 최대한 많은 방문객에게 해양 생물을 소개하고 싶어 합니다.\\n겉모습이 약간 소름 끼칠 수도 있지만, 사실은 좋은 브롤러예요! 아마도요."
       },
-      "role": null,
+      "role": "support",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -15531,9 +15825,12 @@
       },
       "stats": {
         "hp": 3900,
-        "speed": 770,
+        "speed": 800,
         "range": 22
       },
+      "attackDesc": "글로이가 글로우빔을 발사합니다. 명중 시 적에게 피해를 주고 아군을 회복시키는 사슬이 생성됩니다. 글로이는 1명의 적과 1명의 아군에게 동시에 연결될 수 있습니다. 연결된 대상이 너무 멀리 있거나 글로이의 시야에서 벗어날 경우 사슬이 끊어집니다.",
+      "superDesc": "글로이가 얼굴을 드러내고, 그 얼굴을 정면으로 마주한 적은 공포에 질려 도망치게 됩니다! 또한 글로이가 피해를 주고 느리게 만드는 투사체를 발사합니다.",
+      "shortDesc": "아군을 치유하고 적에게 공포를 선사하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000101.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000101.png"
@@ -15663,7 +15960,7 @@
       "vector": {
         "range": 0.6666666666666666,
         "durability": 0.3958333333333333,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.20138888888888892
       }
     },
@@ -15677,7 +15974,7 @@
         "en": "His identity is as mysterious as his powers. He had the very first attraction at Starr Park, but rumor has it he was kicked out unfairly, and banned from ever returning. Now... he's back for REVENGE.",
         "ko": "시리우스의 정체는 그의 힘만큼이나 미스터리합니다. 스타 파크에서 처음으로 명성을 떨친 인물이지만, 소문에 따르면 스타 파크에서 부당하게 추방당한 후 평생 출입 금지 조치를 받았다고 하네요. 하지만 지금... 복수를 위해 다시 돌아왔습니다."
       },
-      "role": null,
+      "role": "controller",
       "rarity": {
         "id": 7,
         "name": "Ultra Legendary",
@@ -15685,9 +15982,12 @@
       },
       "stats": {
         "hp": 3400,
-        "speed": 720,
+        "speed": 750,
         "range": 22
       },
+      "attackDesc": "광역 피해를 주는 스타 폭탄과 단일 대상을 공격하는 그림자 일격, 두 가지 발사체를 소환합니다. 그림자 일격의 4번째 공격마다 브롤러의 그림자를 하나씩 수집하며, 동시에 총 3개의 브롤러 그림자를 비축할 수 있습니다.",
+      "superDesc": "수집한 모든 브롤러 그림자를 세상에 불러냅니다! 그림자의 공격과 HP는 원래 브롤러의 특성을 따릅니다.\\n시리우스는 그림자에게 명령을 내릴 수 있습니다! 탭해서 돌아오기, 따라오기 또는 범위 방어하기를 지시할 수 있습니다.\\n\\n브롤러 그림자의 능력치는 원래 브롤러의 능력치를 따릅니다.",
+      "shortDesc": "그림자를 이용해 맵을 통제하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000102.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000102.png"
@@ -15701,7 +16001,7 @@
           },
           "description": {
             "en": "Shadows have +15% movement speed.",
-            "ko": "그림자의 이동 속도가 + 15% 증가합니다."
+            "ko": "그림자의 이동 속도가 +15% 증가합니다."
           }
         },
         {
@@ -15724,8 +16024,8 @@
             "ko": "스타 이즈 본"
           },
           "description": {
-            "en": "Sirius fires a projectile that summons a Shadow on hit, also slowing the hit target by a percentage for a short time.",
-            "ko": "발사체를 날려 보내 대상 브롤러에게 명중하면 그림자를 뽑아냅니다. 또한 대상의 속도가 일정 시간 동안 일정 비율 감소합니다."
+            "en": "Sirius fires a projectile that summons a Shadow on hit, also slowing the hit target by 20% for 2 sec.",
+            "ko": "발사체를 날려 보내 대상 브롤러에게 명중하면 그림자를 뽑아냅니다. 또한 대상의 속도가 2초 동안 20% 감소합니다."
           }
         },
         {
@@ -15817,7 +16117,7 @@
       "vector": {
         "range": 0.6666666666666666,
         "durability": 0.2916666666666667,
-        "mobility": 0.6428571428571429,
+        "mobility": 0.6612903225806451,
         "risk": 0.2361111111111111
       }
     },
@@ -15831,7 +16131,7 @@
         "en": "Hired by Finx to make Pyramid Quest's puzzles harder, her good nature actually led her to help those trapped by his time-warping mischief instead.",
         "ko": "피라미드 퀘스트의 퍼즐을 더 어렵게 만들기 위해 핑크스가 고용한 직원입니다. 하지만 심성이 착해서 핑크스의 타임 워프에 갇힌 피해자들을 도와주고 있다고 하네요."
       },
-      "role": null,
+      "role": "damage",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -15839,9 +16139,12 @@
       },
       "stats": {
         "hp": 3400,
-        "speed": 770,
+        "speed": 800,
         "range": 18
       },
+      "attackDesc": "치명적인 뱀이 담긴 항아리를 던집니다! 던져진 항아리가 공중에 있을 때, 뱀은 어디로든 향할 수 있습니다.\\n\\n항아리가 피해를 주고 뱀은 대상에게 독을 입힙니다. 뱀의 독은 중첩될 수 있으며 시간이 지날수록 더 큰 피해를 입힙니다. 항아리는 브롤러를 관통합니다!",
+      "superDesc": "나지아가 3마리의 종이 뱀을 풉니다. 일정한 거리를 스르륵 미끄러져 나가며, 폭발 시 범위 내 적에게 독 피해를 줍니다. 뱀을 항아리에 담아 목표하는 위치에 던질 수도 있습니다!",
+      "shortDesc": "엄청난 사거리와 추가 독 공격까지!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000103.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000103.png"
@@ -15971,7 +16274,7 @@
       "vector": {
         "range": 0.5,
         "durability": 0.2916666666666667,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.35416666666666663
       }
     },
@@ -15985,7 +16288,7 @@
         "en": "Damian LOVES to make noise. He fronts a band with his brother, Draco, but music puts him into an uncontrollable rage, where he destroys anything in sight! His shows usually end with him smashing everything near the stage… including other Brawlers.",
         "ko": "데미안은 시끄럽게 구는 것을 정말 좋아합니다. 동생 드라코와 함께 밴드를 이끌고 있지만, 음악이 시작되면 걷잡을 수 없는 분노에 휩싸여 눈에 보이는 건 뭐든 부숴 버립니다! 그의 공연은 보통 무대 근처의 모든 것을 박살 내며 끝나죠... 다른 브롤러들도 예외는 아닙니다."
       },
-      "role": null,
+      "role": "tank",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -15993,9 +16296,12 @@
       },
       "stats": {
         "hp": 5600,
-        "speed": 770,
+        "speed": 800,
         "range": 8
       },
+      "attackDesc": "데미안이 강력한 펀치를 날립니다. 두 번의 연속 펀치 후, 그다음 공격은 폭발적인 발차기를 날려 적을 뒤로 밀쳐내고 불을 붙입니다. 잠시 후 불이 폭발해 주변 적들에게 번집니다.",
+      "superDesc": "데미안이 뛰어올라 일정 시간 동안 지속되는 자신만의 모쉬핏을 생성합니다. 모쉬핏 안에서 적들이 스피커에 부딪히면 뒤로 밀려나며 일정량의 피해를 입습니다.",
+      "shortDesc": "뛰어들어 전장을 휘저으세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000104.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000104.png"
@@ -16125,7 +16431,7 @@
       "vector": {
         "range": 0.08333333333333333,
         "durability": 0.75,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.22916666666666666
       }
     },
@@ -16139,17 +16445,20 @@
         "en": "A cosplayer who believes they are the anime character Starr Nova! This can get a bit awkward, as she believes problems in the real world can *also* be solved by hitting them with a massive sword.",
         "ko": "코스프레를 즐기며 자신을 애니메이션 캐릭터 '스타 노바'라고 믿고 있습니다! 현실 세계의 문제도 거대한 검을 휘두르면 해결될 수 있다고 생각하기 때문에 상황이 좀 복잡해질 수 있어요!"
       },
-      "role": null,
+      "role": "assassin",
       "rarity": {
         "id": 5,
         "name": "Mythic",
         "color": "#fe5e72"
       },
       "stats": {
-        "hp": 4000,
-        "speed": 820,
+        "hp": 3700,
+        "speed": 855,
         "range": 17
       },
+      "attackDesc": "화려한 애니메이션 스타일 헤어를 무기로 삼아 금발 투사체 2개를 발사합니다.",
+      "superDesc": "스타 노바가 돌진하며 최종 형태로 변신하고 노바 소드를 소환합니다! 이동 속도가 증가하고, 입힌 피해량이 HP로 전환되며 일반 공격의 모양이 바뀝니다. 변신 효과는 일정 시간 동안 지속됩니다.",
+      "shortDesc": "원거리에서 공격하고 변신해 적을 습격하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000105.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000105.png"
@@ -16162,8 +16471,8 @@
             "ko": "파워 레벨: 최대"
           },
           "description": {
-            "en": "Hitting an enemy Brawler while transformed increases your damage by 5% to a maximum of 5%.",
-            "ko": "변신한 상태에서 상대 브롤러에게 공격이 적중하면 피해량이 5% 증가하며, 최대 5%까지 증가할 수 있습니다."
+            "en": "Hitting an enemy Brawler while transformed increases your damage by 4% to a maximum of 4%.",
+            "ko": "변신한 상태에서 상대 브롤러에게 공격이 적중하면 피해량이 4% 증가하며, 최대 4%까지 증가할 수 있습니다."
           }
         },
         {
@@ -16278,9 +16587,9 @@
       ],
       "vector": {
         "range": 0.4583333333333333,
-        "durability": 0.4166666666666667,
+        "durability": 0.3541666666666667,
         "mobility": 1,
-        "risk": 0.3159722222222222
+        "risk": 0.3498263888888889
       }
     },
     {
@@ -16293,7 +16602,7 @@
         "en": "Bolt is a toy from the Battle Bumperz line, designed to deal damage by rolling into things! He was built to battle, but always wanted to be a race car, so he reaches dangerous speeds to live out his dreams. Don't get in his way!",
         "ko": "볼트는 배틀 범퍼즈 장난감 시리즈 속 장난감으로, 구르면서 적에게 피해를 입히도록 설계됐습니다! 전투용으로 만들어졌지만 레이싱카가 되어 위험한 속도로 질주하는 게 꿈이었죠.\\n절대 앞을 가로막지 마세요!"
       },
-      "role": null,
+      "role": "tank",
       "rarity": {
         "id": 4,
         "name": "Epic",
@@ -16301,9 +16610,12 @@
       },
       "stats": {
         "hp": 5000,
-        "speed": 540,
+        "speed": 545,
         "range": null
       },
+      "attackDesc": "볼트가 몸을 굴려 다른 브롤러들에게 피해를 입힙니다! 속도가 빠를수록 피해량도 높아집니다.\\n일반 공격 시 과도한 열기를 방출해 두 배로 피해를 입히고 속도를 얻습니다!",
+      "superDesc": "볼트가 질주 모드에 들어갑니다. 속도가 증가하고 입는 피해량은 감소하며, 지나가면서 적에게 피해를 주는 흔적을 남깁니다.",
+      "shortDesc": "속도를 내려면 벽과 급커브를 피하세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000106.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000106.png"
@@ -16431,10 +16743,10 @@
         }
       ],
       "vector": {
-        "range": 0.5,
+        "range": 0.25,
         "durability": 0.625,
         "mobility": 0,
-        "risk": 0.1875
+        "risk": 0.28125
       }
     },
     {
@@ -16447,17 +16759,20 @@
         "en": "As the child of Kenji and Kaze, Nori was always destined for great things. Being the first Brawler ever born in Starr Park has also given him extraordinary powers! He's not too bad at cooking either.",
         "ko": "켄지와 카제의 아들인 노리는 위대한 일을 이루고자 태어났습니다. 스타 파크에서 최초로 탄생한 아이답게 특별한 힘을 보유하고 있죠! 요리 실력도 꽤 괜찮답니다."
       },
-      "role": null,
+      "role": "assassin",
       "rarity": {
         "id": 6,
         "name": "Legendary",
         "color": "#fff11e"
       },
       "stats": {
-        "hp": 3800,
-        "speed": 820,
+        "hp": 3500,
+        "speed": 855,
         "range": 11
       },
+      "attackDesc": "노리가 앞으로 돌진합니다. 공격을 충전하면 낚싯대를 던집니다. 충전 시간이 길수록 던지는 거리도 늘어납니다. 벽이나 브롤러 쪽으로 스스로를 끌어당길 수 있으며, 브롤러 사이를 돌진하며 피해를 입힙니다. 최대 충전 시 벽을 뛰어넘습니다!\\n일반 공격이 브롤러에게 명중하면 물고기를 잡으며, 잡은 물고기를 다양한 능력에 사용합니다!",
+      "superDesc": "노리가 잠수했다가 떠오르며 잠시 후 광역 피해를 입힙니다. 특수 공격을 사용하면 잡았던 모든 물고기를 소모해 크기가 일정 비율 커지며, 물고기 한 마리당 피해량이 일정 비율 증가합니다.",
+      "shortDesc": "맵 곳곳을 뛰어다니며 전장을 혼란에 빠뜨리세요!",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000107.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000107.png"
@@ -16477,7 +16792,7 @@
         {
           "id": 23001296,
           "name": {
-            "en": "His Mother’s Son",
+            "en": "His Mothers Son",
             "ko": "자랑스러운 아들"
           },
           "description": {
@@ -16495,7 +16810,7 @@
           },
           "description": {
             "en": "Nori eats up to 3 fish to heal himself for 1000 per fish.",
-            "ko": "최대 3마리의 물고기를 먹고 한 마리당 HP를 1000 회복합니다."
+            "ko": "최대 3마리의 물고기를 먹고 한 마리당 1000 HP를 회복합니다."
           }
         },
         {
@@ -16586,9 +16901,9 @@
       ],
       "vector": {
         "range": 0.20833333333333334,
-        "durability": 0.375,
+        "durability": 0.3125,
         "mobility": 1,
-        "risk": 0.49479166666666663
+        "risk": 0.5442708333333333
       }
     },
     {
@@ -16601,7 +16916,7 @@
         "en": "A smart scientist, with a nostalgic soul. After years working in shady corporate laboratories, she left to build Windstock and help the planet, not harm it!",
         "ko": "과거에 대한 향수에 젖어있는 똑똑한 과학자입니다. 수년간 수상한 기업의 연구소에서 일하다 그곳에서 떠나 윈드스탁을 설립했습니다. 지구를 해치는 대신 돕기 위해서죠!"
       },
-      "role": null,
+      "role": "support",
       "rarity": {
         "id": 5,
         "name": "Mythic",
@@ -16609,9 +16924,12 @@
       },
       "stats": {
         "hp": 2000,
-        "speed": 770,
+        "speed": 800,
         "range": 24
       },
+      "attackDesc": "웬디가 충격파를 발사해 일정량의 피해를 입히고 자신에게 일정량의 보호막을 부여합니다. 충격파가 아군에게 맞을 경우 일정량의 보호막을 부여합니다.",
+      "superDesc": "웬디가 보호막 생성기를 배치해 생성기 범위 내에서 웬디와 아군이 받는 피해량의 일정 비율을 흡수합니다.",
+      "shortDesc": "보호막으로 아군을 지키고 전장을 사수하세요.",
       "images": {
         "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000108.png",
         "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000108.png"
@@ -16624,7 +16942,7 @@
             "ko": "둔화 실드"
           },
           "description": {
-            "en": "Enemies in Wendy’s shield generator are slowed.",
+            "en": "Enemies in Wendy's shield generator are slowed.",
             "ko": "웬디의 보호막 생성기 안에 있는 적의 속도가 느려집니다."
           }
         },
@@ -16635,8 +16953,8 @@
             "ko": "태양 실드"
           },
           "description": {
-            "en": "Wendy’s shield generator gains an additional 1000 health.",
-            "ko": "웬디의 보호막 생성기가 1000HP를 추가로 얻습니다."
+            "en": "Wendy's shield generator gains an additional 1000 health.",
+            "ko": "웬디의 보호막 생성기가 1000 HP를 추가로 얻습니다."
           }
         }
       ],
@@ -16741,8 +17059,322 @@
       "vector": {
         "range": 0.75,
         "durability": 0,
-        "mobility": 0.8214285714285714,
+        "mobility": 0.8225806451612904,
         "risk": 0.25
+      }
+    },
+    {
+      "id": 16000109,
+      "name": {
+        "en": "Cosmo",
+        "ko": "코스모"
+      },
+      "description": {
+        "en": "Cosmo is the lead astronomer at Starr Park's Observatory. Besides teaching visitors about the universe, he is constantly gazing at the stars searching for something...",
+        "ko": "스타 파크 천문대의 수석 천문학자입니다. 코스모는 방문객들에게 우주에 대해 가르치면서도, 별을 하염없이 바라보며 무언가를 찾고 있습니다..."
+      },
+      "role": "controller",
+      "rarity": {
+        "id": 5,
+        "name": "Mythic",
+        "color": "#fe5e72"
+      },
+      "stats": {
+        "hp": 3400,
+        "speed": 750,
+        "range": 27
+      },
+      "attackDesc": "원형 궤도를 그리며 도는 일정 수의 투사체를 발사합니다. 날아갈수록 투사체 사이의 간격이 벌어지며 크기와 피해량이 증가합니다.",
+      "superDesc": "적에게 부착되는 양극 좌석을 발사합니다. 해당 적을 향한 극도로 강력한 유도 능력이 팀원의 투사체에 부여됩니다.",
+      "shortDesc": "중력을 이용해 적을 노리세요!",
+      "images": {
+        "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000109.png",
+        "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000109.png"
+      },
+      "starPowers": [
+        {
+          "id": 23001442,
+          "name": {
+            "en": "Precession",
+            "ko": "세차 운동"
+          },
+          "description": {
+            "en": "Increases the orbit speed of Cosmo's main attack by a percentage.",
+            "ko": "일반 공격의 궤도 속도가 일정 비율 증가합니다."
+          }
+        },
+        {
+          "id": 23001443,
+          "name": {
+            "en": "Ammo Attractor",
+            "ko": "탄환 흡입"
+          },
+          "description": {
+            "en": "Hitting an enemy with Cosmo's Super reloads 2 ammo.",
+            "ko": "특수 공격이 적에게 명중하면 탄환 2개를 재장전합니다."
+          }
+        }
+      ],
+      "gadgets": [
+        {
+          "id": 23001444,
+          "name": {
+            "en": "Planetary Pushback",
+            "ko": "행성 반작용"
+          },
+          "description": {
+            "en": "Cosmo knocks enemies back from the targeted area.",
+            "ko": "목표 지점 내 적들을 뒤로 밀어냅니다."
+          }
+        },
+        {
+          "id": 23001445,
+          "name": {
+            "en": "Telescope Trap",
+            "ko": "망원경 함정"
+          },
+          "description": {
+            "en": "Cosmo uses his telescope to reveal an area for 6s sec, including invisible enemies. Enemy Brawlers inside this area cannot use movement abilities (dashes, jumps, teleports, etc.).",
+            "ko": "망원경을 사용해 6초 동안 특정 영역의 시야를 밝힙니다. 해당 영역 내에 있는 적 브롤러는 순간이동, 돌진, 점프 등의 모든 이동 능력을 사용할 수 없습니다."
+          }
+        }
+      ],
+      "gears": [
+        {
+          "id": 62000000,
+          "name": {
+            "en": "SPEED",
+            "ko": "속도"
+          },
+          "description": null,
+          "modifier": {
+            "value": 15,
+            "type": "percent"
+          }
+        },
+        {
+          "id": 62000001,
+          "name": {
+            "en": "HEALTH",
+            "ko": "회복"
+          },
+          "description": null,
+          "modifier": {
+            "value": 50,
+            "type": "value"
+          }
+        },
+        {
+          "id": 62000002,
+          "name": {
+            "en": "DAMAGE",
+            "ko": "피해"
+          },
+          "description": null,
+          "modifier": {
+            "value": 15,
+            "type": "percent"
+          }
+        },
+        {
+          "id": 62000003,
+          "name": {
+            "en": "VISION",
+            "ko": "시야"
+          },
+          "description": null,
+          "modifier": {
+            "value": 40,
+            "type": "ticks"
+          }
+        },
+        {
+          "id": 62000004,
+          "name": {
+            "en": "SHIELD",
+            "ko": "보호막"
+          },
+          "description": null,
+          "modifier": {
+            "value": 900,
+            "type": "value"
+          }
+        },
+        {
+          "id": 62000017,
+          "name": {
+            "en": "GADGET COOLDOWN",
+            "ko": "가젯 재사용 대기 시간"
+          },
+          "description": null,
+          "modifier": {
+            "value": 15,
+            "type": "percent"
+          }
+        }
+      ],
+      "vector": {
+        "range": 0.875,
+        "durability": 0.2916666666666667,
+        "mobility": 0.6612903225806451,
+        "risk": 0.08854166666666666
+      }
+    },
+    {
+      "id": 16000110,
+      "name": {
+        "en": "Vince",
+        "ko": "빈스"
+      },
+      "description": {
+        "en": "Vince tends to both the espresso machine and his many-legged friends, much to his customers' dismay.  He walks slowly around his Creepy Café, careful not to step on any of his beloved bugs. His companions, Mocha and Doppio, follow him everywhere.",
+        "ko": "빈스는 에스프레소 머신과 수많은 다리가 달린 벌레 친구들을 돌봅니다. 손님들의 경악에도 불구하고 말이죠.\\n\\n자신의 카페 안을 걸을 땐 사랑해 마지않는 벌레들을 밟지 않기 위해 엄청나게 주의를 기울입니다. 어딜 가든 친구인 모카와 도피오가 함께합니다."
+      },
+      "role": "damage",
+      "rarity": {
+        "id": 5,
+        "name": "Mythic",
+        "color": "#fe5e72"
+      },
+      "stats": {
+        "hp": 3400,
+        "speed": 750,
+        "range": 25
+      },
+      "attackDesc": "피해를 주는 신선한 커피 한 잔을 서빙합니다.",
+      "superDesc": "하나의 투사체를 발사해 애벌레 디버프 표식을 남깁니다. 일반 공격이 해당 표식이 있는 적에게 명중하면 추가 피해가 발생합니다.",
+      "shortDesc": "애벌레를 모아 더욱 강해지세요!",
+      "images": {
+        "portrait": "https://cdn.brawlify.com/brawlers/borderless/16000110.png",
+        "emoji": "https://cdn.brawlify.com/brawlers/emoji/16000110.png"
+      },
+      "starPowers": [
+        {
+          "id": 23001450,
+          "name": {
+            "en": "Come To Papa",
+            "ko": "아빠에게 오련"
+          },
+          "description": {
+            "en": "Nearby caterpillars crawl towards Vince.",
+            "ko": "주변의 애벌레들이 빈스를 향해 기어갑니다."
+          }
+        },
+        {
+          "id": 23001451,
+          "name": {
+            "en": "Bug Bandage",
+            "ko": "벌레 붕대"
+          },
+          "description": {
+            "en": "Turning a caterpillar into a moth heals Vince for 600.",
+            "ko": "애벌레가 나방으로 탈바꿈해 빈스를 600만큼 치유합니다."
+          }
+        }
+      ],
+      "gadgets": [
+        {
+          "id": 23001452,
+          "name": {
+            "en": "Hot Coffee",
+            "ko": "뜨거운 커피"
+          },
+          "description": {
+            "en": "Vince throws an explosive cappuccino, dealing area damage.",
+            "ko": "폭발성 카푸치노를 던져 광역 피해를 입힙니다."
+          }
+        },
+        {
+          "id": 23001453,
+          "name": {
+            "en": "Metamothosis",
+            "ko": "완전 변태"
+          },
+          "description": {
+            "en": "Vince turns all nearby caterpillars into moths, gaining an additional moth for each collected.",
+            "ko": "주변의 모든 애벌레를 나방으로 탈바꿈해 수집한 애벌레만큼 나방을 추가로 얻습니다."
+          }
+        }
+      ],
+      "gears": [
+        {
+          "id": 62000000,
+          "name": {
+            "en": "SPEED",
+            "ko": "속도"
+          },
+          "description": null,
+          "modifier": {
+            "value": 15,
+            "type": "percent"
+          }
+        },
+        {
+          "id": 62000001,
+          "name": {
+            "en": "HEALTH",
+            "ko": "회복"
+          },
+          "description": null,
+          "modifier": {
+            "value": 50,
+            "type": "value"
+          }
+        },
+        {
+          "id": 62000002,
+          "name": {
+            "en": "DAMAGE",
+            "ko": "피해"
+          },
+          "description": null,
+          "modifier": {
+            "value": 15,
+            "type": "percent"
+          }
+        },
+        {
+          "id": 62000003,
+          "name": {
+            "en": "VISION",
+            "ko": "시야"
+          },
+          "description": null,
+          "modifier": {
+            "value": 40,
+            "type": "ticks"
+          }
+        },
+        {
+          "id": 62000004,
+          "name": {
+            "en": "SHIELD",
+            "ko": "보호막"
+          },
+          "description": null,
+          "modifier": {
+            "value": 900,
+            "type": "value"
+          }
+        },
+        {
+          "id": 62000017,
+          "name": {
+            "en": "GADGET COOLDOWN",
+            "ko": "가젯 재사용 대기 시간"
+          },
+          "description": null,
+          "modifier": {
+            "value": 15,
+            "type": "percent"
+          }
+        }
+      ],
+      "vector": {
+        "range": 0.7916666666666666,
+        "durability": 0.2916666666666667,
+        "mobility": 0.6612903225806451,
+        "risk": 0.14756944444444445
       }
     }
   ],
@@ -16775,12 +17407,12 @@
       }
     },
     {
-      "modeId": 17,
-      "imageId": 48000017,
-      "apiKey": "hotZone",
+      "modeId": 2,
+      "imageId": 48000002,
+      "apiKey": "heist",
       "name": {
-        "en": "hotZone",
-        "ko": "핫 존"
+        "en": "heist",
+        "ko": "하이스트"
       }
     },
     {
@@ -16802,12 +17434,30 @@
       }
     },
     {
-      "modeId": 3,
-      "imageId": 48000003,
-      "apiKey": "bounty",
+      "modeId": 33,
+      "imageId": 48000033,
+      "apiKey": "gemGrab5V5",
       "name": {
-        "en": "bounty",
-        "ko": "바운티"
+        "en": "gemGrab5V5",
+        "ko": "5대5 젬 그랩"
+      }
+    },
+    {
+      "modeId": 80,
+      "imageId": 48000080,
+      "apiKey": "cooking",
+      "name": {
+        "en": "cooking",
+        "ko": "푸드 파이트"
+      }
+    },
+    {
+      "modeId": 24,
+      "imageId": 48000024,
+      "apiKey": "tagTeam",
+      "name": {
+        "en": "tagTeam",
+        "ko": "듀얼"
       }
     },
     {
@@ -16838,21 +17488,21 @@
       }
     },
     {
-      "modeId": 35,
-      "imageId": 48000035,
-      "apiKey": "knockout5V5",
+      "modeId": 32,
+      "imageId": 48000032,
+      "apiKey": "brawlBall5V5",
       "name": {
-        "en": "knockout5V5",
-        "ko": "5대5 녹아웃"
+        "en": "brawlBall5V5",
+        "ko": "5대5 브롤 볼"
       }
     },
     {
-      "modeId": 25,
-      "imageId": 48000025,
-      "apiKey": "deathmatch",
+      "modeId": 22,
+      "imageId": 48000022,
+      "apiKey": "basketBrawl",
       "name": {
-        "en": "deathmatch",
-        "ko": "클린 아웃"
+        "en": "basketBrawl",
+        "ko": "바스켓 브롤"
       }
     }
   ],
@@ -16862,8 +17512,8 @@
       6800
     ],
     "speed": [
-      540,
-      820
+      545,
+      855
     ],
     "range": [
       6,

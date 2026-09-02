@@ -64,9 +64,13 @@
     "health": "체력",
     "speed": "이동 속도",
     "range": "사거리",
+    "attack": "기본 공격",
+    "super": "특수 공격",
     "starPowers": "스타파워",
     "gadgets": "가젯",
-    "gears": "기어"
+    "gears": "기어",
+    "howToPlay": "사용법",
+    "recommendedGears": "추천 기어"
   },
   "ranking": {
     "title": "랭킹",

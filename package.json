@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:data": "tsx scripts/build-game-data.ts",
+    "build:ai": "tsx scripts/build-ai-content.ts",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",

@@ -1,10 +1,12 @@
 'use client'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { useGlitch } from 'react-powerglitch'
 import { RarityBadge } from '@/components/display/RarityBadge'
 import { RoleBadge } from '@/components/display/RoleBadge'
 import { StatBar } from '@/components/display/StatBar'
 import { getRanges } from '@/lib/game-data'
+import { fetchAiContent, getAiTrait } from '@/lib/ai-content'
 import { formatTrophies } from '@/lib/format'
 import { AbilityItem, type AbilityKind } from './AbilityItem'
 import type { BrawlerProgress } from './BrawlerCard'
@@ -41,6 +43,46 @@ function Section({
           <AbilityItem key={a.id} kind={kind} ability={a} locale={locale} />
         ))}
       </div>
+    </div>
+  )
+}
+
+/**
+ * AI 사전 생성물 한 덩이. 파일이 없으면 아무것도 그리지 않는다.
+ *
+ * 생성이 절반만 됐거나 아예 없어도 화면은 섹션만 빠지고 그대로 동작해야 한다
+ * (설계서 2-8: AI 가 실패해도 규칙 기반 결과는 그대로 노출한다).
+ * 그래서 로딩 표시도 에러 표시도 두지 않는다 — 있으면 나타나고 없으면 없다.
+ */
+function AiSections({ brawler, locale }: { brawler: Brawler; locale: Locale }) {
+  const t = useTranslations('brawlers')
+  // 번들된 색인이 곧 "생성물이 있는가" 다. 없는 걸 알면서 받아오면
+  // 브롤러를 열 때마다 콘솔에 404 가 쌓인다 (실측)
+  const generated = Boolean(getAiTrait(brawler.id, locale))
+  const { data } = useQuery({
+    queryKey: ['ai-content', locale, brawler.id],
+    queryFn: () => fetchAiContent(locale, brawler.id),
+    enabled: generated,
+    // 정적 파일이라 바뀌지 않는다. 같은 브롤러를 다시 열면 다시 받지 않는다
+    staleTime: Infinity,
+  })
+  if (!data) return null
+
+  return (
+    <>
+      <Prose title={t('howToPlay')} body={data.howToPlay} />
+      <Prose title={t('recommendedGears')} body={data.gears} />
+    </>
+  )
+}
+
+function Prose({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="mt-3.5">
+      <div className="text-text-tertiary mb-1.5 text-[10px] font-bold uppercase tracking-wider">
+        {title}
+      </div>
+      <p className="text-text-secondary text-[12px] leading-relaxed">{body}</p>
     </div>
   )
 }
@@ -106,6 +148,11 @@ export function BrawlerDetail({
         <StatBar label={t('range')} value={brawler.stats.range} range={ranges.range} />
       )}
 
+      {/* 기본 공격·특수 공격이 먼저다. 스타파워·가젯은 그 위에 얹는 것이라 뒤에 온다.
+          게임이 쓴 문구인데 한국어뿐이라 영어 UI 에는 없다 —
+          AI 사전 생성물과 같은 규칙으로 없으면 섹션을 그리지 않는다 */}
+      {brawler.attackDesc && <Prose title={t('attack')} body={brawler.attackDesc} />}
+      {brawler.superDesc && <Prose title={t('super')} body={brawler.superDesc} />}
       <Section
         title={t('starPowers')}
         items={brawler.starPowers}
@@ -114,6 +161,7 @@ export function BrawlerDetail({
       />
       <Section title={t('gadgets')} items={brawler.gadgets} kind="gadgets" locale={locale} />
       <Section title={t('gears')} items={brawler.gears} kind="gears" locale={locale} />
+      <AiSections brawler={brawler} locale={locale} />
     </div>
   )
 }

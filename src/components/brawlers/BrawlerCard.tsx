@@ -1,4 +1,5 @@
-import { memo } from 'react'
+'use client'
+import { memo, useState } from 'react'
 import { formatTrophies } from '@/lib/format'
 import type { Brawler, Locale } from '@/types/game'
 
@@ -26,6 +27,10 @@ export const BrawlerCard = memo(function BrawlerCard({
   locked?: boolean
   onSelect: (id: number) => void
 }) {
+  // 신규 브롤러는 공식 API 에 나온 뒤 CDN 이미지가 붙기까지 시차가 있다.
+  // 실제로 COSMO·VINCE 가 404 였다. 깨진 아이콘 대신 자리를 유지한다
+  const [broken, setBroken] = useState(false)
+
   return (
     <button
       onClick={() => onSelect(brawler.id)}
@@ -38,15 +43,22 @@ export const BrawlerCard = memo(function BrawlerCard({
           className="absolute inset-x-0 top-0 z-10 h-1.5"
           style={{ background: brawler.rarity.color }}
         />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={brawler.images.portrait}
-          alt=""
-          width={120}
-          height={120}
-          loading="lazy"
-          className="h-full w-full object-cover"
-        />
+        {broken ? (
+          <span className="text-text-tertiary flex h-full w-full items-center justify-center text-[24px] font-bold">
+            {brawler.name.en.slice(0, 1)}
+          </span>
+        ) : (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={brawler.images.portrait}
+            alt=""
+            width={120}
+            height={120}
+            loading="lazy"
+            onError={() => setBroken(true)}
+            className="h-full w-full object-cover"
+          />
+        )}
         {progress && (
           <div className="absolute inset-x-0 bottom-0 flex justify-between bg-gradient-to-t from-black/85 to-transparent px-1.5 py-1 text-[9px] font-bold">
             <span>P{progress.power}</span>

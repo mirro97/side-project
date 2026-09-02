@@ -1,0 +1,434 @@
+{
+  "16000000": {
+    "en": "This brawler is ideal for players who excel at aggressive close-range encounters and defensive sustain.",
+    "ko": "이 브롤러는 공격적인 근거리 교전과 방어적인 유지력에 능숙한 플레이어에게 적합합니다."
+  },
+  "16000001": {
+    "en": "This brawler suits players who enjoy high-skill aiming and maintaining distance from enemies.",
+    "ko": "이 브롤러는 높은 숙련도의 조준 능력을 즐기며 적과 거리를 유지하는 플레이어에게 적합합니다."
+  },
+  "16000002": {
+    "en": "This brawler is perfect for aggressive players who excel at close-range combat and managing low-health risk-reward mechanics.",
+    "ko": "근접 전투에 능숙하고 체력이 낮을 때 발생하는 변수를 잘 활용하는 공격적인 플레이어에게 적합합니다."
+  },
+  "16000003": {
+    "en": "This brawler is perfect for precise players who enjoy controlling space and dismantling enemy cover from a distance.",
+    "ko": "이 브롤러는 원거리에서 공간을 통지하고 적의 엄폐물을 제거하는 것을 즐기는 정밀한 플레이어에게 적합합니다."
+  },
+  "16000004": {
+    "en": "This brawler suits players who enjoy tactical positioning and ricochet mechanics to outmaneuver opponents.",
+    "ko": "이 브롤러는 전략적인 위치 선정과 벽을 이용한 반사 공격으로 상대를 제압하는 플레이어에게 적합합니다."
+  },
+  "16000005": {
+    "en": "This brawler is ideal for players who prefer a high-damage control specialist that excels at area denial.",
+    "ko": "이 브롤러는 지역 장악에 탁월하며 강력한 피해를 입히는 전략가를 선호하는 플레이어에게 적합합니다."
+  },
+  "16000006": {
+    "en": "Barley suits players who prefer strategic area control and support-oriented gameplay over direct combat.",
+    "ko": "발리는 직접적인 전투보다는 전략적인 범위 제어와 지원 중심의 플레이를 선호하는 이들에게 적합합니다."
+  },
+  "16000007": {
+    "en": "This brawler suits players who enjoy tactical area control and maintaining a constant presence on the battlefield.",
+    "ko": "전술적인 구역 장악과 전장에서의 지속적인 존재감을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000008": {
+    "en": "This brawler suits players who prefer a balanced playstyle that combines offensive pressure with utility from a summoned companion.",
+    "ko": "이 브롤러는 소환수를 활용한 전략적인 압박과 균형 잡힌 공격 방식을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000009": {
+    "en": "This brawler is ideal for players who excel at long-range positioning and strategic map control.",
+    "ko": "이 브롤러는 장거리 위치 선정과 전략적인 맵 장악에 능숙한 플레이어에게 적합합니다."
+  },
+  "16000010": {
+    "en": "This brawler is ideal for players who prefer aggressive close-range combat and want to act as a durable team frontline.",
+    "ko": "이 브롤러는 근접 전투를 선호하며 팀의 튼튼한 전방 역할을 수행하고자 하는 플레이어에게 적합합니다."
+  },
+  "16000011": {
+    "en": "This assassin is perfect for players who enjoy high-mobility gameplay and aggressive opportunism.",
+    "ko": "이 암살자는 높은 기동성을 활용한 공격적인 플레이를 즐기는 이들에게 적합합니다."
+  },
+  "16000012": {
+    "en": "This assassin is ideal for players who prefer a hit-and-run playstyle focused on constant harassment and tactical positioning.",
+    "ko": "이 암살자는 지속적인 괴롭힘과 전략적인 위치 선정을 중요시하는 플레이 방식에 적합합니다."
+  },
+  "16000013": {
+    "en": "This brawler is ideal for players who prefer a supportive playstyle focused on team sustain and area control.",
+    "ko": "이 브롤러는 팀의 유지력과 범위 제어에 집중하는 지원형 플레이 방식을 선호하는 사용자에게 적합합니다."
+  },
+  "16000014": {
+    "en": "This brawler is ideal for strategic players who enjoy area control and tactical positioning.",
+    "ko": "이 브롤러는 구역 장악과 전략적인 위치 선정을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000015": {
+    "en": "This brawler is perfect for players who excel at precision, positioning, and maintaining distance.",
+    "ko": "이 브롤러는 정밀한 조준, 위치 선정, 그리고 거리 유지에 능숙한 플레이어에게 적합합니다."
+  },
+  "16000016": {
+    "en": "Pam is a reliable support brawler perfect for players who prioritize team longevity and battlefield control.",
+    "ko": "팸은 팀의 유지력과 전장 장악을 우선시하는 플레이어에게 적합한 믿음직한 서포트 브롤러입니다."
+  },
+  "16000017": {
+    "en": "This brawler suits players who enjoy tactical positioning and landing high-impact area-of-effect abilities.",
+    "ko": "이 브롤러는 전략적인 위치 선정과 강력한 범위 공격 능력을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000018": {
+    "en": "Darryl is ideal for players who prefer aggressive, high-mobility combat and calculated surprise attacks.",
+    "ko": "대릴은 공격적이고 기동성이 뛰어난 전투와 계산된 기습을 선호하는 유형에게 적합합니다."
+  },
+  "16000019": {
+    "en": "This controller suits players who enjoy tactical positioning and area denial to dictate the flow of the match.",
+    "ko": "이 컨트롤러는 전략적인 위치 선정과 영역 장악을 통해 경기 흐름을 주도하는 플레이어에게 적합합니다."
+  },
+  "16000020": {
+    "en": "This brawler suits a player who enjoys aggressive close-range control and strategic positioning.",
+    "ko": "이 브롤러는 공격적인 근접전 제어와 전략적인 위치 선정을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000021": {
+    "en": "This brawler is ideal for players who excel at controlling the map and creating opportunities for their team.",
+    "ko": "전장을 통제하며 팀을 위한 기회를 만드는 플레이를 선호하는 유저에게 적합합니다."
+  },
+  "16000022": {
+    "en": "This brawler suits players who prefer a calculated, defensive, and artillery-focused playstyle.",
+    "ko": "이 브롤러는 계산적이고 방어적인 포격형 플레이를 선호하는 이들에게 적합합니다."
+  },
+  "16000023": {
+    "en": "This brawler suits a patient player who excels at maneuvering through shadows to execute precise ambushes.",
+    "ko": "이 브롤러는 그림자 사이를 이동하며 정밀한 암살을 수행하는 데 능숙한 인내심 있는 플레이어에게 적합합니다."
+  },
+  "16000024": {
+    "en": "This brawler suits players who enjoy aggressive tank gameplay and tactical map control using environmental cover.",
+    "ko": "이 브롤러는 덤불을 이용한 전술적 지형 장악과 공격적인 탱커 플레이를 선호하는 플레이어에게 적합합니다."
+  },
+  "16000025": {
+    "en": "This brawler suits a strategic player who enjoys managing boomerang mechanics and tactical movement.",
+    "ko": "부메랑 메커니즘과 전략적인 움직임을 활용하는 것을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000026": {
+    "en": "This brawler suits players who enjoy aggressive melee combat and tactical positioning.",
+    "ko": "이 브롤러는 공격적인 근접 전투와 전략적인 위치 선정을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000027": {
+    "en": "This brawler suits players who prefer a calculated, stationary playstyle focused on area control and team support.",
+    "ko": "이 브롤러는 구역 장악과 아군 지원에 집중하는 신중하고 안정적인 플레이 스타일을 선호하는 사용자에게 적합합니다."
+  },
+  "16000028": {
+    "en": "This brawler suits a strategic player who enjoys manipulating the battlefield and providing support through area control.",
+    "ko": "이 브롤러는 전장을 조작하고 영역 제어를 통해 아군을 지원하는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000029": {
+    "en": "This marksman is perfect for players who enjoy precision aiming and managing high-stakes shots.",
+    "ko": "정밀한 사격과 신중한 공격 타이밍을 즐기는 플레이어에게 적합한 저격수입니다."
+  },
+  "16000030": {
+    "en": "This brawler suits a strategic player who enjoys area control and keeping distance from aggressive opponents.",
+    "ko": "이 브롤러는 맵을 장악하고 공격적인 상대와 거리를 유지하며 플레이하는 것을 즐기는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000031": {
+    "en": "Mr. P suits players who prefer a calculated, tactical style focused on area denial and persistent pressure.",
+    "ko": "미스터 P는 지속적인 압박과 맵 통제를 중시하는 계산적이고 전략적인 플레이어에게 적합합니다."
+  },
+  "16000032": {
+    "en": "Max suits players who enjoy aggressive support roles that focus on mobility and team utility.",
+    "ko": "맥스는 기동성과 아군 지원에 집중하는 공격적인 서포터 역할을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000034": {
+    "en": "This brawler is perfect for aggressive players who enjoy disrupting enemy teams and dominating close-range engagements.",
+    "ko": "이 브롤러는 적 팀을 교란하고 근거리 교전을 주도하는 것을 즐기는 공격적인 플레이어에게 적합합니다."
+  },
+  "16000035": {
+    "en": "This brawler suits players who enjoy tactical area control and disrupting enemy movement.",
+    "ko": "전술적인 영역 제어와 적의 움직임을 방해하는 플레이를 선호하는 이들에게 적합한 브롤러입니다."
+  },
+  "16000036": {
+    "en": "Nani suits players who enjoy high-risk, high-reward precision sniping and complex remote-controlled combat maneuvers.",
+    "ko": "나니는 고위험 고수익의 정밀한 사격과 복잡한 원격 조종 전투를 선호하는 플레이어에게 적합합니다."
+  },
+  "16000037": {
+    "en": "This brawler suits players who enjoy tactical area control and strategic positioning.",
+    "ko": "이 브롤러는 전략적인 구역 장악과 위치 선정을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000038": {
+    "en": "This brawler suits players who enjoy a dynamic progression playstyle that rewards survival and precision movement.",
+    "ko": "이 브롤러는 생존과 정교한 움직임을 보상하는 역동적인 성장형 플레이를 선호하는 이에게 적합합니다."
+  },
+  "16000039": {
+    "en": "Colette suits a strategic player who enjoys countering high-health targets with precise, percentage-based damage.",
+    "ko": "콜레트는 정밀한 퍼센트 기반 피해로 높은 체력의 대상을 상대하는 것을 즐기는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000040": {
+    "en": "This brawler suits players who prefer tactical area control and strategic fire management to zone out enemies.",
+    "ko": "전략적인 구역 통제와 화염 관리를 통해 적을 압박하는 플레이 방식에 적합한 브롤러입니다."
+  },
+  "16000041": {
+    "en": "This controller excels at disrupting enemy positioning and crowd control in fast-paced matches.",
+    "ko": "강력한 군중 제어 능력을 바탕으로 전장의 흐름을 방해하고 적의 움직임을 제한하는 역할에 적합합니다."
+  },
+  "16000042": {
+    "en": "This brawler suits players who prefer a calculated playstyle focused on balancing healing support with precision damage.",
+    "ko": "이 브롤러는 치유 지원과 정밀한 피해 공격 사이의 균형을 중시하는 계산적인 플레이 스타일을 선호하는 이들에게 적합합니다."
+  },
+  "16000043": {
+    "en": "This assassin is perfect for players who enjoy high-risk, aggressive combat and timing surprise attacks.",
+    "ko": "이 암살자는 위험을 감수하는 공격적인 전투와 기습 타이밍을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000044": {
+    "en": "This support brawler suits players who enjoy tactical positioning and empowering their teammates to dominate the battlefield.",
+    "ko": "이 서포터 브롤러는 전략적인 위치 선정을 즐기며 아군을 강화하여 전투를 유리하게 이끄는 플레이어에게 적합합니다."
+  },
+  "16000045": {
+    "en": "This assassin suits players who excel at high-speed tactical movement and rapid ability chaining.",
+    "ko": "이 암살자는 빠른 속도의 전술적 움직임과 연속적인 스킬 연계에 능숙한 플레이어에게 적합합니다."
+  },
+  "16000046": {
+    "en": "This brawler suits players who prefer long-range precision and strategic utility support.",
+    "ko": "장거리 정밀 사격과 전략적인 보조 능력을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000047": {
+    "en": "This brawler suits players who enjoy tactical area control and indirect fire gameplay.",
+    "ko": "이 브롤러는 전략적인 구역 장악과 간접 공격 플레이를 선호하는 이에게 적합합니다."
+  },
+  "16000048": {
+    "en": "This brawler suits players who prefer calculating shots and maintaining distance from enemies.",
+    "ko": "계산된 공격을 선호하고 적과 거리를 유지하며 플레이하는 전략가에게 어울리는 브롤러입니다."
+  },
+  "16000049": {
+    "en": "This brawler suits players who enjoy aggressive, fast-paced playstyles that rely on positioning and crowd control to eliminate targets.",
+    "ko": "이 브롤러는 적절한 위치 선정과 군중 제어를 활용하여 대상을 제거하는 공격적이고 빠른 템포의 플레이를 선호하는 이들에게 적합합니다."
+  },
+  "16000050": {
+    "en": "This controller suits players who excel at managing zone pressure through tactical positioning and health management.",
+    "ko": "전략적인 위치 선정과 체력 관리를 통해 구역 압박을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000051": {
+    "en": "Ash suits an aggressive player who thrives on managing an enraging combat mechanic to dominate the battlefield.",
+    "ko": "애쉬는 분노를 관리하며 전장을 장악하는 공격적인 플레이어에게 적합합니다."
+  },
+  "16000052": {
+    "en": "This brawler suits players who enjoy a tank role and tactical management of a secondary health pool.",
+    "ko": "탱커 역할을 선호하며 이차 체력 상태를 전략적으로 관리하는 플레이어에게 적합합니다."
+  },
+  "16000053": {
+    "en": "This brawler suits players who enjoy strategic positioning and managing multiple points of impact on the battlefield.",
+    "ko": "이 브롤러는 전략적인 위치 선정과 전장의 여러 지점을 동시에 관리하는 것을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000054": {
+    "en": "This assassin is ideal for players who prefer aggressive, high-risk playstyles that focus on quick bursts of damage and momentum-based chaining.",
+    "ko": "이 암살자는 빠른 순간 화력과 흐름을 타는 연속 공격을 선호하는 공격적인 플레이 방식에 적합합니다."
+  },
+  "16000056": {
+    "en": "Eve is best suited for tactical players who enjoy controlling the map with area-denial mechanics and fluid movement over water.",
+    "ko": "이브는 구역 장악 능력과 물 위를 자유롭게 이동하는 기동성을 활용하여 전장을 제어하길 즐기는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000057": {
+    "en": "This brawler suits a strategic player who enjoys controlling the flow of battle from both the ground and the air.",
+    "ko": "지상과 공중 모두에서 전투의 흐름을 조종하는 것을 즐기는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000058": {
+    "en": "This brawler suits players who enjoy switching between a precise long-range marksman and a high-impact aggressive attacker.",
+    "ko": "정밀한 원거리 저격수와 강력한 근거리 공격수 사이를 전환하며 플레이하는 것을 즐기는 분들에게 적합합니다."
+  },
+  "16000059": {
+    "en": "This brawler suits players who prefer disrupting enemy tactics and controlling space through precise crowd control.",
+    "ko": "이 브롤러는 정교한 군중 제어 기술로 적의 전술을 방해하고 전장을 통제하는 것을 선호하는 유형에게 적합합니다."
+  },
+  "16000060": {
+    "en": "This brawler suits players who enjoy aggressive playstyles that rely on managing cooldowns and positioning abilities.",
+    "ko": "이 브롤러는 재사용 대기 시간 관리와 위치 기반 능력을 활용하는 공격적인 플레이 스타일을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000061": {
+    "en": "This brawler suits players who enjoy providing utility and tactical support to their team while maintaining consistent pressure from a distance.",
+    "ko": "이 브롤러는 거리에서 꾸준한 압박을 가하면서 팀에게 유틸리티와 전술적인 지원을 제공하는 것을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000062": {
+    "en": "This brawler suits a defensive team player who excels at protecting allies and controlling the flow of battle.",
+    "ko": "이 브롤러는 아군을 보호하고 전투의 흐름을 조율하는 데 탁월한 방어적인 팀 플레이어에게 적합합니다."
+  },
+  "16000063": {
+    "en": "This brawler is perfect for those who enjoy unpredictable gameplay and adapting to constantly shifting combat situations.",
+    "ko": "이 브롤러는 예측 불가능한 게임 플레이와 끊임없이 변화하는 전투 상황에 적응하는 것을 즐기는 이들에게 적합합니다."
+  },
+  "16000064": {
+    "en": "This brawler suits tactical players who prioritize team coordination and strategic positioning.",
+    "ko": "팀 협동과 전략적인 위치 선정을 중요하게 생각하는 전술적인 플레이어에게 적합합니다."
+  },
+  "16000065": {
+    "en": "This brawler suits a precise player who prefers controlling the battlefield from a distance while standing still.",
+    "ko": "이 브롤러는 제자리에 머물며 먼 거리에서 전장을 통제하는 것을 선호하는 정밀한 플레이어에게 적합합니다."
+  },
+  "16000066": {
+    "en": "This brawler is ideal for tactical players who enjoy precision-based marksmanship and controlling the battlefield through calculated ability combos.",
+    "ko": "표식을 활용한 정밀한 사격과 계산된 능력 조합으로 전장을 장악하는 것을 즐기는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000067": {
+    "en": "This controller is ideal for players who excel at manipulating enemy positioning and disrupting team formations.",
+    "ko": "이 컨트롤러는 적의 위치를 조작하고 팀 진형을 무너뜨리는 데 탁월한 플레이어에게 적합합니다."
+  },
+  "16000068": {
+    "en": "This marksman suits players who excel at long-range positioning and strategic resource management.",
+    "ko": "이 저격수는 장거리 위치 선정과 전략적인 자원 관리에 능숙한 플레이어에게 적합합니다."
+  },
+  "16000069": {
+    "en": "This brawler is ideal for players who prefer a durable tank that controls space and thrives in close-quarters engagements near walls.",
+    "ko": "이 브롤러는 공간을 장악하며 벽 근처 근접전에서 강한 면모를 보이는 튼튼한 탱커를 선호하는 플레이어에게 적합합니다."
+  },
+  "16000070": {
+    "en": "This brawler suits a calculated assassin who excels at isolating targets and controlling the flow of combat through specialized mechanics.",
+    "ko": "이 브롤러는 목표를 고립시키고 특수 메커니즘을 통해 전투의 흐름을 주도하는 계산적인 암살자에게 적합합니다."
+  },
+  "16000071": {
+    "en": "This brawler suits players who prefer balancing aggressive frontline combat with supportive utility.",
+    "ko": "이 브롤러는 공격적인 전방 전투와 지원 유틸리티 사이의 균형을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000072": {
+    "en": "This brawler suits a strategic player who enjoys managing resources to control the pace of combat.",
+    "ko": "전투의 흐름을 조절하기 위해 자원을 관리하는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000073": {
+    "en": "This controller suits players who enjoy tactical planning and maneuvering through a network of pre-placed traps.",
+    "ko": "이 컨트롤러는 신호기를 전략적으로 배치하고 경로를 설계하는 플레이 방식에 적합합니다."
+  },
+  "16000074": {
+    "en": "This controller suits players who enjoy tactical disruption and managing crowd control during combat.",
+    "ko": "이 컨트롤러는 전투 중 전술적인 방해와 군중 제어를 즐기는 플레이어에게 적합합니다."
+  },
+  "16000075": {
+    "en": "This brawler suits a highly aggressive player who excels at hit-and-run tactics and precise timing.",
+    "ko": "이 브롤러는 치고 빠지는 전술과 정교한 타이밍을 즐기는 공격적인 플레이어에게 적합합니다."
+  },
+  "16000076": {
+    "en": "This brawler suits players who enjoy a hybrid style of tactical support and surprising offensive play.",
+    "ko": "전술적인 지원과 기습적인 공격을 결합한 하이브리드 플레이 스타일을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000077": {
+    "en": "Larry & Lawrie suits players who enjoy tactical zone control and managing a duo to overwhelm opponents.",
+    "ko": "래리 & 로리는 전략적인 지역 장악과 듀오 운영을 통해 적을 압도하는 것을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000078": {
+    "en": "This brawler suits players who enjoy aggressive movement and maintaining combat presence with orbiting projectiles.",
+    "ko": "이 브롤러는 공격적인 움직임과 궤도 투사체를 통한 전투 유지를 즐기는 플레이어에게 적합합니다."
+  },
+  "16000079": {
+    "en": "This brawler suits players who prefer long-range precision and tactical positioning.",
+    "ko": "장거리 정밀 사격과 전술적 위치 선정을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000080": {
+    "en": "This brawler suits players who enjoy aggressive tank gameplay with the ability to balance ranged poking and sustained durability.",
+    "ko": "원거리 견제와 지속적인 내구력을 조절하며 공격적으로 플레이하는 탱커를 선호하는 플레이어에게 적합합니다."
+  },
+  "16000081": {
+    "en": "This brawler suits a patient player who enjoys ambushing enemies and managing burst movement abilities to control the flow of combat.",
+    "ko": "이 브롤러는 적을 기습하는 것을 즐기며 순간적인 이동 능력을 관리하여 전투의 흐름을 주도하는 플레이어에게 적합합니다."
+  },
+  "16000082": {
+    "en": "This brawler suits a strategic player who enjoys manipulating the map to provide both offense and defense simultaneously.",
+    "ko": "이 브롤러는 맵을 장악하여 공격과 방어를 동시에 수행하는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000083": {
+    "en": "Clancy suits players who enjoy a brawler that scales in power and becomes increasingly dominant as the match progresses.",
+    "ko": "클랜시는 게임이 진행될수록 단계적으로 강해지며 지배력을 높여가는 플레이를 선호하는 이에게 적합합니다."
+  },
+  "16000084": {
+    "en": "This brawler suits players who enjoy aggressive playstyles that combine mobile combat with area denial.",
+    "ko": "이 브롤러는 기동성 있는 전투와 구역 장악을 동시에 즐기는 플레이어에게 적합합니다."
+  },
+  "16000085": {
+    "en": "This brawler suits players who prefer high-risk, high-reward combat and masters of timing invulnerability.",
+    "ko": "위험을 감수하면서도 높은 보상을 노리는 플레이와 무적 타이밍을 정교하게 다루는 플레이어에게 적합합니다."
+  },
+  "16000086": {
+    "en": "This brawler suits players who enjoy tactical flanking and using terrain to outmaneuver opponents.",
+    "ko": "이 브롤러는 지형지물을 활용해 적의 뒤를 노리는 전략적인 플레이를 선호하는 이들에게 적합합니다."
+  },
+  "16000087": {
+    "en": "This brawler suits players who enjoy tactical positioning and adapting their combat style based on the environment.",
+    "ko": "지형을 전략적으로 활용하고 주변 환경에 따라 전투 방식을 유연하게 바꾸는 플레이어에게 적합합니다."
+  },
+  "16000089": {
+    "en": "This brawler suits tactical players who enjoy manipulating map terrain and controlling enemy movement through strategic positioning.",
+    "ko": "이 브롤러는 지형을 조작하고 전략적인 위치 선점으로 적의 움직임을 제어하는 것을 즐기는 전술적인 플레이어에게 적합합니다."
+  },
+  "16000090": {
+    "en": "This brawler suits players who enjoy tactical disruption and calculated crowd control in close quarters.",
+    "ko": "이 브롤러는 근접 거리에서 전술적인 방해와 계획적인 군중 제어를 즐기는 플레이어에게 적합합니다."
+  },
+  "16000091": {
+    "en": "Lumi is a damage dealer who excels at controlling space and punishing enemies through calculated positioning.",
+    "ko": "루미는 정교한 위치 선정을 통해 전장을 장악하고 적에게 큰 피해를 입히는 데 최적화된 브롤러입니다."
+  },
+  "16000092": {
+    "en": "This brawler suits a strategic player who enjoys controlling the flow of combat through spatial manipulation and timing.",
+    "ko": "이 브롤러는 공간 조작과 타이밍을 통해 전투의 흐름을 지배하는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000093": {
+    "en": "This brawler suits a tactical player who enjoys adapting to the flow of battle by alternating between offensive support and team healing.",
+    "ko": "이 브롤러는 공격적인 지원과 팀 치유 사이를 오가며 전투의 흐름에 맞춰 유연하게 대처하는 전략적인 플레이어에게 적합합니다."
+  },
+  "16000094": {
+    "en": "This assassin is ideal for players who excel at positioning and tactical mode switching.",
+    "ko": "이 암살자는 위치 선정과 전술적인 모드 전환에 능숙한 플레이어에게 적합합니다."
+  },
+  "16000095": {
+    "en": "This assassin is ideal for players who excel at stealth tactics and calculated timing to eliminate high-health targets.",
+    "ko": "이 암살자는 은밀한 전술과 신중한 타이밍으로 적의 높은 체력을 순식간에 처치하는 플레이어에게 적합합니다."
+  },
+  "16000096": {
+    "en": "This brawler is ideal for players who enjoy aggressive tank gameplay that rewards strategic positioning near scattered ants.",
+    "ko": "이 브롤러는 흩뿌려진 개미 근처에서 전략적으로 위치를 잡으며 공격적으로 플레이하는 것을 즐기는 이들에게 적합합니다."
+  },
+  "16000097": {
+    "en": "This brawler suits players who enjoy high-intensity mechanical combos and precise timing.",
+    "ko": "이 브롤러는 높은 긴장감의 기계적인 콤보와 정밀한 타이밍을 즐기는 플레이어에게 적합합니다."
+  },
+  "16000098": {
+    "en": "This brawler suits those who enjoy tactical map control and punishing enemies with precise area-of-effect damage.",
+    "ko": "이 브롤러는 전략적인 전장 통제를 즐기고 정교한 광역 피해로 적을 제압하는 플레이어에게 적합합니다."
+  },
+  "16000099": {
+    "en": "This brawler is perfect for precise players who enjoy tactical ammo management and rewarding, skill-based mechanics.",
+    "ko": "이 브롤러는 세심한 탄창 관리와 숙련도가 필요한 플레이를 즐기는 사용자에게 적합합니다."
+  },
+  "16000100": {
+    "en": "This assassin brawler suits players who enjoy tactical movement and timing-based engagement.",
+    "ko": "이 암살자 브롤러는 전략적인 움직임과 타이밍을 중시하는 플레이어에게 적합합니다."
+  },
+  "16000101": {
+    "en": "Glowy is suited for a strategic player who enjoys balanced gameplay that shifts between defensive support and aggressive disruption.",
+    "ko": "글로이는 방어적인 지원과 공격적인 방해 사이에서 균형 잡힌 플레이를 즐기는 전략적인 사용자에게 적합합니다."
+  },
+  "16000102": {
+    "en": "This controller suits tactical players who enjoy managing multiple units to dominate the map.",
+    "ko": "다수의 유닛을 관리하며 맵을 장악하는 전술적 플레이어에게 적합합니다."
+  },
+  "16000103": {
+    "en": "Najia suits players who enjoy tactical zone control and wearing down opponents with stacking damage effects.",
+    "ko": "나지아는 전략적인 구역 장악과 중첩 피해 효과로 상대를 서서히 무너뜨리는 플레이를 선호하는 이들에게 적합합니다."
+  },
+  "16000104": {
+    "en": "This brawler is perfect for aggressive players who enjoy controlling the tempo of the fight and disrupting enemy positioning.",
+    "ko": "이 브롤러는 전투의 흐름을 주도하고 적의 위치를 무너뜨리는 공격적인 플레이어에게 적합합니다."
+  },
+  "16000105": {
+    "en": "This brawler suits players who enjoy aggressive transformation-based combat combined with versatile supportive utility.",
+    "ko": "이 브롤러는 변신을 통한 공격적인 전투와 다재다능한 지원 능력을 동시에 선호하는 플레이어에게 적합합니다."
+  },
+  "16000106": {
+    "en": "This brawler is ideal for players who excel at high-speed maneuvering and maintaining momentum during combat.",
+    "ko": "이 브롤러는 고속 기동에 능숙하며 전투 중 탄력을 유지하는 플레이어에게 적합합니다."
+  },
+  "16000107": {
+    "en": "This brawler suits a high-skill player who enjoys aggressive playstyles and complex resource management.",
+    "ko": "이 브롤러는 공격적인 플레이 스타일과 복잡한 자원 관리를 즐기는 숙련된 플레이어에게 적합합니다."
+  },
+  "16000108": {
+    "en": "This brawler is ideal for players who prefer a defensive support role focused on shielding teammates and controlling the battlefield area.",
+    "ko": "이 브롤러는 아군에게 보호막을 제공하고 전장을 장악하는 수비적인 지원 역할을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000109": {
+    "en": "This brawler suits players who enjoy tactical area control and providing utility to their team.",
+    "ko": "이 브롤러는 전략적인 구역 제어와 팀원 지원을 선호하는 플레이어에게 적합합니다."
+  },
+  "16000110": {
+    "en": "This brawler suits players who enjoy tactical resource management and rewarding combo-based combat.",
+    "ko": "전략적인 자원 관리와 콤보 기반의 전투를 즐기는 플레이어에게 적합합니다."
+  }
+}

@@ -20,8 +20,11 @@ describe('filterBrawlers', () => {
     expect(r.length).toBeGreaterThan(0)
   })
   it('역할이 없는 브롤러는 역할 필터에 걸리지 않는다', () => {
-    expect(all.filter(b => b.role === null).length).toBeGreaterThan(0)
-    expect(filterBrawlers(all, { role: 'tank' }).some(b => b.role === null)).toBe(false)
+    // 지금은 108종 전부 역할이 있지만(ClassArchetype), 신규 브롤러는 데이터가 늦게 붙는다.
+    // 그때 필터가 어떻게 동작하는지가 이 테스트의 대상이라 합성 브롤러로 고정한다
+    const roleless = { ...all[0], id: -1, role: null }
+    const r = filterBrawlers([...all, roleless], { role: 'tank' })
+    expect(r.some(b => b.role === null)).toBe(false)
   })
   it('희귀도로 거른다', () => {
     expect(filterBrawlers(all, { rarityIds: [5] }).every(b => b.rarity.id === 5)).toBe(true)

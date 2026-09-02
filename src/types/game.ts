@@ -29,6 +29,16 @@ export interface Brawler {
   rarity: { id: number; name: string; color: string }
   /** range 는 skills.CastingRange 다. characters.AutoAttackRange 가 아니다 */
   stats: { hp: number; speed: number; range: number | null }
+  /**
+   * 게임이 직접 쓴 기본 공격·특수 공격 설명과 한 줄 역할 요약.
+   *
+   * **한국어뿐이다.** BrawlAPI 에도 영문 로케일 엔드포인트에도 이 문구가 없다.
+   * AI 사전 생성물의 근거로 쓰는 게 주 목적이고, 화면에는 있을 때만 그린다.
+   * 초기 브롤러 8종은 로케일에 키 자체가 없어 null 이다.
+   */
+  attackDesc: string | null
+  superDesc: string | null
+  shortDesc: string | null
   vector: { range: number; durability: number; mobility: number; risk: number }
   images: { portrait: string; emoji: string }
   starPowers: Ability[]
