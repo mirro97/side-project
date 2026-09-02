@@ -87,7 +87,12 @@ interface SoftenRule {
  *   <VALUE1>              스케일링 후 게임이 채우는 자리
  *   <!card.…경로>          참조를 따라가야 하는데 CSV 에 없는 자리
  */
-const UNRESOLVED_TOKEN = '(?:<VALUE\\d?>|<![^>]+>)'
+/**
+ * 못 푼 치환자. `<VALUE>` 계열과 `<!경로>` 외에 스킬 설명의 `<DAMAGE>`·`<SHIELD_GAIN>`
+ * 같은 대문자 토큰도 여기 걸린다 — 스킬 행에 값이 있는 것도 있지만 스케일링을 거쳐야
+ * 화면 값이 되므로 그대로 쓰지 않는다 ("로켓 수가 2050% 늘어납니다" 를 낸 적이 있다).
+ */
+const UNRESOLVED_TOKEN = '(?:<[A-Z][A-Z0-9_]*>|<![^>]+>)'
 
 function softenRule(unit: string, word: string, batchim: boolean): SoftenRule {
   // 공백은 뒤에 단위나 조사가 실제로 붙어 있을 때만 흡수한다.
@@ -220,9 +225,13 @@ interface CharacterRow {
   Hitpoints?: number
   Speed?: number
   WeaponSkill?: string
+  UltimateSkill?: string
+  ClassArchetype?: string
 }
 interface SkillRow {
   CastingRange?: number
+  /** 치환자 해석에 행 전체를 넘긴다 */
+  [key: string]: unknown
 }
 interface CardRow {
   id?: number
@@ -251,10 +260,18 @@ interface RotationItem {
 const PROXY = 'https://bsproxy.royaleapi.dev/v1'
 const BAPI = 'https://api.brawlapi.com'
 
+/**
+ * 역할은 characters CSV 의 ClassArchetype 에서 온다.
+ *
+ * 예전에는 BrawlAPI 의 `class.name` 을 썼는데 **그 필드가 용도를 바꿨다** —
+ * 지금은 역할이 아니라 브롤러별 한 줄 소개다("Collect Caterpillars To Become
+ * More Powerful"). 그대로 두면 108종 전부 역할이 null 이 되어 역할 필터가 죽는다.
+ * CSV 쪽은 108/108 이 채워져 있어 커버리지도 더 낫다 (구 방식은 87/106).
+ */
 const ROLE_MAP: Record<string, string> = {
-  'Damage Dealer': 'damage', Tank: 'tank', Assassin: 'assassin',
-  Support: 'support', Controller: 'controller',
-  Marksman: 'marksman', Artillery: 'artillery',
+  damage_dealer: 'damage', tank: 'tank', assassin: 'assassin',
+  support: 'support', controller: 'controller',
+  marksman: 'marksman', artillery: 'artillery',
 }
 
 async function getJson<T>(url: string, token?: string): Promise<T> {
@@ -343,6 +360,28 @@ async function main() {
 
   const warn: string[] = []
 
+  /**
+   * 스킬의 설명 TID.
+   *
+   * skills CSV 의 TID 컬럼은 713행 중 6행에만 있어 쓸 수 없다. 대신 스킬 이름을
+   * TID 형태로 바꿔 로케일에서 찾는다. 변형 무기를 가진 브롤러는 이름에 접미사가
+   * 붙어 있어(`SamuraiWeaponDash`, `CrabWeapon1`) 그걸 떼고도 한 번 더 본다.
+   *
+   * **규칙을 유추해 적지 않고 실제 키와 대조했다** — 이 파생으로 기본 공격 98/106,
+   * 특수 공격 96/106 이 맞는다. 나머지는 로케일에 키가 없다.
+   */
+  const skillDesc = (id: string | undefined): string | null => {
+    if (!id) return null
+    const candidates = [id, id.replace(/(Weapon|Ulti)[A-Z].*$/, '$1'), id.replace(/(Weapon|Ulti)\d+$/, '$1')]
+    for (const c of candidates) {
+      const hit = kr[`${toTid(c)}_DESC`]?.KR
+      // 능력 설명과 같은 파이프라인을 태운다 — 색상 태그를 벗기고 치환자를 풀거나
+      // 못 풀면 "일정량" 같은 자연어로 바꾼다. 날것을 그대로 두면 <DAMAGE> 가 화면에 뜬다
+      if (hit) return buildDescription(hit, skills[id] ?? {}, 'ko', resolveDeep)
+    }
+    return null
+  }
+
   /** 로케일에서 한 줄 꺼낸다 */
   const loc = (tid: string | undefined, suffix = '') =>
     tid ? kr[`${tid}${suffix}`]?.KR : undefined
@@ -398,9 +437,9 @@ async function main() {
     const nameKo: string = t() ?? NAME_KO_FALLBACK[o.id] ?? nameEn
     if (!t() && !NAME_KO_FALLBACK[o.id]) warn.push(`한글명 없음: ${o.name}`)
 
-    const roleEn: string | undefined = b?.class?.name
-    const role = roleEn && roleEn !== 'Unknown' ? (ROLE_MAP[roleEn] ?? null) : null
-    if (!role) warn.push(`역할 없음: ${o.name}`)
+    const archetype = c?.row.ClassArchetype
+    const role = archetype ? (ROLE_MAP[archetype] ?? null) : null
+    if (!role) warn.push(`역할 없음: ${o.name}${archetype ? ` (${archetype})` : ''}`)
 
     return {
       id: o.id as number,
@@ -413,6 +452,9 @@ async function main() {
         color: fixHex(b?.rarity?.color) ?? '#6B7385',
       },
       stats: { hp: c?.row.Hitpoints ?? 0, speed: c?.row.Speed ?? 0, range },
+      attackDesc: skillDesc(c?.row.WeaponSkill),
+      superDesc: skillDesc(c?.row.UltimateSkill),
+      shortDesc: t('_SHORT_DESC') ?? null,
       images: {
         portrait: `https://cdn.brawlify.com/brawlers/borderless/${o.id}.png`,
         emoji: `https://cdn.brawlify.com/brawlers/emoji/${o.id}.png`,

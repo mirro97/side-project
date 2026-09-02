@@ -184,8 +184,9 @@ describe('recommend', () => {
 })
 
 describe('생성 데이터와의 연결', () => {
-  it('106종 전부 벡터를 갖는다', () => {
-    expect(ALL).toHaveLength(106)
+  it('전 종이 벡터를 갖는다', () => {
+    // 종수는 게임 업데이트마다 늘어난다. 개수를 박으면 신규 브롤러마다 테스트가 깨진다
+    expect(ALL.length).toBeGreaterThanOrEqual(106)
     expect(ALL.every((b: Brawler) => AXES.every(a => typeof b.vector[a] === 'number'))).toBe(true)
   })
 })

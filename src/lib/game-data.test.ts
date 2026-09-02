@@ -29,7 +29,7 @@ describe('게임 데이터 로더', () => {
 
   it('체력·이동속도 범위도 실측값과 맞는다', () => {
     expect(getRanges().hp).toEqual([2000, 6800])
-    expect(getRanges().speed).toEqual([540, 820])
+    expect(getRanges().speed).toEqual([545, 855])
   })
 
   it('영문명으로 검색한다', () => {
@@ -87,7 +87,7 @@ describe('modeLabel', () => {
   it('데이터에 없는 모드는 API 키를 다듬어 보여준다', () => {
     // 실측으로 확인한 미수록 모드들
     expect(modeLabel('lastStand', 'ko')).toBe('Last Stand')
-    expect(modeLabel('heist', 'ko')).toBe('Heist')
+    expect(modeLabel('megaBoss', 'ko')).toBe('Mega Boss')
     expect(modeLabel('wipeout', 'en')).toBe('Wipeout')
     expect(modeLabel('basketBrawl', 'en')).toBe('Basket Brawl')
   })
