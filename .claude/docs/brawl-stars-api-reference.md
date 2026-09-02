@@ -154,8 +154,12 @@
 ### 2-2. 브롤러 객체가 제공하는 추가 정보
 
 실측 기준 107종(공식보다 1종 많음). 공식 API에 없고 여기에만 있는 필드들:
-  - `class` — 역할. 실측 값: Artillery, Assassin, Controller, Damage Dealer, Marksman, Support, Tank, **Unknown**
-  - ⚠️ **107종 중 20종의 `class`가 `Unknown`**이다 (Wendy, Nori, Bolt, Starr Nova, Damian, Najia, Sirius, Glowy, Gigi, Pierce, Ziggy, Mina, Trunk, Alli, Kaze, Jae-Yong, Finx, Ollie, Meeple, Buzz Lightyear). 신규 브롤러일수록 비어 있으므로 역할 라벨에 의존하는 로직은 위험하다
+  - `class` — ~~역할~~. **2026-09-02 부터 역할이 아니다.** 브롤러별 한 줄 소개로 바뀌었고 값이 전부 다르다
+    ("Collect Caterpillars To Become More Powerful", "Use Gravity To Target Enemies"). 역할 매핑에 쓰면 전 종이 null 이 된다.
+    옛 값은 Artillery, Assassin, Controller, Damage Dealer, Marksman, Support, Tank, Unknown 이었다
+  - ⚠️ **역할은 이제 `characters` CSV 의 `ClassArchetype` 에서 가져온다.** 값은 `damage_dealer` · `tank` · `assassin` ·
+    `support` · `controller` · `marksman` · `artillery` 이고 **108/108 이 채워져 있다**. 구 방식(BrawlAPI class)은 87/106 이었다.
+    비공식 API 의 필드는 예고 없이 의미가 바뀐다는 게 이 건의 교훈이다 — 게임 CSV 쪽이 더 안정적이다
   - `rarity` — 희귀도 (Common ~ Legendary)
   - `description` — 브롤러 설명 텍스트
   - `starPowers[]`, `gadgets[]` — 이름 + **설명 + 이미지**
@@ -223,7 +227,8 @@
   브롤러 이름   characters 행 키 → TID_{SCREAMING_SNAKE} → localization/kr
                 예: ShotgunGirl → TID_SHOTGUN_GIRL → "쉘리"
   브롤러 설명   TID_{...}_DESC                      → "산탄총을 능숙하게 다루는..."
-  브롤러 역할   TID_{...}_SHORT_DESC                → "대미지 딜러"
+  브롤러 한 줄   TID_{...}_SHORT_DESC                → "폭발적인 피해량으로 탱커와 어쌔신에 대응하세요."
+                (역할 라벨이었으나 지금은 문장이다. 역할은 ClassArchetype 을 쓴다)
   게임모드      TID_GAME_MODE_{modeId}              → "젬 그랩"
                 (modeId는 공식 /events/rotation의 event.modeId와 동일)
 ```
@@ -231,8 +236,10 @@
 **실측 커버리지 (공식 106종 기준)**
   - 한글 이름: 102/106 — 누락 `GENE`, `GRAY`, `HANK`, `ANGELO` (내부 코드명이 TID 규칙에서 벗어남)
   - 한글 설명: 102/106 — 위와 동일
-  - 역할(SHORT_DESC): 83/106 — 위 4종 + 최신 브롤러 19종
-  - 역할 값 종류: 대미지 딜러, 서포터, 어쌔신, 저격수, 컨트롤러, 탱커, 투척수 (BrawlAPI의 영문 7종과 1:1 대응)
+  - 한 줄 요약(SHORT_DESC): 108/108 — 역할 라벨이 아니라 플레이 요약 문장이다
+  - 기본 공격 설명: 100/108, 특수 공격 설명: 98/108 — `skills` 의 TID 컬럼은 713행 중 6행에만 있어 쓸 수 없다.
+    스킬 이름을 TID 형태로 바꿔 로케일에서 찾고, 변형 무기(`SamuraiWeaponDash`)는 접미사를 떼고 한 번 더 본다.
+    초기 8종(쉘리·콜트·불·브록·다이너마이크·그레이·행크·안젤로)은 키 자체가 없다
 
 **중요**: 이 로케일 파일은 게임 버전 스냅샷이라 **최신 브롤러가 항상 빠져 있다.** 상시 상태이므로 빌드 실패가 아니라 영문 폴백으로 처리해야 한다.
 
@@ -247,7 +254,9 @@
   브롤러 이름        공식 API name (대문자)       characters 코드 → TID → 로케일
                      BrawlAPI name 로 교정
   브롤러 소개문       BrawlAPI description        TID_{코드}_DESC → 로케일
-  브롤러 역할        BrawlAPI class.name         TID_{코드}_SHORT_DESC
+  브롤러 역할        characters.ClassArchetype   (수치가 아니라 코드값이라 공통)
+  브롤러 한 줄 요약   없음                        TID_{코드}_SHORT_DESC
+  기본·특수 공격 설명  없음                        스킬 이름 → TID → 로케일 (2-4-1)
   스탯(HP/속도/사거리) characters + skills CSV     (수치라 공통)
   능력 이름          BrawlAPI 능력 name           cards.TID → 로케일
   능력 설명          BrawlAPI 능력 description    cards.TID + '_DESC' → 로케일
